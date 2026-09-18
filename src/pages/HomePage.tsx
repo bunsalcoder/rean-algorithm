@@ -1,10 +1,5 @@
-import { PlaceholderPage } from './PlaceholderPage'
+import { HeroSection } from '../components/home'
 
 export function HomePage() {
-  return (
-    <PlaceholderPage
-      title="Rean Algorithm"
-      description="Learn algorithms. Understand the logic. Solve problems."
-    />
-  )
+  return <HeroSection />
 }
