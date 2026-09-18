@@ -1,6 +1,192 @@
 @import 'tailwindcss';
 
-body {
-  margin: 0;
-  min-height: 100vh;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Ubuntu', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-muted: var(--primary-muted);
+  --color-ring: var(--ring);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  --shadow-sm: var(--shadow-sm-token);
+  --shadow-md: var(--shadow-md-token);
+  --shadow-lg: var(--shadow-lg-token);
+
+  --spacing-section: 4rem;
+  --spacing-section-sm: 2.5rem;
+}
+
+:root {
+  color-scheme: light;
+
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --border: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --primary-hover: #4f46e5;
+  --primary-muted: #eef2ff;
+  --ring: #6366f1;
+  --accent: #eef2ff;
+  --accent-foreground: #4338ca;
+
+  --shadow-sm-token: 0 1px 2px rgb(15 23 42 / 0.04);
+  --shadow-md-token: 0 4px 12px rgb(15 23 42 / 0.06);
+  --shadow-lg-token: 0 12px 32px rgb(15 23 42 / 0.08);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #0b1220;
+  --foreground: #f1f5f9;
+  --muted: #151d2e;
+  --muted-foreground: #94a3b8;
+  --surface: #111827;
+  --surface-elevated: #1a2332;
+  --border: #1e293b;
+  --border-subtle: #162032;
+  --primary: #818cf8;
+  --primary-foreground: #0b1220;
+  --primary-hover: #a5b4fc;
+  --primary-muted: #1e1b4b;
+  --ring: #818cf8;
+  --accent: #1e1b4b;
+  --accent-foreground: #c7d2fe;
+
+  --shadow-sm-token: 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-md-token: 0 4px 12px rgb(0 0 0 / 0.35);
+  --shadow-lg-token: 0 12px 32px rgb(0 0 0 / 0.45);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--foreground);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  }
+
+  p {
+    color: var(--muted-foreground);
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .transition-theme {
+    transition-property: color, background-color, border-color, box-shadow,
+      fill, stroke, opacity;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
+  .text-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .text-nav {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .text-body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .text-body-sm {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
 }
