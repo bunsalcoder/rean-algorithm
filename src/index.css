@@ -189,4 +189,77 @@
     font-weight: 400;
     line-height: 1.5;
   }
+
+  .hero-grid {
+    background-image: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--primary) 28%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);
+  }
+
+  .hero-enter {
+    animation: hero-fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-enter-delay-1 {
+    animation-delay: 80ms;
+  }
+
+  .hero-enter-delay-2 {
+    animation-delay: 160ms;
+  }
+
+  .hero-enter-delay-3 {
+    animation-delay: 240ms;
+  }
+
+  .hero-enter-delay-4 {
+    animation-delay: 320ms;
+  }
+
+  .hero-float {
+    animation: hero-float 5.5s ease-in-out infinite;
+  }
+
+  .hero-float-delayed {
+    animation-delay: 1.2s;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-enter-delay-1,
+  .hero-enter-delay-2,
+  .hero-enter-delay-3,
+  .hero-enter-delay-4,
+  .hero-float,
+  .hero-float-delayed {
+    animation: none !important;
+  }
 }
