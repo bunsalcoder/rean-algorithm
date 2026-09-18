@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
-import { Container, ThemeToggle } from '../ui'
+import { Container } from '../ui'
+import { Header } from './Header'
 
 type AppShellProps = {
   children: ReactNode
@@ -8,11 +9,7 @@ type AppShellProps = {
 export function AppShell({ children }: AppShellProps) {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground transition-theme">
-      <header className="border-b border-border bg-surface/80 backdrop-blur-sm transition-theme">
-        <Container className="flex h-14 items-center justify-end sm:h-16">
-          <ThemeToggle />
-        </Container>
-      </header>
+      <Header />
 
       <main className="flex flex-1 flex-col">{children}</main>
 
