@@ -1,10 +1,15 @@
-import { ExploreByCategory, HeroSection } from '../components/home'
+import {
+  ExploreByCategory,
+  HeroSection,
+  LearningHighlights,
+} from '../components/home'
 
 export function HomePage() {
   return (
     <>
       <HeroSection />
       <ExploreByCategory />
+      <LearningHighlights />
     </>
   )
 }

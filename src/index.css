@@ -227,6 +227,19 @@
   .hero-float-delayed {
     animation-delay: 1.2s;
   }
+
+  .section-reveal .section-reveal-item {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .section-reveal-visible .section-reveal-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes hero-fade-up {
@@ -261,5 +274,12 @@
   .hero-float,
   .hero-float-delayed {
     animation: none !important;
+  }
+
+  .section-reveal .section-reveal-item,
+  .section-reveal-visible .section-reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
