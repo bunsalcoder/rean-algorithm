@@ -1,4 +1,6 @@
 export { AlgorithmCodePreview } from './AlgorithmCodePreview'
 export { ArrayPreview } from './ArrayPreview'
+export { CategoryCard } from './CategoryCard'
 export { ComplexityBadge } from './ComplexityBadge'
+export { ExploreByCategory } from './ExploreByCategory'
 export { HeroSection } from './HeroSection'
