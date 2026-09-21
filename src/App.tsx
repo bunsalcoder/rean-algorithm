@@ -1,11 +1,13 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
+import { getRoadmapStage } from './data/roadmap'
 import { AboutPage } from './pages/AboutPage'
 import { AlgorithmsPage } from './pages/AlgorithmsPage'
 import { DataStructuresPage } from './pages/DataStructuresPage'
 import { HomePage } from './pages/HomePage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticePage } from './pages/PracticePage'
+import { RoadmapPage } from './pages/RoadmapPage'
 
 function CategoryPlaceholder({ title }: { title: string }) {
   return (
@@ -16,12 +18,29 @@ function CategoryPlaceholder({ title }: { title: string }) {
   )
 }
 
+function RoadmapStagePlaceholder() {
+  const { stage: stageId } = useParams<{ stage: string }>()
+  const stage = stageId ? getRoadmapStage(stageId) : undefined
+
+  return (
+    <PlaceholderPage
+      title={stage ? stage.title : 'Stage Coming Soon'}
+      description="Lesson content for this roadmap stage will be available in a future update."
+    />
+  )
+}
+
 function App() {
   return (
     <BrowserRouter>
       <AppShell>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/roadmap" element={<RoadmapPage />} />
+          <Route
+            path="/roadmap/:stage"
+            element={<RoadmapStagePlaceholder />}
+          />
           <Route path="/algorithms" element={<AlgorithmsPage />} />
           <Route
             path="/algorithms/sorting"
