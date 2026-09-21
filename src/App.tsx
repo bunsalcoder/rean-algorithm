@@ -5,6 +5,7 @@ import { AboutPage } from './pages/AboutPage'
 import { AlgorithmsPage } from './pages/AlgorithmsPage'
 import { DataStructuresPage } from './pages/DataStructuresPage'
 import { HomePage } from './pages/HomePage'
+import { LessonPage } from './pages/LessonPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticePage } from './pages/PracticePage'
 import { RoadmapPage } from './pages/RoadmapPage'
@@ -41,6 +42,7 @@ function App() {
             path="/roadmap/:stage"
             element={<RoadmapStagePlaceholder />}
           />
+          <Route path="/learn/:slug" element={<LessonPage />} />
           <Route path="/algorithms" element={<AlgorithmsPage />} />
           <Route
             path="/algorithms/sorting"
