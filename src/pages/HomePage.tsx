@@ -1,5 +1,10 @@
-import { HeroSection } from '../components/home'
+import { ExploreByCategory, HeroSection } from '../components/home'
 
 export function HomePage() {
-  return <HeroSection />
+  return (
+    <>
+      <HeroSection />
+      <ExploreByCategory />
+    </>
+  )
 }
