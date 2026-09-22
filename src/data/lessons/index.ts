@@ -1,6 +1,7 @@
 import { binarySearch } from './binary-search'
 import { bubbleSort } from './bubble-sort'
 import { introductionToAlgorithms } from './introduction-to-algorithms'
+import { selectionSort } from './selection-sort'
 import type { Lesson, LessonTocItem } from './types'
 
 export type {
@@ -10,7 +11,10 @@ export type {
   LessonSortedRequirement,
   LessonThinkingGuide,
   LessonBubbleConcept,
+  LessonSelectionConcept,
   LessonNestedLoops,
+  LessonMinIndexNote,
+  LessonCommonMistake,
   LessonOptimizationNote,
   LessonAlgorithmConnection,
 } from './types'
@@ -19,6 +23,7 @@ export const lessons: Lesson[] = [
   introductionToAlgorithms,
   binarySearch,
   bubbleSort,
+  selectionSort,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))
@@ -45,8 +50,16 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
     items.push({ id: 'bubble-concept', label: 'Core Idea' })
   }
 
+  if (lesson.selectionConcept) {
+    items.push({ id: 'selection-concept', label: 'Core Idea' })
+  }
+
   if (lesson.nestedLoops) {
     items.push({ id: 'nested-loops', label: 'The Two Loops' })
+  }
+
+  if (lesson.minIndexNote) {
+    items.push({ id: 'min-index', label: 'minIndex' })
   }
 
   if (lesson.sortedRequirement) {
@@ -57,12 +70,14 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
     items.push({ id: 'thinking-guide', label: 'How to Think' })
   }
 
-  items.push(
-    { id: 'complexity', label: 'Complexity' },
-  )
+  items.push({ id: 'complexity', label: 'Complexity' })
 
   if (lesson.optimizationNote) {
     items.push({ id: 'optimization', label: 'Optimization' })
+  }
+
+  if (lesson.commonMistake) {
+    items.push({ id: 'common-mistake', label: 'Common Mistake' })
   }
 
   items.push(
@@ -71,7 +86,10 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
   )
 
   if (lesson.algorithmConnection) {
-    items.push({ id: 'algorithm-connection', label: 'Search vs Sort' })
+    items.push({
+      id: 'algorithm-connection',
+      label: lesson.algorithmConnection.title ?? 'Search vs Sort',
+    })
   }
 
   items.push(

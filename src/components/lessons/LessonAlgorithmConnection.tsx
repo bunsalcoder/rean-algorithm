@@ -14,8 +14,8 @@ export function LessonAlgorithmConnectionSection({
     <LessonSection id="algorithm-connection">
       <LessonSectionHeading
         id="algorithm-connection"
-        eyebrow="CONNECTION"
-        title="Search vs Sort"
+        eyebrow={connection.eyebrow ?? 'CONNECTION'}
+        title={connection.title ?? 'Search vs Sort'}
         description={connection.description}
       />
 

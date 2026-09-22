@@ -4,14 +4,17 @@ import {
   LessonAlgorithmConnection,
   LessonBubbleConcept,
   LessonCode,
+  LessonCommonMistake,
   LessonComplexity,
   LessonHeader,
+  LessonMinIndexNote,
   LessonNavigation,
   LessonNestedLoops,
   LessonObjectives,
   LessonOptimizationNote,
   LessonOverview,
   LessonPseudocode,
+  LessonSelectionConcept,
   LessonSortedRequirement,
   LessonSteps,
   LessonTableOfContents,
@@ -151,9 +154,21 @@ export function LessonPage() {
                 </div>
               ) : null}
 
+              {lesson.selectionConcept ? (
+                <div className="section-reveal-item">
+                  <LessonSelectionConcept concept={lesson.selectionConcept} />
+                </div>
+              ) : null}
+
               {lesson.nestedLoops ? (
                 <div className="section-reveal-item">
                   <LessonNestedLoops nestedLoops={lesson.nestedLoops} />
+                </div>
+              ) : null}
+
+              {lesson.minIndexNote ? (
+                <div className="section-reveal-item">
+                  <LessonMinIndexNote note={lesson.minIndexNote} />
                 </div>
               ) : null}
 
@@ -178,6 +193,12 @@ export function LessonPage() {
               {lesson.optimizationNote ? (
                 <div className="section-reveal-item">
                   <LessonOptimizationNote note={lesson.optimizationNote} />
+                </div>
+              ) : null}
+
+              {lesson.commonMistake ? (
+                <div className="section-reveal-item">
+                  <LessonCommonMistake mistake={lesson.commonMistake} />
                 </div>
               ) : null}
 

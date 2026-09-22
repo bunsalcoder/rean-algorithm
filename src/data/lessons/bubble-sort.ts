@@ -246,5 +246,10 @@ console.log(bubbleSort([5, 3, 8, 4, 2])); // [2, 3, 4, 5, 8]`,
     href: '/learn/binary-search',
   },
 
+  nextLesson: {
+    title: 'Selection Sort',
+    href: '/learn/selection-sort',
+  },
+
   categoryHref: '/algorithms/sorting',
 }
