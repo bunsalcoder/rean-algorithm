@@ -102,6 +102,57 @@ export const algorithmCategoryMeta: AlgorithmCategoryMeta[] = [
 
 export const algorithms: AlgorithmItem[] = [
   {
+    id: 'bubble-sort',
+    title: 'Bubble Sort',
+    description:
+      'Compare neighbors and swap them until larger values bubble to the end.',
+    href: '/learn/bubble-sort',
+    lessonSlug: 'bubble-sort',
+    categoryId: 'sorting',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
+  {
+    id: 'selection-sort',
+    title: 'Selection Sort',
+    description:
+      'Repeatedly select the next smallest value and place it in order.',
+    href: '/algorithms/sorting',
+    categoryId: 'sorting',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
+  {
+    id: 'insertion-sort',
+    title: 'Insertion Sort',
+    description:
+      'Build a sorted prefix by inserting each next value into the right spot.',
+    href: '/algorithms/sorting',
+    categoryId: 'sorting',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
+  {
+    id: 'merge-sort',
+    title: 'Merge Sort',
+    description:
+      'Divide the array, sort each half, then merge the sorted halves.',
+    href: '/algorithms/sorting',
+    categoryId: 'sorting',
+    difficulty: 'Intermediate',
+    status: 'coming-soon',
+  },
+  {
+    id: 'quick-sort',
+    title: 'Quick Sort',
+    description:
+      'Partition around a pivot and recursively sort the left and right sides.',
+    href: '/algorithms/sorting',
+    categoryId: 'sorting',
+    difficulty: 'Intermediate',
+    status: 'coming-soon',
+  },
+  {
     id: 'linear-search',
     title: 'Linear Search',
     description:

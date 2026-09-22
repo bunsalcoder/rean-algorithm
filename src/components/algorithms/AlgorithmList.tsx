@@ -28,6 +28,37 @@ function SearchGlyph({ className }: { className?: string }) {
   )
 }
 
+function SortGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M8 5v14M8 19l-3-3M8 19l3-3M16 19V5M16 5l-3 3M16 5l3 3" />
+    </svg>
+  )
+}
+
+function AlgorithmGlyph({
+  categoryId,
+  className,
+}: {
+  categoryId: AlgorithmItem['categoryId']
+  className?: string
+}) {
+  if (categoryId === 'sorting') {
+    return <SortGlyph className={className} />
+  }
+
+  return <SearchGlyph className={className} />
+}
+
 export function AlgorithmList({
   algorithms,
   activeHref,
@@ -57,7 +88,10 @@ export function AlgorithmList({
                   : 'bg-primary-muted text-primary',
               )}
             >
-              <SearchGlyph className="size-4" />
+              <AlgorithmGlyph
+                categoryId={algorithm.categoryId}
+                className="size-4"
+              />
             </span>
 
             <span className="min-w-0 flex-1">

@@ -221,5 +221,10 @@ console.log(binarySearch(values, 23)); // 5`,
     href: '/learn/introduction-to-algorithms',
   },
 
+  nextLesson: {
+    title: 'Bubble Sort',
+    href: '/learn/bubble-sort',
+  },
+
   categoryHref: '/algorithms/searching',
 }
