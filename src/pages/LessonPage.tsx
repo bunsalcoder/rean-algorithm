@@ -5,8 +5,11 @@ import {
   LessonBubbleConcept,
   LessonCode,
   LessonCommonMistake,
+  LessonCommonMistakes,
   LessonComplexity,
   LessonHeader,
+  LessonInsertionConcept,
+  LessonInsertionMechanics,
   LessonMinIndexNote,
   LessonNavigation,
   LessonNestedLoops,
@@ -15,6 +18,7 @@ import {
   LessonOverview,
   LessonPseudocode,
   LessonSelectionConcept,
+  LessonSortProperties,
   LessonSortedRequirement,
   LessonSteps,
   LessonTableOfContents,
@@ -160,9 +164,23 @@ export function LessonPage() {
                 </div>
               ) : null}
 
+              {lesson.insertionConcept ? (
+                <div className="section-reveal-item">
+                  <LessonInsertionConcept concept={lesson.insertionConcept} />
+                </div>
+              ) : null}
+
               {lesson.nestedLoops ? (
                 <div className="section-reveal-item">
                   <LessonNestedLoops nestedLoops={lesson.nestedLoops} />
+                </div>
+              ) : null}
+
+              {lesson.insertionMechanics ? (
+                <div className="section-reveal-item">
+                  <LessonInsertionMechanics
+                    mechanics={lesson.insertionMechanics}
+                  />
                 </div>
               ) : null}
 
@@ -190,6 +208,12 @@ export function LessonPage() {
                 <LessonComplexity complexity={lesson.complexity} />
               </div>
 
+              {lesson.sortProperties ? (
+                <div className="section-reveal-item">
+                  <LessonSortProperties properties={lesson.sortProperties} />
+                </div>
+              ) : null}
+
               {lesson.optimizationNote ? (
                 <div className="section-reveal-item">
                   <LessonOptimizationNote note={lesson.optimizationNote} />
@@ -199,6 +223,12 @@ export function LessonPage() {
               {lesson.commonMistake ? (
                 <div className="section-reveal-item">
                   <LessonCommonMistake mistake={lesson.commonMistake} />
+                </div>
+              ) : null}
+
+              {lesson.commonMistakes ? (
+                <div className="section-reveal-item">
+                  <LessonCommonMistakes mistakes={lesson.commonMistakes} />
                 </div>
               ) : null}
 

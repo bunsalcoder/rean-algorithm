@@ -1,5 +1,6 @@
 import { binarySearch } from './binary-search'
 import { bubbleSort } from './bubble-sort'
+import { insertionSort } from './insertion-sort'
 import { introductionToAlgorithms } from './introduction-to-algorithms'
 import { selectionSort } from './selection-sort'
 import type { Lesson, LessonTocItem } from './types'
@@ -12,9 +13,13 @@ export type {
   LessonThinkingGuide,
   LessonBubbleConcept,
   LessonSelectionConcept,
+  LessonInsertionConcept,
+  LessonInsertionMechanics,
   LessonNestedLoops,
   LessonMinIndexNote,
   LessonCommonMistake,
+  LessonCommonMistakesList,
+  LessonSortProperties,
   LessonOptimizationNote,
   LessonAlgorithmConnection,
 } from './types'
@@ -24,6 +29,7 @@ export const lessons: Lesson[] = [
   binarySearch,
   bubbleSort,
   selectionSort,
+  insertionSort,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))
@@ -54,8 +60,16 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
     items.push({ id: 'selection-concept', label: 'Core Idea' })
   }
 
+  if (lesson.insertionConcept) {
+    items.push({ id: 'insertion-concept', label: 'Core Idea' })
+  }
+
   if (lesson.nestedLoops) {
     items.push({ id: 'nested-loops', label: 'The Two Loops' })
+  }
+
+  if (lesson.insertionMechanics) {
+    items.push({ id: 'insertion-mechanics', label: 'Mechanics' })
   }
 
   if (lesson.minIndexNote) {
@@ -72,12 +86,20 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
 
   items.push({ id: 'complexity', label: 'Complexity' })
 
+  if (lesson.sortProperties) {
+    items.push({ id: 'sort-properties', label: 'Properties' })
+  }
+
   if (lesson.optimizationNote) {
     items.push({ id: 'optimization', label: 'Optimization' })
   }
 
   if (lesson.commonMistake) {
     items.push({ id: 'common-mistake', label: 'Common Mistake' })
+  }
+
+  if (lesson.commonMistakes) {
+    items.push({ id: 'common-mistakes', label: 'Common Mistakes' })
   }
 
   items.push(

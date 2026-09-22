@@ -15,8 +15,11 @@ export function LessonCommonMistakeSection({
       <LessonSectionHeading
         id="common-mistake"
         eyebrow="WATCH OUT"
-        title="Common Beginner Mistake"
-        description="Do not swap immediately every time you find a smaller value."
+        title={mistake.title ?? 'Common Beginner Mistake'}
+        description={
+          mistake.description ??
+          'Do not swap immediately every time you find a smaller value.'
+        }
       />
 
       <Card className="border-amber-500/25 p-5 sm:p-6 hover:border-amber-500/40">
@@ -38,7 +41,7 @@ export function LessonCommonMistakeSection({
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg border border-rose-500/25 bg-rose-500/5 px-4 py-3 dark:bg-rose-400/10">
             <p className="text-label text-[0.65rem] tracking-[0.08em] text-rose-700 dark:text-rose-300">
-              Incorrect mental model
+              {mistake.incorrectLabel ?? 'Incorrect mental model'}
             </p>
             <ol className="mt-3 space-y-2">
               {mistake.incorrect.map((step, index) => (
@@ -59,7 +62,7 @@ export function LessonCommonMistakeSection({
 
           <div className="rounded-lg border border-emerald-500/25 bg-emerald-500/5 px-4 py-3 dark:bg-emerald-400/10">
             <p className="text-label text-[0.65rem] tracking-[0.08em] text-emerald-700 dark:text-emerald-300">
-              Selection Sort does this
+              {mistake.correctLabel ?? 'Selection Sort does this'}
             </p>
             <ol className="mt-3 space-y-2">
               {mistake.correct.map((step, index) => (

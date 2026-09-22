@@ -128,10 +128,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Insertion Sort',
     description:
       'Build a sorted prefix by inserting each next value into the right spot.',
-    href: '/algorithms/sorting',
+    href: '/learn/insertion-sort',
+    lessonSlug: 'insertion-sort',
     categoryId: 'sorting',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'merge-sort',

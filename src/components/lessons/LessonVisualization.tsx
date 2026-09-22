@@ -2,6 +2,7 @@ import type { LessonVisualization } from '../../data/lessons/types'
 import { cn } from '../../lib/cn'
 import { BinarySearchVisualization } from '../visualizations/BinarySearchVisualization'
 import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
+import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
@@ -95,6 +96,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <SelectionSortVisualization />
   }
 
+  if (visualization.type === 'insertion-sort') {
+    return <InsertionSortVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -104,7 +109,8 @@ export function LessonVisualizationPanel({
   const isInteractive =
     visualization.type === 'binary-search' ||
     visualization.type === 'bubble-sort' ||
-    visualization.type === 'selection-sort'
+    visualization.type === 'selection-sort' ||
+    visualization.type === 'insertion-sort'
 
   return (
     <LessonSection id="visualization">
