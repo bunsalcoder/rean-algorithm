@@ -10,9 +10,12 @@ export type LessonLink = {
   href: string
 }
 
+export type LessonVisualizationType = 'placeholder' | 'binary-search'
+
 export type LessonVisualization = {
   title: string
   description: string
+  type?: LessonVisualizationType
 }
 
 export type LessonComplexity = {
@@ -22,12 +25,29 @@ export type LessonComplexity = {
     worst: string
   }
   space: string
+  notes?: {
+    time?: string[]
+    space?: string[]
+  }
 }
 
 export type LessonCode = {
   python: string
   javascript: string
   typescript: string
+}
+
+export type LessonSortedRequirement = {
+  paragraphs: string[]
+  sorted: number[]
+  unsorted: number[]
+  explanation: string
+}
+
+export type LessonThinkingGuide = {
+  title: string
+  description?: string
+  steps: string[]
 }
 
 export type Lesson = {
@@ -56,6 +76,9 @@ export type Lesson = {
   whenNotToUse: string[]
 
   keyTakeaways: string[]
+
+  sortedRequirement?: LessonSortedRequirement
+  thinkingGuide?: LessonThinkingGuide
 
   previousLesson?: LessonLink
   nextLesson?: LessonLink

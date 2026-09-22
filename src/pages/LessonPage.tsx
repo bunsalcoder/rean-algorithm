@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
+import { AlgorithmList } from '../components/algorithms/AlgorithmList'
 import {
   LessonCode,
   LessonComplexity,
@@ -7,15 +8,21 @@ import {
   LessonObjectives,
   LessonOverview,
   LessonPseudocode,
+  LessonSortedRequirement,
   LessonSteps,
   LessonTableOfContents,
   LessonTakeaways,
+  LessonThinkingGuide,
   LessonUsage,
   LessonVisualization,
   LessonWhyItMatters,
   RelatedPractice,
 } from '../components/lessons'
 import { Container, Section } from '../components/ui'
+import {
+  getAlgorithmByLessonSlug,
+  getAlgorithmsByCategory,
+} from '../data/algorithms'
 import { getLesson, getLessonToc } from '../data/lessons'
 import { useInView } from '../hooks/useInView'
 import { cn } from '../lib/cn'
@@ -63,13 +70,20 @@ function LessonNotFound({ slug }: { slug?: string }) {
 export function LessonPage() {
   const { slug } = useParams<{ slug: string }>()
   const lesson = slug ? getLesson(slug) : undefined
-  const { ref, isInView } = useInView<HTMLDivElement>()
+  const { ref, isInView } = useInView<HTMLDivElement>({
+    threshold: 0,
+    rootMargin: '0px',
+  })
 
   if (!lesson) {
     return <LessonNotFound slug={slug} />
   }
 
   const toc = getLessonToc(lesson)
+  const relatedAlgorithm = slug ? getAlgorithmByLessonSlug(slug) : undefined
+  const categoryAlgorithms = relatedAlgorithm
+    ? getAlgorithmsByCategory(relatedAlgorithm.categoryId)
+    : []
 
   return (
     <Section className="relative overflow-hidden py-10 sm:py-12 lg:py-14">
@@ -127,6 +141,20 @@ export function LessonPage() {
                 <LessonSteps steps={lesson.steps} />
               </div>
 
+              {lesson.sortedRequirement ? (
+                <div className="section-reveal-item">
+                  <LessonSortedRequirement
+                    requirement={lesson.sortedRequirement}
+                  />
+                </div>
+              ) : null}
+
+              {lesson.thinkingGuide ? (
+                <div className="section-reveal-item">
+                  <LessonThinkingGuide guide={lesson.thinkingGuide} />
+                </div>
+              ) : null}
+
               <div className="section-reveal-item">
                 <LessonComplexity complexity={lesson.complexity} />
               </div>
@@ -161,7 +189,18 @@ export function LessonPage() {
           </article>
 
           <aside className="hidden lg:block">
-            <div className="sticky top-24 section-reveal-item">
+            <div className="sticky top-24 space-y-8 section-reveal-item">
+              {categoryAlgorithms.length > 0 ? (
+                <div>
+                  <p className="mb-3 text-label text-[0.65rem] tracking-[0.08em]">
+                    Algorithms
+                  </p>
+                  <AlgorithmList
+                    algorithms={categoryAlgorithms}
+                    compact
+                  />
+                </div>
+              ) : null}
               <LessonTableOfContents items={toc} />
             </div>
           </aside>

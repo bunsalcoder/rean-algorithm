@@ -1,9 +1,16 @@
+import { binarySearch } from './binary-search'
 import { introductionToAlgorithms } from './introduction-to-algorithms'
 import type { Lesson, LessonTocItem } from './types'
 
-export type { Lesson, LessonDifficulty, LessonTocItem } from './types'
+export type {
+  Lesson,
+  LessonDifficulty,
+  LessonTocItem,
+  LessonSortedRequirement,
+  LessonThinkingGuide,
+} from './types'
 
-export const lessons: Lesson[] = [introductionToAlgorithms]
+export const lessons: Lesson[] = [introductionToAlgorithms, binarySearch]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))
 
@@ -23,8 +30,17 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
     items.push({ id: 'visualization', label: 'Visual Explanation' })
   }
 
+  items.push({ id: 'steps', label: 'Step by Step' })
+
+  if (lesson.sortedRequirement) {
+    items.push({ id: 'sorted-requirement', label: 'Sorted Array' })
+  }
+
+  if (lesson.thinkingGuide) {
+    items.push({ id: 'thinking-guide', label: 'How to Think' })
+  }
+
   items.push(
-    { id: 'steps', label: 'Step by Step' },
     { id: 'complexity', label: 'Complexity' },
     { id: 'pseudocode', label: 'Pseudocode' },
     { id: 'code', label: 'Code Examples' },
