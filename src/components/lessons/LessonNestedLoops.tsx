@@ -40,7 +40,7 @@ export function LessonNestedLoopsSection({
 
       <Card className="mt-4 border-primary/20 p-5 sm:p-6 hover:border-primary/35">
         <p className="text-sm font-medium text-foreground">
-          Why the inner loop gets shorter
+          {nestedLoops.passShrinkTitle ?? 'Why the inner loop gets shorter'}
         </p>
         <ul className="mt-3 space-y-2">
           {nestedLoops.passShrink.map((line) => (
@@ -59,10 +59,14 @@ export function LessonNestedLoopsSection({
           ))}
         </ul>
         <p className="mt-4 text-body-sm text-muted-foreground">
-          That is why the inner bound is often written as{' '}
-          <span className="font-mono text-foreground">n - i - 1</span> (or{' '}
-          <span className="font-mono text-foreground">n - i - 2</span> as the
-          last starting index). Sorted suffixes do not need to be compared again.
+          {nestedLoops.passShrinkNote ?? (
+            <>
+              That is why the inner bound is often written as{' '}
+              <span className="font-mono text-foreground">n - i - 1</span> (or{' '}
+              <span className="font-mono text-foreground">n - i - 2</span> as the
+              last starting index). Sorted suffixes do not need to be compared again.
+            </>
+          )}
         </p>
       </Card>
     </LessonSection>

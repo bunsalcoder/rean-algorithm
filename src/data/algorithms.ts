@@ -117,10 +117,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Selection Sort',
     description:
       'Repeatedly select the next smallest value and place it in order.',
-    href: '/algorithms/sorting',
+    href: '/learn/selection-sort',
+    lessonSlug: 'selection-sort',
     categoryId: 'sorting',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'insertion-sort',

@@ -14,6 +14,7 @@ export type LessonVisualizationType =
   | 'placeholder'
   | 'binary-search'
   | 'bubble-sort'
+  | 'selection-sort'
 
 export type LessonVisualization = {
   title: string
@@ -72,6 +73,32 @@ export type LessonNestedLoops = {
     description: string
   }
   passShrink: string[]
+  passShrinkTitle?: string
+  passShrinkNote?: string
+}
+
+export type LessonSelectionConcept = {
+  paragraphs: string[]
+  before: number[]
+  afterFirst: number[]
+  afterSecond: number[]
+  selectedValue: number
+  secondSelectedValue: number
+  explanation: string
+}
+
+export type LessonMinIndexNote = {
+  paragraphs: string[]
+  initialExample: string
+  updateCondition: string
+  keyInsight: string
+}
+
+export type LessonCommonMistake = {
+  paragraphs: string[]
+  incorrect: string[]
+  correct: string[]
+  explanation: string
 }
 
 export type LessonOptimizationNote = {
@@ -82,6 +109,8 @@ export type LessonOptimizationNote = {
 }
 
 export type LessonAlgorithmConnection = {
+  title?: string
+  eyebrow?: string
   description?: string
   items: {
     title: string
@@ -119,7 +148,10 @@ export type Lesson = {
   sortedRequirement?: LessonSortedRequirement
   thinkingGuide?: LessonThinkingGuide
   bubbleConcept?: LessonBubbleConcept
+  selectionConcept?: LessonSelectionConcept
   nestedLoops?: LessonNestedLoops
+  minIndexNote?: LessonMinIndexNote
+  commonMistake?: LessonCommonMistake
   optimizationNote?: LessonOptimizationNote
   algorithmConnection?: LessonAlgorithmConnection
 
