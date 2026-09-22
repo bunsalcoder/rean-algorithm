@@ -10,7 +10,10 @@ export type LessonLink = {
   href: string
 }
 
-export type LessonVisualizationType = 'placeholder' | 'binary-search'
+export type LessonVisualizationType =
+  | 'placeholder'
+  | 'binary-search'
+  | 'bubble-sort'
 
 export type LessonVisualization = {
   title: string
@@ -50,6 +53,42 @@ export type LessonThinkingGuide = {
   steps: string[]
 }
 
+export type LessonBubbleConcept = {
+  paragraphs: string[]
+  before: number[]
+  after: number[]
+  bubbledValue: number
+  explanation: string
+}
+
+export type LessonNestedLoops = {
+  description?: string
+  outerLoop: {
+    title: string
+    description: string
+  }
+  innerLoop: {
+    title: string
+    description: string
+  }
+  passShrink: string[]
+}
+
+export type LessonOptimizationNote = {
+  paragraphs: string[]
+  exampleArray: number[]
+  bestCase: string
+  explanation: string
+}
+
+export type LessonAlgorithmConnection = {
+  description?: string
+  items: {
+    title: string
+    description: string
+  }[]
+}
+
 export type Lesson = {
   slug: string
   title: string
@@ -79,6 +118,10 @@ export type Lesson = {
 
   sortedRequirement?: LessonSortedRequirement
   thinkingGuide?: LessonThinkingGuide
+  bubbleConcept?: LessonBubbleConcept
+  nestedLoops?: LessonNestedLoops
+  optimizationNote?: LessonOptimizationNote
+  algorithmConnection?: LessonAlgorithmConnection
 
   previousLesson?: LessonLink
   nextLesson?: LessonLink

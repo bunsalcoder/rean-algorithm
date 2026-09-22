@@ -1,11 +1,15 @@
 import { Link, useParams } from 'react-router-dom'
 import { AlgorithmList } from '../components/algorithms/AlgorithmList'
 import {
+  LessonAlgorithmConnection,
+  LessonBubbleConcept,
   LessonCode,
   LessonComplexity,
   LessonHeader,
   LessonNavigation,
+  LessonNestedLoops,
   LessonObjectives,
+  LessonOptimizationNote,
   LessonOverview,
   LessonPseudocode,
   LessonSortedRequirement,
@@ -141,6 +145,18 @@ export function LessonPage() {
                 <LessonSteps steps={lesson.steps} />
               </div>
 
+              {lesson.bubbleConcept ? (
+                <div className="section-reveal-item">
+                  <LessonBubbleConcept concept={lesson.bubbleConcept} />
+                </div>
+              ) : null}
+
+              {lesson.nestedLoops ? (
+                <div className="section-reveal-item">
+                  <LessonNestedLoops nestedLoops={lesson.nestedLoops} />
+                </div>
+              ) : null}
+
               {lesson.sortedRequirement ? (
                 <div className="section-reveal-item">
                   <LessonSortedRequirement
@@ -159,6 +175,12 @@ export function LessonPage() {
                 <LessonComplexity complexity={lesson.complexity} />
               </div>
 
+              {lesson.optimizationNote ? (
+                <div className="section-reveal-item">
+                  <LessonOptimizationNote note={lesson.optimizationNote} />
+                </div>
+              ) : null}
+
               <div className="section-reveal-item">
                 <LessonPseudocode pseudocode={lesson.pseudocode} />
               </div>
@@ -166,6 +188,14 @@ export function LessonPage() {
               <div className="section-reveal-item">
                 <LessonCode code={lesson.code} />
               </div>
+
+              {lesson.algorithmConnection ? (
+                <div className="section-reveal-item">
+                  <LessonAlgorithmConnection
+                    connection={lesson.algorithmConnection}
+                  />
+                </div>
+              ) : null}
 
               <div className="section-reveal-item">
                 <LessonUsage

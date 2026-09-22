@@ -47,7 +47,7 @@ function App() {
           <Route path="/algorithms" element={<AlgorithmsPage />} />
           <Route
             path="/algorithms/sorting"
-            element={<CategoryPlaceholder title="Sorting Algorithms" />}
+            element={<AlgorithmCategoryPage categoryId="sorting" />}
           />
           <Route
             path="/algorithms/searching"

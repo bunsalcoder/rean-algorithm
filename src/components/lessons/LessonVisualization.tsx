@@ -1,6 +1,7 @@
 import type { LessonVisualization } from '../../data/lessons/types'
 import { cn } from '../../lib/cn'
 import { BinarySearchVisualization } from '../visualizations/BinarySearchVisualization'
+import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
 type LessonVisualizationProps = {
@@ -80,9 +81,25 @@ function PlaceholderVisualization({
   )
 }
 
+function VisualizationBody({ visualization }: LessonVisualizationProps) {
+  if (visualization.type === 'binary-search') {
+    return <BinarySearchVisualization />
+  }
+
+  if (visualization.type === 'bubble-sort') {
+    return <BubbleSortVisualization />
+  }
+
+  return <PlaceholderVisualization visualization={visualization} />
+}
+
 export function LessonVisualizationPanel({
   visualization,
 }: LessonVisualizationProps) {
+  const isInteractive =
+    visualization.type === 'binary-search' ||
+    visualization.type === 'bubble-sort'
+
   return (
     <LessonSection id="visualization">
       <LessonSectionHeading
@@ -92,14 +109,14 @@ export function LessonVisualizationPanel({
         description={visualization.description}
       />
 
-      {visualization.type === 'binary-search' ? (
+      {isInteractive ? (
         <div
           className={cn(
             'rounded-xl border border-border bg-surface p-4 shadow-sm sm:p-5',
             'transition-theme',
           )}
         >
-          <BinarySearchVisualization />
+          <VisualizationBody visualization={visualization} />
         </div>
       ) : (
         <PlaceholderVisualization visualization={visualization} />
