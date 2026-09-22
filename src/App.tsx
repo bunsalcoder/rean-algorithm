@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes, useParams } from 'react-router-
 import { AppShell } from './components/layout/AppShell'
 import { getRoadmapStage } from './data/roadmap'
 import { AboutPage } from './pages/AboutPage'
+import { AlgorithmCategoryPage } from './pages/AlgorithmCategoryPage'
 import { AlgorithmsPage } from './pages/AlgorithmsPage'
 import { DataStructuresPage } from './pages/DataStructuresPage'
 import { HomePage } from './pages/HomePage'
@@ -50,7 +51,7 @@ function App() {
           />
           <Route
             path="/algorithms/searching"
-            element={<CategoryPlaceholder title="Searching Algorithms" />}
+            element={<AlgorithmCategoryPage categoryId="searching" />}
           />
           <Route
             path="/algorithms/array-string"

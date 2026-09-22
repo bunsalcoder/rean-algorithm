@@ -127,12 +127,12 @@ console.log(solveProblem([1, 2, 3]));`,
     'Algorithms are step-by-step recipes for transforming input into output',
     'Every Rean Algorithm lesson shares the same reading structure',
     'Visuals, steps, complexity, and code work together — none replace understanding',
-    'This page is a template; real topics like Binary Search will fill it next',
+    'This page is a template; open Binary Search next for a full interactive lesson',
   ],
 
   nextLesson: {
-    title: 'What is Big O? (coming soon)',
-    href: '/roadmap/complexity',
+    title: 'Binary Search',
+    href: '/learn/binary-search',
   },
 
   categoryHref: '/roadmap/foundations',
