@@ -293,5 +293,10 @@ console.log(selectionSort([7, 4, 9, 2, 5])); // [2, 4, 5, 7, 9]`,
     href: '/learn/bubble-sort',
   },
 
+  nextLesson: {
+    title: 'Insertion Sort',
+    href: '/learn/insertion-sort',
+  },
+
   categoryHref: '/algorithms/sorting',
 }

@@ -15,6 +15,7 @@ export type LessonVisualizationType =
   | 'binary-search'
   | 'bubble-sort'
   | 'selection-sort'
+  | 'insertion-sort'
 
 export type LessonVisualization = {
   title: string
@@ -95,10 +96,63 @@ export type LessonMinIndexNote = {
 }
 
 export type LessonCommonMistake = {
+  title?: string
+  description?: string
+  incorrectLabel?: string
+  correctLabel?: string
   paragraphs: string[]
   incorrect: string[]
   correct: string[]
   explanation: string
+}
+
+export type LessonCommonMistakesList = {
+  description?: string
+  mistakes: {
+    title: string
+    explanation: string
+  }[]
+}
+
+export type LessonInsertionConcept = {
+  paragraphs: string[]
+  stages: {
+    label: string
+    values: number[]
+    sortedCount: number
+    keyIndex?: number
+    note?: string
+  }[]
+  explanation: string
+}
+
+export type LessonInsertionMechanics = {
+  startAtOne: {
+    paragraphs: string[]
+    sortedPrefix: number[]
+    remaining: number[]
+    firstKey: number
+  }
+  moveBackward: {
+    paragraphs: string[]
+    steps: string[]
+  }
+  whileCondition: {
+    paragraphs: string[]
+    conditions: {
+      code: string
+      explanation: string
+    }[]
+  }
+}
+
+export type LessonSortProperties = {
+  description?: string
+  items: {
+    title: string
+    description: string
+    steps?: string[]
+  }[]
 }
 
 export type LessonOptimizationNote = {
@@ -149,9 +203,13 @@ export type Lesson = {
   thinkingGuide?: LessonThinkingGuide
   bubbleConcept?: LessonBubbleConcept
   selectionConcept?: LessonSelectionConcept
+  insertionConcept?: LessonInsertionConcept
+  insertionMechanics?: LessonInsertionMechanics
   nestedLoops?: LessonNestedLoops
   minIndexNote?: LessonMinIndexNote
   commonMistake?: LessonCommonMistake
+  commonMistakes?: LessonCommonMistakesList
+  sortProperties?: LessonSortProperties
   optimizationNote?: LessonOptimizationNote
   algorithmConnection?: LessonAlgorithmConnection
 
