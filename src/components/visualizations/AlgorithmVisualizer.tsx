@@ -54,10 +54,18 @@ function ArrayInputPanel({
   const maxSize = options.maxSize ?? DEFAULT_ARRAY_MAX_SIZE
   const allowRandom = options.allowRandom ?? true
   const allowSizeAdjust = options.allowSizeAdjust ?? true
+  const sortAscending = options.sortAscending ?? false
   const presets = options.presets ?? []
   const [size, setSize] = useState(() =>
     Math.min(Math.max(array.length, minSize), maxSize),
   )
+
+  function finalizeArray(values: number[]): number[] {
+    if (!sortAscending) {
+      return values
+    }
+    return [...values].sort((a, b) => a - b)
+  }
 
   function handleRandom() {
     const next = generateRandomArray(
@@ -65,14 +73,14 @@ function ArrayInputPanel({
       options.randomMin ?? DEFAULT_RANDOM_MIN,
       options.randomMax ?? DEFAULT_RANDOM_MAX,
     )
-    onArrayChange(next)
+    onArrayChange(finalizeArray(next))
   }
 
   function handlePreset(preset: ArrayPreset) {
     setSize(
       Math.min(Math.max(preset.values.length, minSize), maxSize),
     )
-    onArrayChange([...preset.values])
+    onArrayChange(finalizeArray([...preset.values]))
   }
 
   function handleSizeSubmit(event: FormEvent) {
@@ -80,10 +88,12 @@ function ArrayInputPanel({
     const nextSize = Math.min(Math.max(size, minSize), maxSize)
     setSize(nextSize)
     onArrayChange(
-      generateRandomArray(
-        nextSize,
-        options.randomMin ?? DEFAULT_RANDOM_MIN,
-        options.randomMax ?? DEFAULT_RANDOM_MAX,
+      finalizeArray(
+        generateRandomArray(
+          nextSize,
+          options.randomMin ?? DEFAULT_RANDOM_MIN,
+          options.randomMax ?? DEFAULT_RANDOM_MAX,
+        ),
       ),
     )
   }
@@ -105,7 +115,7 @@ function ArrayInputPanel({
             size="sm"
             onClick={handleRandom}
           >
-            Random array
+            {sortAscending ? 'Random sorted array' : 'Random array'}
           </Button>
         ) : null}
 

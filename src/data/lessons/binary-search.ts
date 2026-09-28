@@ -4,63 +4,78 @@ export const binarySearch: Lesson = {
   slug: 'binary-search',
   title: 'Binary Search',
   description:
-    'Learn how Binary Search finds a value in a sorted array by repeatedly checking the middle and discarding half of the remaining range.',
-  category: 'Searching Algorithms',
+    'Learn how to find an element efficiently in a sorted array by repeatedly dividing the search range in half.',
+  category: 'Searching',
   difficulty: 'Beginner',
-  estimatedTime: '15 min',
-  tags: ['searching', 'sorted-array', 'divide-and-conquer', 'O(log n)'],
+  estimatedTime: '20 min',
+  tags: ['Searching', 'Arrays', 'Binary Search', 'O(log n)'],
 
   objectives: [
-    'Explain why Binary Search needs a sorted array',
-    'Track low, mid, and high while the search range shrinks',
-    'Decide which half to keep after comparing the middle value',
-    'Recognize found and not-found outcomes, including low > high',
+    'Understand how Binary Search works.',
+    'Understand why the input array must be sorted.',
+    'Learn how to calculate the middle index.',
+    'Understand how the search range changes after each comparison.',
+    'Visualize the left, middle, and right pointers.',
+    'Understand the time and space complexity.',
+    'Implement Binary Search in Python, JavaScript, and TypeScript.',
   ],
 
   overview: [
-    'Binary Search is a searching algorithm that works by repeatedly dividing a sorted array into two halves.',
-    'For example, consider the sorted array [2, 5, 8, 12, 16, 23, 38, 45, 56]. If we are searching for 23, we look at the middle element, compare it with 23, then search only the left half or the right half.',
-    'If the target is smaller than the middle value, we search the left half. If the target is larger, we search the right half. We continue until the target is found or there is nothing left to search.',
+    'Binary Search is an algorithm that finds a target in a sorted collection.',
+    'Instead of checking every element one by one, it checks the middle element and eliminates half of the remaining search range.',
+    'For example, consider the sorted array [3, 7, 12, 18, 24, 31, 42, 56, 68] and target 42. Compare 42 with the middle value. If the target is larger, search only the right half. If it is smaller, search only the left half.',
+    'Binary Search requires sorted data for this approach to work correctly.',
   ],
 
   whyItMatters: [
-    'It turns a large sorted list into a few comparisons instead of scanning every item.',
-    'Interview and contest problems often expect you to recognize when Binary Search applies.',
-    'The same “check the middle, discard a half” idea appears in many variants later.',
+    'It can search large sorted arrays efficiently.',
+    'It reduces the search range by approximately half per iteration.',
+    'It provides a foundation for more advanced searching techniques.',
+    'It helps developers understand algorithmic efficiency.',
   ],
 
   visualization: {
     title: 'Binary Search in action',
     description:
-      'Step through low, mid, and high as the search range shrinks toward the target.',
+      'Step through left, mid, and right as the search range shrinks toward the target — or until nothing remains.',
     type: 'binary-search',
   },
 
   steps: [
     {
-      title: 'Confirm the array is sorted',
+      title: 'Set left and right',
       description:
-        'Binary Search only works correctly when values increase from left to right. Sorting is the precondition that lets you safely discard a whole half.',
+        'Set left to the first index and right to the last index. Everything between them is the current search range.',
     },
     {
-      title: 'Set low and high',
+      title: 'Calculate the middle index',
       description:
-        'Start with low at the first index and high at the last index. Everything between them is the current search range.',
+        'Compute mid as the middle of the current range. A common formula is mid = floor((left + right) / 2), or the overflow-safe form left + floor((right - left) / 2).',
     },
     {
-      title: 'Compute mid and compare',
+      title: 'Compare the middle element with the target',
       description:
-        'mid is the middle index of the current range. Compare arr[mid] with the target: equal means found, smaller means go right, larger means go left.',
+        'Look at array[mid]. Ask whether it equals the target, is smaller, or is larger.',
     },
     {
-      title: 'Eliminate one half',
+      title: 'If they match, return the index',
       description:
-        'Update low to mid + 1 or high to mid - 1. The discarded side is no longer part of the search.',
+        'When array[mid] equals the target, return mid. The search is finished.',
     },
     {
-      title: 'Repeat until done',
+      title: 'If the target is smaller, move right to mid - 1',
       description:
-        'Keep going while low <= high. If low becomes greater than high, the range is empty and the target is not present.',
+        'Everything at mid and to the right can be discarded. Shrink the range by setting right = mid - 1.',
+    },
+    {
+      title: 'If the target is larger, move left to mid + 1',
+      description:
+        'Everything at mid and to the left can be discarded. Shrink the range by setting left = mid + 1.',
+    },
+    {
+      title: 'Repeat until found or the range is empty',
+      description:
+        'Keep going while left <= right. If left becomes greater than right, the target is not present — return -1.',
     },
   ],
 
@@ -73,70 +88,71 @@ export const binarySearch: Lesson = {
     space: 'O(1)',
     notes: {
       time: [
-        'Each step removes about half of the remaining search space.',
-        'For example: 16 → 8 → 4 → 2 → 1 elements.',
-        'That is why Binary Search is much faster than checking every element one by one on large sorted arrays.',
+        'Each comparison eliminates about half of the remaining search range.',
+        'For example: 16 → 8 → 4 → 2 → 1 elements. That logarithmic shrink is why Binary Search is O(log n) on average and in the worst case.',
+        'If the middle element is the target on the first check, the best case is O(1).',
       ],
       space: [
-        'The iterative version only needs a few variables such as low, high, and mid.',
-        'It does not need extra arrays proportional to the input size.',
+        'The iterative version only needs a few variables such as left, right, and mid.',
+        'It does not allocate an extra array proportional to the input size, so space stays O(1).',
       ],
     },
   },
 
-  pseudocode: `low = 0
-high = array.length - 1
+  pseudocode: `BinarySearch(array, target)
 
-while low <= high
-    mid = floor((low + high) / 2)
+    left = 0
+    right = length(array) - 1
 
-    if array[mid] === target
-        return mid
+    while left <= right
 
-    if array[mid] < target
-        low = mid + 1
-    else
-        high = mid - 1
+        mid = floor((left + right) / 2)
 
-return -1`,
-
-  code: {
-    python: `def binary_search(array, target):
-    low = 0
-    high = len(array) - 1
-
-    while low <= high:
-        mid = (low + high) // 2
-
-        if array[mid] == target:
+        if array[mid] equals target
             return mid
 
-        if array[mid] < target:
-            low = mid + 1
+        if array[mid] < target
+            left = mid + 1
+        else
+            right = mid - 1
+
+    return -1`,
+
+  code: {
+    python: `def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+
+    while left <= right:
+        mid = left + (right - left) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
         else:
-            high = mid - 1
+            right = mid - 1
 
     return -1
 
 
 # Example
-values = [2, 5, 8, 12, 16, 23, 38, 45, 56]
-print(binary_search(values, 23))  # 5`,
-    javascript: `function binarySearch(array, target) {
-  let low = 0;
-  let high = array.length - 1;
+values = [3, 7, 12, 18, 24, 31, 42, 56, 68]
+print(binary_search(values, 42))  # 6
+print(binary_search(values, 50))  # -1`,
+    javascript: `function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
 
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
+  while (left <= right) {
+    const mid = left + Math.floor((right - left) / 2);
 
-    if (array[mid] === target) {
+    if (arr[mid] === target) {
       return mid;
-    }
-
-    if (array[mid] < target) {
-      low = mid + 1;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
     } else {
-      high = mid - 1;
+      right = mid - 1;
     }
   }
 
@@ -144,23 +160,22 @@ print(binary_search(values, 23))  # 5`,
 }
 
 // Example
-const values = [2, 5, 8, 12, 16, 23, 38, 45, 56];
-console.log(binarySearch(values, 23)); // 5`,
-    typescript: `function binarySearch(array: number[], target: number): number {
-  let low = 0;
-  let high = array.length - 1;
+const values = [3, 7, 12, 18, 24, 31, 42, 56, 68];
+console.log(binarySearch(values, 42)); // 6
+console.log(binarySearch(values, 50)); // -1`,
+    typescript: `function binarySearch(arr: number[], target: number): number {
+  let left = 0;
+  let right = arr.length - 1;
 
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
+  while (left <= right) {
+    const mid = left + Math.floor((right - left) / 2);
 
-    if (array[mid] === target) {
+    if (arr[mid] === target) {
       return mid;
-    }
-
-    if (array[mid] < target) {
-      low = mid + 1;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
     } else {
-      high = mid - 1;
+      right = mid - 1;
     }
   }
 
@@ -168,37 +183,42 @@ console.log(binarySearch(values, 23)); // 5`,
 }
 
 // Example
-const values = [2, 5, 8, 12, 16, 23, 38, 45, 56];
-console.log(binarySearch(values, 23)); // 5`,
+const values = [3, 7, 12, 18, 24, 31, 42, 56, 68];
+console.log(binarySearch(values, 42)); // 6
+console.log(binarySearch(values, 50)); // -1`,
   },
 
   whenToUse: [
-    'The collection is already sorted (or you can afford to sort it once)',
-    'You need to find whether a value exists, or locate its index',
-    'The input is large enough that scanning every element would be too slow',
+    'Searching in sorted arrays.',
+    'Searching large sorted collections.',
+    'Situations where repeated searches justify maintaining sorted data.',
+    'Problems involving monotonic conditions that can be searched using binary-search techniques.',
   ],
 
   whenNotToUse: [
-    'The array is unsorted and you only search once — sorting first may cost more than a linear scan',
-    'You need every matching occurrence in an unsorted list',
-    'The data structure does not support efficient random access by index',
+    'Unsorted data without first sorting it.',
+    'Situations where sorting costs more than a single Linear Search.',
+    'Data structures without efficient random access, such as ordinary linked lists.',
+    'Situations where a different data structure provides a more appropriate lookup method.',
   ],
 
   keyTakeaways: [
-    'Binary Search repeatedly checks the middle of a sorted range',
-    'low, mid, and high make the current window visible and teachable',
-    'If the target is larger than mid, discard the left half; if smaller, discard the right half',
-    'Stop with a found index, or when low > high means not found',
+    'Binary Search works on sorted data.',
+    'It compares the target with the middle element.',
+    'Each iteration eliminates approximately half of the remaining search range.',
+    'Best-case time complexity is O(1).',
+    'Average and worst-case time complexity are O(log n).',
+    'Iterative space complexity is O(1).',
   ],
 
   sortedRequirement: {
     paragraphs: [
       'Binary Search works because the array is sorted.',
-      'If the target is greater than the middle value, we know everything to the left of the middle can be ignored.',
-      'If the target is smaller, we know everything to the right can be ignored.',
+      'If the target is greater than the middle value, everything to the left of mid can be ignored.',
+      'If the target is smaller, everything to the right of mid can be ignored.',
     ],
-    sorted: [2, 5, 8, 12, 16, 23, 38],
-    unsorted: [12, 2, 38, 5, 23, 8, 16],
+    sorted: [3, 7, 12, 18, 24, 31, 42],
+    unsorted: [18, 3, 42, 7, 31, 12, 24],
     explanation:
       'In the unsorted example, the middle value does not tell you which side can be discarded. Normal Binary Search would make the wrong cut, so sort first (or use Linear Search).',
   },
@@ -212,7 +232,49 @@ console.log(binarySearch(values, 23)); // 5`,
       'Can I check the middle?',
       'Is the target smaller or larger than the middle?',
       'Which half can I eliminate?',
-      'Repeat.',
+      'Repeat until found or the range is empty.',
+    ],
+  },
+
+  commonMistakes: {
+    description:
+      'These mistakes show up often when learners first write Binary Search.',
+    mistakes: [
+      {
+        title: 'Using Binary Search on unsorted data',
+        explanation:
+          'Without sorted order, discarding a half is unsafe. Sort first, or use Linear Search instead.',
+      },
+      {
+        title: 'Incorrectly updating left or right',
+        explanation:
+          'After comparing mid, set left = mid + 1 or right = mid - 1. Leaving mid inside the range can cause infinite loops or missed values.',
+      },
+      {
+        title: 'Forgetting to use mid - 1 or mid + 1',
+        explanation:
+          'If you set left = mid or right = mid when the values are not equal, the loop may never shrink the range.',
+      },
+      {
+        title: 'Using the wrong loop condition',
+        explanation:
+          'Use while left <= right. Stopping at left < right can skip the final single-element range.',
+      },
+      {
+        title: 'Confusing an index with a value',
+        explanation:
+          'mid is an index. Compare array[mid] with the target, then return mid — not the value itself — when found.',
+      },
+      {
+        title: 'Incorrectly handling empty arrays',
+        explanation:
+          'When the array is empty, right becomes -1 and the loop never runs. Return -1 so callers know the target is missing.',
+      },
+      {
+        title: 'Infinite loops from bad boundary updates',
+        explanation:
+          'If left and right stop changing, the loop never ends. Always move past mid after a mismatch.',
+      },
     ],
   },
 

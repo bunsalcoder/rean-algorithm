@@ -23,16 +23,19 @@ export const DEFAULT_DEMO_ARRAY = [7, 2, 9, 4, 1, 6] as const
  */
 const STATE_PRIORITY: Record<ElementVisualState, number> = {
   default: 0,
-  highlighted: 1,
-  active: 2,
-  compared: 3,
-  swapped: 4,
-  found: 5,
+  eliminated: 1,
+  highlighted: 2,
+  active: 3,
+  compared: 4,
+  swapped: 5,
+  found: 6,
 }
 
 /** Accessible state colors that work in light and dark themes. */
 export const elementStateClasses: Record<ElementVisualState, string> = {
   default: 'border-border bg-muted text-foreground',
+  eliminated:
+    'border-border/60 bg-muted/40 text-muted-foreground opacity-45',
   highlighted:
     'border-sky-500/60 bg-sky-500/15 text-foreground ring-1 ring-sky-500/25 dark:border-sky-400/60 dark:bg-sky-400/15 dark:ring-sky-400/25',
   active:
@@ -64,6 +67,11 @@ export const elementStateLegend: ReadonlyArray<{
     state: 'highlighted',
     label: 'Highlighted',
     className: elementStateClasses.highlighted,
+  },
+  {
+    state: 'eliminated',
+    label: 'Eliminated',
+    className: elementStateClasses.eliminated,
   },
   {
     state: 'swapped',
@@ -115,6 +123,7 @@ export function resolveElementState(
     indices: readonly number[] | undefined
     state: ElementVisualState
   }> = [
+    { indices: step.eliminated, state: 'eliminated' },
     { indices: step.highlighted, state: 'highlighted' },
     { indices: step.active, state: 'active' },
     { indices: step.compared, state: 'compared' },

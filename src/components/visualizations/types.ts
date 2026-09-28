@@ -8,6 +8,7 @@
 /** Visual role applied to array indices during a step. */
 export type ElementVisualState =
   | 'default'
+  | 'eliminated'
   | 'highlighted'
   | 'compared'
   | 'active'
@@ -44,7 +45,7 @@ export type VisualizationStep = {
    * When omitted, the visualizer falls back to the shared input array.
    */
   array?: readonly number[]
-  /** Soft-highlighted indices. */
+  /** Soft-highlighted indices (e.g. active search range). */
   highlighted?: readonly number[]
   /** Indices currently being compared. */
   compared?: readonly number[]
@@ -54,6 +55,8 @@ export type VisualizationStep = {
   found?: readonly number[]
   /** Indices involved in a swap. */
   swapped?: readonly number[]
+  /** Indices discarded from the search (e.g. Binary Search). */
+  eliminated?: readonly number[]
   /** Optional named pointers (e.g. left, right, mid). */
   pointers?: readonly ArrayPointer[]
   /** Optional per-index annotation labels. */
@@ -88,6 +91,8 @@ export type VisualizerInputOptions = {
   randomMin?: number
   /** Inclusive max value for random generation. */
   randomMax?: number
+  /** When true, random arrays are sorted ascending (needed for Binary Search). */
+  sortAscending?: boolean
 }
 
 /** Resolved array element with its visual role for rendering. */
