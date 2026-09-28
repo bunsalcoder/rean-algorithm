@@ -10,6 +10,7 @@ import { LessonPage } from './pages/LessonPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticePage } from './pages/PracticePage'
 import { RoadmapPage } from './pages/RoadmapPage'
+import { VisualizerDemoPage } from './pages/VisualizerDemoPage'
 
 function CategoryPlaceholder({ title }: { title: string }) {
   return (
@@ -79,6 +80,7 @@ function App() {
             element={<CategoryPlaceholder title="Stack & Queue" />}
           />
           <Route path="/practice" element={<PracticePage />} />
+          <Route path="/visualizer-demo" element={<VisualizerDemoPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
