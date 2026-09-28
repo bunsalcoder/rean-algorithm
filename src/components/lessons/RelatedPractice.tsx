@@ -13,7 +13,7 @@ export function RelatedPractice() {
 
       <Card className="flex flex-col items-center justify-center gap-2 border-dashed py-10 text-center hover:border-primary/25">
         <p className="text-base font-medium text-foreground">
-          Practice coming soon
+          Practice problems are coming soon.
         </p>
         <p className="max-w-sm text-body-sm text-muted-foreground">
           Short exercises and interview-style prompts will appear in a future

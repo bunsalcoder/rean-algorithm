@@ -217,8 +217,8 @@ console.log(binarySearch(values, 23)); // 5`,
   },
 
   previousLesson: {
-    title: 'Introduction to Algorithms',
-    href: '/learn/introduction-to-algorithms',
+    title: 'Linear Search',
+    href: '/learn/linear-search',
   },
 
   nextLesson: {

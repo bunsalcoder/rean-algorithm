@@ -1,5 +1,6 @@
 export { AlgorithmVisualizer } from './AlgorithmVisualizer'
 export { ArrayVisualizer } from './ArrayVisualizer'
+export { LinearSearchVisualization } from './LinearSearchVisualization'
 export { VisualizationCanvas } from './VisualizationCanvas'
 export { VisualizationLegend } from './VisualizationLegend'
 export { VisualizationStatus } from './VisualizationStatus'

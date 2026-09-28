@@ -12,6 +12,7 @@ export type LessonLink = {
 
 export type LessonVisualizationType =
   | 'placeholder'
+  | 'linear-search'
   | 'binary-search'
   | 'bubble-sort'
   | 'selection-sort'
