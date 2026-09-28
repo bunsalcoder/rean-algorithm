@@ -1,5 +1,6 @@
 import { cn } from '../../lib/cn'
 import type { VisualizationStep } from './types'
+import { getOperationLabel } from './utils'
 
 type VisualizationStatusProps = {
   step: VisualizationStep | undefined
@@ -15,6 +16,7 @@ export function VisualizationStatus({
   className,
 }: VisualizationStatusProps) {
   const displayStep = stepCount === 0 ? 0 : stepIndex + 1
+  const operationLabel = getOperationLabel(step?.operation)
 
   return (
     <div
@@ -25,9 +27,16 @@ export function VisualizationStatus({
       aria-live="polite"
     >
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-label text-[0.65rem] tracking-[0.08em]">
-          Step {displayStep} of {stepCount}
-        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="text-label text-[0.65rem] tracking-[0.08em]">
+            Step {displayStep} of {stepCount}
+          </p>
+          {operationLabel ? (
+            <span className="rounded-md border border-primary/25 bg-primary/10 px-2 py-0.5 text-[0.65rem] font-medium uppercase tracking-wide text-primary">
+              {operationLabel}
+            </span>
+          ) : null}
+        </div>
         {step?.meta && Object.keys(step.meta).length > 0 ? (
           <p className="font-mono text-[0.7rem] text-muted-foreground">
             {Object.entries(step.meta)

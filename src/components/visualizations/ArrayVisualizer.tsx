@@ -6,8 +6,12 @@ type ArrayVisualizerProps = {
   elements: readonly ResolvedArrayElement[]
   pointers?: readonly ArrayPointer[]
   showIndices?: boolean
+  /** Changes when the step changes so swap/move animations can restart. */
+  animationKey?: string
   className?: string
 }
+
+type SwapRole = 'left' | 'right' | null
 
 function PointerMarkers({
   count,
@@ -64,10 +68,33 @@ function PointerMarkers({
   )
 }
 
+function resolveSwapRole(
+  index: number,
+  elements: readonly ResolvedArrayElement[],
+): SwapRole {
+  const swapped = elements
+    .filter((element) => element.state === 'swapped')
+    .map((element) => element.index)
+    .sort((a, b) => a - b)
+
+  if (swapped.length < 2) {
+    return null
+  }
+
+  if (index === swapped[0]) {
+    return 'left'
+  }
+  if (index === swapped[swapped.length - 1]) {
+    return 'right'
+  }
+  return null
+}
+
 export function ArrayVisualizer({
   elements,
   pointers = [],
   showIndices = true,
+  animationKey,
   className,
 }: ArrayVisualizerProps) {
   const count = elements.length
@@ -105,6 +132,8 @@ export function ArrayVisualizer({
             const barHeight = Math.round(
               28 + (Math.abs(element.value) / maxValue) * 72,
             )
+            const swapRole = resolveSwapRole(element.index, elements)
+            const isMoving = element.state === 'moving'
 
             return (
               <div
@@ -116,22 +145,34 @@ export function ArrayVisualizer({
                   aria-hidden="true"
                 >
                   <div
+                    key={
+                      swapRole || isMoving
+                        ? `${animationKey ?? 'step'}-bar-${element.index}`
+                        : `bar-${element.index}`
+                    }
                     className={cn(
-                      'w-full max-w-14 rounded-t-md border border-b-0 transition-[height,background-color,border-color,box-shadow,transform] duration-300 ease-out motion-reduce:transition-none',
+                      'viz-array-bar w-full max-w-14 rounded-t-md border border-b-0 transition-[height,background-color,border-color,box-shadow] duration-300 ease-out motion-reduce:transition-none',
                       elementStateClasses[element.state],
-                      element.state === 'swapped' &&
-                        'motion-safe:-translate-y-0.5',
+                      swapRole === 'left' && 'viz-swap-left',
+                      swapRole === 'right' && 'viz-swap-right',
+                      isMoving && 'viz-moving',
                     )}
                     style={{ height: `${barHeight}%` }}
                   />
                 </div>
 
                 <div
+                  key={
+                    swapRole || isMoving
+                      ? `${animationKey ?? 'step'}-value-${element.index}`
+                      : `value-${element.index}`
+                  }
                   className={cn(
-                    'flex h-11 w-full max-w-14 items-center justify-center rounded-md border font-mono text-sm font-medium transition-[background-color,border-color,box-shadow,transform] duration-300 ease-out motion-reduce:transition-none',
+                    'viz-array-value flex h-11 w-full max-w-14 items-center justify-center rounded-md border font-mono text-sm font-medium transition-[background-color,border-color,box-shadow] duration-300 ease-out motion-reduce:transition-none',
                     elementStateClasses[element.state],
-                    element.state === 'swapped' &&
-                      'motion-safe:-translate-y-0.5',
+                    swapRole === 'left' && 'viz-swap-left',
+                    swapRole === 'right' && 'viz-swap-right',
+                    isMoving && 'viz-moving',
                   )}
                   aria-label={`Index ${element.index}, value ${element.value}, state ${element.state}`}
                 >
