@@ -159,10 +159,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Linear Search',
     description:
       'Check each element in order until you find the target or reach the end.',
-    href: '/algorithms/searching',
+    href: '/learn/linear-search',
+    lessonSlug: 'linear-search',
     categoryId: 'searching',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'binary-search',

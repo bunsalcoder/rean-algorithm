@@ -2,6 +2,7 @@ import { binarySearch } from './binary-search'
 import { bubbleSort } from './bubble-sort'
 import { insertionSort } from './insertion-sort'
 import { introductionToAlgorithms } from './introduction-to-algorithms'
+import { linearSearch } from './linear-search'
 import { selectionSort } from './selection-sort'
 import type { Lesson, LessonTocItem } from './types'
 
@@ -26,6 +27,7 @@ export type {
 
 export const lessons: Lesson[] = [
   introductionToAlgorithms,
+  linearSearch,
   binarySearch,
   bubbleSort,
   selectionSort,

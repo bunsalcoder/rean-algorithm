@@ -3,6 +3,7 @@ import { cn } from '../../lib/cn'
 import { BinarySearchVisualization } from '../visualizations/BinarySearchVisualization'
 import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
+import { LinearSearchVisualization } from '../visualizations/LinearSearchVisualization'
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
@@ -84,6 +85,10 @@ function PlaceholderVisualization({
 }
 
 function VisualizationBody({ visualization }: LessonVisualizationProps) {
+  if (visualization.type === 'linear-search') {
+    return <LinearSearchVisualization />
+  }
+
   if (visualization.type === 'binary-search') {
     return <BinarySearchVisualization />
   }
@@ -107,6 +112,7 @@ export function LessonVisualizationPanel({
   visualization,
 }: LessonVisualizationProps) {
   const isInteractive =
+    visualization.type === 'linear-search' ||
     visualization.type === 'binary-search' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
