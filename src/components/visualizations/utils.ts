@@ -25,10 +25,13 @@ const STATE_PRIORITY: Record<ElementVisualState, number> = {
   default: 0,
   eliminated: 1,
   highlighted: 2,
-  active: 3,
-  compared: 4,
-  swapped: 5,
-  found: 6,
+  sorted: 3,
+  candidate: 4,
+  active: 5,
+  moving: 6,
+  compared: 7,
+  swapped: 8,
+  found: 9,
 }
 
 /** Accessible state colors that work in light and dark themes. */
@@ -38,8 +41,14 @@ export const elementStateClasses: Record<ElementVisualState, string> = {
     'border-border/60 bg-muted/40 text-muted-foreground opacity-45',
   highlighted:
     'border-sky-500/60 bg-sky-500/15 text-foreground ring-1 ring-sky-500/25 dark:border-sky-400/60 dark:bg-sky-400/15 dark:ring-sky-400/25',
+  sorted:
+    'border-emerald-500/55 bg-emerald-500/12 text-foreground ring-1 ring-emerald-500/25 dark:border-emerald-400/55 dark:bg-emerald-400/12 dark:ring-emerald-400/25',
+  candidate:
+    'border-violet-500 bg-violet-500/15 text-foreground shadow-sm ring-2 ring-violet-500/30 dark:border-violet-400 dark:bg-violet-400/15 dark:ring-violet-400/30',
   active:
     'border-primary bg-primary/15 text-foreground shadow-sm ring-2 ring-primary/30',
+  moving:
+    'border-cyan-500 bg-cyan-500/15 text-foreground shadow-sm ring-2 ring-cyan-500/30 dark:border-cyan-400 dark:bg-cyan-400/15 dark:ring-cyan-400/30',
   compared:
     'border-amber-500 bg-amber-500/15 text-foreground shadow-sm ring-2 ring-amber-500/30 dark:border-amber-400 dark:bg-amber-400/15 dark:ring-amber-400/30',
   swapped:
@@ -69,9 +78,14 @@ export const elementStateLegend: ReadonlyArray<{
     className: elementStateClasses.highlighted,
   },
   {
-    state: 'eliminated',
-    label: 'Eliminated',
-    className: elementStateClasses.eliminated,
+    state: 'candidate',
+    label: 'Min / max candidate',
+    className: elementStateClasses.candidate,
+  },
+  {
+    state: 'moving',
+    label: 'Moving',
+    className: elementStateClasses.moving,
   },
   {
     state: 'swapped',
@@ -79,11 +93,41 @@ export const elementStateLegend: ReadonlyArray<{
     className: elementStateClasses.swapped,
   },
   {
+    state: 'sorted',
+    label: 'Sorted',
+    className: elementStateClasses.sorted,
+  },
+  {
+    state: 'eliminated',
+    label: 'Eliminated',
+    className: elementStateClasses.eliminated,
+  },
+  {
     state: 'found',
     label: 'Found',
     className: elementStateClasses.found,
   },
 ]
+
+const OPERATION_LABELS: Record<
+  NonNullable<VisualizationStep['operation']>,
+  string
+> = {
+  compare: 'Compare',
+  swap: 'Swap',
+  'mark-sorted': 'Mark sorted',
+  move: 'Move',
+  complete: 'Complete',
+}
+
+export function getOperationLabel(
+  operation: VisualizationStep['operation'],
+): string | null {
+  if (!operation) {
+    return null
+  }
+  return OPERATION_LABELS[operation]
+}
 
 export function getPlaybackIntervalMs(
   speed: PlaybackSpeed,
@@ -125,7 +169,10 @@ export function resolveElementState(
   }> = [
     { indices: step.eliminated, state: 'eliminated' },
     { indices: step.highlighted, state: 'highlighted' },
+    { indices: step.sorted, state: 'sorted' },
+    { indices: step.candidate, state: 'candidate' },
     { indices: step.active, state: 'active' },
+    { indices: step.moving, state: 'moving' },
     { indices: step.compared, state: 'compared' },
     { indices: step.swapped, state: 'swapped' },
     { indices: step.found, state: 'found' },
@@ -159,6 +206,31 @@ export function resolveArrayElements(
     state: step ? resolveElementState(index, step) : 'default',
     label: step?.indexLabels?.[index],
   }))
+}
+
+/**
+ * Collect visual states referenced by a step sequence (for legend filtering).
+ */
+export function collectUsedElementStates(
+  steps: readonly VisualizationStep[],
+): Array<Exclude<ElementVisualState, 'default'>> {
+  const used = new Set<ElementVisualState>()
+
+  for (const step of steps) {
+    if (step.highlighted?.length) used.add('highlighted')
+    if (step.compared?.length) used.add('compared')
+    if (step.active?.length) used.add('active')
+    if (step.found?.length) used.add('found')
+    if (step.swapped?.length) used.add('swapped')
+    if (step.eliminated?.length) used.add('eliminated')
+    if (step.sorted?.length) used.add('sorted')
+    if (step.candidate?.length) used.add('candidate')
+    if (step.moving?.length) used.add('moving')
+  }
+
+  return elementStateLegend
+    .map((item) => item.state)
+    .filter((state) => used.has(state))
 }
 
 export function generateRandomArray(

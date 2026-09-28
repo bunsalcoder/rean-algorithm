@@ -10,6 +10,7 @@ import { LessonPage } from './pages/LessonPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticePage } from './pages/PracticePage'
 import { RoadmapPage } from './pages/RoadmapPage'
+import { SortingVisualizerDemoPage } from './pages/SortingVisualizerDemoPage'
 import { VisualizerDemoPage } from './pages/VisualizerDemoPage'
 
 function CategoryPlaceholder({ title }: { title: string }) {
@@ -81,6 +82,10 @@ function App() {
           />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/visualizer-demo" element={<VisualizerDemoPage />} />
+          <Route
+            path="/sorting-visualizer-demo"
+            element={<SortingVisualizerDemoPage />}
+          />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

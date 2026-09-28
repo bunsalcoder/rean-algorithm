@@ -13,6 +13,7 @@ import {
   DEFAULT_ARRAY_MIN_SIZE,
   DEFAULT_RANDOM_MAX,
   DEFAULT_RANDOM_MIN,
+  collectUsedElementStates,
   formatArray,
   generateRandomArray,
   resolveArrayElements,
@@ -189,6 +190,7 @@ export function AlgorithmVisualizer({
   const playback = useVisualizerPlayback(steps.length, { resetKey })
   const step = steps[playback.stepIndex]
   const elements = resolveArrayElements(array, step)
+  const legendStates = useMemo(() => collectUsedElementStates(steps), [steps])
 
   const [isFullscreen, setIsFullscreen] = useState(false)
 
@@ -231,8 +233,11 @@ export function AlgorithmVisualizer({
           elements={elements}
           pointers={step?.pointers}
           showIndices
+          animationKey={step?.id}
         />
-        {showLegend ? <VisualizationLegend className="mt-4" /> : null}
+        {showLegend ? (
+          <VisualizationLegend className="mt-4" states={legendStates} />
+        ) : null}
       </VisualizationCanvas>
 
       <VisualizerControls playback={playback} />

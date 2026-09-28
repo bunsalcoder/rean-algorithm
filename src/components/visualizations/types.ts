@@ -10,10 +10,24 @@ export type ElementVisualState =
   | 'default'
   | 'eliminated'
   | 'highlighted'
-  | 'compared'
+  | 'sorted'
+  | 'candidate'
   | 'active'
-  | 'found'
+  | 'moving'
+  | 'compared'
   | 'swapped'
+  | 'found'
+
+/**
+ * High-level operation label for status display.
+ * Generators set this; the engine only renders it.
+ */
+export type VisualizationOperation =
+  | 'compare'
+  | 'swap'
+  | 'mark-sorted'
+  | 'move'
+  | 'complete'
 
 /** Named pointer or marker shown near an array index. */
 export type ArrayPointer = {
@@ -30,6 +44,9 @@ export type VisualizationStepMeta = Readonly<
  * One frame in a visualization sequence.
  *
  * Algorithms generate these; the engine only plays them back.
+ *
+ * Sorting-oriented optional fields (`sorted`, `candidate`, `moving`,
+ * `operation`) are additive — search steps can omit them entirely.
  */
 export type VisualizationStep = {
   /** Stable unique id within a step sequence. */
@@ -45,7 +62,7 @@ export type VisualizationStep = {
    * When omitted, the visualizer falls back to the shared input array.
    */
   array?: readonly number[]
-  /** Soft-highlighted indices (e.g. active search range). */
+  /** Soft-highlighted indices (e.g. active search / unsorted range). */
   highlighted?: readonly number[]
   /** Indices currently being compared. */
   compared?: readonly number[]
@@ -57,6 +74,14 @@ export type VisualizationStep = {
   swapped?: readonly number[]
   /** Indices discarded from the search (e.g. Binary Search). */
   eliminated?: readonly number[]
+  /** Indices locked in their final sorted positions. */
+  sorted?: readonly number[]
+  /** Minimum or maximum candidate indices during selection-style scans. */
+  candidate?: readonly number[]
+  /** Indices currently being shifted or moved. */
+  moving?: readonly number[]
+  /** Optional high-level operation for status display. */
+  operation?: VisualizationOperation
   /** Optional named pointers (e.g. left, right, mid). */
   pointers?: readonly ArrayPointer[]
   /** Optional per-index annotation labels. */
