@@ -378,7 +378,7 @@ Partition(array, low, high)
 
   nextLesson: {
     title: 'Heap Sort',
-    href: '/algorithms/sorting',
+    href: '/learn/heap-sort',
   },
 
   categoryHref: '/algorithms/sorting',

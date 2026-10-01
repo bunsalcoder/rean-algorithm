@@ -32,6 +32,9 @@ export type VisualizationOperation =
   | 'split'
   | 'merge'
   | 'partition'
+  | 'build-heap'
+  | 'heapify'
+  | 'extract-max'
   | 'complete'
 
 /** Named pointer or marker shown near an array index. */

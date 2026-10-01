@@ -19,6 +19,7 @@ export type LessonVisualizationType =
   | 'insertion-sort'
   | 'merge-sort'
   | 'quick-sort'
+  | 'heap-sort'
 
 export type LessonVisualization = {
   title: string
@@ -146,6 +147,27 @@ export type LessonMergeConcept = {
   explanation: string
 }
 
+export type LessonHeapConcept = {
+  paragraphs: string[]
+  indexingTitle: string
+  formulas: {
+    label: string
+    formula: string
+  }[]
+  maxHeapProperty: string
+  before: {
+    label: string
+    array: number[]
+    note?: string
+  }
+  after: {
+    label: string
+    array: number[]
+    note?: string
+  }
+  explanation: string
+}
+
 export type LessonInsertionMechanics = {
   startAtOne: {
     paragraphs: string[]
@@ -225,6 +247,7 @@ export type Lesson = {
   selectionConcept?: LessonSelectionConcept
   insertionConcept?: LessonInsertionConcept
   mergeConcept?: LessonMergeConcept
+  heapConcept?: LessonHeapConcept
   insertionMechanics?: LessonInsertionMechanics
   nestedLoops?: LessonNestedLoops
   minIndexNote?: LessonMinIndexNote

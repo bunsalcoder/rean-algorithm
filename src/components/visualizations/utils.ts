@@ -136,6 +136,9 @@ const OPERATION_LABELS: Record<
   split: 'Split',
   merge: 'Merge',
   partition: 'Partition',
+  'build-heap': 'Build heap',
+  heapify: 'Heapify',
+  'extract-max': 'Extract max',
   complete: 'Complete',
 }
 

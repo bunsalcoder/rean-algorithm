@@ -11,6 +11,7 @@ import {
   LessonInsertionConcept,
   LessonInsertionMechanics,
   LessonMergeConcept,
+  LessonHeapConcept,
   LessonMinIndexNote,
   LessonNavigation,
   LessonNestedLoops,
@@ -174,6 +175,12 @@ export function LessonPage() {
               {lesson.mergeConcept ? (
                 <div className="section-reveal-item">
                   <LessonMergeConcept concept={lesson.mergeConcept} />
+                </div>
+              ) : null}
+
+              {lesson.heapConcept ? (
+                <div className="section-reveal-item">
+                  <LessonHeapConcept concept={lesson.heapConcept} />
                 </div>
               ) : null}
 

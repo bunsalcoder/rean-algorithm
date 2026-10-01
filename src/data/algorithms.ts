@@ -157,6 +157,17 @@ export const algorithms: AlgorithmItem[] = [
     status: 'available',
   },
   {
+    id: 'heap-sort',
+    title: 'Heap Sort',
+    description:
+      'Build a Max Heap, then repeatedly extract the largest value into place.',
+    href: '/learn/heap-sort',
+    lessonSlug: 'heap-sort',
+    categoryId: 'sorting',
+    difficulty: 'Intermediate',
+    status: 'available',
+  },
+  {
     id: 'linear-search',
     title: 'Linear Search',
     description:
