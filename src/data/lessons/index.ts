@@ -3,6 +3,7 @@ import { bubbleSort } from './bubble-sort'
 import { insertionSort } from './insertion-sort'
 import { introductionToAlgorithms } from './introduction-to-algorithms'
 import { linearSearch } from './linear-search'
+import { mergeSort } from './merge-sort'
 import { selectionSort } from './selection-sort'
 import type { Lesson, LessonTocItem } from './types'
 
@@ -15,6 +16,7 @@ export type {
   LessonBubbleConcept,
   LessonSelectionConcept,
   LessonInsertionConcept,
+  LessonMergeConcept,
   LessonInsertionMechanics,
   LessonNestedLoops,
   LessonMinIndexNote,
@@ -32,6 +34,7 @@ export const lessons: Lesson[] = [
   bubbleSort,
   selectionSort,
   insertionSort,
+  mergeSort,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))
@@ -64,6 +67,10 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
 
   if (lesson.insertionConcept) {
     items.push({ id: 'insertion-concept', label: 'Core Idea' })
+  }
+
+  if (lesson.mergeConcept) {
+    items.push({ id: 'merge-concept', label: 'Core Idea' })
   }
 
   if (lesson.nestedLoops) {

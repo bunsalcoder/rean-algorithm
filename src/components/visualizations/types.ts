@@ -12,6 +12,8 @@ export type ElementVisualState =
   | 'highlighted'
   | 'sorted'
   | 'candidate'
+  | 'left'
+  | 'right'
   | 'active'
   | 'moving'
   | 'compared'
@@ -27,6 +29,8 @@ export type VisualizationOperation =
   | 'swap'
   | 'mark-sorted'
   | 'move'
+  | 'split'
+  | 'merge'
   | 'complete'
 
 /** Named pointer or marker shown near an array index. */
@@ -78,6 +82,10 @@ export type VisualizationStep = {
   sorted?: readonly number[]
   /** Minimum or maximum candidate indices during selection-style scans. */
   candidate?: readonly number[]
+  /** Indices in the left half of a divide/merge range (Merge Sort). */
+  left?: readonly number[]
+  /** Indices in the right half of a divide/merge range (Merge Sort). */
+  right?: readonly number[]
   /** Indices currently being shifted or moved. */
   moving?: readonly number[]
   /** Optional high-level operation for status display. */
