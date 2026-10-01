@@ -1,4 +1,10 @@
-import { useId, useMemo, useState, type FormEvent } from 'react'
+import {
+  useId,
+  useMemo,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from 'react'
 import { Button } from '../ui'
 import { cn } from '../../lib/cn'
 import { ArrayVisualizer } from './ArrayVisualizer'
@@ -37,6 +43,11 @@ type AlgorithmVisualizerProps = {
   className?: string
   showLegend?: boolean
   showFullscreen?: boolean
+  /**
+   * Optional content rendered above the array inside the canvas
+   * (e.g. a compact heap tree for Heap Sort).
+   */
+  canvasAddon?: (step: VisualizationStep | undefined) => ReactNode
 }
 
 type ArrayInputPanelProps = {
@@ -181,6 +192,7 @@ export function AlgorithmVisualizer({
   className,
   showLegend = true,
   showFullscreen = true,
+  canvasAddon,
 }: AlgorithmVisualizerProps) {
   const resetKey = useMemo(
     () => `${array.join(',')}:${steps.map((step) => step.id).join('|')}`,
@@ -229,6 +241,7 @@ export function AlgorithmVisualizer({
       <VisualizationCanvas
         label={title ? `${title} visualization` : 'Algorithm visualization'}
       >
+        {canvasAddon ? canvasAddon(step) : null}
         <ArrayVisualizer
           elements={elements}
           pointers={step?.pointers}

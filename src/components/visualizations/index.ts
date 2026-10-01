@@ -1,6 +1,8 @@
 export { AlgorithmVisualizer } from './AlgorithmVisualizer'
 export { ArrayVisualizer } from './ArrayVisualizer'
 export { BinarySearchVisualization } from './BinarySearchVisualization'
+export { HeapSortVisualization } from './HeapSortVisualization'
+export { HeapTreeView } from './HeapTreeView'
 export { LinearSearchVisualization } from './LinearSearchVisualization'
 export { MergeSortVisualization } from './MergeSortVisualization'
 export { QuickSortVisualization } from './QuickSortVisualization'

@@ -1,5 +1,6 @@
 import { binarySearch } from './binary-search'
 import { bubbleSort } from './bubble-sort'
+import { heapSort } from './heap-sort'
 import { insertionSort } from './insertion-sort'
 import { introductionToAlgorithms } from './introduction-to-algorithms'
 import { linearSearch } from './linear-search'
@@ -18,6 +19,7 @@ export type {
   LessonSelectionConcept,
   LessonInsertionConcept,
   LessonMergeConcept,
+  LessonHeapConcept,
   LessonInsertionMechanics,
   LessonNestedLoops,
   LessonMinIndexNote,
@@ -37,6 +39,7 @@ export const lessons: Lesson[] = [
   insertionSort,
   mergeSort,
   quickSort,
+  heapSort,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))
@@ -73,6 +76,10 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
 
   if (lesson.mergeConcept) {
     items.push({ id: 'merge-concept', label: 'Core Idea' })
+  }
+
+  if (lesson.heapConcept) {
+    items.push({ id: 'heap-concept', label: 'Core Idea' })
   }
 
   if (lesson.nestedLoops) {

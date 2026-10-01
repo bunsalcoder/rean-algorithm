@@ -2,6 +2,7 @@ import type { LessonVisualization } from '../../data/lessons/types'
 import { cn } from '../../lib/cn'
 import { BinarySearchVisualization } from '../visualizations/BinarySearchVisualization'
 import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
+import { HeapSortVisualization } from '../visualizations/HeapSortVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { LinearSearchVisualization } from '../visualizations/LinearSearchVisualization'
 import { MergeSortVisualization } from '../visualizations/MergeSortVisualization'
@@ -115,6 +116,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <QuickSortVisualization />
   }
 
+  if (visualization.type === 'heap-sort') {
+    return <HeapSortVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -128,7 +133,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||
     visualization.type === 'merge-sort' ||
-    visualization.type === 'quick-sort'
+    visualization.type === 'quick-sort' ||
+    visualization.type === 'heap-sort'
 
   return (
     <LessonSection id="visualization">
