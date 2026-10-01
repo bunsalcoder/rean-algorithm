@@ -4,6 +4,7 @@ import { BinarySearchVisualization } from '../visualizations/BinarySearchVisuali
 import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { LinearSearchVisualization } from '../visualizations/LinearSearchVisualization'
+import { MergeSortVisualization } from '../visualizations/MergeSortVisualization'
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
@@ -105,6 +106,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <InsertionSortVisualization />
   }
 
+  if (visualization.type === 'merge-sort') {
+    return <MergeSortVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -116,7 +121,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'binary-search' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
-    visualization.type === 'insertion-sort'
+    visualization.type === 'insertion-sort' ||
+    visualization.type === 'merge-sort'
 
   return (
     <LessonSection id="visualization">

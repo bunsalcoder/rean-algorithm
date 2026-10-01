@@ -17,6 +17,7 @@ export type LessonVisualizationType =
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'
+  | 'merge-sort'
 
 export type LessonVisualization = {
   title: string
@@ -127,6 +128,23 @@ export type LessonInsertionConcept = {
   explanation: string
 }
 
+export type LessonMergeConcept = {
+  paragraphs: string[]
+  divideLabel: string
+  mergeLabel: string
+  divideStages: {
+    label: string
+    groups: number[][]
+    note?: string
+  }[]
+  mergeStages: {
+    label: string
+    groups: number[][]
+    note?: string
+  }[]
+  explanation: string
+}
+
 export type LessonInsertionMechanics = {
   startAtOne: {
     paragraphs: string[]
@@ -205,6 +223,7 @@ export type Lesson = {
   bubbleConcept?: LessonBubbleConcept
   selectionConcept?: LessonSelectionConcept
   insertionConcept?: LessonInsertionConcept
+  mergeConcept?: LessonMergeConcept
   insertionMechanics?: LessonInsertionMechanics
   nestedLoops?: LessonNestedLoops
   minIndexNote?: LessonMinIndexNote

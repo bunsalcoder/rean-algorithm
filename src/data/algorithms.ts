@@ -139,10 +139,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Merge Sort',
     description:
       'Divide the array, sort each half, then merge the sorted halves.',
-    href: '/algorithms/sorting',
+    href: '/learn/merge-sort',
+    lessonSlug: 'merge-sort',
     categoryId: 'sorting',
-    difficulty: 'Intermediate',
-    status: 'coming-soon',
+    difficulty: 'Beginner',
+    status: 'available',
   },
   {
     id: 'quick-sort',

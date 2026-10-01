@@ -27,6 +27,8 @@ const STATE_PRIORITY: Record<ElementVisualState, number> = {
   highlighted: 2,
   sorted: 3,
   candidate: 4,
+  left: 4,
+  right: 4,
   active: 5,
   moving: 6,
   compared: 7,
@@ -45,6 +47,10 @@ export const elementStateClasses: Record<ElementVisualState, string> = {
     'border-emerald-500/55 bg-emerald-500/12 text-foreground ring-1 ring-emerald-500/25 dark:border-emerald-400/55 dark:bg-emerald-400/12 dark:ring-emerald-400/25',
   candidate:
     'border-violet-500 bg-violet-500/15 text-foreground shadow-sm ring-2 ring-violet-500/30 dark:border-violet-400 dark:bg-violet-400/15 dark:ring-violet-400/30',
+  left:
+    'border-indigo-500 bg-indigo-500/15 text-foreground shadow-sm ring-2 ring-indigo-500/30 dark:border-indigo-400 dark:bg-indigo-400/15 dark:ring-indigo-400/30',
+  right:
+    'border-fuchsia-500 bg-fuchsia-500/15 text-foreground shadow-sm ring-2 ring-fuchsia-500/30 dark:border-fuchsia-400 dark:bg-fuchsia-400/15 dark:ring-fuchsia-400/30',
   active:
     'border-primary bg-primary/15 text-foreground shadow-sm ring-2 ring-primary/30',
   moving:
@@ -76,6 +82,16 @@ export const elementStateLegend: ReadonlyArray<{
     state: 'highlighted',
     label: 'Highlighted',
     className: elementStateClasses.highlighted,
+  },
+  {
+    state: 'left',
+    label: 'Left half',
+    className: elementStateClasses.left,
+  },
+  {
+    state: 'right',
+    label: 'Right half',
+    className: elementStateClasses.right,
   },
   {
     state: 'candidate',
@@ -117,6 +133,8 @@ const OPERATION_LABELS: Record<
   swap: 'Swap',
   'mark-sorted': 'Mark sorted',
   move: 'Move',
+  split: 'Split',
+  merge: 'Merge',
   complete: 'Complete',
 }
 
@@ -171,6 +189,8 @@ export function resolveElementState(
     { indices: step.highlighted, state: 'highlighted' },
     { indices: step.sorted, state: 'sorted' },
     { indices: step.candidate, state: 'candidate' },
+    { indices: step.left, state: 'left' },
+    { indices: step.right, state: 'right' },
     { indices: step.active, state: 'active' },
     { indices: step.moving, state: 'moving' },
     { indices: step.compared, state: 'compared' },
@@ -225,6 +245,8 @@ export function collectUsedElementStates(
     if (step.eliminated?.length) used.add('eliminated')
     if (step.sorted?.length) used.add('sorted')
     if (step.candidate?.length) used.add('candidate')
+    if (step.left?.length) used.add('left')
+    if (step.right?.length) used.add('right')
     if (step.moving?.length) used.add('moving')
   }
 
