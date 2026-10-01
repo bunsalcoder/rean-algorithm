@@ -4,29 +4,35 @@ export const insertionSort: Lesson = {
   slug: 'insertion-sort',
   title: 'Insertion Sort',
   description:
-    'Learn how Insertion Sort builds a sorted prefix by taking each next element as a key and inserting it into the correct position by shifting larger values right.',
-  category: 'Sorting Algorithms',
+    'Learn how Insertion Sort builds a sorted portion of an array by inserting each new element into its correct position.',
+  category: 'Sorting',
   difficulty: 'Beginner',
   estimatedTime: '20 min',
-  tags: ['sorting', 'shifting', 'in-place', 'stable', 'O(n²)', 'key'],
+  tags: ['Sorting', 'Arrays', 'Insertion Sort', 'O(n²)'],
 
   objectives: [
-    'Explain Insertion Sort as inserting a key into a growing sorted portion',
-    'Distinguish shifting larger elements from swapping neighbors',
-    'Read why i starts at 1 and why j moves backward',
-    'Recognize best-case O(n), worst-case O(n²), and O(1) extra space',
+    'Understand how Insertion Sort works.',
+    'Understand the sorted and unsorted portions of an array.',
+    'Learn how an element is inserted into its correct position.',
+    'Visualize comparisons and element movement.',
+    'Understand why Insertion Sort can be efficient for nearly sorted data.',
+    'Analyze time and space complexity.',
+    'Implement Insertion Sort in Python, JavaScript, and TypeScript.',
   ],
 
   overview: [
-    'Insertion Sort takes one element from the unsorted portion and inserts it into the correct position in the sorted portion.',
-    'For example, start with [7, 4, 9, 2, 5]. Treat the first element as already sorted: [7] | [4, 9, 2, 5]. Take 4 as the key. Because 4 < 7, shift 7 to the right, then insert 4 to get [4, 7] | [9, 2, 5].',
-    'Continue the same process for 9, 2, and 5 until the entire array is sorted. Larger values move right to make space — that is shifting, not swapping.',
+    'Insertion Sort builds a sorted portion of an array one element at a time. Imagine holding cards in your hand: the cards on the left are already sorted. Take the next card and move it left until it reaches its correct position. Apply the same idea to an array.',
+    'Start with [5, 3, 8, 2, 4]. Treat the first element as already sorted: [5 | 3, 8, 2, 4].',
+    'Insert 3: compare with 5, shift 5 right, then place 3 → [3, 5 | 8, 2, 4]. Insert 8: it is already larger than 5, so no shift → [3, 5, 8 | 2, 4]. Insert 2 by shifting larger values right → [2, 3, 5, 8 | 4]. Insert 4 → [2, 3, 4, 5, 8].',
+    'The left portion remains sorted throughout the algorithm. Each new element is inserted into its correct place by shifting larger elements one position to the right — not by repeatedly swapping neighbors.',
   ],
 
   whyItMatters: [
-    'It matches how many people sort cards in their hand — insert each new card into place.',
-    'Watching shifts (not swaps) clarifies how Insertion Sort differs from Bubble Sort.',
-    'It introduces the idea of a stable, in-place sort with a useful best-case of O(n).',
+    'It is intuitive and easy to understand.',
+    'It works well for small datasets.',
+    'It can perform well when data is already nearly sorted.',
+    'It introduces the idea of incrementally building a solution.',
+    'It demonstrates element movement rather than only swapping.',
   ],
 
   visualization: {
@@ -38,65 +44,80 @@ export const insertionSort: Lesson = {
 
   steps: [
     {
-      title: 'Treat the first element as sorted',
+      title: 'Treat the first element as a sorted portion',
       description:
         'A single element is already sorted. The sorted portion starts as [array[0]].',
     },
     {
-      title: 'Select the next key',
+      title: 'Take the next element as the current value/key',
       description:
-        'Take the next unsorted element as the key — the value you will insert into the sorted portion.',
+        'Select the next unsorted element as the key — the value you will insert into the sorted portion.',
     },
     {
-      title: 'Compare backward through the sorted portion',
+      title: 'Compare the key with elements in the sorted portion',
       description:
-        'Move j from right to left. Compare each sorted value with the key.',
+        'Move j from right to left through the sorted portion. Compare each sorted value with the key.',
     },
     {
-      title: 'Shift larger elements one position right',
+      title: 'Shift larger elements one position to the right',
       description:
         'If array[j] > key, copy array[j] into array[j + 1]. Do not swap. Keep the key held separately.',
     },
     {
-      title: 'Insert the key, then grow the sorted portion',
+      title: 'Continue until the correct insertion position is found',
       description:
-        'When no more larger values remain to the left, place the key at array[j + 1]. Repeat until everything is sorted.',
+        'Keep shifting while j >= 0 and array[j] > key. Stop when a smaller-or-equal value is found, or when you reach the start of the array.',
+    },
+    {
+      title: 'Insert the key into that position',
+      description:
+        'Place the key at array[j + 1] — the open spot created by shifting.',
+    },
+    {
+      title: 'The sorted portion has grown by one element',
+      description:
+        'After the insertion, indices 0 through i form a sorted prefix.',
+    },
+    {
+      title: 'Repeat until the entire array is sorted',
+      description:
+        'Move to the next unsorted element and repeat until every key has been inserted.',
     },
   ],
 
   insertionConcept: {
     paragraphs: [
-      'The left side is already sorted.',
+      'The cards (or array values) on the left are already sorted.',
       'Take the next element as the key.',
       'Shift larger sorted values one position right to make space.',
       'Insert the key into the open position.',
     ],
     stages: [
       {
-        label: 'Sorted portion + key',
-        values: [2, 5, 8, 3],
-        sortedCount: 3,
-        keyIndex: 3,
+        label: 'Start: sorted | unsorted',
+        values: [5, 3, 8, 2, 4],
+        sortedCount: 1,
+        keyIndex: 1,
         note: 'key = 3',
       },
       {
-        label: 'Shift 8 right',
-        values: [2, 5, 8, 8],
-        sortedCount: 3,
-        note: '← shift',
-      },
-      {
         label: 'Shift 5 right',
-        values: [2, 5, 5, 8],
-        sortedCount: 2,
+        values: [5, 5, 8, 2, 4],
+        sortedCount: 1,
         note: '← shift',
       },
       {
         label: 'Insert 3',
-        values: [2, 3, 5, 8],
-        sortedCount: 4,
-        keyIndex: 1,
+        values: [3, 5, 8, 2, 4],
+        sortedCount: 2,
+        keyIndex: 0,
         note: 'insert',
+      },
+      {
+        label: 'Fully sorted',
+        values: [2, 3, 4, 5, 8],
+        sortedCount: 5,
+        note: 'done',
       },
     ],
     explanation:
@@ -133,9 +154,9 @@ export const insertionSort: Lesson = {
         'The first element is already considered a sorted portion of one element, so we start by inserting the second element.',
         'That is why the outer loop begins at i = 1, not i = 0.',
       ],
-      sortedPrefix: [7],
-      remaining: [4, 9, 2, 5],
-      firstKey: 4,
+      sortedPrefix: [5],
+      remaining: [3, 8, 2, 4],
+      firstKey: 3,
     },
     moveBackward: {
       paragraphs: [
@@ -143,10 +164,9 @@ export const insertionSort: Lesson = {
         'Moving j backward finds the first place where the key belongs, shifting larger values as you go.',
       ],
       steps: [
-        '3 < 8 → shift 8',
         '3 < 5 → shift 5',
-        '3 > 2 → stop',
-        'insert 3',
+        'j becomes -1 → stop',
+        'insert 3 at index 0',
       ],
     },
     whileCondition: {
@@ -170,27 +190,42 @@ export const insertionSort: Lesson = {
 
   commonMistakes: {
     description:
-      'Avoid these common traps when learning Insertion Sort for the first time.',
+      'These mistakes show up often when learners first write Insertion Sort.',
     mistakes: [
       {
-        title: 'Swapping instead of shifting',
-        explanation:
-          'Insertion Sort normally shifts larger values one position right to create space for the key. Treating every step as an adjacent swap confuses it with Bubble Sort.',
-      },
-      {
-        title: 'Starting i at 0',
+        title: 'Starting the loop at index 0 instead of index 1',
         explanation:
           'The first element is already considered sorted, so the first key starts at index 1. Beginning at 0 wastes work and muddies the mental model.',
       },
       {
-        title: 'Moving j forward',
+        title: 'Forgetting to store the current key',
         explanation:
-          'j needs to move backward because we are searching for the key’s position inside the already-sorted left portion.',
+          'Save the key in a variable before shifting. If you overwrite array[i] without storing it, the value is lost.',
       },
       {
-        title: 'Forgetting to insert the key',
+        title: 'Overwriting the key before inserting it',
         explanation:
-          'After shifting elements, the key must be placed at array[j + 1]. Leaving it out leaves a hole or a duplicated shifted value.',
+          'Shifting copies larger values into the key’s original slot. That is fine only because the key is held in a separate variable.',
+      },
+      {
+        title: 'Moving elements in the wrong direction',
+        explanation:
+          'Larger elements shift right (toward higher indices) to open a gap for the key. Shifting left breaks the algorithm.',
+      },
+      {
+        title: 'Forgetting to insert the key after shifting',
+        explanation:
+          'After the while loop, place the key at array[j + 1]. Leaving it out leaves a duplicated shifted value and drops the key.',
+      },
+      {
+        title: 'Using the wrong while-loop condition',
+        explanation:
+          'The loop should continue while j >= 0 and array[j] > key. Using >= instead of > breaks stability; forgetting j >= 0 risks an out-of-bounds access.',
+      },
+      {
+        title: 'Confusing shifting with swapping',
+        explanation:
+          'Insertion Sort shifts larger values one position right to create space. Treating every step as an adjacent swap confuses it with Bubble Sort.',
       },
     ],
   },
@@ -207,7 +242,7 @@ export const insertionSort: Lesson = {
       {
         title: 'In-place sort',
         description:
-          'Insertion Sort rearranges the same array instead of building another full copy. That matches the O(1) extra space complexity.',
+          'The insertion-sort procedure rearranges the same array instead of building another full copy during sorting. That matches the O(1) auxiliary space for the sorting procedure itself.',
         steps: [
           'Original array',
           'same array gets modified',
@@ -250,105 +285,103 @@ export const insertionSort: Lesson = {
     space: 'O(1)',
     notes: {
       time: [
-        'Best case O(n): if the array is already sorted, like [1, 2, 3, 4, 5], each key needs only a quick comparison and almost no shifting.',
-        'Average and worst case O(n²): reverse-sorted input like [5, 4, 3, 2, 1] forces many shifts for every key.',
+        'Best case O(n): when the array is already sorted, each element requires only one comparison and no shifting.',
+        'Average and worst case O(n²): a reverse-sorted array causes each new element to be shifted across the entire sorted portion.',
         'Each pass may walk farther left through a larger sorted prefix, so total work grows roughly with n × n in the hard cases.',
       ],
       space: [
-        'Sorting happens in place — we rearrange the same array.',
-        'Only a few extra variables are needed, such as i, j, and key — O(1) extra space.',
+        'The insertion-sort procedure itself uses O(1) auxiliary space for indices and the key variable.',
+        'The implementations below copy the input array before sorting, so they create an additional O(n) result array even though the in-place sorting procedure only needs O(1) extra space. The copy preserves the original input for the lesson.',
       ],
     },
   },
 
-  pseudocode: `for i from 1 to n - 1
-    key = array[i]
-    j = i - 1
-
-    while j >= 0 and array[j] > key
-        array[j + 1] = array[j]
-        j = j - 1
-
-    array[j + 1] = key`,
-
-  code: {
-    python: `def insertion_sort(array):
-    values = list(array)
-
-    for i in range(1, len(values)):
-        key = values[i]
+  pseudocode: `InsertionSort(array)
+    for i = 1 to length(array) - 1
+        key = array[i]
         j = i - 1
 
-        while j >= 0 and values[j] > key:
-            values[j + 1] = values[j]
+        while j >= 0 and array[j] > key
+            array[j + 1] = array[j]
+            j = j - 1
+
+        array[j + 1] = key
+
+    return array`,
+
+  code: {
+    python: `def insertion_sort(arr):
+    arr = arr.copy()
+
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
             j -= 1
 
-        values[j + 1] = key
+        arr[j + 1] = key
 
-    return values
+    return arr`,
+    javascript: `function insertionSort(arr) {
+    const result = [...arr];
 
+    for (let i = 1; i < result.length; i++) {
+        const key = result[i];
+        let j = i - 1;
 
-# Example
-print(insertion_sort([7, 4, 9, 2, 5]))  # [2, 4, 5, 7, 9]`,
-    javascript: `function insertionSort(array) {
-  const values = [...array];
+        while (j >= 0 && result[j] > key) {
+            result[j + 1] = result[j];
+            j--;
+        }
 
-  for (let i = 1; i < values.length; i += 1) {
-    const key = values[i];
-    let j = i - 1;
-
-    while (j >= 0 && values[j] > key) {
-      values[j + 1] = values[j];
-      j -= 1;
+        result[j + 1] = key;
     }
 
-    values[j + 1] = key;
-  }
+    return result;
+}`,
+    typescript: `function insertionSort(arr: number[]): number[] {
+    const result = [...arr];
 
-  return values;
-}
+    for (let i = 1; i < result.length; i++) {
+        const key = result[i];
+        let j = i - 1;
 
-// Example
-console.log(insertionSort([7, 4, 9, 2, 5])); // [2, 4, 5, 7, 9]`,
-    typescript: `function insertionSort(array: number[]): number[] {
-  const values = [...array];
+        while (j >= 0 && result[j] > key) {
+            result[j + 1] = result[j];
+            j--;
+        }
 
-  for (let i = 1; i < values.length; i += 1) {
-    const key = values[i];
-    let j = i - 1;
-
-    while (j >= 0 && values[j] > key) {
-      values[j + 1] = values[j];
-      j -= 1;
+        result[j + 1] = key;
     }
 
-    values[j + 1] = key;
-  }
-
-  return values;
-}
-
-// Example
-console.log(insertionSort([7, 4, 9, 2, 5])); // [2, 4, 5, 7, 9]`,
+    return result;
+}`,
   },
 
   whenToUse: [
-    'You are learning how a sorted prefix grows by inserting one key at a time',
-    'The array is tiny, nearly sorted, or clarity matters more than speed',
-    'You want a simple stable, in-place sort for teaching or small inputs',
+    'Small datasets.',
+    'Nearly sorted data.',
+    'Data that arrives incrementally.',
+    'Situations where a simple in-place sorting algorithm is useful.',
+    'Educational demonstrations of incremental algorithms.',
   ],
 
   whenNotToUse: [
-    'You need an efficient sort for large reverse-sorted inputs — prefer Merge Sort, Quick Sort, or a built-in sort',
-    'You need guaranteed better worst-case performance than O(n²)',
-    'Production code where library sorting is available and appropriate',
+    'Large randomly ordered datasets.',
+    'Performance-sensitive sorting of large collections.',
+    'Situations where O(n log n) sorting algorithms are more appropriate.',
   ],
 
   keyTakeaways: [
-    'Insertion Sort inserts each key into a growing sorted portion',
-    'Larger sorted values shift right to make space — that is not a swap loop',
-    'i starts at 1; j walks backward while array[j] > key',
-    'Best case O(n), average/worst O(n²), extra space O(1); can be stable and in-place',
+    'Insertion Sort maintains a sorted portion of the array.',
+    'Each new element is inserted into its correct position.',
+    'Larger elements are shifted to the right.',
+    'Best-case time complexity is O(n).',
+    'Average and worst-case time complexity are O(n²).',
+    'The sorting procedure uses O(1) auxiliary space.',
+    'It works particularly well for small or nearly sorted datasets.',
   ],
 
   thinkingGuide: {
@@ -369,6 +402,11 @@ console.log(insertionSort([7, 4, 9, 2, 5])); // [2, 4, 5, 7, 9]`,
   previousLesson: {
     title: 'Selection Sort',
     href: '/learn/selection-sort',
+  },
+
+  nextLesson: {
+    title: 'Merge Sort',
+    href: '/learn/merge-sort',
   },
 
   categoryHref: '/algorithms/sorting',
