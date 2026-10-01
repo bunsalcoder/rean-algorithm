@@ -5,6 +5,7 @@ import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualizati
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { LinearSearchVisualization } from '../visualizations/LinearSearchVisualization'
 import { MergeSortVisualization } from '../visualizations/MergeSortVisualization'
+import { QuickSortVisualization } from '../visualizations/QuickSortVisualization'
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
@@ -110,6 +111,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <MergeSortVisualization />
   }
 
+  if (visualization.type === 'quick-sort') {
+    return <QuickSortVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -122,7 +127,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||
-    visualization.type === 'merge-sort'
+    visualization.type === 'merge-sort' ||
+    visualization.type === 'quick-sort'
 
   return (
     <LessonSection id="visualization">

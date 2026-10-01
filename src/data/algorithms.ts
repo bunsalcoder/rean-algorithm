@@ -150,10 +150,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Quick Sort',
     description:
       'Partition around a pivot and recursively sort the left and right sides.',
-    href: '/algorithms/sorting',
+    href: '/learn/quick-sort',
+    lessonSlug: 'quick-sort',
     categoryId: 'sorting',
-    difficulty: 'Intermediate',
-    status: 'coming-soon',
+    difficulty: 'Beginner',
+    status: 'available',
   },
   {
     id: 'linear-search',

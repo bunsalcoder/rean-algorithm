@@ -135,6 +135,7 @@ const OPERATION_LABELS: Record<
   move: 'Move',
   split: 'Split',
   merge: 'Merge',
+  partition: 'Partition',
   complete: 'Complete',
 }
 
