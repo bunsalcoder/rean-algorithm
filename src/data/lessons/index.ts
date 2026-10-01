@@ -4,6 +4,7 @@ import { insertionSort } from './insertion-sort'
 import { introductionToAlgorithms } from './introduction-to-algorithms'
 import { linearSearch } from './linear-search'
 import { mergeSort } from './merge-sort'
+import { quickSort } from './quick-sort'
 import { selectionSort } from './selection-sort'
 import type { Lesson, LessonTocItem } from './types'
 
@@ -35,6 +36,7 @@ export const lessons: Lesson[] = [
   selectionSort,
   insertionSort,
   mergeSort,
+  quickSort,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))

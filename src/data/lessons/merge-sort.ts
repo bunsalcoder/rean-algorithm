@@ -454,7 +454,7 @@ function merge(left: number[], right: number[]): number[] {
 
   nextLesson: {
     title: 'Quick Sort',
-    href: '/algorithms/sorting',
+    href: '/learn/quick-sort',
   },
 
   categoryHref: '/algorithms/sorting',

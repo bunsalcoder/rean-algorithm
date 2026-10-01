@@ -31,6 +31,7 @@ export type VisualizationOperation =
   | 'move'
   | 'split'
   | 'merge'
+  | 'partition'
   | 'complete'
 
 /** Named pointer or marker shown near an array index. */

@@ -18,6 +18,7 @@ export type LessonVisualizationType =
   | 'selection-sort'
   | 'insertion-sort'
   | 'merge-sort'
+  | 'quick-sort'
 
 export type LessonVisualization = {
   title: string
