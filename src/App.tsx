@@ -10,6 +10,7 @@ import { LessonPage } from './pages/LessonPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticePage } from './pages/PracticePage'
 import { RoadmapPage } from './pages/RoadmapPage'
+import { SortingComparisonPage } from './pages/SortingComparisonPage'
 import { SortingVisualizerDemoPage } from './pages/SortingVisualizerDemoPage'
 import { VisualizerDemoPage } from './pages/VisualizerDemoPage'
 
@@ -50,6 +51,10 @@ function App() {
           <Route
             path="/algorithms/sorting"
             element={<AlgorithmCategoryPage categoryId="sorting" />}
+          />
+          <Route
+            path="/algorithms/sorting/comparison"
+            element={<SortingComparisonPage />}
           />
           <Route
             path="/algorithms/searching"
