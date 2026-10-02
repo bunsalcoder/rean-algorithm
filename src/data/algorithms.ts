@@ -201,6 +201,17 @@ export const algorithms: AlgorithmItem[] = [
     status: 'available',
   },
   {
+    id: 'interpolation-search',
+    title: 'Interpolation Search',
+    description:
+      'Estimate a likely position from value spacing on sorted numeric data.',
+    href: '/learn/interpolation-search',
+    lessonSlug: 'interpolation-search',
+    categoryId: 'searching',
+    difficulty: 'Intermediate',
+    status: 'available',
+  },
+  {
     id: 'search-variations',
     title: 'Search Variations',
     description:

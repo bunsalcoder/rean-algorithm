@@ -104,13 +104,14 @@ export const searchingAlgorithms: SearchingAlgorithm[] = [
       'Estimate the probable position of the target using value distribution on sorted data.',
     difficulty: 'Intermediate',
     bestTime: 'O(1)',
-    averageTime: 'O(log log n)',
+    averageTime: 'O(log log n)*',
     worstTime: 'O(n)',
     requiresSortedData: true,
-    available: false,
+    href: '/learn/interpolation-search',
+    available: true,
     pathDescription:
       'Use value spacing to guess where the target is likely to be.',
-    pathComplexity: 'O(log log n)',
+    pathComplexity: 'O(log log n)*',
     mainIdea: 'Probe based on value distribution',
     useCase: 'Uniformly distributed sorted keys',
   },
@@ -273,7 +274,8 @@ export const searchingLearningOrder: SearchingLearningOrderItem[] = [
   {
     id: 'interpolation-search',
     title: 'Interpolation Search',
-    available: false,
+    href: '/learn/interpolation-search',
+    available: true,
   },
   {
     id: 'exponential-search',
