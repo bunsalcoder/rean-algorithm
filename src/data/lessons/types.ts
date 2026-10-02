@@ -15,6 +15,7 @@ export type LessonVisualizationType =
   | 'linear-search'
   | 'binary-search'
   | 'jump-search'
+  | 'interpolation-search'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'
