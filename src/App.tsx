@@ -10,6 +10,7 @@ import { LessonPage } from './pages/LessonPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticePage } from './pages/PracticePage'
 import { RoadmapPage } from './pages/RoadmapPage'
+import { SearchingAlgorithmsPage } from './pages/SearchingAlgorithmsPage'
 import { SortingComparisonPage } from './pages/SortingComparisonPage'
 import { SortingVisualizerDemoPage } from './pages/SortingVisualizerDemoPage'
 import { VisualizerDemoPage } from './pages/VisualizerDemoPage'
@@ -58,7 +59,7 @@ function App() {
           />
           <Route
             path="/algorithms/searching"
-            element={<AlgorithmCategoryPage categoryId="searching" />}
+            element={<SearchingAlgorithmsPage />}
           />
           <Route
             path="/algorithms/array-string"
