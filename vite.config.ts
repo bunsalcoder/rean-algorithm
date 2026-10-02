@@ -4,5 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Project site URL: https://bunsalcoder.github.io/rean-algorithm/
+  base: '/rean-algorithm/',
   plugins: [react(), tailwindcss()],
 })
