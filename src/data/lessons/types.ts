@@ -14,6 +14,7 @@ export type LessonVisualizationType =
   | 'placeholder'
   | 'linear-search'
   | 'binary-search'
+  | 'jump-search'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'
@@ -47,6 +48,10 @@ export type LessonCode = {
 }
 
 export type LessonSortedRequirement = {
+  /** Optional section title. Defaults to “Must Be Sorted”. */
+  title?: string
+  /** Optional heading description under the title. */
+  description?: string
   paragraphs: string[]
   sorted: number[]
   unsorted: number[]

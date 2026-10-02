@@ -190,6 +190,17 @@ export const algorithms: AlgorithmItem[] = [
     status: 'available',
   },
   {
+    id: 'jump-search',
+    title: 'Jump Search',
+    description:
+      'Jump by √n-sized blocks on sorted data, then scan the matching block.',
+    href: '/learn/jump-search',
+    lessonSlug: 'jump-search',
+    categoryId: 'searching',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
+  {
     id: 'search-variations',
     title: 'Search Variations',
     description:
