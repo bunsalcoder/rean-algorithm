@@ -4,6 +4,7 @@ import { BinarySearchVisualization } from '../visualizations/BinarySearchVisuali
 import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
 import { HeapSortVisualization } from '../visualizations/HeapSortVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
+import { JumpSearchVisualization } from '../visualizations/JumpSearchVisualization'
 import { LinearSearchVisualization } from '../visualizations/LinearSearchVisualization'
 import { MergeSortVisualization } from '../visualizations/MergeSortVisualization'
 import { QuickSortVisualization } from '../visualizations/QuickSortVisualization'
@@ -96,6 +97,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <BinarySearchVisualization />
   }
 
+  if (visualization.type === 'jump-search') {
+    return <JumpSearchVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -129,6 +134,7 @@ export function LessonVisualizationPanel({
   const isInteractive =
     visualization.type === 'linear-search' ||
     visualization.type === 'binary-search' ||
+    visualization.type === 'jump-search' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||

@@ -55,8 +55,11 @@ export function LessonSortedRequirementSection({
       <LessonSectionHeading
         id="sorted-requirement"
         eyebrow="REQUIREMENT"
-        title="Must Be Sorted"
-        description="Binary Search depends on order. Without sorting, discarding a half is unsafe."
+        title={requirement.title ?? 'Must Be Sorted'}
+        description={
+          requirement.description ??
+          'Binary Search depends on order. Without sorting, discarding a half is unsafe.'
+        }
       />
 
       <Card className="border-amber-500/25 p-5 sm:p-6 hover:border-amber-500/40">

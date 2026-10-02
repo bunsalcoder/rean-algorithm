@@ -391,8 +391,8 @@ export function SearchingAlgorithmsPage() {
               Recommended Learning Order
             </h2>
             <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground sm:text-body">
-              Follow this sequence. Only the first three items are available
-              today.
+              Follow this sequence. Available lessons are linked; later stages
+              stay marked coming soon.
             </p>
           </div>
 

@@ -84,12 +84,13 @@ export const searchingAlgorithms: SearchingAlgorithm[] = [
     name: 'Jump Search',
     description:
       'Jump ahead in fixed steps on sorted data, then scan a small block linearly.',
-    difficulty: 'Intermediate',
+    difficulty: 'Beginner',
     bestTime: 'O(1)',
     averageTime: 'O(√n)',
     worstTime: 'O(√n)',
     requiresSortedData: true,
-    available: false,
+    href: '/learn/jump-search',
+    available: true,
     pathDescription:
       'Bridge linear and binary ideas by jumping ahead, then scanning a block.',
     pathComplexity: 'O(√n)',
@@ -266,7 +267,8 @@ export const searchingLearningOrder: SearchingLearningOrderItem[] = [
   {
     id: 'jump-search',
     title: 'Jump Search',
-    available: false,
+    href: '/learn/jump-search',
+    available: true,
   },
   {
     id: 'interpolation-search',
