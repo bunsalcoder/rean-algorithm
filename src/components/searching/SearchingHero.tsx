@@ -1,16 +1,11 @@
 import { Link } from 'react-router-dom'
-import { Button } from '../ui'
 import { cn } from '../../lib/cn'
 
 type SearchingHeroProps = {
-  onCompareClick: () => void
   className?: string
 }
 
-export function SearchingHero({
-  onCompareClick,
-  className,
-}: SearchingHeroProps) {
+export function SearchingHero({ className }: SearchingHeroProps) {
   return (
     <header className={cn('max-w-3xl', className)}>
       <p className="text-label text-primary">SEARCHING ALGORITHMS</p>
@@ -34,15 +29,19 @@ export function SearchingHero({
         >
           Start with Linear Search →
         </Link>
-        <Button
-          type="button"
-          size="lg"
-          variant="secondary"
-          className="w-full sm:w-auto"
-          onClick={onCompareClick}
+        <Link
+          to="/algorithms/searching/comparison"
+          className={cn(
+            'inline-flex h-11 w-full items-center justify-center gap-2 rounded-md px-5 text-base font-medium',
+            'border border-border bg-surface text-foreground shadow-sm transition-theme',
+            'hover:border-primary/30 hover:bg-muted',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+            'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+            'sm:w-auto',
+          )}
         >
-          Compare Search Methods
-        </Button>
+          Compare Searching Algorithms
+        </Link>
       </div>
     </header>
   )
