@@ -10,6 +10,7 @@ import { linearSearch } from './linear-search'
 import { mergeSort } from './merge-sort'
 import { quickSort } from './quick-sort'
 import { selectionSort } from './selection-sort'
+import { twoPointers } from './two-pointers'
 import type { Lesson, LessonTocItem } from './types'
 
 export type {
@@ -40,6 +41,7 @@ export const lessons: Lesson[] = [
   jumpSearch,
   interpolationSearch,
   exponentialSearch,
+  twoPointers,
   bubbleSort,
   selectionSort,
   insertionSort,

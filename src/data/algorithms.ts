@@ -232,6 +232,117 @@ export const algorithms: AlgorithmItem[] = [
     difficulty: 'Intermediate',
     status: 'coming-soon',
   },
+  {
+    id: 'two-pointers',
+    title: 'Two Pointers',
+    description:
+      'Use two indices to examine different parts of a sorted sequence efficiently.',
+    href: '/learn/two-pointers',
+    lessonSlug: 'two-pointers',
+    categoryId: 'array-string',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
+  {
+    id: 'sliding-window',
+    title: 'Sliding Window',
+    description:
+      'Maintain a moving window over a sequence to analyze contiguous segments.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
+  {
+    id: 'prefix-sum',
+    title: 'Prefix Sum',
+    description:
+      'Precompute running totals so range sums can be answered quickly.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
+  {
+    id: 'frequency-counting',
+    title: 'Frequency Counting',
+    description:
+      'Count how often values appear to unlock faster comparisons.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
+  {
+    id: 'kadanes-algorithm',
+    title: "Kadane's Algorithm",
+    description:
+      'Find the maximum contiguous subarray sum with a linear scan.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Intermediate',
+    status: 'coming-soon',
+  },
+  {
+    id: 'maximum-subarray',
+    title: 'Maximum Subarray',
+    description:
+      'Locate the contiguous segment with the largest sum.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Intermediate',
+    status: 'coming-soon',
+  },
+  {
+    id: 'longest-substring-without-repeating',
+    title: 'Longest Substring Without Repeating Characters',
+    description:
+      'Find the longest window of unique characters in a string.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Intermediate',
+    status: 'coming-soon',
+  },
+  {
+    id: 'valid-anagram',
+    title: 'Valid Anagram',
+    description:
+      'Decide whether two strings contain the same characters with the same frequencies.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
+  {
+    id: 'group-anagrams',
+    title: 'Group Anagrams',
+    description:
+      'Cluster words that are anagrams of each other.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Intermediate',
+    status: 'coming-soon',
+  },
+  {
+    id: 'string-compression',
+    title: 'String Compression',
+    description:
+      'Compress consecutive repeated characters while walking the string once.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
+  {
+    id: 'rotate-array',
+    title: 'Rotate Array',
+    description:
+      'Shift array elements by k positions using efficient techniques.',
+    href: '/algorithms/array-string',
+    categoryId: 'array-string',
+    difficulty: 'Beginner',
+    status: 'coming-soon',
+  },
 ]
 
 const algorithmsByCategory = new Map<AlgorithmCategoryId, AlgorithmItem[]>()
