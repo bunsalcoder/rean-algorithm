@@ -18,6 +18,7 @@ export type LessonVisualizationType =
   | 'interpolation-search'
   | 'exponential-search'
   | 'two-pointers'
+  | 'sliding-window'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'

@@ -11,6 +11,7 @@ import { LinearSearchVisualization } from '../visualizations/LinearSearchVisuali
 import { MergeSortVisualization } from '../visualizations/MergeSortVisualization'
 import { QuickSortVisualization } from '../visualizations/QuickSortVisualization'
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
+import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
@@ -116,6 +117,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <TwoPointersVisualization />
   }
 
+  if (visualization.type === 'sliding-window') {
+    return <SlidingWindowVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -153,6 +158,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'interpolation-search' ||
     visualization.type === 'exponential-search' ||
     visualization.type === 'two-pointers' ||
+    visualization.type === 'sliding-window' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||

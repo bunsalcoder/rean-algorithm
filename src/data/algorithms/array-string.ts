@@ -42,9 +42,10 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     description:
       'Maintain a moving window over a sequence to analyze contiguous segments efficiently.',
     difficulty: 'Beginner',
-    available: false,
+    href: '/learn/sliding-window',
+    available: true,
     pathDescription:
-      'Track a growing or shrinking window instead of restarting scans.',
+      'Slide a fixed-size window and reuse the previous sum instead of restarting.',
   },
   {
     slug: 'prefix-sum',
@@ -162,7 +163,8 @@ export const arrayStringConcepts: ArrayStringConcept[] = [
     description:
       'Maintain a contiguous window that expands and contracts as you scan.',
     difficulty: 'Beginner',
-    available: false,
+    available: true,
+    href: '/learn/sliding-window',
   },
   {
     id: 'prefix-sum',
@@ -224,13 +226,14 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
     available: true,
   },
   {
-    id: 'frequency-counting',
-    title: 'Frequency Counting',
-    available: false,
-  },
-  {
     id: 'sliding-window',
     title: 'Sliding Window',
+    href: '/learn/sliding-window',
+    available: true,
+  },
+  {
+    id: 'frequency-counting',
+    title: 'Frequency Counting',
     available: false,
   },
   {

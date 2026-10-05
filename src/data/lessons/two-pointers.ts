@@ -312,5 +312,10 @@ console.log(twoSumSorted(values, 100)); // [-1, -1]`,
     href: '/algorithms/array-string',
   },
 
+  nextLesson: {
+    title: 'Sliding Window',
+    href: '/learn/sliding-window',
+  },
+
   categoryHref: '/algorithms/array-string',
 }
