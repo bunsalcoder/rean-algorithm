@@ -4,6 +4,7 @@ import { getRoadmapStage } from './data/roadmap'
 import { AboutPage } from './pages/AboutPage'
 import { AlgorithmCategoryPage } from './pages/AlgorithmCategoryPage'
 import { AlgorithmsPage } from './pages/AlgorithmsPage'
+import { ArrayStringAlgorithmsPage } from './pages/ArrayStringAlgorithmsPage'
 import { DataStructuresPage } from './pages/DataStructuresPage'
 import { HomePage } from './pages/HomePage'
 import { LessonPage } from './pages/LessonPage'
@@ -68,7 +69,7 @@ function App() {
           />
           <Route
             path="/algorithms/array-string"
-            element={<CategoryPlaceholder title="Array & String" />}
+            element={<ArrayStringAlgorithmsPage />}
           />
           <Route
             path="/algorithms/tree-graph"

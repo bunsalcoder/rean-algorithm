@@ -11,6 +11,7 @@ import { LinearSearchVisualization } from '../visualizations/LinearSearchVisuali
 import { MergeSortVisualization } from '../visualizations/MergeSortVisualization'
 import { QuickSortVisualization } from '../visualizations/QuickSortVisualization'
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
+import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
 type LessonVisualizationProps = {
@@ -111,6 +112,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <ExponentialSearchVisualization />
   }
 
+  if (visualization.type === 'two-pointers') {
+    return <TwoPointersVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -147,6 +152,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'jump-search' ||
     visualization.type === 'interpolation-search' ||
     visualization.type === 'exponential-search' ||
+    visualization.type === 'two-pointers' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||
