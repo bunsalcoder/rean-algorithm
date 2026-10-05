@@ -34,19 +34,6 @@ export function SearchingAlgorithmsPage() {
   const linear = getSearchingAlgorithmBySlug('linear-search')!
   const binary = getSearchingAlgorithmBySlug('binary-search')!
 
-  function scrollToComparison() {
-    const node = document.getElementById(COMPARISON_SECTION_ID)
-    if (!node) return
-
-    const reduceMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
-    node.scrollIntoView({
-      behavior: reduceMotion ? 'auto' : 'smooth',
-      block: 'start',
-    })
-  }
-
   return (
     <Section className="relative overflow-hidden py-10 sm:py-12 lg:py-14">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -81,7 +68,36 @@ export function SearchingAlgorithmsPage() {
           className="mt-6 section-reveal-item sm:mt-8"
           style={{ transitionDelay: '60ms' }}
         >
-          <SearchingHero onCompareClick={scrollToComparison} />
+          <SearchingHero />
+        </div>
+
+        <div
+          className="mt-8 section-reveal-item sm:mt-10"
+          style={{ transitionDelay: '80ms' }}
+        >
+          <Link
+            to="/algorithms/searching/comparison"
+            className={cn(
+              'group flex flex-col gap-2 rounded-xl border border-border bg-surface p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-5',
+              'transition-theme hover:border-primary/30 hover:shadow-md',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+            )}
+          >
+            <span className="min-w-0">
+              <span className="text-label text-primary">COMPARE</span>
+              <span className="mt-1 block text-base font-medium text-foreground sm:text-lg">
+                Compare Searching Algorithms
+              </span>
+              <span className="mt-1 block text-body-sm text-muted-foreground">
+                Compare strategies, complexity, and requirements across Linear,
+                Binary, Jump, Interpolation, and Exponential Search.
+              </span>
+            </span>
+            <span className="shrink-0 text-sm font-medium text-primary transition-theme group-hover:text-primary-hover">
+              Open comparison →
+            </span>
+          </Link>
         </div>
 
         <section

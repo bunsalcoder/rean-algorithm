@@ -11,6 +11,7 @@ import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticePage } from './pages/PracticePage'
 import { RoadmapPage } from './pages/RoadmapPage'
 import { SearchingAlgorithmsPage } from './pages/SearchingAlgorithmsPage'
+import { SearchingComparisonPage } from './pages/SearchingComparisonPage'
 import { SortingComparisonPage } from './pages/SortingComparisonPage'
 import { SortingVisualizerDemoPage } from './pages/SortingVisualizerDemoPage'
 import { VisualizerDemoPage } from './pages/VisualizerDemoPage'
@@ -60,6 +61,10 @@ function App() {
           <Route
             path="/algorithms/searching"
             element={<SearchingAlgorithmsPage />}
+          />
+          <Route
+            path="/algorithms/searching/comparison"
+            element={<SearchingComparisonPage />}
           />
           <Route
             path="/algorithms/array-string"

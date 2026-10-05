@@ -416,8 +416,8 @@ console.log(exponentialSearch(values, 15)); // -1`,
   },
 
   nextLesson: {
-    title: 'Searching Comparison',
-    href: '/algorithms/searching',
+    title: 'Searching Algorithms Comparison',
+    href: '/algorithms/searching/comparison',
   },
 
   categoryHref: '/algorithms/searching',
