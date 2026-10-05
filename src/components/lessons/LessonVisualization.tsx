@@ -2,6 +2,7 @@ import type { LessonVisualization } from '../../data/lessons/types'
 import { cn } from '../../lib/cn'
 import { BinarySearchVisualization } from '../visualizations/BinarySearchVisualization'
 import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
+import { ExponentialSearchVisualization } from '../visualizations/ExponentialSearchVisualization'
 import { HeapSortVisualization } from '../visualizations/HeapSortVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
@@ -106,6 +107,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <InterpolationSearchVisualization />
   }
 
+  if (visualization.type === 'exponential-search') {
+    return <ExponentialSearchVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -141,6 +146,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'binary-search' ||
     visualization.type === 'jump-search' ||
     visualization.type === 'interpolation-search' ||
+    visualization.type === 'exponential-search' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||

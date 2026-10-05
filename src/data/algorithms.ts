@@ -212,6 +212,17 @@ export const algorithms: AlgorithmItem[] = [
     status: 'available',
   },
   {
+    id: 'exponential-search',
+    title: 'Exponential Search',
+    description:
+      'Grow a search bound by doubling, then Binary Search inside that range.',
+    href: '/learn/exponential-search',
+    lessonSlug: 'exponential-search',
+    categoryId: 'searching',
+    difficulty: 'Intermediate',
+    status: 'available',
+  },
+  {
     id: 'search-variations',
     title: 'Search Variations',
     description:

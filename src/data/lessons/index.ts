@@ -1,5 +1,6 @@
 import { binarySearch } from './binary-search'
 import { bubbleSort } from './bubble-sort'
+import { exponentialSearch } from './exponential-search'
 import { heapSort } from './heap-sort'
 import { insertionSort } from './insertion-sort'
 import { interpolationSearch } from './interpolation-search'
@@ -38,6 +39,7 @@ export const lessons: Lesson[] = [
   binarySearch,
   jumpSearch,
   interpolationSearch,
+  exponentialSearch,
   bubbleSort,
   selectionSort,
   insertionSort,
