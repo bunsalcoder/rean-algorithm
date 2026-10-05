@@ -1,6 +1,7 @@
 export { AlgorithmVisualizer } from './AlgorithmVisualizer'
 export { ArrayVisualizer } from './ArrayVisualizer'
 export { BinarySearchVisualization } from './BinarySearchVisualization'
+export { ExponentialSearchVisualization } from './ExponentialSearchVisualization'
 export { HeapSortVisualization } from './HeapSortVisualization'
 export { InterpolationSearchVisualization } from './InterpolationSearchVisualization'
 export { JumpSearchVisualization } from './JumpSearchVisualization'

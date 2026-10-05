@@ -125,7 +125,8 @@ export const searchingAlgorithms: SearchingAlgorithm[] = [
     averageTime: 'O(log n)',
     worstTime: 'O(log n)',
     requiresSortedData: true,
-    available: false,
+    href: '/learn/exponential-search',
+    available: true,
     pathDescription:
       'Find a suitable range quickly, then apply binary search inside it.',
     pathComplexity: 'O(log n)',
@@ -280,7 +281,8 @@ export const searchingLearningOrder: SearchingLearningOrderItem[] = [
   {
     id: 'exponential-search',
     title: 'Exponential Search',
-    available: false,
+    href: '/learn/exponential-search',
+    available: true,
   },
   {
     id: 'advanced-search-problems',
