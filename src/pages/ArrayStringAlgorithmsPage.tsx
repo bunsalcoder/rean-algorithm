@@ -4,6 +4,7 @@ import {
   ArrayStringConceptCards,
   ArrayStringHero,
   ArrayStringLearningPath,
+  ArrayStringMiniDemo,
 } from '../components/array-string'
 import { Card, Container, Section } from '../components/ui'
 import {
@@ -230,13 +231,35 @@ export function ArrayStringAlgorithmsPage() {
               Core Array &amp; String Techniques
             </h2>
             <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground sm:text-body">
-              These patterns show up across array and string problems. Only Two
-              Pointers is available in this step — the rest are marked Coming
-              Soon.
+              These patterns show up across array and string problems. Two
+              Pointers and Sliding Window are available — the rest are marked
+              Coming Soon.
             </p>
           </div>
 
           <ArrayStringConceptCards concepts={arrayStringConcepts} />
+        </section>
+
+        <section
+          className="mt-12 section-reveal-item sm:mt-14"
+          style={{ transitionDelay: '200ms' }}
+          aria-labelledby="demo-heading"
+        >
+          <div className="mb-5 sm:mb-6">
+            <p className="text-label text-primary">INTERACTIVE</p>
+            <h2
+              id="demo-heading"
+              className="mt-2 text-xl font-medium text-foreground sm:text-2xl"
+            >
+              See Array &amp; String Patterns in Action
+            </h2>
+            <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground sm:text-body">
+              Switch between Two Pointers and Sliding Window using the same
+              visualization engine as the lessons.
+            </p>
+          </div>
+
+          <ArrayStringMiniDemo />
         </section>
 
         <section
@@ -276,8 +299,7 @@ export function ArrayStringAlgorithmsPage() {
               Available Algorithms
             </h2>
             <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground sm:text-body">
-              Open the interactive Two Pointers lesson, or preview what is planned
-              next.
+              Open an interactive lesson, or preview what is planned next.
             </p>
           </div>
 
@@ -304,7 +326,7 @@ export function ArrayStringAlgorithmsPage() {
             </div>
           ) : null}
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               to="/learn/two-pointers"
               className={cn(
@@ -315,6 +337,17 @@ export function ArrayStringAlgorithmsPage() {
               )}
             >
               Start with Two Pointers →
+            </Link>
+            <Link
+              to="/learn/sliding-window"
+              className={cn(
+                'inline-flex h-11 w-full items-center justify-center gap-2 rounded-md px-5 text-base font-medium sm:w-auto',
+                'border border-border bg-surface text-foreground shadow-sm transition-theme hover:bg-muted',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+              )}
+            >
+              Open Sliding Window →
             </Link>
           </div>
         </section>

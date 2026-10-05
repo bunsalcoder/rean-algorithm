@@ -248,10 +248,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Sliding Window',
     description:
       'Maintain a moving window over a sequence to analyze contiguous segments.',
-    href: '/algorithms/array-string',
+    href: '/learn/sliding-window',
+    lessonSlug: 'sliding-window',
     categoryId: 'array-string',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'prefix-sum',
