@@ -269,11 +269,12 @@ export const algorithms: AlgorithmItem[] = [
     id: 'frequency-counting',
     title: 'Frequency Counting',
     description:
-      'Count how often values appear to unlock faster comparisons.',
-    href: '/algorithms/array-string',
+      'Learn how to count occurrences efficiently using a frequency map.',
+    href: '/learn/frequency-counting',
+    lessonSlug: 'frequency-counting',
     categoryId: 'array-string',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'kadanes-algorithm',

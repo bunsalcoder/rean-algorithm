@@ -286,8 +286,8 @@ console.log(rangeSum(prefix, 1, 4)); // 14`,
   },
 
   nextLesson: {
-    title: 'Frequency Counting (Coming Soon)',
-    href: '/algorithms/array-string',
+    title: 'Frequency Counting',
+    href: '/learn/frequency-counting',
   },
 
   categoryHref: '/algorithms/array-string',
