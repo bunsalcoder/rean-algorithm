@@ -19,6 +19,7 @@ export type LessonVisualizationType =
   | 'exponential-search'
   | 'two-pointers'
   | 'sliding-window'
+  | 'prefix-sum'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'

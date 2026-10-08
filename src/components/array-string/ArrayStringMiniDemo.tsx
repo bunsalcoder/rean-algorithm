@@ -1,5 +1,11 @@
 import { useMemo, useState } from 'react'
 import {
+  PREFIX_SUM_DEFAULT_ARRAY,
+  PREFIX_SUM_DEFAULT_LEFT,
+  PREFIX_SUM_DEFAULT_RIGHT,
+} from '../../algorithms/array-string/prefixSum'
+import { buildPrefixSumSteps } from '../../algorithms/array-string/prefixSumSteps'
+import {
   SLIDING_WINDOW_DEFAULT_ARRAY,
   SLIDING_WINDOW_DEFAULT_SIZE,
 } from '../../algorithms/array-string/slidingWindow'
@@ -10,9 +16,9 @@ import {
 } from '../../algorithms/array-string/twoPointers'
 import { buildTwoPointersSteps } from '../../algorithms/array-string/twoPointersSteps'
 import { cn } from '../../lib/cn'
-import { AlgorithmVisualizer } from '../visualizations'
+import { AlgorithmVisualizer, PrefixSumPanels } from '../visualizations'
 
-type DemoMode = 'two-pointers' | 'sliding-window'
+type DemoMode = 'two-pointers' | 'sliding-window' | 'prefix-sum'
 
 const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
   {
@@ -24,6 +30,11 @@ const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
     id: 'sliding-window',
     label: 'Sliding Window',
     hint: 'Fixed window — sorting not required',
+  },
+  {
+    id: 'prefix-sum',
+    label: 'Prefix Sum',
+    hint: 'Preprocess once — O(1) range sums',
   },
 ]
 
@@ -37,7 +48,9 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
   const array =
     mode === 'two-pointers'
       ? TWO_POINTERS_DEFAULT_ARRAY
-      : SLIDING_WINDOW_DEFAULT_ARRAY
+      : mode === 'sliding-window'
+        ? SLIDING_WINDOW_DEFAULT_ARRAY
+        : PREFIX_SUM_DEFAULT_ARRAY
 
   const steps = useMemo(() => {
     if (mode === 'two-pointers') {
@@ -46,9 +59,16 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
         TWO_POINTERS_DEFAULT_TARGET,
       )
     }
-    return buildSlidingWindowSteps(
-      SLIDING_WINDOW_DEFAULT_ARRAY,
-      SLIDING_WINDOW_DEFAULT_SIZE,
+    if (mode === 'sliding-window') {
+      return buildSlidingWindowSteps(
+        SLIDING_WINDOW_DEFAULT_ARRAY,
+        SLIDING_WINDOW_DEFAULT_SIZE,
+      )
+    }
+    return buildPrefixSumSteps(
+      PREFIX_SUM_DEFAULT_ARRAY,
+      PREFIX_SUM_DEFAULT_LEFT,
+      PREFIX_SUM_DEFAULT_RIGHT,
     )
   }, [mode])
 
@@ -108,7 +128,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             </span>
             . This left/right approach requires sorted data.
           </p>
-        ) : (
+        ) : mode === 'sliding-window' ? (
           <p className="text-body-sm text-muted-foreground">
             Example array:{' '}
             <span className="font-mono text-foreground">
@@ -121,6 +141,19 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             </span>
             . Sliding Window works on contiguous ranges and does not require
             sorting.
+          </p>
+        ) : (
+          <p className="text-body-sm text-muted-foreground">
+            Example array:{' '}
+            <span className="font-mono text-foreground">
+              [{array.join(', ')}]
+            </span>
+            {' · '}
+            Range:{' '}
+            <span className="font-mono text-foreground">
+              [{PREFIX_SUM_DEFAULT_LEFT}, {PREFIX_SUM_DEFAULT_RIGHT}]
+            </span>
+            . Prefix Sum preprocesses cumulative totals for O(1) range queries.
           </p>
         )}
       </div>
@@ -135,18 +168,30 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           title={
             mode === 'two-pointers'
               ? 'Two Pointers preview'
-              : 'Sliding Window preview'
+              : mode === 'sliding-window'
+                ? 'Sliding Window preview'
+                : 'Prefix Sum preview'
           }
           category="Array & String"
           array={array}
           steps={steps}
           showFullscreen={false}
+          canvasAddon={
+            mode === 'prefix-sum'
+              ? (step) => (
+                  <PrefixSumPanels
+                    original={PREFIX_SUM_DEFAULT_ARRAY}
+                    step={step}
+                  />
+                )
+              : undefined
+          }
         />
       </div>
 
       <p className="text-body-sm text-muted-foreground">
-        This is a compact preview. Open the full lesson for controls, window
-        size changes, and a complete walkthrough.
+        This is a compact preview. Open the full lesson for controls, range
+        changes, and a complete walkthrough.
       </p>
     </div>
   )

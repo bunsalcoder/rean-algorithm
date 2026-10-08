@@ -317,8 +317,8 @@ console.log(maxSumSubarray([1, 2, 3, 4, 5], 2)); // 9`,
   },
 
   nextLesson: {
-    title: 'Prefix Sum (Coming Soon)',
-    href: '/algorithms/array-string',
+    title: 'Prefix Sum',
+    href: '/learn/prefix-sum',
   },
 
   categoryHref: '/algorithms/array-string',

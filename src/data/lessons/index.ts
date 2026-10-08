@@ -10,6 +10,7 @@ import { linearSearch } from './linear-search'
 import { mergeSort } from './merge-sort'
 import { quickSort } from './quick-sort'
 import { selectionSort } from './selection-sort'
+import { prefixSum } from './prefix-sum'
 import { slidingWindow } from './sliding-window'
 import { twoPointers } from './two-pointers'
 import type { Lesson, LessonTocItem } from './types'
@@ -44,6 +45,7 @@ export const lessons: Lesson[] = [
   exponentialSearch,
   twoPointers,
   slidingWindow,
+  prefixSum,
   bubbleSort,
   selectionSort,
   insertionSort,

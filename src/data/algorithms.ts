@@ -259,10 +259,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Prefix Sum',
     description:
       'Precompute running totals so range sums can be answered quickly.',
-    href: '/algorithms/array-string',
+    href: '/learn/prefix-sum',
+    lessonSlug: 'prefix-sum',
     categoryId: 'array-string',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'frequency-counting',
