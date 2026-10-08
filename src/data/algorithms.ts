@@ -302,10 +302,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Longest Substring Without Repeating Characters',
     description:
       'Find the longest window of unique characters in a string.',
-    href: '/algorithms/array-string',
+    href: '/learn/longest-substring-without-repeating-characters',
+    lessonSlug: 'longest-substring-without-repeating-characters',
     categoryId: 'array-string',
     difficulty: 'Intermediate',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'valid-anagram',

@@ -3,6 +3,8 @@ import { FREQUENCY_COUNTING_DEFAULT_ARRAY } from '../../algorithms/array-string/
 import { buildFrequencyCountingSteps } from '../../algorithms/array-string/frequencyCountingSteps'
 import { KADANES_DEFAULT_ARRAY } from '../../algorithms/array-string/kadanesAlgorithm'
 import { buildKadanesAlgorithmSteps } from '../../algorithms/array-string/kadanesAlgorithmSteps'
+import { LONGEST_SUBSTRING_DEFAULT } from '../../algorithms/array-string/longestSubstringWithoutRepeating'
+import { buildLongestSubstringWithoutRepeatingSteps } from '../../algorithms/array-string/longestSubstringWithoutRepeatingSteps'
 import {
   PREFIX_SUM_DEFAULT_ARRAY,
   PREFIX_SUM_DEFAULT_LEFT,
@@ -24,6 +26,7 @@ import {
   AlgorithmVisualizer,
   FrequencyCountingPanels,
   KadanesAlgorithmPanels,
+  LongestSubstringPanels,
   PrefixSumPanels,
 } from '../visualizations'
 
@@ -33,6 +36,7 @@ type DemoMode =
   | 'prefix-sum'
   | 'frequency-counting'
   | 'kadanes-algorithm'
+  | 'longest-substring'
 
 const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
   {
@@ -60,6 +64,11 @@ const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
     label: "Kadane's Algorithm",
     hint: 'Maximum contiguous subarray sum',
   },
+  {
+    id: 'longest-substring',
+    label: 'Longest Unique Substring',
+    hint: 'Variable window + Set on a string',
+  },
 ]
 
 type ArrayStringMiniDemoProps = {
@@ -69,7 +78,7 @@ type ArrayStringMiniDemoProps = {
 export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
   const [mode, setMode] = useState<DemoMode>('two-pointers')
 
-  const array =
+  const numberArray =
     mode === 'two-pointers'
       ? TWO_POINTERS_DEFAULT_ARRAY
       : mode === 'sliding-window'
@@ -78,7 +87,9 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           ? PREFIX_SUM_DEFAULT_ARRAY
           : mode === 'frequency-counting'
             ? FREQUENCY_COUNTING_DEFAULT_ARRAY
-            : KADANES_DEFAULT_ARRAY
+            : mode === 'kadanes-algorithm'
+              ? KADANES_DEFAULT_ARRAY
+              : []
 
   const steps = useMemo(() => {
     if (mode === 'two-pointers') {
@@ -103,7 +114,10 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
     if (mode === 'frequency-counting') {
       return buildFrequencyCountingSteps(FREQUENCY_COUNTING_DEFAULT_ARRAY)
     }
-    return buildKadanesAlgorithmSteps(KADANES_DEFAULT_ARRAY)
+    if (mode === 'kadanes-algorithm') {
+      return buildKadanesAlgorithmSteps(KADANES_DEFAULT_ARRAY)
+    }
+    return buildLongestSubstringWithoutRepeatingSteps(LONGEST_SUBSTRING_DEFAULT)
   }, [mode])
 
   const title =
@@ -115,7 +129,17 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           ? 'Prefix Sum preview'
           : mode === 'frequency-counting'
             ? 'Frequency Counting preview'
-            : "Kadane's Algorithm preview"
+            : mode === 'kadanes-algorithm'
+              ? "Kadane's Algorithm preview"
+              : 'Longest Unique Substring preview'
+
+  const visualizerArray =
+    mode === 'longest-substring'
+      ? Array.from(
+          { length: LONGEST_SUBSTRING_DEFAULT.length },
+          (_, index) => index,
+        )
+      : numberArray
 
   return (
     <div className={cn('space-y-4', className)}>
@@ -164,7 +188,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           <p className="text-body-sm text-muted-foreground">
             Sorted example array:{' '}
             <span className="font-mono text-foreground">
-              [{array.join(', ')}]
+              [{numberArray.join(', ')}]
             </span>
             {' · '}
             Target:{' '}
@@ -177,7 +201,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           <p className="text-body-sm text-muted-foreground">
             Example array:{' '}
             <span className="font-mono text-foreground">
-              [{array.join(', ')}]
+              [{numberArray.join(', ')}]
             </span>
             {' · '}
             Window size:{' '}
@@ -191,7 +215,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           <p className="text-body-sm text-muted-foreground">
             Example array:{' '}
             <span className="font-mono text-foreground">
-              [{array.join(', ')}]
+              [{numberArray.join(', ')}]
             </span>
             {' · '}
             Range:{' '}
@@ -204,18 +228,27 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           <p className="text-body-sm text-muted-foreground">
             Example array:{' '}
             <span className="font-mono text-foreground">
-              [{array.join(', ')}]
+              [{numberArray.join(', ')}]
             </span>
             . Frequency Counting builds a map of value → count in one pass.
           </p>
-        ) : (
+        ) : mode === 'kadanes-algorithm' ? (
           <p className="text-body-sm text-muted-foreground">
             Example array:{' '}
             <span className="font-mono text-foreground">
-              [{array.join(', ')}]
+              [{numberArray.join(', ')}]
             </span>
             . Kadane finds the maximum contiguous subarray sum in one pass
             (answer: 6 → [4, −1, 2, 1]).
+          </p>
+        ) : (
+          <p className="text-body-sm text-muted-foreground">
+            Example string:{' '}
+            <span className="font-mono text-foreground">
+              &quot;{LONGEST_SUBSTRING_DEFAULT}&quot;
+            </span>
+            . A variable-size window + Set finds the longest unique substring
+            (answer: &quot;abc&quot;, length 3).
           </p>
         )}
       </div>
@@ -229,9 +262,11 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           key={`array-string-hub-${mode}`}
           title={title}
           category="Array & String"
-          array={array}
+          array={visualizerArray}
           steps={steps}
           showFullscreen={false}
+          hideArray={mode === 'longest-substring'}
+          showLegend={mode !== 'longest-substring'}
           canvasAddon={
             mode === 'prefix-sum'
               ? (step) => (
@@ -254,7 +289,14 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
                         step={step}
                       />
                     )
-                  : undefined
+                  : mode === 'longest-substring'
+                    ? (step) => (
+                        <LongestSubstringPanels
+                          original={LONGEST_SUBSTRING_DEFAULT}
+                          step={step}
+                        />
+                      )
+                    : undefined
           }
         />
       </div>

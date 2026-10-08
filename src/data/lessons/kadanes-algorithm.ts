@@ -370,8 +370,8 @@ console.log(maxSubarray(values));
   },
 
   nextLesson: {
-    title: 'Longest Substring Without Repeating Characters (Coming Soon)',
-    href: '/algorithms/array-string',
+    title: 'Longest Substring Without Repeating Characters',
+    href: '/learn/longest-substring-without-repeating-characters',
   },
 
   categoryHref: '/algorithms/array-string',

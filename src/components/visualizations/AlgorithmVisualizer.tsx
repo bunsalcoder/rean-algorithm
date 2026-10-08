@@ -44,6 +44,16 @@ type AlgorithmVisualizerProps = {
   showLegend?: boolean
   showFullscreen?: boolean
   /**
+   * When true, skip the default array strip. Use with canvasAddon for
+   * non-numeric visuals (e.g. character strings).
+   */
+  hideArray?: boolean
+  /**
+   * Optional custom input controls. When provided, replaces the default
+   * numeric ArrayInputPanel even if onArrayChange/inputOptions are set.
+   */
+  inputSlot?: ReactNode
+  /**
    * Optional content rendered above the array inside the canvas
    * (e.g. a compact heap tree for Heap Sort).
    */
@@ -192,6 +202,8 @@ export function AlgorithmVisualizer({
   className,
   showLegend = true,
   showFullscreen = true,
+  hideArray = false,
+  inputSlot,
   canvasAddon,
 }: AlgorithmVisualizerProps) {
   const resetKey = useMemo(
@@ -210,6 +222,19 @@ export function AlgorithmVisualizer({
     setIsFullscreen((current) => !current)
   }
 
+  const resolvedInputSlot =
+    inputSlot !== undefined
+      ? inputSlot
+      : onArrayChange && inputOptions
+        ? (
+            <ArrayInputPanel
+              array={array}
+              options={inputOptions}
+              onArrayChange={onArrayChange}
+            />
+          )
+        : null
+
   return (
     <div
       className={cn(
@@ -227,28 +252,22 @@ export function AlgorithmVisualizer({
           showFullscreen ? handleToggleFullscreen : undefined
         }
         isFullscreen={isFullscreen}
-        inputSlot={
-          onArrayChange && inputOptions ? (
-            <ArrayInputPanel
-              array={array}
-              options={inputOptions}
-              onArrayChange={onArrayChange}
-            />
-          ) : null
-        }
+        inputSlot={resolvedInputSlot}
       />
 
       <VisualizationCanvas
         label={title ? `${title} visualization` : 'Algorithm visualization'}
       >
         {canvasAddon ? canvasAddon(step) : null}
-        <ArrayVisualizer
-          elements={elements}
-          pointers={step?.pointers}
-          showIndices
-          animationKey={step?.id}
-        />
-        {showLegend ? (
+        {hideArray ? null : (
+          <ArrayVisualizer
+            elements={elements}
+            pointers={step?.pointers}
+            showIndices
+            animationKey={step?.id}
+          />
+        )}
+        {showLegend && !hideArray ? (
           <VisualizationLegend className="mt-4" states={legendStates} />
         ) : null}
       </VisualizationCanvas>

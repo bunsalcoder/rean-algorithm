@@ -13,6 +13,7 @@ import { QuickSortVisualization } from '../visualizations/QuickSortVisualization
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
 import { FrequencyCountingVisualization } from '../visualizations/FrequencyCountingVisualization'
 import { KadanesAlgorithmVisualization } from '../visualizations/KadanesAlgorithmVisualization'
+import { LongestSubstringVisualization } from '../visualizations/LongestSubstringVisualization'
 import { PrefixSumVisualization } from '../visualizations/PrefixSumVisualization'
 import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
@@ -136,6 +137,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <KadanesAlgorithmVisualization />
   }
 
+  if (visualization.type === 'longest-substring-without-repeating') {
+    return <LongestSubstringVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -177,6 +182,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'prefix-sum' ||
     visualization.type === 'frequency-counting' ||
     visualization.type === 'kadanes-algorithm' ||
+    visualization.type === 'longest-substring-without-repeating' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||

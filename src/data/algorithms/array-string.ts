@@ -94,11 +94,12 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     slug: 'longest-substring-without-repeating',
     name: 'Longest Substring Without Repeating Characters',
     description:
-      'Find the longest window of unique characters in a string.',
+      'Find the longest window of unique characters in a string with a variable-size sliding window.',
     difficulty: 'Intermediate',
-    available: false,
+    href: '/learn/longest-substring-without-repeating-characters',
+    available: true,
     pathDescription:
-      'Combine sliding windows with frequency tracking on strings.',
+      'Grow and shrink a window with a Set to keep characters unique.',
   },
   {
     slug: 'valid-anagram',
@@ -252,6 +253,12 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
     id: 'kadanes-algorithm',
     title: "Kadane's Algorithm",
     href: '/learn/kadanes-algorithm',
+    available: true,
+  },
+  {
+    id: 'longest-substring-without-repeating',
+    title: 'Longest Substring Without Repeating Characters',
+    href: '/learn/longest-substring-without-repeating-characters',
     available: true,
   },
   {
