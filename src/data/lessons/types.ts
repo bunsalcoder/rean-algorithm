@@ -20,6 +20,7 @@ export type LessonVisualizationType =
   | 'two-pointers'
   | 'sliding-window'
   | 'prefix-sum'
+  | 'frequency-counting'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'

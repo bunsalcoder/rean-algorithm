@@ -62,11 +62,12 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     slug: 'frequency-counting',
     name: 'Frequency Counting',
     description:
-      'Count how often values appear using maps or arrays to unlock faster comparisons.',
+      'Learn how to count occurrences efficiently using a frequency map.',
     difficulty: 'Beginner',
-    available: false,
+    href: '/learn/frequency-counting',
+    available: true,
     pathDescription:
-      'Use hashing and counts for anagrams, duplicates, and membership checks.',
+      'Use hashing and counts for duplicates, most frequent values, and membership checks.',
   },
   {
     slug: 'kadanes-algorithm',
@@ -182,7 +183,8 @@ export const arrayStringConcepts: ArrayStringConcept[] = [
     description:
       'Count occurrences to detect duplicates, anagrams, and membership quickly.',
     difficulty: 'Beginner',
-    available: false,
+    available: true,
+    href: '/learn/frequency-counting',
   },
   {
     id: 'sorting-scanning',
@@ -242,7 +244,8 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
   {
     id: 'frequency-counting',
     title: 'Frequency Counting',
-    available: false,
+    href: '/learn/frequency-counting',
+    available: true,
   },
   {
     id: 'sorting-scanning',

@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { FREQUENCY_COUNTING_DEFAULT_ARRAY } from '../../algorithms/array-string/frequencyCounting'
+import { buildFrequencyCountingSteps } from '../../algorithms/array-string/frequencyCountingSteps'
 import {
   PREFIX_SUM_DEFAULT_ARRAY,
   PREFIX_SUM_DEFAULT_LEFT,
@@ -16,9 +18,17 @@ import {
 } from '../../algorithms/array-string/twoPointers'
 import { buildTwoPointersSteps } from '../../algorithms/array-string/twoPointersSteps'
 import { cn } from '../../lib/cn'
-import { AlgorithmVisualizer, PrefixSumPanels } from '../visualizations'
+import {
+  AlgorithmVisualizer,
+  FrequencyCountingPanels,
+  PrefixSumPanels,
+} from '../visualizations'
 
-type DemoMode = 'two-pointers' | 'sliding-window' | 'prefix-sum'
+type DemoMode =
+  | 'two-pointers'
+  | 'sliding-window'
+  | 'prefix-sum'
+  | 'frequency-counting'
 
 const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
   {
@@ -36,6 +46,11 @@ const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
     label: 'Prefix Sum',
     hint: 'Preprocess once — O(1) range sums',
   },
+  {
+    id: 'frequency-counting',
+    label: 'Frequency Counting',
+    hint: 'Build a map of value → count',
+  },
 ]
 
 type ArrayStringMiniDemoProps = {
@@ -50,7 +65,9 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
       ? TWO_POINTERS_DEFAULT_ARRAY
       : mode === 'sliding-window'
         ? SLIDING_WINDOW_DEFAULT_ARRAY
-        : PREFIX_SUM_DEFAULT_ARRAY
+        : mode === 'prefix-sum'
+          ? PREFIX_SUM_DEFAULT_ARRAY
+          : FREQUENCY_COUNTING_DEFAULT_ARRAY
 
   const steps = useMemo(() => {
     if (mode === 'two-pointers') {
@@ -65,19 +82,31 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
         SLIDING_WINDOW_DEFAULT_SIZE,
       )
     }
-    return buildPrefixSumSteps(
-      PREFIX_SUM_DEFAULT_ARRAY,
-      PREFIX_SUM_DEFAULT_LEFT,
-      PREFIX_SUM_DEFAULT_RIGHT,
-    )
+    if (mode === 'prefix-sum') {
+      return buildPrefixSumSteps(
+        PREFIX_SUM_DEFAULT_ARRAY,
+        PREFIX_SUM_DEFAULT_LEFT,
+        PREFIX_SUM_DEFAULT_RIGHT,
+      )
+    }
+    return buildFrequencyCountingSteps(FREQUENCY_COUNTING_DEFAULT_ARRAY)
   }, [mode])
+
+  const title =
+    mode === 'two-pointers'
+      ? 'Two Pointers preview'
+      : mode === 'sliding-window'
+        ? 'Sliding Window preview'
+        : mode === 'prefix-sum'
+          ? 'Prefix Sum preview'
+          : 'Frequency Counting preview'
 
   return (
     <div className={cn('space-y-4', className)}>
       <div
         role="tablist"
         aria-label="Array and string algorithm preview"
-        className="flex flex-col gap-2 sm:flex-row"
+        className="grid gap-2 sm:grid-cols-2"
       >
         {MODE_OPTIONS.map((option) => {
           const selected = mode === option.id
@@ -90,7 +119,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
               id={`array-string-demo-tab-${option.id}`}
               onClick={() => setMode(option.id)}
               className={cn(
-                'flex flex-1 flex-col rounded-xl border px-4 py-3 text-left transition-theme',
+                'flex flex-col rounded-xl border px-4 py-3 text-left transition-theme',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                 'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                 selected
@@ -142,7 +171,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             . Sliding Window works on contiguous ranges and does not require
             sorting.
           </p>
-        ) : (
+        ) : mode === 'prefix-sum' ? (
           <p className="text-body-sm text-muted-foreground">
             Example array:{' '}
             <span className="font-mono text-foreground">
@@ -155,6 +184,14 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             </span>
             . Prefix Sum preprocesses cumulative totals for O(1) range queries.
           </p>
+        ) : (
+          <p className="text-body-sm text-muted-foreground">
+            Example array:{' '}
+            <span className="font-mono text-foreground">
+              [{array.join(', ')}]
+            </span>
+            . Frequency Counting builds a map of value → count in one pass.
+          </p>
         )}
       </div>
 
@@ -165,13 +202,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
       >
         <AlgorithmVisualizer
           key={`array-string-hub-${mode}`}
-          title={
-            mode === 'two-pointers'
-              ? 'Two Pointers preview'
-              : mode === 'sliding-window'
-                ? 'Sliding Window preview'
-                : 'Prefix Sum preview'
-          }
+          title={title}
           category="Array & String"
           array={array}
           steps={steps}
@@ -184,13 +215,20 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
                     step={step}
                   />
                 )
-              : undefined
+              : mode === 'frequency-counting'
+                ? (step) => (
+                    <FrequencyCountingPanels
+                      original={FREQUENCY_COUNTING_DEFAULT_ARRAY}
+                      step={step}
+                    />
+                  )
+                : undefined
           }
         />
       </div>
 
       <p className="text-body-sm text-muted-foreground">
-        This is a compact preview. Open the full lesson for controls, range
+        This is a compact preview. Open the full lesson for controls, input
         changes, and a complete walkthrough.
       </p>
     </div>
