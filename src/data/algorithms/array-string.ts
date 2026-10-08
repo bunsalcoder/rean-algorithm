@@ -75,7 +75,8 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     description:
       'Find the maximum contiguous subarray sum with a linear scan.',
     difficulty: 'Intermediate',
-    available: false,
+    href: '/learn/kadanes-algorithm',
+    available: true,
     pathDescription:
       'Track the best ending-here sum without checking every subarray.',
   },
@@ -245,6 +246,12 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
     id: 'frequency-counting',
     title: 'Frequency Counting',
     href: '/learn/frequency-counting',
+    available: true,
+  },
+  {
+    id: 'kadanes-algorithm',
+    title: "Kadane's Algorithm",
+    href: '/learn/kadanes-algorithm',
     available: true,
   },
   {

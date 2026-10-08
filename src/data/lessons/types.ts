@@ -21,6 +21,7 @@ export type LessonVisualizationType =
   | 'sliding-window'
   | 'prefix-sum'
   | 'frequency-counting'
+  | 'kadanes-algorithm'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'
