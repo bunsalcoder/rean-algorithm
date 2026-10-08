@@ -11,6 +11,7 @@ import { LinearSearchVisualization } from '../visualizations/LinearSearchVisuali
 import { MergeSortVisualization } from '../visualizations/MergeSortVisualization'
 import { QuickSortVisualization } from '../visualizations/QuickSortVisualization'
 import { SelectionSortVisualization } from '../visualizations/SelectionSortVisualization'
+import { PrefixSumVisualization } from '../visualizations/PrefixSumVisualization'
 import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
@@ -121,6 +122,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <SlidingWindowVisualization />
   }
 
+  if (visualization.type === 'prefix-sum') {
+    return <PrefixSumVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -159,6 +164,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'exponential-search' ||
     visualization.type === 'two-pointers' ||
     visualization.type === 'sliding-window' ||
+    visualization.type === 'prefix-sum' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||

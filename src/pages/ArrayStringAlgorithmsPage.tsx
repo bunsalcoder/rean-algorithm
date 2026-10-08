@@ -232,8 +232,8 @@ export function ArrayStringAlgorithmsPage() {
             </h2>
             <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground sm:text-body">
               These patterns show up across array and string problems. Two
-              Pointers and Sliding Window are available — the rest are marked
-              Coming Soon.
+              Pointers, Sliding Window, and Prefix Sum are available — the rest
+              are marked Coming Soon.
             </p>
           </div>
 
@@ -254,8 +254,8 @@ export function ArrayStringAlgorithmsPage() {
               See Array &amp; String Patterns in Action
             </h2>
             <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground sm:text-body">
-              Switch between Two Pointers and Sliding Window using the same
-              visualization engine as the lessons.
+              Switch between Two Pointers, Sliding Window, and Prefix Sum using
+              the same visualization engine as the lessons.
             </p>
           </div>
 
@@ -348,6 +348,17 @@ export function ArrayStringAlgorithmsPage() {
               )}
             >
               Open Sliding Window →
+            </Link>
+            <Link
+              to="/learn/prefix-sum"
+              className={cn(
+                'inline-flex h-11 w-full items-center justify-center gap-2 rounded-md px-5 text-base font-medium sm:w-auto',
+                'border border-border bg-surface text-foreground shadow-sm transition-theme hover:bg-muted',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+              )}
+            >
+              Open Prefix Sum →
             </Link>
           </div>
         </section>

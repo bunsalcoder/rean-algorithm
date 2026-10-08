@@ -53,7 +53,8 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     description:
       'Precompute running totals so range sums can be answered quickly.',
     difficulty: 'Beginner',
-    available: false,
+    href: '/learn/prefix-sum',
+    available: true,
     pathDescription:
       'Turn repeated range-sum work into constant-time lookups.',
   },
@@ -172,7 +173,8 @@ export const arrayStringConcepts: ArrayStringConcept[] = [
     description:
       'Store running totals so any contiguous range sum can be recovered quickly.',
     difficulty: 'Beginner',
-    available: false,
+    available: true,
+    href: '/learn/prefix-sum',
   },
   {
     id: 'hashing-frequency',
@@ -232,13 +234,14 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
     available: true,
   },
   {
-    id: 'frequency-counting',
-    title: 'Frequency Counting',
-    available: false,
-  },
-  {
     id: 'prefix-sum',
     title: 'Prefix Sum',
+    href: '/learn/prefix-sum',
+    available: true,
+  },
+  {
+    id: 'frequency-counting',
+    title: 'Frequency Counting',
     available: false,
   },
   {
