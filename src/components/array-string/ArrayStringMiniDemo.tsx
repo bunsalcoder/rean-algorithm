@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { FREQUENCY_COUNTING_DEFAULT_ARRAY } from '../../algorithms/array-string/frequencyCounting'
 import { buildFrequencyCountingSteps } from '../../algorithms/array-string/frequencyCountingSteps'
+import { KADANES_DEFAULT_ARRAY } from '../../algorithms/array-string/kadanesAlgorithm'
+import { buildKadanesAlgorithmSteps } from '../../algorithms/array-string/kadanesAlgorithmSteps'
 import {
   PREFIX_SUM_DEFAULT_ARRAY,
   PREFIX_SUM_DEFAULT_LEFT,
@@ -21,6 +23,7 @@ import { cn } from '../../lib/cn'
 import {
   AlgorithmVisualizer,
   FrequencyCountingPanels,
+  KadanesAlgorithmPanels,
   PrefixSumPanels,
 } from '../visualizations'
 
@@ -29,6 +32,7 @@ type DemoMode =
   | 'sliding-window'
   | 'prefix-sum'
   | 'frequency-counting'
+  | 'kadanes-algorithm'
 
 const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
   {
@@ -51,6 +55,11 @@ const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
     label: 'Frequency Counting',
     hint: 'Build a map of value → count',
   },
+  {
+    id: 'kadanes-algorithm',
+    label: "Kadane's Algorithm",
+    hint: 'Maximum contiguous subarray sum',
+  },
 ]
 
 type ArrayStringMiniDemoProps = {
@@ -67,7 +76,9 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
         ? SLIDING_WINDOW_DEFAULT_ARRAY
         : mode === 'prefix-sum'
           ? PREFIX_SUM_DEFAULT_ARRAY
-          : FREQUENCY_COUNTING_DEFAULT_ARRAY
+          : mode === 'frequency-counting'
+            ? FREQUENCY_COUNTING_DEFAULT_ARRAY
+            : KADANES_DEFAULT_ARRAY
 
   const steps = useMemo(() => {
     if (mode === 'two-pointers') {
@@ -89,7 +100,10 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
         PREFIX_SUM_DEFAULT_RIGHT,
       )
     }
-    return buildFrequencyCountingSteps(FREQUENCY_COUNTING_DEFAULT_ARRAY)
+    if (mode === 'frequency-counting') {
+      return buildFrequencyCountingSteps(FREQUENCY_COUNTING_DEFAULT_ARRAY)
+    }
+    return buildKadanesAlgorithmSteps(KADANES_DEFAULT_ARRAY)
   }, [mode])
 
   const title =
@@ -99,14 +113,16 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
         ? 'Sliding Window preview'
         : mode === 'prefix-sum'
           ? 'Prefix Sum preview'
-          : 'Frequency Counting preview'
+          : mode === 'frequency-counting'
+            ? 'Frequency Counting preview'
+            : "Kadane's Algorithm preview"
 
   return (
     <div className={cn('space-y-4', className)}>
       <div
         role="tablist"
         aria-label="Array and string algorithm preview"
-        className="grid gap-2 sm:grid-cols-2"
+        className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3"
       >
         {MODE_OPTIONS.map((option) => {
           const selected = mode === option.id
@@ -184,13 +200,22 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             </span>
             . Prefix Sum preprocesses cumulative totals for O(1) range queries.
           </p>
-        ) : (
+        ) : mode === 'frequency-counting' ? (
           <p className="text-body-sm text-muted-foreground">
             Example array:{' '}
             <span className="font-mono text-foreground">
               [{array.join(', ')}]
             </span>
             . Frequency Counting builds a map of value → count in one pass.
+          </p>
+        ) : (
+          <p className="text-body-sm text-muted-foreground">
+            Example array:{' '}
+            <span className="font-mono text-foreground">
+              [{array.join(', ')}]
+            </span>
+            . Kadane finds the maximum contiguous subarray sum in one pass
+            (answer: 6 → [4, −1, 2, 1]).
           </p>
         )}
       </div>
@@ -222,7 +247,14 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
                       step={step}
                     />
                   )
-                : undefined
+                : mode === 'kadanes-algorithm'
+                  ? (step) => (
+                      <KadanesAlgorithmPanels
+                        original={KADANES_DEFAULT_ARRAY}
+                        step={step}
+                      />
+                    )
+                  : undefined
           }
         />
       </div>

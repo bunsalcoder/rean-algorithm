@@ -11,6 +11,7 @@ import { mergeSort } from './merge-sort'
 import { quickSort } from './quick-sort'
 import { selectionSort } from './selection-sort'
 import { frequencyCounting } from './frequency-counting'
+import { kadanesAlgorithm } from './kadanes-algorithm'
 import { prefixSum } from './prefix-sum'
 import { slidingWindow } from './sliding-window'
 import { twoPointers } from './two-pointers'
@@ -48,6 +49,7 @@ export const lessons: Lesson[] = [
   slidingWindow,
   prefixSum,
   frequencyCounting,
+  kadanesAlgorithm,
   bubbleSort,
   selectionSort,
   insertionSort,

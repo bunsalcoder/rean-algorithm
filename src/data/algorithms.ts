@@ -281,10 +281,11 @@ export const algorithms: AlgorithmItem[] = [
     title: "Kadane's Algorithm",
     description:
       'Find the maximum contiguous subarray sum with a linear scan.',
-    href: '/algorithms/array-string',
+    href: '/learn/kadanes-algorithm',
+    lessonSlug: 'kadanes-algorithm',
     categoryId: 'array-string',
     difficulty: 'Intermediate',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'maximum-subarray',

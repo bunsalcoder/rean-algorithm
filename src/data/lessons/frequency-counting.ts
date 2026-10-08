@@ -325,8 +325,8 @@ console.log(findMostFrequent(values));  // 2`,
   },
 
   nextLesson: {
-    title: "Kadane's Algorithm / Maximum Subarray (Coming Soon)",
-    href: '/algorithms/array-string',
+    title: "Kadane's Algorithm",
+    href: '/learn/kadanes-algorithm',
   },
 
   categoryHref: '/algorithms/array-string',
