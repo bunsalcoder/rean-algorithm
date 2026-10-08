@@ -22,6 +22,7 @@ export type LessonVisualizationType =
   | 'prefix-sum'
   | 'frequency-counting'
   | 'kadanes-algorithm'
+  | 'longest-substring-without-repeating'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'
