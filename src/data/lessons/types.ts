@@ -26,6 +26,7 @@ export type LessonVisualizationType =
   | 'valid-anagram'
   | 'group-anagrams'
   | 'string-compression'
+  | 'rotate-array'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'

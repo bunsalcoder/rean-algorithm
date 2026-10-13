@@ -427,6 +427,17 @@ export function ArrayStringAlgorithmsPage() {
             >
               Open String Compression →
             </Link>
+            <Link
+              to="/learn/rotate-array"
+              className={cn(
+                'inline-flex h-11 w-full items-center justify-center gap-2 rounded-md px-5 text-base font-medium sm:w-auto',
+                'border border-border bg-surface text-foreground shadow-sm transition-theme hover:bg-muted',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+              )}
+            >
+              Open Rotate Array →
+            </Link>
           </div>
         </section>
       </Container>

@@ -138,11 +138,12 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     slug: 'rotate-array',
     name: 'Rotate Array',
     description:
-      'Shift array elements by k positions using efficient in-place techniques.',
-    difficulty: 'Beginner',
-    available: false,
+      'Shift array elements by k positions using the three-reversal technique.',
+    difficulty: 'Intermediate',
+    href: '/learn/rotate-array',
+    available: true,
     pathDescription:
-      'Rearrange values with index math or reverse-based rotations.',
+      'Right-rotate with three reversals: all, first k, then the rest.',
   },
 ]
 
@@ -280,6 +281,12 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
     id: 'string-compression',
     title: 'String Compression',
     href: '/learn/string-compression',
+    available: true,
+  },
+  {
+    id: 'rotate-array',
+    title: 'Rotate Array',
+    href: '/learn/rotate-array',
     available: true,
   },
   {
