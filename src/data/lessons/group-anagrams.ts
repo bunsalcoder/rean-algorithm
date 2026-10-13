@@ -307,8 +307,8 @@ console.log(groupAnagrams(["a", "A"]));`,
   },
 
   nextLesson: {
-    title: 'String Compression (Coming Soon)',
-    href: '/algorithms/array-string',
+    title: 'String Compression',
+    href: '/learn/string-compression',
   },
 
   categoryHref: '/algorithms/array-string',

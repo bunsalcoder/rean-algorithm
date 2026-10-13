@@ -16,6 +16,7 @@ import { KadanesAlgorithmVisualization } from '../visualizations/KadanesAlgorith
 import { LongestSubstringVisualization } from '../visualizations/LongestSubstringVisualization'
 import { PrefixSumVisualization } from '../visualizations/PrefixSumVisualization'
 import { GroupAnagramsVisualization } from '../visualizations/GroupAnagramsVisualization'
+import { StringCompressionVisualization } from '../visualizations/StringCompressionVisualization'
 import { ValidAnagramVisualization } from '../visualizations/ValidAnagramVisualization'
 import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
@@ -151,6 +152,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <GroupAnagramsVisualization />
   }
 
+  if (visualization.type === 'string-compression') {
+    return <StringCompressionVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -195,6 +200,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'longest-substring-without-repeating' ||
     visualization.type === 'valid-anagram' ||
     visualization.type === 'group-anagrams' ||
+    visualization.type === 'string-compression' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||
