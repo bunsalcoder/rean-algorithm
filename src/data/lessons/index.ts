@@ -18,6 +18,7 @@ import { slidingWindow } from './sliding-window'
 import { twoPointers } from './two-pointers'
 import { groupAnagrams } from './group-anagrams'
 import { stringCompression } from './string-compression'
+import { rotateArray } from './rotate-array'
 import { validAnagram } from './valid-anagram'
 import type { Lesson, LessonTocItem } from './types'
 
@@ -58,6 +59,7 @@ export const lessons: Lesson[] = [
   validAnagram,
   groupAnagrams,
   stringCompression,
+  rotateArray,
   bubbleSort,
   selectionSort,
   insertionSort,

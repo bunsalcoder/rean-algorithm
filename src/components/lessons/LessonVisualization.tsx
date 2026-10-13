@@ -17,6 +17,7 @@ import { LongestSubstringVisualization } from '../visualizations/LongestSubstrin
 import { PrefixSumVisualization } from '../visualizations/PrefixSumVisualization'
 import { GroupAnagramsVisualization } from '../visualizations/GroupAnagramsVisualization'
 import { StringCompressionVisualization } from '../visualizations/StringCompressionVisualization'
+import { RotateArrayVisualization } from '../visualizations/RotateArrayVisualization'
 import { ValidAnagramVisualization } from '../visualizations/ValidAnagramVisualization'
 import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
@@ -156,6 +157,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <StringCompressionVisualization />
   }
 
+  if (visualization.type === 'rotate-array') {
+    return <RotateArrayVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -201,6 +206,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'valid-anagram' ||
     visualization.type === 'group-anagrams' ||
     visualization.type === 'string-compression' ||
+    visualization.type === 'rotate-array' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||

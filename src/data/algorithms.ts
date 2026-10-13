@@ -345,11 +345,12 @@ export const algorithms: AlgorithmItem[] = [
     id: 'rotate-array',
     title: 'Rotate Array',
     description:
-      'Shift array elements by k positions using efficient techniques.',
-    href: '/algorithms/array-string',
+      'Shift array elements by k positions using the three-reversal technique.',
+    href: '/learn/rotate-array',
+    lessonSlug: 'rotate-array',
     categoryId: 'array-string',
-    difficulty: 'Beginner',
-    status: 'coming-soon',
+    difficulty: 'Intermediate',
+    status: 'available',
   },
 ]
 

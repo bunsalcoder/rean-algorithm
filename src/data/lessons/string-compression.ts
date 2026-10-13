@@ -329,8 +329,8 @@ console.log(compressString("aaAA")); // a2A2`,
   },
 
   nextLesson: {
-    title: 'Rotate Array (Coming Soon)',
-    href: '/algorithms/array-string',
+    title: 'Rotate Array',
+    href: '/learn/rotate-array',
   },
 
   categoryHref: '/algorithms/array-string',
