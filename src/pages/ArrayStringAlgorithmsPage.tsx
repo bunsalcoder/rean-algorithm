@@ -232,8 +232,8 @@ export function ArrayStringAlgorithmsPage() {
             </h2>
             <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground sm:text-body">
               These patterns show up across array and string problems. Two
-              Pointers, Sliding Window, and Prefix Sum are available — the rest
-              are marked Coming Soon.
+              Pointers, Sliding Window, Prefix Sum, and Hashing / Frequency
+              Counting are available — the rest are marked Coming Soon.
             </p>
           </div>
 
@@ -393,6 +393,17 @@ export function ArrayStringAlgorithmsPage() {
               )}
             >
               Open Longest Unique Substring →
+            </Link>
+            <Link
+              to="/learn/valid-anagram"
+              className={cn(
+                'inline-flex h-11 w-full items-center justify-center gap-2 rounded-md px-5 text-base font-medium sm:w-auto',
+                'border border-border bg-surface text-foreground shadow-sm transition-theme hover:bg-muted',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+              )}
+            >
+              Open Valid Anagram →
             </Link>
           </div>
         </section>

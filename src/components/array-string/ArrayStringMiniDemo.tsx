@@ -6,6 +6,11 @@ import { buildKadanesAlgorithmSteps } from '../../algorithms/array-string/kadane
 import { LONGEST_SUBSTRING_DEFAULT } from '../../algorithms/array-string/longestSubstringWithoutRepeating'
 import { buildLongestSubstringWithoutRepeatingSteps } from '../../algorithms/array-string/longestSubstringWithoutRepeatingSteps'
 import {
+  VALID_ANAGRAM_DEFAULT_FIRST,
+  VALID_ANAGRAM_DEFAULT_SECOND,
+} from '../../algorithms/array-string/validAnagram'
+import { buildValidAnagramSteps } from '../../algorithms/array-string/validAnagramSteps'
+import {
   PREFIX_SUM_DEFAULT_ARRAY,
   PREFIX_SUM_DEFAULT_LEFT,
   PREFIX_SUM_DEFAULT_RIGHT,
@@ -28,6 +33,7 @@ import {
   KadanesAlgorithmPanels,
   LongestSubstringPanels,
   PrefixSumPanels,
+  ValidAnagramPanels,
 } from '../visualizations'
 
 type DemoMode =
@@ -37,6 +43,7 @@ type DemoMode =
   | 'frequency-counting'
   | 'kadanes-algorithm'
   | 'longest-substring'
+  | 'valid-anagram'
 
 const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
   {
@@ -68,6 +75,11 @@ const MODE_OPTIONS: { id: DemoMode; label: string; hint: string }[] = [
     id: 'longest-substring',
     label: 'Longest Unique Substring',
     hint: 'Variable window + Set on a string',
+  },
+  {
+    id: 'valid-anagram',
+    label: 'Valid Anagram',
+    hint: 'Compare character frequencies',
   },
 ]
 
@@ -117,7 +129,13 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
     if (mode === 'kadanes-algorithm') {
       return buildKadanesAlgorithmSteps(KADANES_DEFAULT_ARRAY)
     }
-    return buildLongestSubstringWithoutRepeatingSteps(LONGEST_SUBSTRING_DEFAULT)
+    if (mode === 'longest-substring') {
+      return buildLongestSubstringWithoutRepeatingSteps(LONGEST_SUBSTRING_DEFAULT)
+    }
+    return buildValidAnagramSteps(
+      VALID_ANAGRAM_DEFAULT_FIRST,
+      VALID_ANAGRAM_DEFAULT_SECOND,
+    )
   }, [mode])
 
   const title =
@@ -131,7 +149,9 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             ? 'Frequency Counting preview'
             : mode === 'kadanes-algorithm'
               ? "Kadane's Algorithm preview"
-              : 'Longest Unique Substring preview'
+              : mode === 'longest-substring'
+                ? 'Longest Unique Substring preview'
+                : 'Valid Anagram preview'
 
   const visualizerArray =
     mode === 'longest-substring'
@@ -139,7 +159,18 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           { length: LONGEST_SUBSTRING_DEFAULT.length },
           (_, index) => index,
         )
-      : numberArray
+      : mode === 'valid-anagram'
+        ? Array.from(
+            {
+              length: Math.max(
+                VALID_ANAGRAM_DEFAULT_FIRST.length,
+                VALID_ANAGRAM_DEFAULT_SECOND.length,
+                1,
+              ),
+            },
+            (_, index) => index,
+          )
+        : numberArray
 
   return (
     <div className={cn('space-y-4', className)}>
@@ -241,7 +272,7 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             . Kadane finds the maximum contiguous subarray sum in one pass
             (answer: 6 → [4, −1, 2, 1]).
           </p>
-        ) : (
+        ) : mode === 'longest-substring' ? (
           <p className="text-body-sm text-muted-foreground">
             Example string:{' '}
             <span className="font-mono text-foreground">
@@ -249,6 +280,15 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
             </span>
             . A variable-size window + Set finds the longest unique substring
             (answer: &quot;abc&quot;, length 3).
+          </p>
+        ) : (
+          <p className="text-body-sm text-muted-foreground">
+            Example pair:{' '}
+            <span className="font-mono text-foreground">
+              &quot;{VALID_ANAGRAM_DEFAULT_FIRST}&quot; / &quot;
+              {VALID_ANAGRAM_DEFAULT_SECOND}&quot;
+            </span>
+            . Count then cancel characters to decide Valid Anagram.
           </p>
         )}
       </div>
@@ -265,8 +305,12 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
           array={visualizerArray}
           steps={steps}
           showFullscreen={false}
-          hideArray={mode === 'longest-substring'}
-          showLegend={mode !== 'longest-substring'}
+          hideArray={
+            mode === 'longest-substring' || mode === 'valid-anagram'
+          }
+          showLegend={
+            mode !== 'longest-substring' && mode !== 'valid-anagram'
+          }
           canvasAddon={
             mode === 'prefix-sum'
               ? (step) => (
@@ -296,7 +340,15 @@ export function ArrayStringMiniDemo({ className }: ArrayStringMiniDemoProps) {
                           step={step}
                         />
                       )
-                    : undefined
+                    : mode === 'valid-anagram'
+                      ? (step) => (
+                          <ValidAnagramPanels
+                            first={VALID_ANAGRAM_DEFAULT_FIRST}
+                            second={VALID_ANAGRAM_DEFAULT_SECOND}
+                            step={step}
+                          />
+                        )
+                      : undefined
           }
         />
       </div>

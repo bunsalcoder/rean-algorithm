@@ -107,7 +107,8 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     description:
       'Decide whether two strings contain the same characters with the same frequencies.',
     difficulty: 'Beginner',
-    available: false,
+    href: '/learn/valid-anagram',
+    available: true,
     pathDescription:
       'Apply counting techniques to string comparison problems.',
   },
@@ -260,6 +261,17 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
     title: 'Longest Substring Without Repeating Characters',
     href: '/learn/longest-substring-without-repeating-characters',
     available: true,
+  },
+  {
+    id: 'valid-anagram',
+    title: 'Valid Anagram',
+    href: '/learn/valid-anagram',
+    available: true,
+  },
+  {
+    id: 'group-anagrams',
+    title: 'Group Anagrams',
+    available: false,
   },
   {
     id: 'sorting-scanning',

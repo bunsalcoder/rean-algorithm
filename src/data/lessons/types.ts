@@ -23,6 +23,7 @@ export type LessonVisualizationType =
   | 'frequency-counting'
   | 'kadanes-algorithm'
   | 'longest-substring-without-repeating'
+  | 'valid-anagram'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'

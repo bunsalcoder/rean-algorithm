@@ -16,6 +16,7 @@ import { longestSubstringWithoutRepeating } from './longest-substring-without-re
 import { prefixSum } from './prefix-sum'
 import { slidingWindow } from './sliding-window'
 import { twoPointers } from './two-pointers'
+import { validAnagram } from './valid-anagram'
 import type { Lesson, LessonTocItem } from './types'
 
 export type {
@@ -52,6 +53,7 @@ export const lessons: Lesson[] = [
   frequencyCounting,
   kadanesAlgorithm,
   longestSubstringWithoutRepeating,
+  validAnagram,
   bubbleSort,
   selectionSort,
   insertionSort,
