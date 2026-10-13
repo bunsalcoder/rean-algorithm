@@ -333,8 +333,8 @@ console.log(isValidAnagram("a", "A"));           // false`,
   },
 
   nextLesson: {
-    title: 'Group Anagrams (Coming Soon)',
-    href: '/algorithms/array-string',
+    title: 'Group Anagrams',
+    href: '/learn/group-anagrams',
   },
 
   categoryHref: '/algorithms/array-string',

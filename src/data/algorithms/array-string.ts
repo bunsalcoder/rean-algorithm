@@ -118,7 +118,8 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     description:
       'Cluster words that are anagrams of each other using signatures or counts.',
     difficulty: 'Intermediate',
-    available: false,
+    href: '/learn/group-anagrams',
+    available: true,
     pathDescription:
       'Scale frequency ideas from pairs of strings to groups of words.',
   },
@@ -271,7 +272,8 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
   {
     id: 'group-anagrams',
     title: 'Group Anagrams',
-    available: false,
+    href: '/learn/group-anagrams',
+    available: true,
   },
   {
     id: 'sorting-scanning',

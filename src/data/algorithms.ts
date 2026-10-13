@@ -324,10 +324,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Group Anagrams',
     description:
       'Cluster words that are anagrams of each other.',
-    href: '/algorithms/array-string',
+    href: '/learn/group-anagrams',
+    lessonSlug: 'group-anagrams',
     categoryId: 'array-string',
     difficulty: 'Intermediate',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'string-compression',

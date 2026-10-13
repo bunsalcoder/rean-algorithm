@@ -24,6 +24,7 @@ export type LessonVisualizationType =
   | 'kadanes-algorithm'
   | 'longest-substring-without-repeating'
   | 'valid-anagram'
+  | 'group-anagrams'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'
