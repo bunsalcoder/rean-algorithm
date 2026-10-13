@@ -313,10 +313,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'Valid Anagram',
     description:
       'Decide whether two strings contain the same characters with the same frequencies.',
-    href: '/algorithms/array-string',
+    href: '/learn/valid-anagram',
+    lessonSlug: 'valid-anagram',
     categoryId: 'array-string',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'group-anagrams',

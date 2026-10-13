@@ -380,8 +380,8 @@ console.log(longestSubstringWithoutRepeating("pwwkew"));
   },
 
   nextLesson: {
-    title: 'Valid Anagram (Coming Soon)',
-    href: '/algorithms/array-string',
+    title: 'Valid Anagram',
+    href: '/learn/valid-anagram',
   },
 
   categoryHref: '/algorithms/array-string',

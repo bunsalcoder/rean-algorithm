@@ -15,6 +15,7 @@ import { FrequencyCountingVisualization } from '../visualizations/FrequencyCount
 import { KadanesAlgorithmVisualization } from '../visualizations/KadanesAlgorithmVisualization'
 import { LongestSubstringVisualization } from '../visualizations/LongestSubstringVisualization'
 import { PrefixSumVisualization } from '../visualizations/PrefixSumVisualization'
+import { ValidAnagramVisualization } from '../visualizations/ValidAnagramVisualization'
 import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
@@ -141,6 +142,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <LongestSubstringVisualization />
   }
 
+  if (visualization.type === 'valid-anagram') {
+    return <ValidAnagramVisualization />
+  }
+
   if (visualization.type === 'bubble-sort') {
     return <BubbleSortVisualization />
   }
@@ -183,6 +188,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'frequency-counting' ||
     visualization.type === 'kadanes-algorithm' ||
     visualization.type === 'longest-substring-without-repeating' ||
+    visualization.type === 'valid-anagram' ||
     visualization.type === 'bubble-sort' ||
     visualization.type === 'selection-sort' ||
     visualization.type === 'insertion-sort' ||
