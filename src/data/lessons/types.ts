@@ -25,6 +25,7 @@ export type LessonVisualizationType =
   | 'longest-substring-without-repeating'
   | 'valid-anagram'
   | 'group-anagrams'
+  | 'string-compression'
   | 'bubble-sort'
   | 'selection-sort'
   | 'insertion-sort'

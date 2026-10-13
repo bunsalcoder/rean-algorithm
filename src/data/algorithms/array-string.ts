@@ -129,9 +129,10 @@ export const arrayStringAlgorithms: ArrayStringAlgorithm[] = [
     description:
       'Compress consecutive repeated characters while walking the string once.',
     difficulty: 'Beginner',
-    available: false,
+    href: '/learn/string-compression',
+    available: true,
     pathDescription:
-      'Practice in-place style scanning and rewriting of character runs.',
+      'Practice scanning consecutive character runs and writing a compressed form.',
   },
   {
     slug: 'rotate-array',
@@ -273,6 +274,12 @@ export const arrayStringLearningOrder: ArrayStringLearningOrderItem[] = [
     id: 'group-anagrams',
     title: 'Group Anagrams',
     href: '/learn/group-anagrams',
+    available: true,
+  },
+  {
+    id: 'string-compression',
+    title: 'String Compression',
+    href: '/learn/string-compression',
     available: true,
   },
   {

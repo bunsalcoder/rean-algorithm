@@ -335,10 +335,11 @@ export const algorithms: AlgorithmItem[] = [
     title: 'String Compression',
     description:
       'Compress consecutive repeated characters while walking the string once.',
-    href: '/algorithms/array-string',
+    href: '/learn/string-compression',
+    lessonSlug: 'string-compression',
     categoryId: 'array-string',
     difficulty: 'Beginner',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'rotate-array',
