@@ -72,7 +72,7 @@ export function SearchingAlgorithmsPage() {
         </div>
 
         <div
-          className="mt-8 section-reveal-item sm:mt-10"
+          className="mt-8 grid gap-3 section-reveal-item sm:mt-10 sm:gap-4 lg:grid-cols-2"
           style={{ transitionDelay: '80ms' }}
         >
           <Link
@@ -96,6 +96,30 @@ export function SearchingAlgorithmsPage() {
             </span>
             <span className="shrink-0 text-sm font-medium text-primary transition-theme group-hover:text-primary-hover">
               Open comparison →
+            </span>
+          </Link>
+
+          <Link
+            to="/practice"
+            className={cn(
+              'group flex flex-col gap-2 rounded-xl border border-border bg-surface p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-5',
+              'transition-theme hover:border-primary/30 hover:shadow-md',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+            )}
+          >
+            <span className="min-w-0">
+              <span className="text-label text-primary">PRACTICE</span>
+              <span className="mt-1 block text-base font-medium text-foreground sm:text-lg">
+                Practice Related Problems
+              </span>
+              <span className="mt-1 block text-body-sm text-muted-foreground">
+                Solve Linear Search and Binary Search practice problems with
+                hints and reference solutions.
+              </span>
+            </span>
+            <span className="shrink-0 text-sm font-medium text-primary transition-theme group-hover:text-primary-hover">
+              Open practice →
             </span>
           </Link>
         </div>

@@ -10,7 +10,9 @@ import { DataStructuresPage } from './pages/DataStructuresPage'
 import { HomePage } from './pages/HomePage'
 import { LessonPage } from './pages/LessonPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
+import { PracticeCompletionProvider } from './context/PracticeCompletionContext'
 import { PracticePage } from './pages/PracticePage'
+import { PracticeProblemPage } from './pages/PracticeProblemPage'
 import { RoadmapPage } from './pages/RoadmapPage'
 import { SearchingAlgorithmsPage } from './pages/SearchingAlgorithmsPage'
 import { SearchingComparisonPage } from './pages/SearchingComparisonPage'
@@ -42,71 +44,74 @@ function RoadmapStagePlaceholder() {
 function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-      <AppShell>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/roadmap" element={<RoadmapPage />} />
-          <Route
-            path="/roadmap/:stage"
-            element={<RoadmapStagePlaceholder />}
-          />
-          <Route path="/learn/:slug" element={<LessonPage />} />
-          <Route path="/algorithms" element={<AlgorithmsPage />} />
-          <Route
-            path="/algorithms/sorting"
-            element={<AlgorithmCategoryPage categoryId="sorting" />}
-          />
-          <Route
-            path="/algorithms/sorting/comparison"
-            element={<SortingComparisonPage />}
-          />
-          <Route
-            path="/algorithms/searching"
-            element={<SearchingAlgorithmsPage />}
-          />
-          <Route
-            path="/algorithms/searching/comparison"
-            element={<SearchingComparisonPage />}
-          />
-          <Route
-            path="/algorithms/array-string"
-            element={<ArrayStringAlgorithmsPage />}
-          />
-          <Route
-            path="/algorithms/array-string/comparison"
-            element={<ArrayStringComparisonPage />}
-          />
-          <Route
-            path="/algorithms/tree-graph"
-            element={<CategoryPlaceholder title="Tree & Graph" />}
-          />
-          <Route
-            path="/algorithms/dynamic-programming"
-            element={<CategoryPlaceholder title="Dynamic Programming" />}
-          />
-          <Route
-            path="/algorithms/backtracking"
-            element={<CategoryPlaceholder title="Backtracking" />}
-          />
-          <Route path="/data-structures" element={<DataStructuresPage />} />
-          <Route
-            path="/data-structures/linked-list"
-            element={<CategoryPlaceholder title="Linked List" />}
-          />
-          <Route
-            path="/data-structures/stack-queue"
-            element={<CategoryPlaceholder title="Stack & Queue" />}
-          />
-          <Route path="/practice" element={<PracticePage />} />
-          <Route path="/visualizer-demo" element={<VisualizerDemoPage />} />
-          <Route
-            path="/sorting-visualizer-demo"
-            element={<SortingVisualizerDemoPage />}
-          />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AppShell>
+      <PracticeCompletionProvider>
+        <AppShell>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/roadmap" element={<RoadmapPage />} />
+            <Route
+              path="/roadmap/:stage"
+              element={<RoadmapStagePlaceholder />}
+            />
+            <Route path="/learn/:slug" element={<LessonPage />} />
+            <Route path="/algorithms" element={<AlgorithmsPage />} />
+            <Route
+              path="/algorithms/sorting"
+              element={<AlgorithmCategoryPage categoryId="sorting" />}
+            />
+            <Route
+              path="/algorithms/sorting/comparison"
+              element={<SortingComparisonPage />}
+            />
+            <Route
+              path="/algorithms/searching"
+              element={<SearchingAlgorithmsPage />}
+            />
+            <Route
+              path="/algorithms/searching/comparison"
+              element={<SearchingComparisonPage />}
+            />
+            <Route
+              path="/algorithms/array-string"
+              element={<ArrayStringAlgorithmsPage />}
+            />
+            <Route
+              path="/algorithms/array-string/comparison"
+              element={<ArrayStringComparisonPage />}
+            />
+            <Route
+              path="/algorithms/tree-graph"
+              element={<CategoryPlaceholder title="Tree & Graph" />}
+            />
+            <Route
+              path="/algorithms/dynamic-programming"
+              element={<CategoryPlaceholder title="Dynamic Programming" />}
+            />
+            <Route
+              path="/algorithms/backtracking"
+              element={<CategoryPlaceholder title="Backtracking" />}
+            />
+            <Route path="/data-structures" element={<DataStructuresPage />} />
+            <Route
+              path="/data-structures/linked-list"
+              element={<CategoryPlaceholder title="Linked List" />}
+            />
+            <Route
+              path="/data-structures/stack-queue"
+              element={<CategoryPlaceholder title="Stack & Queue" />}
+            />
+            <Route path="/practice" element={<PracticePage />} />
+            <Route path="/practice/:slug" element={<PracticeProblemPage />} />
+            <Route path="/visualizer-demo" element={<VisualizerDemoPage />} />
+            <Route
+              path="/sorting-visualizer-demo"
+              element={<SortingVisualizerDemoPage />}
+            />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </AppShell>
+      </PracticeCompletionProvider>
     </BrowserRouter>
   )
 }
