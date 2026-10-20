@@ -3,6 +3,7 @@ import {
   PracticeDifficultyBadge,
   PracticeHints,
   PracticeSolutionPanel,
+  PracticeTestCases,
 } from '../components/practice'
 import { Badge, Button, Card, Container, Section } from '../components/ui'
 import { usePracticeCompletion } from '../context/PracticeCompletionContext'
@@ -175,6 +176,10 @@ export function PracticeProblemPage() {
               ))}
             </ul>
           </section>
+
+          <div className="section-reveal-item">
+            <PracticeTestCases problem={problem} />
+          </div>
 
           <section
             className="section-reveal-item"

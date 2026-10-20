@@ -19,6 +19,19 @@ export type {
 
 export { practiceProblems }
 
+export {
+  VALIDATION_MODE_LABEL,
+  VALIDATION_MODE_LIMITATIONS,
+  getProblemValidationSupport,
+  getTestCasesForProblem,
+  isValidationSupported,
+  listCheckExampleAnswerSlugs,
+  listSupportedValidationSlugs,
+  summarizeValidationResults,
+  validateCandidateAnswer,
+  validateWithTrustedReference,
+} from './validation'
+
 const problemsBySlug = new Map(
   practiceProblems.map((problem) => [problem.slug, problem]),
 )
