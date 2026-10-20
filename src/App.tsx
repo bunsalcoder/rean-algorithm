@@ -11,6 +11,7 @@ import { HomePage } from './pages/HomePage'
 import { LessonPage } from './pages/LessonPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { PracticeCompletionProvider } from './context/PracticeCompletionContext'
+import { PracticeDashboardPage } from './pages/PracticeDashboardPage'
 import { PracticePage } from './pages/PracticePage'
 import { PracticeProblemPage } from './pages/PracticeProblemPage'
 import { RoadmapPage } from './pages/RoadmapPage'
@@ -101,6 +102,10 @@ function App() {
               element={<CategoryPlaceholder title="Stack & Queue" />}
             />
             <Route path="/practice" element={<PracticePage />} />
+            <Route
+              path="/practice/dashboard"
+              element={<PracticeDashboardPage />}
+            />
             <Route path="/practice/:slug" element={<PracticeProblemPage />} />
             <Route path="/visualizer-demo" element={<VisualizerDemoPage />} />
             <Route
