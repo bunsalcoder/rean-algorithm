@@ -71,9 +71,11 @@ export function PracticePage() {
           <h1 className="mt-2 text-foreground">Algorithm practice problems</h1>
           <p className="mt-4 text-body text-muted-foreground">
             Work through carefully written problems tied to the lessons already
-            available in Rean Algorithm. Read the statement, use progressive
-            hints, then study the approach and reference solutions — no code
-            execution or fake verdicts.
+            available in Rean Algorithm. Read the statement, explore structured
+            test cases, use progressive hints, then study the approach and
+            reference solutions. Checks compare structured answers or trusted
+            references — they do not execute your source code or invent
+            verdicts.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <Badge variant="primary">
