@@ -7,11 +7,15 @@ import { PracticeDifficultyBadge } from './PracticeDifficultyBadge'
 type PracticeProblemCardProps = {
   problem: PracticeProblem
   completed?: boolean
+  attempted?: boolean
+  validationAvailable?: boolean
 }
 
 export function PracticeProblemCard({
   problem,
   completed = false,
+  attempted = false,
+  validationAvailable = false,
 }: PracticeProblemCardProps) {
   return (
     <Card
@@ -28,6 +32,16 @@ export function PracticeProblemCard({
             {completed ? (
               <Badge variant="primary" aria-label="Completed this session">
                 Completed
+              </Badge>
+            ) : null}
+            {!completed && attempted ? (
+              <Badge variant="muted" aria-label="Attempted this session">
+                Attempted
+              </Badge>
+            ) : null}
+            {validationAvailable ? (
+              <Badge variant="muted" aria-label="Validation available">
+                Checks available
               </Badge>
             ) : null}
           </div>

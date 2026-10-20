@@ -211,3 +211,26 @@ export function toggleSlugInSet(
   }
   return next
 }
+
+export {
+  addSlugToSet,
+  createActivityEvent,
+  createEmptySessionSnapshot,
+  formatActivityLabel,
+  getCompletedTopics,
+  getPracticeSessionSummary,
+  getTopicProgressOverview,
+  getValidationAvailability,
+  prependActivityEvent,
+  recommendNextPracticeProblem,
+  removeSlugFromSet,
+} from './session'
+
+export type {
+  PracticeActivityEvent,
+  PracticeActivityKind,
+  PracticeRecommendation,
+  PracticeSessionSnapshot,
+  PracticeSessionSummary,
+  PracticeTopicProgress,
+} from './session'

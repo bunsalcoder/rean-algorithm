@@ -27,6 +27,8 @@ import { Button, Card } from '../ui'
 
 type PracticeTestCasesProps = {
   problem: PracticeProblem
+  /** Fired only when the learner checks a structured candidate answer. */
+  onCandidateAnswerCheck?: (problemSlug: string) => void
 }
 
 type KindFilter = PracticeTestCaseKind | 'all'
@@ -79,7 +81,10 @@ function resultForCase(
   return results.find((result) => result.testCaseId === testCaseId)
 }
 
-export function PracticeTestCases({ problem }: PracticeTestCasesProps) {
+export function PracticeTestCases({
+  problem,
+  onCandidateAnswerCheck,
+}: PracticeTestCasesProps) {
   const support = getProblemValidationSupport(problem.slug)
   const allCases = getTestCasesForProblem(problem.slug)
   const baseId = useId()
@@ -138,6 +143,7 @@ export function PracticeTestCases({ problem }: PracticeTestCasesProps) {
           message: parsed.error,
         }),
       )
+      onCandidateAnswerCheck?.(problem.slug)
       return
     }
 
@@ -148,6 +154,7 @@ export function PracticeTestCases({ problem }: PracticeTestCasesProps) {
       candidate: parsed.value,
     })
     setResults((previous) => applyCandidateResult(previous, next))
+    onCandidateAnswerCheck?.(problem.slug)
   }
 
   const handleTrustedReference = () => {

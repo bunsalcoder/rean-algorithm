@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import {
   PracticeFilters,
   PracticeProblemCard,
@@ -9,6 +9,7 @@ import { usePracticeCompletion } from '../context/PracticeCompletionContext'
 import {
   filterPracticeProblems,
   getPracticeCategories,
+  isValidationSupported,
   practiceProblems,
   type PracticeFilterState,
 } from '../data/practice'
@@ -21,15 +22,41 @@ const EMPTY_FILTERS: PracticeFilterState = {
   difficulty: 'all',
 }
 
+function resolveCategoryFilter(
+  categoryParam: string | null,
+  categories: readonly string[],
+): string {
+  if (categoryParam && categories.includes(categoryParam)) {
+    return categoryParam
+  }
+  return 'all'
+}
+
 export function PracticePage() {
   const { ref, isInView } = useInView<HTMLDivElement>({
     threshold: 0,
     rootMargin: '0px',
   })
-  const { isCompleted } = usePracticeCompletion()
-  const [filters, setFilters] = useState<PracticeFilterState>(EMPTY_FILTERS)
-
+  const { isCompleted, isAttempted } = usePracticeCompletion()
+  const [searchParams] = useSearchParams()
   const categories = getPracticeCategories()
+  const categoryParam = searchParams.get('category')
+
+  const [filters, setFilters] = useState<PracticeFilterState>(() => ({
+    ...EMPTY_FILTERS,
+    category: resolveCategoryFilter(categoryParam, categories),
+  }))
+  const [syncedCategoryParam, setSyncedCategoryParam] = useState(categoryParam)
+
+  // Keep topic deep-links from the dashboard in sync without an effect.
+  if (categoryParam !== syncedCategoryParam) {
+    setSyncedCategoryParam(categoryParam)
+    const nextCategory = resolveCategoryFilter(categoryParam, categories)
+    if (filters.category !== nextCategory) {
+      setFilters((current) => ({ ...current, category: nextCategory }))
+    }
+  }
+
   const filteredProblems = filterPracticeProblems(practiceProblems, filters)
   const totalCount = practiceProblems.length
 
@@ -82,6 +109,17 @@ export function PracticePage() {
               {totalCount} {totalCount === 1 ? 'problem' : 'problems'}
             </Badge>
             <Badge variant="muted">Session-only completion</Badge>
+            <Link
+              to="/practice/dashboard"
+              className={cn(
+                'inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium',
+                'border border-border bg-surface text-foreground shadow-sm transition-theme',
+                'hover:bg-muted',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              )}
+            >
+              Learning dashboard
+            </Link>
           </div>
         </header>
 
@@ -135,6 +173,8 @@ export function PracticePage() {
                   <PracticeProblemCard
                     problem={problem}
                     completed={isCompleted(problem.slug)}
+                    attempted={isAttempted(problem.slug)}
+                    validationAvailable={isValidationSupported(problem.slug)}
                   />
                 </li>
               ))}
@@ -160,6 +200,13 @@ export function PracticePage() {
               className="font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Searching hub
+            </Link>
+            . Track session progress on your{' '}
+            <Link
+              to="/practice/dashboard"
+              className="font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              learning dashboard
             </Link>
             .
           </p>

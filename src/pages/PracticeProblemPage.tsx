@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
   PracticeDifficultyBadge,
@@ -57,11 +58,18 @@ function PracticeProblemNotFound({ slug }: { slug?: string }) {
 export function PracticeProblemPage() {
   const { slug } = useParams<{ slug: string }>()
   const problem = slug ? getPracticeProblem(slug) : undefined
-  const { isCompleted, toggleCompleted } = usePracticeCompletion()
+  const { isCompleted, toggleCompleted, recordAnswerCheck, recordVisit } =
+    usePracticeCompletion()
   const { ref, isInView } = useInView<HTMLDivElement>({
     threshold: 0,
     rootMargin: '0px',
   })
+
+  useEffect(() => {
+    if (slug && getPracticeProblem(slug)) {
+      recordVisit(slug)
+    }
+  }, [slug, recordVisit])
 
   if (!problem) {
     return <PracticeProblemNotFound slug={slug} />
@@ -178,7 +186,10 @@ export function PracticeProblemPage() {
           </section>
 
           <div className="section-reveal-item">
-            <PracticeTestCases problem={problem} />
+            <PracticeTestCases
+              problem={problem}
+              onCandidateAnswerCheck={recordAnswerCheck}
+            />
           </div>
 
           <section
@@ -317,12 +328,18 @@ export function PracticeProblemPage() {
               ) : null}
             </div>
 
-            <div className="mt-4">
+            <div className="mt-4 flex flex-wrap gap-4">
               <Link
                 to="/practice"
                 className="text-sm font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 ← Back to practice library
+              </Link>
+              <Link
+                to="/practice/dashboard"
+                className="text-sm font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                Learning dashboard
               </Link>
             </div>
           </nav>
