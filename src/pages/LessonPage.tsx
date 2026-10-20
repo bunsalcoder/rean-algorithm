@@ -274,7 +274,7 @@ export function LessonPage() {
               </div>
 
               <div className="section-reveal-item">
-                <RelatedPractice />
+                <RelatedPractice lessonSlug={lesson.slug} />
               </div>
 
               <div className="section-reveal-item">

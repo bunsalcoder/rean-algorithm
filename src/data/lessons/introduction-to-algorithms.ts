@@ -119,7 +119,7 @@ console.log(solveProblem([1, 2, 3]));`,
 
   whenNotToUse: [
     'You already need a production-ready implementation of a specific algorithm',
-    'You are looking for interactive practice problems (coming in a later step)',
+    'You want graded submissions or an online judge (this project stays educational and static)',
     'You need deep Big O proofs — those belong in dedicated complexity lessons',
   ],
 
