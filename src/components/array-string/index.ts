@@ -1,5 +1,8 @@
 export { ArrayStringAlgorithmCard } from './ArrayStringAlgorithmCard'
+export { ArrayStringComparisonTable } from './ArrayStringComparisonTable'
+export { ArrayStringComplexityExplorer } from './ArrayStringComplexityExplorer'
 export { ArrayStringConceptCards } from './ArrayStringConceptCards'
 export { ArrayStringHero } from './ArrayStringHero'
 export { ArrayStringLearningPath } from './ArrayStringLearningPath'
 export { ArrayStringMiniDemo } from './ArrayStringMiniDemo'
+export { ArrayStringPatternSelector } from './ArrayStringPatternSelector'

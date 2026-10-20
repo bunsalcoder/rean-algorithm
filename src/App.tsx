@@ -5,6 +5,7 @@ import { AboutPage } from './pages/AboutPage'
 import { AlgorithmCategoryPage } from './pages/AlgorithmCategoryPage'
 import { AlgorithmsPage } from './pages/AlgorithmsPage'
 import { ArrayStringAlgorithmsPage } from './pages/ArrayStringAlgorithmsPage'
+import { ArrayStringComparisonPage } from './pages/ArrayStringComparisonPage'
 import { DataStructuresPage } from './pages/DataStructuresPage'
 import { HomePage } from './pages/HomePage'
 import { LessonPage } from './pages/LessonPage'
@@ -70,6 +71,10 @@ function App() {
           <Route
             path="/algorithms/array-string"
             element={<ArrayStringAlgorithmsPage />}
+          />
+          <Route
+            path="/algorithms/array-string/comparison"
+            element={<ArrayStringComparisonPage />}
           />
           <Route
             path="/algorithms/tree-graph"

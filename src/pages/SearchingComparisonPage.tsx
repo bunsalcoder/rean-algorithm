@@ -607,7 +607,7 @@ export function SearchingComparisonPage() {
             </Link>
 
             <Link
-              to="/algorithms/array-string"
+              to="/algorithms/array-string/comparison"
               className={cn(
                 'group flex flex-col gap-1 rounded-xl border border-border bg-surface p-4 shadow-sm items-end text-right',
                 'transition-all duration-300 ease-out motion-reduce:transition-none',
@@ -620,7 +620,7 @@ export function SearchingComparisonPage() {
                 <ArrowRightIcon className="size-3.5 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" />
               </span>
               <span className="text-sm font-medium text-foreground sm:text-base">
-                Array &amp; String Algorithms
+                Array &amp; String Comparison
               </span>
             </Link>
           </div>
