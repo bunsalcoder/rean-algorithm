@@ -43,6 +43,18 @@ export function ArrayStringHero({ className }: ArrayStringHeroProps) {
           >
             Start with Two Pointers →
           </Link>
+          <Link
+            to="/algorithms/array-string/comparison"
+            className={cn(
+              'inline-flex h-11 w-full items-center justify-center gap-2 rounded-md px-5 text-base font-medium',
+              'border border-border bg-surface text-foreground shadow-sm transition-theme hover:bg-muted',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+              'sm:w-auto',
+            )}
+          >
+            Compare Patterns →
+          </Link>
         </div>
       </div>
 
