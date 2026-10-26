@@ -363,6 +363,17 @@ export const algorithms: AlgorithmItem[] = [
     difficulty: 'Beginner',
     status: 'available',
   },
+  {
+    id: 'doubly-linked-list',
+    title: 'Doubly Linked List',
+    description:
+      'Use prev and next references for bidirectional traversal, insertion, and deletion.',
+    href: '/learn/doubly-linked-list',
+    lessonSlug: 'doubly-linked-list',
+    categoryId: 'linked-list',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
 ]
 
 const algorithmsByCategory = new Map<AlgorithmCategoryId, AlgorithmItem[]>()

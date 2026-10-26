@@ -34,6 +34,7 @@ export type LessonVisualizationType =
   | 'quick-sort'
   | 'heap-sort'
   | 'singly-linked-list'
+  | 'doubly-linked-list'
 
 export type LessonVisualization = {
   title: string
