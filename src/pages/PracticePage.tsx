@@ -193,13 +193,20 @@ export function PracticePage() {
               className="font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Array &amp; String hub
-            </Link>{' '}
-            or the{' '}
+            </Link>
+            , the{' '}
             <Link
               to="/algorithms/searching"
               className="font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Searching hub
+            </Link>
+            , or the full{' '}
+            <Link
+              to="/roadmap"
+              className="font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              learning roadmap
             </Link>
             . Track session progress on your{' '}
             <Link

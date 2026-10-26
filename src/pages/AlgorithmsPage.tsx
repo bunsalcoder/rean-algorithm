@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { algorithmCategoryMeta } from '../data/algorithms'
 import { CategoryIcon } from '../components/home/CategoryIcon'
 import { categoryAccentStyles } from '../components/home/categoryAccentStyles'
+import { LearningJourneyLinks } from '../components/learning'
 import { Container, Section } from '../components/ui'
 import { useInView } from '../hooks/useInView'
 import { cn } from '../lib/cn'
@@ -34,6 +35,9 @@ export function AlgorithmsPage() {
             Browse algorithm categories and open interactive lessons. Start with
             Searching for Binary Search, or Sorting for Bubble Sort.
           </p>
+          <div className="mt-5">
+            <LearningJourneyLinks />
+          </div>
         </div>
 
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">

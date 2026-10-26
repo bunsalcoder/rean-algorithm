@@ -163,6 +163,7 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
     { id: 'when-not-to-use', label: 'When Not to Use' },
     { id: 'key-takeaways', label: 'Key Takeaways' },
     { id: 'related-practice', label: 'Practice' },
+    { id: 'learning-path', label: 'Learning Path' },
   )
 
   return items

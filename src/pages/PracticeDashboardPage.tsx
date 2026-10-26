@@ -11,8 +11,38 @@ import {
   practiceProblems,
   recommendNextPracticeProblem,
 } from '../data/practice'
+import {
+  getRecentPracticeSlugFromActivity,
+  recommendNextLearningAction,
+} from '../data/recommendLearning'
 import { useInView } from '../hooks/useInView'
 import { cn } from '../lib/cn'
+
+function learningRecommendationKindLabel(
+  kind:
+    | 'start_lesson'
+    | 'continue_lesson'
+    | 'practice_problem'
+    | 'review_prerequisite'
+    | 'explore_comparison',
+): string {
+  switch (kind) {
+    case 'start_lesson':
+      return 'Start a lesson'
+    case 'continue_lesson':
+      return 'Continue a lesson'
+    case 'practice_problem':
+      return 'Practice a problem'
+    case 'review_prerequisite':
+      return 'Review a prerequisite'
+    case 'explore_comparison':
+      return 'Explore a comparison'
+    default: {
+      const _exhaustive: never = kind
+      return _exhaustive
+    }
+  }
+}
 
 function formatEventTime(at: number): string {
   try {
@@ -46,7 +76,14 @@ export function PracticeDashboardPage() {
     practiceProblems,
     completedSlugs,
   )
+  const learningRecommendation = recommendNextLearningAction({
+    completedPracticeSlugs: completedSlugs,
+    recentPracticeSlug: getRecentPracticeSlugFromActivity(recentActivity),
+  })
   const validationBySlug = getValidationAvailability(practiceProblems)
+  const completedSessionItems = practiceProblems.filter((problem) =>
+    completedSlugs.has(problem.slug),
+  )
 
   const handleResetSession = () => {
     const confirmed = window.confirm(
@@ -211,6 +248,100 @@ export function PracticeDashboardPage() {
 
         <section
           className="mt-10 section-reveal-item sm:mt-12"
+          style={{ transitionDelay: '110ms' }}
+          aria-labelledby="dashboard-learning-path-heading"
+        >
+          <h2
+            id="dashboard-learning-path-heading"
+            className="text-xl font-medium text-foreground sm:text-2xl"
+          >
+            Learning path
+          </h2>
+          <p className="mt-2 max-w-2xl text-body-sm text-muted-foreground">
+            Recommendation based on available content and current-session
+            activity — not performance analysis or AI personalization.
+          </p>
+
+          {learningRecommendation.status === 'empty' ? (
+            <Card className="mt-4 space-y-2 p-5 sm:p-6" role="status">
+              <p className="text-body text-foreground">
+                {learningRecommendation.reason}
+              </p>
+            </Card>
+          ) : (
+            <Card className="mt-4 space-y-4 p-5 sm:p-6">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="primary">
+                  {learningRecommendationKindLabel(learningRecommendation.kind)}
+                </Badge>
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-foreground">
+                  {learningRecommendation.title}
+                </h3>
+                <p className="mt-2 text-body-sm text-muted-foreground">
+                  {learningRecommendation.reason}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to={learningRecommendation.href}
+                  className={cn(
+                    'inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-medium',
+                    'bg-primary text-primary-foreground shadow-sm transition-theme',
+                    'hover:bg-primary-hover',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  )}
+                >
+                  Continue
+                </Link>
+                <Link
+                  to="/roadmap"
+                  className={cn(
+                    'inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-medium',
+                    'border border-border bg-surface text-foreground shadow-sm transition-theme',
+                    'hover:bg-muted',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  )}
+                >
+                  Full roadmap
+                </Link>
+              </div>
+
+              {completedSessionItems.length > 0 ? (
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    Completed this session
+                  </p>
+                  <ul className="mt-2 flex flex-wrap gap-2">
+                    {completedSessionItems.slice(0, 6).map((problem) => (
+                      <li key={problem.slug}>
+                        <Link
+                          to={`/practice/${problem.slug}`}
+                          className="inline-flex rounded-md border border-border-subtle bg-muted/50 px-2.5 py-1 text-xs font-medium text-foreground transition-theme hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          {problem.title}
+                        </Link>
+                      </li>
+                    ))}
+                    {completedSessionItems.length > 6 ? (
+                      <li className="px-1 py-1 text-xs text-muted-foreground">
+                        +{completedSessionItems.length - 6} more
+                      </li>
+                    ) : null}
+                  </ul>
+                </div>
+              ) : (
+                <p className="text-body-sm text-muted-foreground">
+                  No practice problems marked complete in this session yet.
+                </p>
+              )}
+            </Card>
+          )}
+        </section>
+
+        <section
+          className="mt-10 section-reveal-item sm:mt-12"
           style={{ transitionDelay: '120ms' }}
           aria-labelledby="dashboard-continue-heading"
         >
@@ -218,7 +349,7 @@ export function PracticeDashboardPage() {
             id="dashboard-continue-heading"
             className="text-xl font-medium text-foreground sm:text-2xl"
           >
-            Continue learning
+            Continue practice
           </h2>
 
           {recommendation.status === 'empty' ? (

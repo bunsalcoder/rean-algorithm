@@ -4,6 +4,7 @@ import {
   ArrayStringComplexityExplorer,
   ArrayStringPatternSelector,
 } from '../components/array-string'
+import { LearningJourneyLinks } from '../components/learning'
 import { Badge, Card, Container, Section } from '../components/ui'
 import {
   arrayStringDecisionCards,
@@ -455,6 +456,10 @@ export function ArrayStringComparisonPage() {
             >
               ← Back to Array &amp; String Algorithms
             </Link>
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            <LearningJourneyLinks compact />
           </div>
         </nav>
       </Container>
