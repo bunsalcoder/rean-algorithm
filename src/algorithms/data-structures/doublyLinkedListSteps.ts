@@ -745,19 +745,6 @@ function buildInsertEndSteps(
   return steps
 }
 
-function findFirstNodeIdByValue(
-  snapshot: DoublyLinkedListSnapshot,
-  target: number,
-): string | null {
-  for (const nodeId of snapshotNodeOrder(snapshot)) {
-    const node = snapshot.nodes.find((n) => n.id === nodeId)
-    if (node && node.value === target) {
-      return nodeId
-    }
-  }
-  return null
-}
-
 function buildSearchForTargetSteps(
   steps: VisualizationStep[],
   initial: DoublyLinkedListSnapshot,
