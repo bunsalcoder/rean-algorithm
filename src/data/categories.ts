@@ -56,7 +56,7 @@ export const algorithmCategories: AlgorithmCategory[] = [
     title: 'Linked List',
     description: 'Understand and solve linked list problems.',
     count: 6,
-    href: '/data-structures/linked-list',
+    href: '/learn/singly-linked-list',
     icon: 'linked-list',
     accent: 'orange',
   },

@@ -62,7 +62,7 @@ export const algorithmCategoryMeta: AlgorithmCategoryMeta[] = [
     id: 'linked-list',
     title: 'Linked List',
     description: 'Understand pointer-based list structures and patterns.',
-    href: '/data-structures/linked-list',
+    href: '/learn/singly-linked-list',
     icon: 'linked-list',
     accent: 'orange',
   },
@@ -350,6 +350,17 @@ export const algorithms: AlgorithmItem[] = [
     lessonSlug: 'rotate-array',
     categoryId: 'array-string',
     difficulty: 'Intermediate',
+    status: 'available',
+  },
+  {
+    id: 'singly-linked-list',
+    title: 'Singly Linked List',
+    description:
+      'Walk nodes and next references through traversal, insertion, and deletion.',
+    href: '/learn/singly-linked-list',
+    lessonSlug: 'singly-linked-list',
+    categoryId: 'linked-list',
+    difficulty: 'Beginner',
     status: 'available',
   },
 ]
