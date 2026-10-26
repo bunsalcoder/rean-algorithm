@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { LearningJourneyLinks } from '../components/learning'
 import {
   SearchingAlgorithmPairComparison,
   SearchingComparisonHero,
@@ -640,6 +641,10 @@ export function SearchingComparisonPage() {
             >
               ← Back to Searching Algorithms
             </Link>
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            <LearningJourneyLinks compact />
           </div>
         </nav>
       </Container>

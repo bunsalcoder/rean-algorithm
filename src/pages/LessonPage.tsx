@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { AlgorithmList } from '../components/algorithms/AlgorithmList'
+import { LessonLearningPath } from '../components/learning'
 import {
   LessonAlgorithmConnection,
   LessonBubbleConcept,
@@ -275,6 +276,10 @@ export function LessonPage() {
 
               <div className="section-reveal-item">
                 <RelatedPractice lessonSlug={lesson.slug} />
+              </div>
+
+              <div className="section-reveal-item">
+                <LessonLearningPath lessonSlug={lesson.slug} />
               </div>
 
               <div className="section-reveal-item">

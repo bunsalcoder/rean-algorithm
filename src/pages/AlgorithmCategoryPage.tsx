@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { AlgorithmList } from '../components/algorithms/AlgorithmList'
 import { CategoryIcon } from '../components/home/CategoryIcon'
 import { categoryAccentStyles } from '../components/home/categoryAccentStyles'
+import { LearningJourneyLinks } from '../components/learning'
 import { Container, Section } from '../components/ui'
 import {
   getAlgorithmCategory,
@@ -147,6 +148,13 @@ export function AlgorithmCategoryPage({
           <div className="mt-6 max-w-2xl">
             <AlgorithmList algorithms={algorithms} />
           </div>
+        </div>
+
+        <div
+          className="mt-10 max-w-2xl section-reveal-item sm:mt-12"
+          style={{ transitionDelay: '160ms' }}
+        >
+          <LearningJourneyLinks compact />
         </div>
       </Container>
     </Section>

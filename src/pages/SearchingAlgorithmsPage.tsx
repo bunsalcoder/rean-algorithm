@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { LearningJourneyLinks } from '../components/learning'
 import {
   SearchComparison,
   SearchConcepts,
@@ -501,6 +502,10 @@ export function SearchingAlgorithmsPage() {
             })}
           </ol>
         </section>
+
+        <div className="mt-10 section-reveal-item sm:mt-12">
+          <LearningJourneyLinks compact />
+        </div>
       </Container>
     </Section>
   )

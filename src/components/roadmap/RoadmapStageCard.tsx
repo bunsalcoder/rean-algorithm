@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom'
 import {
+  getAvailableLessonsForStage,
+  getAvailablePracticeForStage,
+  getStageLearningContent,
+  getStageStartAction,
+  stageHasAvailableContent,
+} from '../../data/learningPath'
+import {
   getStageActionLabel,
   getStageStatusLabel,
   type RoadmapStage,
@@ -11,6 +18,8 @@ import { RoadmapIcon } from './RoadmapIcon'
 import { roadmapAccentStyles } from './roadmapAccentStyles'
 
 const TOPIC_PREVIEW_COUNT = 4
+const LESSON_PREVIEW_COUNT = 4
+const PRACTICE_PREVIEW_COUNT = 3
 
 type RoadmapStageCardProps = {
   stage: RoadmapStage
@@ -63,8 +72,21 @@ export function RoadmapStageCard({
   const alignRight = index % 2 === 1
   const previewTopics = stage.topics.slice(0, TOPIC_PREVIEW_COUNT)
   const remainingTopics = stage.topics.length - previewTopics.length
-  const actionLabel = getStageActionLabel(stage.status)
   const statusLabel = getStageStatusLabel(stage.status)
+
+  const hasContent = stageHasAvailableContent(stage.id)
+  const lessons = getAvailableLessonsForStage(stage.id)
+  const practice = getAvailablePracticeForStage(stage.id)
+  const stageContent = getStageLearningContent(stage.id)
+  const startAction = getStageStartAction(stage.id)
+  const actionLabel = hasContent
+    ? getStageActionLabel(stage.status)
+    : 'Coming Soon'
+
+  const previewLessons = lessons.slice(0, LESSON_PREVIEW_COUNT)
+  const remainingLessons = lessons.length - previewLessons.length
+  const previewPractice = practice.slice(0, PRACTICE_PREVIEW_COUNT)
+  const remainingPractice = practice.length - previewPractice.length
 
   return (
     <li
@@ -93,11 +115,10 @@ export function RoadmapStageCard({
             'absolute left-1/2 top-8 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full',
             'ring-4 ring-background transition-all duration-300',
             accent.node,
-            'group-hover:scale-125 group-hover:ring-[6px]',
-            accent.nodeRing,
+            hasContent && 'group-hover:scale-125 group-hover:ring-[6px]',
+            hasContent && accent.nodeRing,
           )}
         />
-        {/* Desktop branch toward the card */}
         <div
           className={cn(
             'absolute top-8 hidden h-px w-6 -translate-y-1/2 bg-border transition-colors duration-300 lg:block',
@@ -114,17 +135,15 @@ export function RoadmapStageCard({
           alignRight && 'lg:[&>*]:col-start-2',
         )}
       >
-        <Link
-          to={stage.href}
+        <article
           className={cn(
             'relative flex min-w-0 flex-col overflow-hidden rounded-xl',
             'border border-border bg-surface p-5 shadow-sm sm:p-6',
             'transition-all duration-300 ease-out',
-            'hover:-translate-y-1',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-            'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-            accent.hoverBorder,
-            accent.hoverShadow,
+            hasContent && 'hover:-translate-y-1',
+            hasContent && accent.hoverBorder,
+            hasContent && accent.hoverShadow,
+            !hasContent && 'opacity-90',
             alignRight ? 'lg:ml-6 xl:ml-8' : 'lg:mr-6 xl:mr-8',
           )}
         >
@@ -163,14 +182,6 @@ export function RoadmapStageCard({
                 </h3>
               </div>
             </div>
-
-            <ArrowIcon
-              className={cn(
-                'mt-1 size-4 shrink-0 text-muted-foreground',
-                'transition-transform duration-300 ease-out',
-                'group-hover:translate-x-1 group-hover:text-foreground',
-              )}
-            />
           </div>
 
           <p className="relative mt-3 text-body-sm text-muted-foreground">
@@ -187,9 +198,18 @@ export function RoadmapStageCard({
                 accent.status,
               )}
             >
-              <StatusDot status={stage.status} />
-              {statusLabel}
+              <StatusDot status={hasContent ? stage.status : 'not-started'} />
+              {hasContent ? statusLabel : 'Coming Soon'}
             </span>
+            {hasContent ? (
+              <span className="text-xs text-muted-foreground">
+                {lessons.length}{' '}
+                {lessons.length === 1 ? 'lesson' : 'lessons'}
+                {practice.length > 0
+                  ? ` · ${practice.length} practice`
+                  : null}
+              </span>
+            ) : null}
           </div>
 
           <ul className="relative mt-4 flex flex-wrap gap-2">
@@ -208,19 +228,110 @@ export function RoadmapStageCard({
             ) : null}
           </ul>
 
-          <span
-            className={cn(
-              'relative mt-5 inline-flex w-fit items-center gap-1.5',
-              'rounded-md bg-primary px-3.5 py-2 text-sm font-medium',
-              'text-primary-foreground shadow-sm',
-              'transition-transform duration-300 ease-out',
-              'group-hover:translate-x-0.5',
-            )}
-          >
-            {actionLabel}
-            <ArrowIcon className="size-3.5" />
-          </span>
-        </Link>
+          {hasContent ? (
+            <div className="relative mt-4 space-y-3">
+              {previewLessons.length > 0 ? (
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    Available lessons
+                  </p>
+                  <ul className="mt-1.5 flex flex-wrap gap-1.5">
+                    {previewLessons.map((lesson) => (
+                      <li key={lesson.slug}>
+                        <Link
+                          to={lesson.href}
+                          className={cn(
+                            'inline-flex rounded-md border border-border-subtle bg-background px-2.5 py-1 text-xs font-medium text-foreground',
+                            'transition-theme hover:border-primary/40 hover:text-primary',
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                          )}
+                        >
+                          {lesson.title}
+                        </Link>
+                      </li>
+                    ))}
+                    {remainingLessons > 0 ? (
+                      <li className="inline-flex px-1 py-1 text-xs text-muted-foreground">
+                        +{remainingLessons} more
+                      </li>
+                    ) : null}
+                  </ul>
+                </div>
+              ) : null}
+
+              {previewPractice.length > 0 ? (
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    Related practice
+                  </p>
+                  <ul className="mt-1.5 flex flex-wrap gap-1.5">
+                    {previewPractice.map((problem) => (
+                      <li key={problem.slug}>
+                        <Link
+                          to={problem.href}
+                          className={cn(
+                            'inline-flex rounded-md border border-border-subtle bg-background px-2.5 py-1 text-xs font-medium text-foreground',
+                            'transition-theme hover:border-primary/40 hover:text-primary',
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                          )}
+                        >
+                          {problem.title}
+                        </Link>
+                      </li>
+                    ))}
+                    {remainingPractice > 0 ? (
+                      <li className="inline-flex px-1 py-1 text-xs text-muted-foreground">
+                        +{remainingPractice} more
+                      </li>
+                    ) : null}
+                  </ul>
+                </div>
+              ) : null}
+
+              {stageContent?.hubHref ? (
+                <Link
+                  to={stageContent.hubHref}
+                  className="inline-flex text-xs font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Open topic hub →
+                </Link>
+              ) : null}
+            </div>
+          ) : (
+            <p className="relative mt-4 text-body-sm text-muted-foreground">
+              Lessons for this stage are not available yet. Explore an earlier
+              stage with available content, or check back later.
+            </p>
+          )}
+
+          {hasContent && startAction ? (
+            <Link
+              to={startAction.href}
+              className={cn(
+                'relative mt-5 inline-flex w-fit items-center gap-1.5',
+                'rounded-md bg-primary px-3.5 py-2 text-sm font-medium',
+                'text-primary-foreground shadow-sm',
+                'transition-transform duration-300 ease-out',
+                'hover:translate-x-0.5',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                'focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+              )}
+            >
+              {actionLabel}
+              <ArrowIcon className="size-3.5" />
+            </Link>
+          ) : (
+            <span
+              className={cn(
+                'relative mt-5 inline-flex w-fit items-center gap-1.5',
+                'rounded-md border border-border bg-muted/60 px-3.5 py-2 text-sm font-medium',
+                'text-muted-foreground',
+              )}
+            >
+              {actionLabel}
+            </span>
+          )}
+        </article>
       </div>
     </li>
   )

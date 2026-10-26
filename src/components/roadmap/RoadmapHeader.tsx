@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useInView } from '../../hooks/useInView'
 import { cn } from '../../lib/cn'
 import { Container, Section } from '../ui'
@@ -32,8 +33,21 @@ export function RoadmapHeader() {
           style={{ transitionDelay: '80ms' }}
         >
           Follow a structured path from programming fundamentals to advanced
-          algorithms. Learn each concept step by step and build your
-          problem-solving skills along the way.
+          algorithms. Stages link to lessons and practice that already exist —
+          coming-soon stages stay honest until content ships.
+        </p>
+        <p
+          className="section-reveal-item mx-auto mt-3 max-w-xl text-body-sm text-muted-foreground"
+          style={{ transitionDelay: '100ms' }}
+        >
+          Track session practice on your{' '}
+          <Link
+            to="/practice/dashboard"
+            className="font-medium text-primary transition-theme hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            learning dashboard
+          </Link>
+          .
         </p>
       </Container>
     </Section>

@@ -6,6 +6,7 @@ import {
   ArrayStringLearningPath,
   ArrayStringMiniDemo,
 } from '../components/array-string'
+import { LearningJourneyLinks } from '../components/learning'
 import { Card, Container, Section } from '../components/ui'
 import {
   ARRAY_EXAMPLE,
@@ -493,6 +494,10 @@ export function ArrayStringAlgorithmsPage() {
             </Link>
           </div>
         </section>
+
+        <div className="mt-10 section-reveal-item sm:mt-12">
+          <LearningJourneyLinks compact />
+        </div>
       </Container>
     </Section>
   )

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { LearningJourneyLinks } from '../components/learning'
 import {
   AlgorithmPairComparison,
   AlgorithmSelector,
@@ -304,7 +305,7 @@ export function SortingComparisonPage() {
             ))}
           </ul>
 
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <Link
               to="/algorithms/sorting"
               className={cn(
@@ -315,6 +316,7 @@ export function SortingComparisonPage() {
             >
               ← Back to Sorting Algorithms
             </Link>
+            <LearningJourneyLinks compact />
           </div>
         </section>
       </Container>
