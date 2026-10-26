@@ -143,7 +143,9 @@ export const dataStructures: DataStructure[] = [
     ],
     complexityNote:
       'Traversal and search are O(n). Random access by position is O(n) because you walk links. Local splice operations can be O(1) with a node reference.',
-    availability: 'coming-soon',
+    availability: 'available',
+    href: '/learn/singly-linked-list',
+    hrefLabel: 'Learn singly linked lists',
     accent: 'orange',
   },
   {
@@ -519,7 +521,8 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     title: 'Linked Lists',
     description:
       'Walk node-based linking, traversal, and when pointer updates beat array shifts.',
-    availability: 'coming-soon',
+    availability: 'available',
+    href: '/learn/singly-linked-list',
   },
   {
     id: 'stacks-queues',

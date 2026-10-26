@@ -33,6 +33,7 @@ export type LessonVisualizationType =
   | 'merge-sort'
   | 'quick-sort'
   | 'heap-sort'
+  | 'singly-linked-list'
 
 export type LessonVisualization = {
   title: string

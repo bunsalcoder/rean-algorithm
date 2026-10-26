@@ -19,6 +19,7 @@ import { twoPointers } from './two-pointers'
 import { groupAnagrams } from './group-anagrams'
 import { stringCompression } from './string-compression'
 import { rotateArray } from './rotate-array'
+import { singlyLinkedList } from './singly-linked-list'
 import { validAnagram } from './valid-anagram'
 import type { Lesson, LessonTocItem } from './types'
 
@@ -66,6 +67,7 @@ export const lessons: Lesson[] = [
   mergeSort,
   quickSort,
   heapSort,
+  singlyLinkedList,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))

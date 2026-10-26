@@ -21,6 +21,7 @@ import { RotateArrayVisualization } from '../visualizations/RotateArrayVisualiza
 import { ValidAnagramVisualization } from '../visualizations/ValidAnagramVisualization'
 import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
+import { SinglyLinkedListVisualization } from '../visualizations/SinglyLinkedListVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
 type LessonVisualizationProps = {
@@ -185,6 +186,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <HeapSortVisualization />
   }
 
+  if (visualization.type === 'singly-linked-list') {
+    return <SinglyLinkedListVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -212,7 +217,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'insertion-sort' ||
     visualization.type === 'merge-sort' ||
     visualization.type === 'quick-sort' ||
-    visualization.type === 'heap-sort'
+    visualization.type === 'heap-sort' ||
+    visualization.type === 'singly-linked-list'
 
   return (
     <LessonSection id="visualization">

@@ -66,6 +66,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'merge-sort',
   'quick-sort',
   'heap-sort',
+  'singly-linked-list',
 ] as const
 
 /**
@@ -200,8 +201,9 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'linked-lists',
-    lessonSlugs: [],
+    lessonSlugs: ['singly-linked-list'],
     practiceSlugs: [],
+    hubHref: '/data-structures',
   },
   {
     stageId: 'stack-queue',

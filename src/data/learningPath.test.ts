@@ -149,7 +149,10 @@ describe('learning path content integrity', () => {
     expect(getStageStartAction('complexity')).toBeUndefined()
     expect(getAvailableLessonsForStage('complexity')).toEqual([])
 
-    expect(stageHasAvailableContent('linked-lists')).toBe(false)
+    expect(stageHasAvailableContent('linked-lists')).toBe(true)
+    expect(getStageStartAction('linked-lists')?.href).toBe(
+      '/learn/singly-linked-list',
+    )
     expect(stageHasAvailableContent('searching')).toBe(true)
     expect(getStageStartAction('searching')?.href).toBe('/learn/linear-search')
   })
@@ -159,7 +162,8 @@ describe('learning path content integrity', () => {
       'introduction-to-algorithms',
     )
     expect(getNextLessonInOrder('linear-search')?.slug).toBe('binary-search')
-    expect(getNextLessonInOrder('heap-sort')).toBeUndefined()
+    expect(getNextLessonInOrder('heap-sort')?.slug).toBe('singly-linked-list')
+    expect(getNextLessonInOrder('singly-linked-list')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -285,18 +289,35 @@ describe('recommendNextLearningAction', () => {
     expect(result.status).toBe('recommend')
   })
 
-  it('recommends a comparison after the last lesson in order', () => {
-    const result = recommendNextLearningAction({
+  it('recommends the next lesson after heap-sort, and handles the end of the order', () => {
+    const afterHeap = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'heap-sort',
     })
+    expect(afterHeap.status).toBe('recommend')
+    if (afterHeap.status === 'recommend') {
+      expect(afterHeap.kind).toBe('continue_lesson')
+      expect(afterHeap.href).toBe('/learn/singly-linked-list')
+    }
 
-    expect(result.status).toBe('recommend')
-    if (result.status !== 'recommend') {
+    // Sorting comparison still surfaces when focused on the last sorting lesson
+    // with no further sorting content (via getComparisonForLesson fallback path
+    // is covered indirectly: heap-sort now continues to linked lists first).
+    expect(getComparisonForLesson('heap-sort')?.href).toBe(
+      '/algorithms/sorting/comparison',
+    )
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'singly-linked-list',
+    })
+    expect(atEnd.status).toBe('recommend')
+    if (atEnd.status !== 'recommend') {
       return
     }
-    expect(result.kind).toBe('explore_comparison')
-    expect(result.href).toBe('/algorithms/sorting/comparison')
+    // No next lesson and no linked-list comparison page — cold-start fallback.
+    expect(atEnd.kind).toBe('start_lesson')
+    expect(atEnd.href).toBe('/learn/introduction-to-algorithms')
   })
 
   it('treats prerequisites as review guidance when their practice is incomplete', () => {
