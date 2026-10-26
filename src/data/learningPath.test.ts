@@ -163,7 +163,10 @@ describe('learning path content integrity', () => {
     )
     expect(getNextLessonInOrder('linear-search')?.slug).toBe('binary-search')
     expect(getNextLessonInOrder('heap-sort')?.slug).toBe('singly-linked-list')
-    expect(getNextLessonInOrder('singly-linked-list')).toBeUndefined()
+    expect(getNextLessonInOrder('singly-linked-list')?.slug).toBe(
+      'doubly-linked-list',
+    )
+    expect(getNextLessonInOrder('doubly-linked-list')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -307,9 +310,19 @@ describe('recommendNextLearningAction', () => {
       '/algorithms/sorting/comparison',
     )
 
-    const atEnd = recommendNextLearningAction({
+    const afterSingly = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'singly-linked-list',
+    })
+    expect(afterSingly.status).toBe('recommend')
+    if (afterSingly.status === 'recommend') {
+      expect(afterSingly.kind).toBe('continue_lesson')
+      expect(afterSingly.href).toBe('/learn/doubly-linked-list')
+    }
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'doubly-linked-list',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {

@@ -457,8 +457,8 @@ console.log(listToArray(head)) // [5, 10, 30, 40]`,
   },
 
   nextLesson: {
-    title: 'Learning Roadmap',
-    href: '/roadmap',
+    title: 'Doubly Linked List',
+    href: '/learn/doubly-linked-list',
   },
 
   categoryHref: '/data-structures',

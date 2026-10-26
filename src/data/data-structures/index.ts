@@ -145,7 +145,7 @@ export const dataStructures: DataStructure[] = [
       'Traversal and search are O(n). Random access by position is O(n) because you walk links. Local splice operations can be O(1) with a node reference.',
     availability: 'available',
     href: '/learn/singly-linked-list',
-    hrefLabel: 'Learn singly linked lists',
+    hrefLabel: 'Learn linked lists',
     accent: 'orange',
   },
   {

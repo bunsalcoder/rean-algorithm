@@ -107,6 +107,7 @@ describe('data structures catalog', () => {
     expect(getLesson('frequency-counting')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
+    expect(getLesson('doubly-linked-list')).toBeDefined()
   })
 
   it('documents accurate complexity assumptions for arrays and hash tables', () => {

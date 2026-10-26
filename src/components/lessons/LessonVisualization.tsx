@@ -21,6 +21,7 @@ import { RotateArrayVisualization } from '../visualizations/RotateArrayVisualiza
 import { ValidAnagramVisualization } from '../visualizations/ValidAnagramVisualization'
 import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisualization'
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
+import { DoublyLinkedListVisualization } from '../visualizations/DoublyLinkedListVisualization'
 import { SinglyLinkedListVisualization } from '../visualizations/SinglyLinkedListVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
@@ -190,6 +191,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <SinglyLinkedListVisualization />
   }
 
+  if (visualization.type === 'doubly-linked-list') {
+    return <DoublyLinkedListVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -218,7 +223,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'merge-sort' ||
     visualization.type === 'quick-sort' ||
     visualization.type === 'heap-sort' ||
-    visualization.type === 'singly-linked-list'
+    visualization.type === 'singly-linked-list' ||
+    visualization.type === 'doubly-linked-list'
 
   return (
     <LessonSection id="visualization">
