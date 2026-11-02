@@ -68,9 +68,16 @@ describe('data structures catalog', () => {
     const comingSoon = getComingSoonDataStructures()
 
     expect(available.map((s) => s.id).sort()).toEqual(
-      ['arrays', 'hash-tables', 'heaps', 'linked-lists', 'stacks'].sort(),
+      [
+        'arrays',
+        'hash-tables',
+        'heaps',
+        'linked-lists',
+        'queues',
+        'stacks',
+      ].sort(),
     )
-    expect(comingSoon.length).toBe(4)
+    expect(comingSoon.length).toBe(3)
 
     for (const structure of available) {
       expect(structure.href).toBeDefined()
@@ -105,11 +112,13 @@ describe('data structures catalog', () => {
       '/learn/singly-linked-list',
     )
     expect(getDataStructureById('stacks')?.href).toBe('/learn/stack')
+    expect(getDataStructureById('queues')?.href).toBe('/learn/queue')
     expect(getLesson('frequency-counting')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
     expect(getLesson('doubly-linked-list')).toBeDefined()
     expect(getLesson('stack')).toBeDefined()
+    expect(getLesson('queue')).toBeDefined()
   })
 
   it('documents accurate complexity assumptions for arrays and hash tables', () => {

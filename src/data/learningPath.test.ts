@@ -167,7 +167,8 @@ describe('learning path content integrity', () => {
       'doubly-linked-list',
     )
     expect(getNextLessonInOrder('doubly-linked-list')?.slug).toBe('stack')
-    expect(getNextLessonInOrder('stack')).toBeUndefined()
+    expect(getNextLessonInOrder('stack')?.slug).toBe('queue')
+    expect(getNextLessonInOrder('queue')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -331,9 +332,19 @@ describe('recommendNextLearningAction', () => {
       expect(afterDoubly.href).toBe('/learn/stack')
     }
 
-    const atEnd = recommendNextLearningAction({
+    const afterStack = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'stack',
+    })
+    expect(afterStack.status).toBe('recommend')
+    if (afterStack.status === 'recommend') {
+      expect(afterStack.kind).toBe('continue_lesson')
+      expect(afterStack.href).toBe('/learn/queue')
+    }
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'queue',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {

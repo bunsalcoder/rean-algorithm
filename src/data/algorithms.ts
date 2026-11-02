@@ -385,6 +385,17 @@ export const algorithms: AlgorithmItem[] = [
     difficulty: 'Beginner',
     status: 'available',
   },
+  {
+    id: 'queue',
+    title: 'Queue',
+    description:
+      'Practice FIFO enqueue, dequeue, front, and rear with underflow handling and complexity notes.',
+    href: '/learn/queue',
+    lessonSlug: 'queue',
+    categoryId: 'stack-queue',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
 ]
 
 const algorithmsByCategory = new Map<AlgorithmCategoryId, AlgorithmItem[]>()

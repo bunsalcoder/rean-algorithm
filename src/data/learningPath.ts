@@ -69,6 +69,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'singly-linked-list',
   'doubly-linked-list',
   'stack',
+  'queue',
 ] as const
 
 /**
@@ -209,7 +210,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'stack-queue',
-    lessonSlugs: ['stack'],
+    lessonSlugs: ['stack', 'queue'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

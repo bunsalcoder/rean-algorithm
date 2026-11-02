@@ -414,8 +414,8 @@ console.log(stack.size()) // 2`,
   },
 
   nextLesson: {
-    title: 'Queue (coming soon)',
-    href: '/roadmap/stack-queue',
+    title: 'Queue',
+    href: '/learn/queue',
   },
 
   categoryHref: '/data-structures',
