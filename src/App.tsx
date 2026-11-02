@@ -99,7 +99,7 @@ function App() {
             />
             <Route
               path="/data-structures/stack-queue"
-              element={<CategoryPlaceholder title="Stack & Queue" />}
+              element={<AlgorithmCategoryPage categoryId="stack-queue" />}
             />
             <Route path="/practice" element={<PracticePage />} />
             <Route

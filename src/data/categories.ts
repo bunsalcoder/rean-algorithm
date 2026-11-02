@@ -64,7 +64,7 @@ export const algorithmCategories: AlgorithmCategory[] = [
     title: 'Stack & Queue',
     description: 'Learn stack and queue based problems and applications.',
     count: 6,
-    href: '/data-structures/stack-queue',
+    href: '/learn/stack',
     icon: 'stack-queue',
     accent: 'pink',
   },

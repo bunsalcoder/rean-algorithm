@@ -162,9 +162,14 @@ export const dataStructures: DataStructure[] = [
       'Depth-first search and balanced-bracket checks',
     ],
     operations: [
-      { name: 'Push', complexity: 'O(1)' },
+      {
+        name: 'Push',
+        complexity: 'O(1) amortized',
+        note: 'Dynamic array append; a single resize can be O(n)',
+      },
       { name: 'Pop', complexity: 'O(1)' },
       { name: 'Peek / top', complexity: 'O(1)' },
+      { name: 'isEmpty / size', complexity: 'O(1)' },
       {
         name: 'Search',
         complexity: 'O(n)',
@@ -182,8 +187,10 @@ export const dataStructures: DataStructure[] = [
       'Can hide deep recursion costs if misused as a call stack stand-in',
     ],
     complexityNote:
-      'Push, pop, and peek are typically O(1) at the top. Searching or indexing into the middle is O(n) and outside the usual stack API.',
-    availability: 'coming-soon',
+      'Push is amortized O(1) on a dynamic array (an individual resize can take O(n)). Pop, peek, isEmpty, and size are O(1). Searching or indexing into the middle is O(n) and outside the usual stack API.',
+    availability: 'available',
+    href: '/learn/stack',
+    hrefLabel: 'Learn stacks',
     accent: 'pink',
   },
   {
@@ -528,8 +535,9 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'stacks-queues',
     title: 'Stacks and Queues',
     description:
-      'Practice LIFO and FIFO thinking for parsing, scheduling, DFS, and BFS.',
-    availability: 'coming-soon',
+      'Practice LIFO with stacks now; FIFO queues are next for scheduling and BFS.',
+    availability: 'available',
+    href: '/learn/stack',
   },
   {
     id: 'hash-tables',
@@ -566,7 +574,6 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
 /** Routes that are placeholders without real learning content—never treat as available. */
 export const PLACEHOLDER_DATA_STRUCTURE_ROUTES = [
   '/data-structures/linked-list',
-  '/data-structures/stack-queue',
   '/algorithms/tree-graph',
 ] as const
 

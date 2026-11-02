@@ -374,6 +374,17 @@ export const algorithms: AlgorithmItem[] = [
     difficulty: 'Beginner',
     status: 'available',
   },
+  {
+    id: 'stack',
+    title: 'Stack',
+    description:
+      'Practice LIFO push, pop, and peek with underflow handling and complexity notes.',
+    href: '/learn/stack',
+    lessonSlug: 'stack',
+    categoryId: 'stack-queue',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
 ]
 
 const algorithmsByCategory = new Map<AlgorithmCategoryId, AlgorithmItem[]>()
