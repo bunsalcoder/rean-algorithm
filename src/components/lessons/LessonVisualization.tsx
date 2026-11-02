@@ -23,6 +23,7 @@ import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisua
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
 import { DoublyLinkedListVisualization } from '../visualizations/DoublyLinkedListVisualization'
 import { SinglyLinkedListVisualization } from '../visualizations/SinglyLinkedListVisualization'
+import { QueueVisualization } from '../visualizations/QueueVisualization'
 import { StackVisualization } from '../visualizations/StackVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
 
@@ -200,6 +201,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <StackVisualization />
   }
 
+  if (visualization.type === 'queue') {
+    return <QueueVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -230,7 +235,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'heap-sort' ||
     visualization.type === 'singly-linked-list' ||
     visualization.type === 'doubly-linked-list' ||
-    visualization.type === 'stack'
+    visualization.type === 'stack' ||
+    visualization.type === 'queue'
 
   return (
     <LessonSection id="visualization">

@@ -36,6 +36,7 @@ export type LessonVisualizationType =
   | 'singly-linked-list'
   | 'doubly-linked-list'
   | 'stack'
+  | 'queue'
 
 export type LessonVisualization = {
   title: string

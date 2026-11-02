@@ -21,6 +21,7 @@ import { stringCompression } from './string-compression'
 import { rotateArray } from './rotate-array'
 import { doublyLinkedList } from './doubly-linked-list'
 import { singlyLinkedList } from './singly-linked-list'
+import { queue } from './queue'
 import { stack } from './stack'
 import { validAnagram } from './valid-anagram'
 import type { Lesson, LessonTocItem } from './types'
@@ -72,6 +73,7 @@ export const lessons: Lesson[] = [
   singlyLinkedList,
   doublyLinkedList,
   stack,
+  queue,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))

@@ -224,7 +224,9 @@ export const dataStructures: DataStructure[] = [
     ],
     complexityNote:
       'With a circular buffer or linked list, enqueue and dequeue are typically O(1). Shifting a plain array from the front is O(n)—implementation matters.',
-    availability: 'coming-soon',
+    availability: 'available',
+    href: '/learn/queue',
+    hrefLabel: 'Learn queues',
     accent: 'pink',
   },
   {
@@ -535,7 +537,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'stacks-queues',
     title: 'Stacks and Queues',
     description:
-      'Practice LIFO with stacks now; FIFO queues are next for scheduling and BFS.',
+      'Practice LIFO stacks and FIFO queues for undo, scheduling, and BFS.',
     availability: 'available',
     href: '/learn/stack',
   },
