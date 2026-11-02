@@ -184,6 +184,11 @@ export const stack: Lesson = {
         description:
           'DFS (explicit stack or recursion) and backtracking push a choice, explore, then pop to restore the previous state.',
       },
+      {
+        title: 'Deque connection',
+        description:
+          'A deque can model a stack by operating on only one end. When you later need both ends, continue through Queue and Circular Queue to the Deque lesson.',
+      },
     ],
   },
 

@@ -22,6 +22,7 @@ import { rotateArray } from './rotate-array'
 import { doublyLinkedList } from './doubly-linked-list'
 import { singlyLinkedList } from './singly-linked-list'
 import { circularQueue } from './circular-queue'
+import { deque } from './deque'
 import { queue } from './queue'
 import { stack } from './stack'
 import { validAnagram } from './valid-anagram'
@@ -76,6 +77,7 @@ export const lessons: Lesson[] = [
   stack,
   queue,
   circularQueue,
+  deque,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))

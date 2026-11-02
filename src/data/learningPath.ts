@@ -71,6 +71,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'stack',
   'queue',
   'circular-queue',
+  'deque',
 ] as const
 
 /**
@@ -135,6 +136,12 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'queue',
     reason:
       'Circular Queue builds on FIFO queue basics with fixed capacity and wraparound.',
+  },
+  {
+    lessonSlug: 'deque',
+    prerequisiteSlug: 'queue',
+    reason:
+      'Deque builds on queue end concepts and extends them to inserts and removes at both ends.',
   },
 ] as const
 
@@ -217,7 +224,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'stack-queue',
-    lessonSlugs: ['stack', 'queue', 'circular-queue'],
+    lessonSlugs: ['stack', 'queue', 'circular-queue', 'deque'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },
