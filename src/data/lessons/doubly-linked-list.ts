@@ -653,8 +653,8 @@ console.log(toArrayReverse(dll))  // [20, 15, 10]`,
   },
 
   nextLesson: {
-    title: 'Learning Roadmap',
-    href: '/roadmap',
+    title: 'Stack',
+    href: '/learn/stack',
   },
 
   categoryHref: '/data-structures',

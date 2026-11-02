@@ -35,6 +35,7 @@ export type LessonVisualizationType =
   | 'heap-sort'
   | 'singly-linked-list'
   | 'doubly-linked-list'
+  | 'stack'
 
 export type LessonVisualization = {
   title: string

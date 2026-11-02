@@ -166,7 +166,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('singly-linked-list')?.slug).toBe(
       'doubly-linked-list',
     )
-    expect(getNextLessonInOrder('doubly-linked-list')).toBeUndefined()
+    expect(getNextLessonInOrder('doubly-linked-list')?.slug).toBe('stack')
+    expect(getNextLessonInOrder('stack')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -320,15 +321,25 @@ describe('recommendNextLearningAction', () => {
       expect(afterSingly.href).toBe('/learn/doubly-linked-list')
     }
 
-    const atEnd = recommendNextLearningAction({
+    const afterDoubly = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'doubly-linked-list',
+    })
+    expect(afterDoubly.status).toBe('recommend')
+    if (afterDoubly.status === 'recommend') {
+      expect(afterDoubly.kind).toBe('continue_lesson')
+      expect(afterDoubly.href).toBe('/learn/stack')
+    }
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'stack',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // No next lesson and no linked-list comparison page — cold-start fallback.
+    // No next lesson and no stack-queue comparison page — cold-start fallback.
     expect(atEnd.kind).toBe('start_lesson')
     expect(atEnd.href).toBe('/learn/introduction-to-algorithms')
   })
