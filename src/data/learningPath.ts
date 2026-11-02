@@ -70,6 +70,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'doubly-linked-list',
   'stack',
   'queue',
+  'circular-queue',
 ] as const
 
 /**
@@ -128,6 +129,12 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'valid-anagram',
     reason:
       'Valid Anagram is a useful warm-up before grouping many anagrams.',
+  },
+  {
+    lessonSlug: 'circular-queue',
+    prerequisiteSlug: 'queue',
+    reason:
+      'Circular Queue builds on FIFO queue basics with fixed capacity and wraparound.',
   },
 ] as const
 
@@ -210,7 +217,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'stack-queue',
-    lessonSlugs: ['stack', 'queue'],
+    lessonSlugs: ['stack', 'queue', 'circular-queue'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

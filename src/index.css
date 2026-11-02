@@ -382,6 +382,23 @@
   }
 }
 
+@keyframes circular-wrap {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.92) rotate(-8deg);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.04) rotate(4deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 .viz-swap-left {
   animation: viz-swap-left 0.45s ease-out;
 }

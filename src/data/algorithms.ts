@@ -396,6 +396,17 @@ export const algorithms: AlgorithmItem[] = [
     difficulty: 'Beginner',
     status: 'available',
   },
+  {
+    id: 'circular-queue',
+    title: 'Circular Queue',
+    description:
+      'Practice fixed-capacity ring buffers with wraparound, size-based full/empty checks, and O(1) enqueue/dequeue.',
+    href: '/learn/circular-queue',
+    lessonSlug: 'circular-queue',
+    categoryId: 'stack-queue',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
 ]
 
 const algorithmsByCategory = new Map<AlgorithmCategoryId, AlgorithmItem[]>()

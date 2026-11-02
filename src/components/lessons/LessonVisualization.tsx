@@ -23,6 +23,7 @@ import { SlidingWindowVisualization } from '../visualizations/SlidingWindowVisua
 import { TwoPointersVisualization } from '../visualizations/TwoPointersVisualization'
 import { DoublyLinkedListVisualization } from '../visualizations/DoublyLinkedListVisualization'
 import { SinglyLinkedListVisualization } from '../visualizations/SinglyLinkedListVisualization'
+import { CircularQueueVisualization } from '../visualizations/CircularQueueVisualization'
 import { QueueVisualization } from '../visualizations/QueueVisualization'
 import { StackVisualization } from '../visualizations/StackVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
@@ -205,6 +206,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <QueueVisualization />
   }
 
+  if (visualization.type === 'circular-queue') {
+    return <CircularQueueVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -236,7 +241,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'singly-linked-list' ||
     visualization.type === 'doubly-linked-list' ||
     visualization.type === 'stack' ||
-    visualization.type === 'queue'
+    visualization.type === 'queue' ||
+    visualization.type === 'circular-queue'
 
   return (
     <LessonSection id="visualization">
