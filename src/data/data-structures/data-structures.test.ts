@@ -41,6 +41,7 @@ describe('data structures catalog', () => {
       'stacks',
       'queues',
       'circular-queues',
+      'deques',
       'hash-tables',
       'trees',
       'heaps',
@@ -72,6 +73,7 @@ describe('data structures catalog', () => {
       [
         'arrays',
         'circular-queues',
+        'deques',
         'hash-tables',
         'heaps',
         'linked-lists',
@@ -118,6 +120,7 @@ describe('data structures catalog', () => {
     expect(getDataStructureById('circular-queues')?.href).toBe(
       '/learn/circular-queue',
     )
+    expect(getDataStructureById('deques')?.href).toBe('/learn/deque')
     expect(getLesson('frequency-counting')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
@@ -125,6 +128,7 @@ describe('data structures catalog', () => {
     expect(getLesson('stack')).toBeDefined()
     expect(getLesson('queue')).toBeDefined()
     expect(getLesson('circular-queue')).toBeDefined()
+    expect(getLesson('deque')).toBeDefined()
   })
 
   it('documents accurate complexity assumptions for arrays and hash tables', () => {
@@ -151,7 +155,7 @@ describe('data structures catalog', () => {
   })
 
   it('keeps choosing-guide scenarios aligned with catalog ids', () => {
-    expect(structureScenarios.length).toBe(10)
+    expect(structureScenarios.length).toBe(11)
     for (const scenario of structureScenarios) {
       const structure = getDataStructureById(scenario.structureId)
       expect(structure, scenario.id).toBeDefined()

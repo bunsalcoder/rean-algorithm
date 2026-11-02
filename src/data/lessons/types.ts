@@ -38,6 +38,7 @@ export type LessonVisualizationType =
   | 'stack'
   | 'queue'
   | 'circular-queue'
+  | 'deque'
 
 export type LessonVisualization = {
   title: string

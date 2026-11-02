@@ -407,6 +407,17 @@ export const algorithms: AlgorithmItem[] = [
     difficulty: 'Beginner',
     status: 'available',
   },
+  {
+    id: 'deque',
+    title: 'Deque',
+    description:
+      'Practice double-ended insert and remove with a circular-buffer deque, peeks, underflow handling, and complexity notes.',
+    href: '/learn/deque',
+    lessonSlug: 'deque',
+    categoryId: 'stack-queue',
+    difficulty: 'Beginner',
+    status: 'available',
+  },
 ]
 
 const algorithmsByCategory = new Map<AlgorithmCategoryId, AlgorithmItem[]>()

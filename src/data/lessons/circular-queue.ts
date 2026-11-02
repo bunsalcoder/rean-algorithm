@@ -191,7 +191,7 @@ export const circularQueue: Lesson = {
       {
         title: 'Related lesson',
         description:
-          'Review the Queue lesson for FIFO basics and head-index arrays, then return here for wraparound and fixed capacity.',
+          'Review the Queue lesson for FIFO basics and head-index arrays, then return here for wraparound and fixed capacity. Continue to Deque when you need inserts and removes at both ends.',
       },
     ],
   },
@@ -565,6 +565,7 @@ console.log(cq.front(), cq.rear()) // 20 50`,
     'Enqueue/dequeue/front/rear/isEmpty/isFull are O(1) on a fixed buffer with direct indexing.',
     'Overflow and underflow must be handled explicitly; never invent values.',
     'Regular queues share FIFO rules; circular queues add fixed capacity and modulo reuse.',
+    'When you need inserts and removes at both ends, continue to the Deque lesson.',
   ],
 
   previousLesson: {
@@ -573,8 +574,8 @@ console.log(cq.front(), cq.rear()) // 20 50`,
   },
 
   nextLesson: {
-    title: 'Data Structures Hub',
-    href: '/data-structures',
+    title: 'Deque',
+    href: '/learn/deque',
   },
 
   categoryHref: '/data-structures',

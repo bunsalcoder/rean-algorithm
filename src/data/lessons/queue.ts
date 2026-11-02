@@ -198,6 +198,11 @@ export const queue: Lesson = {
         description:
           'When you need fixed capacity and slot reuse without shifting, continue to Circular Queue — wraparound with (index + 1) % capacity and size-based full/empty checks.',
       },
+      {
+        title: 'Deque (both ends)',
+        description:
+          'When you need to insert or remove at both the front and the rear, continue to Deque after Circular Queue — a flexible double-ended structure that can also model stack or queue behavior.',
+      },
     ],
   },
 

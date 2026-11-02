@@ -11,6 +11,7 @@ export type DataStructureId =
   | 'stacks'
   | 'queues'
   | 'circular-queues'
+  | 'deques'
   | 'hash-tables'
   | 'trees'
   | 'heaps'
@@ -267,6 +268,46 @@ export const dataStructures: DataStructure[] = [
     accent: 'teal',
   },
   {
+    id: 'deques',
+    name: 'Deques',
+    description:
+      'A double-ended queue: insert and remove at both the front and the rear in amortized constant time.',
+    organization:
+      'Elements form a sequence open at both ends. Common implementations use a circular buffer (front + size with modular wrap) or a doubly linked list.',
+    useCase: 'Flexible end access for windows, buffers, and dual-ended workflows',
+    useCases: [
+      'Sliding window and monotonic deque algorithms',
+      'Undo/redo and work queues with urgent front inserts',
+      'Modeling stacks or queues by restricting which ends you use',
+    ],
+    operations: [
+      {
+        name: 'pushFront / pushBack',
+        complexity: 'O(1) amortized',
+        note: 'A single resize can be O(n); growth stays amortized O(1)',
+      },
+      { name: 'popFront / popBack', complexity: 'O(1)' },
+      { name: 'front / back', complexity: 'O(1)' },
+      { name: 'isEmpty / size', complexity: 'O(1)' },
+    ],
+    advantages: [
+      'Both ends support efficient insert and remove',
+      'Can simulate stack (one end) or queue (opposite ends)',
+      'Circular-buffer layouts keep good locality without Array.shift()',
+    ],
+    limitations: [
+      'Richer API than needed when only LIFO or FIFO is required',
+      'Not a substitute for priority queues or middle-index access',
+      'Naive shifting arrays make end ops O(n) despite the abstract API',
+    ],
+    complexityNote:
+      'With a circular buffer or doubly linked list, push/pop at either end are O(1) (amortized for dynamic growth). An individual resize can take O(n). Shifting a plain array is O(n).',
+    availability: 'available',
+    href: '/learn/deque',
+    hrefLabel: 'Learn deques',
+    accent: 'pink',
+  },
+  {
     id: 'hash-tables',
     name: 'Hash Tables',
     description:
@@ -512,6 +553,14 @@ export const structureScenarios: StructureScenario[] = [
       'A ring buffer wraps indices with modulo arithmetic so dequeued slots can be reused without shifting.',
   },
   {
+    id: 'both-ends',
+    need: 'Need to insert or remove efficiently at both ends',
+    structureId: 'deques',
+    structureName: 'Deque',
+    rationale:
+      'A double-ended queue supports push/pop at front and rear — useful for sliding windows and flexible buffers.',
+  },
+  {
     id: 'key-lookup',
     need: 'Need fast average key-based lookup',
     structureId: 'hash-tables',
@@ -582,7 +631,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'stacks-queues',
     title: 'Stacks and Queues',
     description:
-      'Practice LIFO stacks, FIFO queues, and circular ring buffers for undo, scheduling, and bounded buffering.',
+      'Practice LIFO stacks, FIFO queues, circular ring buffers, and double-ended deques for undo, scheduling, and flexible end access.',
     availability: 'available',
     href: '/learn/stack',
   },

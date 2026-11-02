@@ -169,7 +169,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('doubly-linked-list')?.slug).toBe('stack')
     expect(getNextLessonInOrder('stack')?.slug).toBe('queue')
     expect(getNextLessonInOrder('queue')?.slug).toBe('circular-queue')
-    expect(getNextLessonInOrder('circular-queue')).toBeUndefined()
+    expect(getNextLessonInOrder('circular-queue')?.slug).toBe('deque')
+    expect(getNextLessonInOrder('deque')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -353,15 +354,30 @@ describe('recommendNextLearningAction', () => {
       expect(afterQueue.href).toBe('/learn/circular-queue')
     }
 
-    const atEnd = recommendNextLearningAction({
+    const afterCircular = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'circular-queue',
+    })
+    expect(afterCircular.status).toBe('recommend')
+    if (afterCircular.status !== 'recommend') {
+      return
+    }
+    // Circular Queue lists Queue as a soft prerequisite (no related practice to
+    // mark complete), so the recommend tip prefers a non-blocking review.
+    // Lesson order still continues to Deque via getNextLessonInOrder.
+    expect(afterCircular.kind).toBe('review_prerequisite')
+    expect(afterCircular.href).toBe('/learn/queue')
+    expect(getNextLessonInOrder('circular-queue')?.href).toBe('/learn/deque')
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'deque',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // Circular Queue lists Queue as a soft prerequisite, so the end-of-order
+    // Deque lists Queue as a soft prerequisite, so the end-of-order
     // action prefers a non-blocking review tip over the cold-start fallback.
     expect(atEnd.kind).toBe('review_prerequisite')
     expect(atEnd.href).toBe('/learn/queue')
