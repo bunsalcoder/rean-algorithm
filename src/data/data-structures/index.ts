@@ -10,6 +10,7 @@ export type DataStructureId =
   | 'linked-lists'
   | 'stacks'
   | 'queues'
+  | 'circular-queues'
   | 'hash-tables'
   | 'trees'
   | 'heaps'
@@ -228,6 +229,42 @@ export const dataStructures: DataStructure[] = [
     href: '/learn/queue',
     hrefLabel: 'Learn queues',
     accent: 'pink',
+  },
+  {
+    id: 'circular-queues',
+    name: 'Circular Queues',
+    description:
+      'A fixed-capacity FIFO ring buffer: indices wrap with modulo arithmetic so freed slots are reused without shifting.',
+    organization:
+      'Elements live in a fixed array. Front and rear advance with (index + 1) % capacity; an explicit size tracks how many slots are live.',
+    useCase: 'Bounded buffering with O(1) enqueue and dequeue',
+    useCases: [
+      'Streaming and I/O ring buffers',
+      'Producer–consumer slots with a fixed memory budget',
+      'Replacing naive array queues that waste prefix space after dequeue',
+    ],
+    operations: [
+      { name: 'Enqueue', complexity: 'O(1)' },
+      { name: 'Dequeue', complexity: 'O(1)' },
+      { name: 'Front / rear', complexity: 'O(1)' },
+      { name: 'isEmpty / isFull', complexity: 'O(1)' },
+    ],
+    advantages: [
+      'Reuses slots via wraparound instead of shifting the array',
+      'Predictable fixed memory footprint',
+      'Constant-time enqueue and dequeue with direct indexing',
+    ],
+    limitations: [
+      'Capacity is fixed — enqueue fails when full unless you grow elsewhere',
+      'Full/empty logic needs a size counter (or a reserved empty slot)',
+      'Not suited when you need unbounded growth or priority order',
+    ],
+    complexityNote:
+      'Enqueue, dequeue, front, rear, isEmpty, and isFull are O(1) on a fixed-capacity circular buffer with direct array indexing.',
+    availability: 'available',
+    href: '/learn/circular-queue',
+    hrefLabel: 'Learn circular queues',
+    accent: 'teal',
   },
   {
     id: 'hash-tables',
@@ -467,6 +504,14 @@ export const structureScenarios: StructureScenario[] = [
       'Enqueue at the back and dequeue from the front preserve arrival order for scheduling and BFS.',
   },
   {
+    id: 'bounded-fifo',
+    need: 'Need FIFO with a fixed memory budget and slot reuse',
+    structureId: 'circular-queues',
+    structureName: 'Circular Queue',
+    rationale:
+      'A ring buffer wraps indices with modulo arithmetic so dequeued slots can be reused without shifting.',
+  },
+  {
     id: 'key-lookup',
     need: 'Need fast average key-based lookup',
     structureId: 'hash-tables',
@@ -537,7 +582,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'stacks-queues',
     title: 'Stacks and Queues',
     description:
-      'Practice LIFO stacks and FIFO queues for undo, scheduling, and BFS.',
+      'Practice LIFO stacks, FIFO queues, and circular ring buffers for undo, scheduling, and bounded buffering.',
     availability: 'available',
     href: '/learn/stack',
   },

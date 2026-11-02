@@ -21,6 +21,7 @@ import { stringCompression } from './string-compression'
 import { rotateArray } from './rotate-array'
 import { doublyLinkedList } from './doubly-linked-list'
 import { singlyLinkedList } from './singly-linked-list'
+import { circularQueue } from './circular-queue'
 import { queue } from './queue'
 import { stack } from './stack'
 import { validAnagram } from './valid-anagram'
@@ -74,6 +75,7 @@ export const lessons: Lesson[] = [
   doublyLinkedList,
   stack,
   queue,
+  circularQueue,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))

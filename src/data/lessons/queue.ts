@@ -193,6 +193,11 @@ export const queue: Lesson = {
         description:
           'Principle: Stack = LIFO, Queue = FIFO. Add: push vs enqueue. Remove: pop vs dequeue. Removal end: top vs front. Common example: undo history vs waiting line. Open the Stack lesson for the LIFO playground.',
       },
+      {
+        title: 'Circular Queue (next lesson)',
+        description:
+          'When you need fixed capacity and slot reuse without shifting, continue to Circular Queue — wraparound with (index + 1) % capacity and size-based full/empty checks.',
+      },
     ],
   },
 
@@ -475,6 +480,7 @@ console.log(queue.size()) // 3`,
     'Do not implement “O(1) dequeue” with Array.shift() — shifting is O(n).',
     'Fixed capacity overflow is optional and educational unless you truly use a bounded buffer.',
     'Queues power scheduling, buffering, BFS, and event/message processing; stacks are the LIFO counterpart.',
+    'For fixed capacity and slot reuse without shifting, continue to the Circular Queue lesson.',
   ],
 
   previousLesson: {
@@ -483,8 +489,8 @@ console.log(queue.size()) // 3`,
   },
 
   nextLesson: {
-    title: 'Data Structures Hub',
-    href: '/data-structures',
+    title: 'Circular Queue',
+    href: '/learn/circular-queue',
   },
 
   categoryHref: '/data-structures',

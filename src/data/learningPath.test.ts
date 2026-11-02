@@ -168,7 +168,8 @@ describe('learning path content integrity', () => {
     )
     expect(getNextLessonInOrder('doubly-linked-list')?.slug).toBe('stack')
     expect(getNextLessonInOrder('stack')?.slug).toBe('queue')
-    expect(getNextLessonInOrder('queue')).toBeUndefined()
+    expect(getNextLessonInOrder('queue')?.slug).toBe('circular-queue')
+    expect(getNextLessonInOrder('circular-queue')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -342,17 +343,28 @@ describe('recommendNextLearningAction', () => {
       expect(afterStack.href).toBe('/learn/queue')
     }
 
-    const atEnd = recommendNextLearningAction({
+    const afterQueue = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'queue',
+    })
+    expect(afterQueue.status).toBe('recommend')
+    if (afterQueue.status === 'recommend') {
+      expect(afterQueue.kind).toBe('continue_lesson')
+      expect(afterQueue.href).toBe('/learn/circular-queue')
+    }
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'circular-queue',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // No next lesson and no stack-queue comparison page — cold-start fallback.
-    expect(atEnd.kind).toBe('start_lesson')
-    expect(atEnd.href).toBe('/learn/introduction-to-algorithms')
+    // Circular Queue lists Queue as a soft prerequisite, so the end-of-order
+    // action prefers a non-blocking review tip over the cold-start fallback.
+    expect(atEnd.kind).toBe('review_prerequisite')
+    expect(atEnd.href).toBe('/learn/queue')
   })
 
   it('treats prerequisites as review guidance when their practice is incomplete', () => {

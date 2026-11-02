@@ -37,6 +37,7 @@ export type LessonVisualizationType =
   | 'doubly-linked-list'
   | 'stack'
   | 'queue'
+  | 'circular-queue'
 
 export type LessonVisualization = {
   title: string
