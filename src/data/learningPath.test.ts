@@ -172,7 +172,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('circular-queue')?.slug).toBe('deque')
     expect(getNextLessonInOrder('deque')?.slug).toBe('hash-table')
     expect(getNextLessonInOrder('hash-table')?.slug).toBe('binary-search-tree')
-    expect(getNextLessonInOrder('binary-search-tree')).toBeUndefined()
+    expect(getNextLessonInOrder('binary-search-tree')?.slug).toBe('avl-tree')
+    expect(getNextLessonInOrder('avl-tree')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -400,19 +401,38 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('hash-table')?.href).toBe(
       '/learn/binary-search-tree',
     )
+    expect(getNextLessonInOrder('binary-search-tree')?.href).toBe(
+      '/learn/avl-tree',
+    )
+
+    const afterBst = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'binary-search-tree',
+    })
+    expect(afterBst.status).toBe('recommend')
+    if (afterBst.status !== 'recommend') {
+      return
+    }
+    // BST lists Hash Table as a soft prerequisite, so the recommend tip
+    // prefers a non-blocking review. Lesson order still continues to AVL.
+    expect(afterBst.kind).toBe('review_prerequisite')
+    expect(afterBst.href).toBe('/learn/hash-table')
+    expect(getNextLessonInOrder('binary-search-tree')?.href).toBe(
+      '/learn/avl-tree',
+    )
 
     const atEnd = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
-      currentLessonSlug: 'binary-search-tree',
+      currentLessonSlug: 'avl-tree',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // BST lists Hash Table as a soft prerequisite, so the end-of-order
+    // AVL lists BST as a soft prerequisite, so the end-of-order
     // action prefers a non-blocking review tip over the cold-start fallback.
     expect(atEnd.kind).toBe('review_prerequisite')
-    expect(atEnd.href).toBe('/learn/hash-table')
+    expect(atEnd.href).toBe('/learn/binary-search-tree')
   })
 
   it('treats prerequisites as review guidance when their practice is incomplete', () => {

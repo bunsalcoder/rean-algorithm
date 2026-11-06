@@ -25,6 +25,7 @@ import { DoublyLinkedListVisualization } from '../visualizations/DoublyLinkedLis
 import { SinglyLinkedListVisualization } from '../visualizations/SinglyLinkedListVisualization'
 import { CircularQueueVisualization } from '../visualizations/CircularQueueVisualization'
 import { DequeVisualization } from '../visualizations/DequeVisualization'
+import { AVLTreeVisualization } from '../visualizations/AVLTreeVisualization'
 import { BinarySearchTreeVisualization } from '../visualizations/BinarySearchTreeVisualization'
 import { HashTableVisualization } from '../visualizations/HashTableVisualization'
 import { QueueVisualization } from '../visualizations/QueueVisualization'
@@ -225,6 +226,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <BinarySearchTreeVisualization />
   }
 
+  if (visualization.type === 'avl-tree') {
+    return <AVLTreeVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -260,7 +265,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'circular-queue' ||
     visualization.type === 'deque' ||
     visualization.type === 'hash-table' ||
-    visualization.type === 'binary-search-tree'
+    visualization.type === 'binary-search-tree' ||
+    visualization.type === 'avl-tree'
 
   return (
     <LessonSection id="visualization">

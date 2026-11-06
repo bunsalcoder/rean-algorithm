@@ -32,7 +32,7 @@ export const binarySearchTree: Lesson = {
     'A tree is a hierarchical collection of nodes connected by edges. Exactly one node is the root; every other node has one parent. Nodes with no children are leaves. A subtree is any node plus all of its descendants.',
     'A binary tree allows at most two children per node (commonly called left and right). A binary search tree (BST) adds an ordering rule: every value in the left subtree is smaller than the node, and every value in the right subtree is larger.',
     'That ordering turns search into a walk from the root: go left when the target is smaller, right when larger — the same idea as binary search on a sorted array, but stored as linked nodes instead of contiguous indices.',
-    'Default playground tree: root 50, left 30 (20, 40), right 70 (60, 80). Inserting already-sorted values into an ordinary BST can produce a skewed chain and turn O(log n) hopes into O(n) walks. This lesson does not add AVL or Red-Black balancing.',
+    'Default playground tree: root 50, left 30 (20, 40), right 70 (60, 80). Inserting already-sorted values into an ordinary BST can produce a skewed chain and turn O(log n) hopes into O(n) walks. This lesson does not add AVL or Red-Black balancing — continue to the AVL Tree lesson for self-balancing rotations.',
   ],
 
   whyItMatters: [
@@ -203,6 +203,11 @@ export const binarySearchTree: Lesson = {
         title: 'When trees win',
         description:
           'Hierarchies, ordered iteration, successor/predecessor, and range queries favor trees (especially balanced ones).',
+      },
+      {
+        title: 'Next: AVL Tree',
+        description:
+          'Self-balancing BSTs restore |balance factor| ≤ 1 with LL/RR/LR/RL rotations so height stays O(log n). Lesson: /learn/avl-tree.',
       },
     ],
   },
@@ -620,6 +625,11 @@ console.log(bst.height()) // 2`,
   previousLesson: {
     title: 'Hash Table',
     href: '/learn/hash-table',
+  },
+
+  nextLesson: {
+    title: 'AVL Tree',
+    href: '/learn/avl-tree',
   },
 
   categoryHref: '/data-structures',
