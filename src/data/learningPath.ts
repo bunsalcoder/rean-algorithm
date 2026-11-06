@@ -73,6 +73,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'circular-queue',
   'deque',
   'hash-table',
+  'binary-search-tree',
 ] as const
 
 /**
@@ -149,6 +150,18 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'deque',
     reason:
       'Hash Table continues the data-structures path after end-restricted sequences into associative key–value storage.',
+  },
+  {
+    lessonSlug: 'binary-search-tree',
+    prerequisiteSlug: 'hash-table',
+    reason:
+      'Binary Search Tree continues the data-structures path from associative maps into hierarchical ordered trees.',
+  },
+  {
+    lessonSlug: 'binary-search-tree',
+    prerequisiteSlug: 'binary-search',
+    reason:
+      'Binary Search on sorted arrays shares the compare-and-discard-half idea used when walking a BST.',
   },
 ] as const
 
@@ -252,8 +265,9 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'trees',
-    lessonSlugs: [],
+    lessonSlugs: ['binary-search-tree'],
     practiceSlugs: [],
+    hubHref: '/data-structures',
   },
   {
     stageId: 'graphs',

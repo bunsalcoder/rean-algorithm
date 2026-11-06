@@ -27,6 +27,7 @@ import {
   LessonTableOfContents,
   LessonTakeaways,
   LessonThinkingGuide,
+  LessonTreeShapeExplorer,
   LessonUsage,
   LessonVisualization,
   LessonWhyItMatters,
@@ -222,6 +223,14 @@ export function LessonPage() {
               <div className="section-reveal-item">
                 <LessonComplexity complexity={lesson.complexity} />
               </div>
+
+              {lesson.treeShapeExplorer ? (
+                <div className="section-reveal-item">
+                  <LessonTreeShapeExplorer
+                    explorer={lesson.treeShapeExplorer}
+                  />
+                </div>
+              ) : null}
 
               {lesson.sortProperties ? (
                 <div className="section-reveal-item">

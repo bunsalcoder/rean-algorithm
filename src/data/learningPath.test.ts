@@ -171,7 +171,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('queue')?.slug).toBe('circular-queue')
     expect(getNextLessonInOrder('circular-queue')?.slug).toBe('deque')
     expect(getNextLessonInOrder('deque')?.slug).toBe('hash-table')
-    expect(getNextLessonInOrder('hash-table')).toBeUndefined()
+    expect(getNextLessonInOrder('hash-table')?.slug).toBe('binary-search-tree')
+    expect(getNextLessonInOrder('binary-search-tree')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -384,18 +385,34 @@ describe('recommendNextLearningAction', () => {
     expect(afterDeque.href).toBe('/learn/queue')
     expect(getNextLessonInOrder('deque')?.href).toBe('/learn/hash-table')
 
-    const atEnd = recommendNextLearningAction({
+    const afterHash = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'hash-table',
+    })
+    expect(afterHash.status).toBe('recommend')
+    if (afterHash.status !== 'recommend') {
+      return
+    }
+    // Hash Table lists Deque as a soft prerequisite, so the recommend tip
+    // prefers a non-blocking review. Lesson order still continues to BST.
+    expect(afterHash.kind).toBe('review_prerequisite')
+    expect(afterHash.href).toBe('/learn/deque')
+    expect(getNextLessonInOrder('hash-table')?.href).toBe(
+      '/learn/binary-search-tree',
+    )
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'binary-search-tree',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // Hash Table lists Deque as a soft prerequisite, so the end-of-order
+    // BST lists Hash Table as a soft prerequisite, so the end-of-order
     // action prefers a non-blocking review tip over the cold-start fallback.
     expect(atEnd.kind).toBe('review_prerequisite')
-    expect(atEnd.href).toBe('/learn/deque')
+    expect(atEnd.href).toBe('/learn/hash-table')
   })
 
   it('treats prerequisites as review guidance when their practice is incomplete', () => {

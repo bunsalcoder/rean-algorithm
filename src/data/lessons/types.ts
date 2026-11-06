@@ -40,6 +40,7 @@ export type LessonVisualizationType =
   | 'circular-queue'
   | 'deque'
   | 'hash-table'
+  | 'binary-search-tree'
 
 export type LessonVisualization = {
   title: string
@@ -238,6 +239,22 @@ export type LessonAlgorithmConnection = {
   }[]
 }
 
+export type LessonTreeShapeExplorer = {
+  description?: string
+  paragraphs: string[]
+  balanced: {
+    label: string
+    values: number[]
+  }
+  skewed: {
+    label: string
+    values: number[]
+  }
+  /** Value used to illustrate search path length on both shapes. */
+  probeValue: number
+  explanation: string
+}
+
 export type Lesson = {
   slug: string
   title: string
@@ -280,6 +297,7 @@ export type Lesson = {
   sortProperties?: LessonSortProperties
   optimizationNote?: LessonOptimizationNote
   algorithmConnection?: LessonAlgorithmConnection
+  treeShapeExplorer?: LessonTreeShapeExplorer
 
   previousLesson?: LessonLink
   nextLesson?: LessonLink
