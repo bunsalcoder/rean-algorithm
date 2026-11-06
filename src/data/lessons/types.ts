@@ -39,6 +39,7 @@ export type LessonVisualizationType =
   | 'queue'
   | 'circular-queue'
   | 'deque'
+  | 'hash-table'
 
 export type LessonVisualization = {
   title: string

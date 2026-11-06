@@ -72,6 +72,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'queue',
   'circular-queue',
   'deque',
+  'hash-table',
 ] as const
 
 /**
@@ -142,6 +143,12 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'queue',
     reason:
       'Deque builds on queue end concepts and extends them to inserts and removes at both ends.',
+  },
+  {
+    lessonSlug: 'hash-table',
+    prerequisiteSlug: 'deque',
+    reason:
+      'Hash Table continues the data-structures path after end-restricted sequences into associative key–value storage.',
   },
 ] as const
 
@@ -230,13 +237,18 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'hashing',
-    lessonSlugs: ['frequency-counting', 'valid-anagram', 'group-anagrams'],
+    lessonSlugs: [
+      'hash-table',
+      'frequency-counting',
+      'valid-anagram',
+      'group-anagrams',
+    ],
     practiceSlugs: [
       'most-frequent-number',
       'valid-anagram',
       'group-anagrams',
     ],
-    hubHref: '/algorithms/array-string',
+    hubHref: '/data-structures',
   },
   {
     stageId: 'trees',

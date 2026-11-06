@@ -345,8 +345,8 @@ export const dataStructures: DataStructure[] = [
     complexityNote:
       'Average operations are typically O(1), but can degrade to O(n) under heavy collisions or a poor hash. Actual performance depends on load factor and collision strategy.',
     availability: 'available',
-    href: '/learn/frequency-counting',
-    hrefLabel: 'Learn frequency counting (hashing ideas)',
+    href: '/learn/hash-table',
+    hrefLabel: 'Learn hash tables',
     accent: 'violet',
   },
   {
@@ -639,9 +639,9 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'hash-tables',
     title: 'Hash Tables',
     description:
-      'Use hashing for frequency maps and average-case key lookup—start with frequency counting.',
+      'Learn key–value hashing, collisions, separate chaining, and load factor—then apply maps in frequency and anagram lessons.',
     availability: 'available',
-    href: '/learn/frequency-counting',
+    href: '/learn/hash-table',
   },
   {
     id: 'trees-heaps',

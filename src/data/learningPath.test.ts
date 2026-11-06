@@ -170,7 +170,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('stack')?.slug).toBe('queue')
     expect(getNextLessonInOrder('queue')?.slug).toBe('circular-queue')
     expect(getNextLessonInOrder('circular-queue')?.slug).toBe('deque')
-    expect(getNextLessonInOrder('deque')).toBeUndefined()
+    expect(getNextLessonInOrder('deque')?.slug).toBe('hash-table')
+    expect(getNextLessonInOrder('hash-table')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -369,18 +370,32 @@ describe('recommendNextLearningAction', () => {
     expect(afterCircular.href).toBe('/learn/queue')
     expect(getNextLessonInOrder('circular-queue')?.href).toBe('/learn/deque')
 
-    const atEnd = recommendNextLearningAction({
+    const afterDeque = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'deque',
+    })
+    expect(afterDeque.status).toBe('recommend')
+    if (afterDeque.status !== 'recommend') {
+      return
+    }
+    // Deque lists Queue as a soft prerequisite, so the recommend tip prefers
+    // a non-blocking review. Lesson order still continues to Hash Table.
+    expect(afterDeque.kind).toBe('review_prerequisite')
+    expect(afterDeque.href).toBe('/learn/queue')
+    expect(getNextLessonInOrder('deque')?.href).toBe('/learn/hash-table')
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'hash-table',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // Deque lists Queue as a soft prerequisite, so the end-of-order
+    // Hash Table lists Deque as a soft prerequisite, so the end-of-order
     // action prefers a non-blocking review tip over the cold-start fallback.
     expect(atEnd.kind).toBe('review_prerequisite')
-    expect(atEnd.href).toBe('/learn/queue')
+    expect(atEnd.href).toBe('/learn/deque')
   })
 
   it('treats prerequisites as review guidance when their practice is incomplete', () => {
