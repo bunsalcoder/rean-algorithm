@@ -74,6 +74,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'deque',
   'hash-table',
   'binary-search-tree',
+  'avl-tree',
 ] as const
 
 /**
@@ -162,6 +163,12 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'binary-search',
     reason:
       'Binary Search on sorted arrays shares the compare-and-discard-half idea used when walking a BST.',
+  },
+  {
+    lessonSlug: 'avl-tree',
+    prerequisiteSlug: 'binary-search-tree',
+    reason:
+      'AVL trees extend ordinary BSTs with heights, balance factors, and rotations to keep the tree balanced.',
   },
 ] as const
 
@@ -265,7 +272,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'trees',
-    lessonSlugs: ['binary-search-tree'],
+    lessonSlugs: ['binary-search-tree', 'avl-tree'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

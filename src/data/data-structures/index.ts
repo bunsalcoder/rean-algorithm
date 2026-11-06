@@ -14,6 +14,7 @@ export type DataStructureId =
   | 'deques'
   | 'hash-tables'
   | 'trees'
+  | 'avl-trees'
   | 'heaps'
   | 'graphs'
   | 'tries'
@@ -384,10 +385,47 @@ export const dataStructures: DataStructure[] = [
       'Pointer-heavy layouts can hurt cache performance',
     ],
     complexityNote:
-      'Balanced binary search trees typically offer O(log n) search and update. A skewed tree behaves like a linked list at O(n). Always state balance assumptions. An ordinary BST does not guarantee balance.',
+      'Balanced binary search trees typically offer O(log n) search and update. A skewed tree behaves like a linked list at O(n). Always state balance assumptions. An ordinary BST does not guarantee balance — see AVL trees for self-balancing.',
     availability: 'available',
     href: '/learn/binary-search-tree',
     hrefLabel: 'Learn binary search trees',
+    accent: 'teal',
+  },
+  {
+    id: 'avl-trees',
+    name: 'AVL Trees',
+    description:
+      'A self-balancing binary search tree that keeps |balance factor| ≤ 1 at every node using rotations after updates.',
+    organization:
+      'Same left < node < right ordering as a BST, plus a height on each node. LL/RR/LR/RL rotations restore balance after insert and delete.',
+    useCase: 'Ordered maps with guaranteed logarithmic height',
+    useCases: [
+      'Dictionaries that need sorted iteration and reliable O(log n) updates',
+      'Teaching rotations, heights, and balance factors',
+      'Workloads where sorted inserts would skew an ordinary BST',
+    ],
+    operations: [
+      { name: 'Search', complexity: 'O(log n)' },
+      { name: 'Insert (with rebalancing)', complexity: 'O(log n)' },
+      { name: 'Delete (with rebalancing)', complexity: 'O(log n)' },
+      { name: 'Find min / max', complexity: 'O(log n)' },
+      { name: 'Traverse all nodes', complexity: 'O(n)' },
+    ],
+    advantages: [
+      'Height stays O(log n), so search and update worst cases stay logarithmic',
+      'Preserves BST ordering and inorder sorted traversal',
+      'Clear rotation cases (LL, RR, LR, RL) for learning and debugging',
+    ],
+    limitations: [
+      'Updates do extra height maintenance and possible rotations',
+      'Each node stores height (or equivalent) metadata',
+      'More complex than an ordinary BST or a hash table for unordered keys',
+    ],
+    complexityNote:
+      'Search, insert, and delete are O(log n) because AVL height is O(log n). Traversals are O(n). Compared with an ordinary BST, AVL pays rotation work to keep the height guarantee.',
+    availability: 'available',
+    href: '/learn/avl-tree',
+    hrefLabel: 'Learn AVL trees',
     accent: 'teal',
   },
   {
@@ -579,6 +617,14 @@ export const structureScenarios: StructureScenario[] = [
       'Parent–child links model nested data such as file systems and org charts.',
   },
   {
+    id: 'balanced-ordered',
+    need: 'Need ordered data with guaranteed logarithmic height',
+    structureId: 'avl-trees',
+    structureName: 'AVL Tree',
+    rationale:
+      'AVL rotations keep |balance factor| ≤ 1 so search and updates stay O(log n) even for adversarial insert orders.',
+  },
+  {
     id: 'priority',
     need: 'Need priority-based retrieval',
     structureId: 'heaps',
@@ -649,7 +695,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'trees-heaps',
     title: 'Trees and Heaps',
     description:
-      'Start with Binary Search Tree for hierarchical ordered data; Heap Sort still covers array-backed heap shape.',
+      'Start with Binary Search Tree, continue to AVL for self-balancing rotations, then see heaps in Heap Sort.',
     availability: 'available',
     href: '/learn/binary-search-tree',
   },

@@ -41,6 +41,7 @@ export type LessonVisualizationType =
   | 'deque'
   | 'hash-table'
   | 'binary-search-tree'
+  | 'avl-tree'
 
 export type LessonVisualization = {
   title: string

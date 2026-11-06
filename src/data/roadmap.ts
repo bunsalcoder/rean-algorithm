@@ -177,6 +177,7 @@ export const roadmapStages: RoadmapStage[] = [
       'Binary Tree',
       'Tree Traversal',
       'Binary Search Tree',
+      'AVL Tree',
       'Heap',
       'Trie',
     ],

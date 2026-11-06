@@ -23,6 +23,7 @@ import { doublyLinkedList } from './doubly-linked-list'
 import { singlyLinkedList } from './singly-linked-list'
 import { circularQueue } from './circular-queue'
 import { deque } from './deque'
+import { avlTree } from './avl-tree'
 import { binarySearchTree } from './binary-search-tree'
 import { hashTable } from './hash-table'
 import { queue } from './queue'
@@ -83,6 +84,7 @@ export const lessons: Lesson[] = [
   deque,
   hashTable,
   binarySearchTree,
+  avlTree,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))

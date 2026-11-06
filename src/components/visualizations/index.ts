@@ -42,6 +42,8 @@ export {
   BinarySearchTreeStaticView,
 } from './BinarySearchTreePanels'
 export { BinarySearchTreeVisualization } from './BinarySearchTreeVisualization'
+export { AVLTreePanels } from './AVLTreePanels'
+export { AVLTreeVisualization } from './AVLTreeVisualization'
 export { QueuePanels } from './QueuePanels'
 export { QueueVisualization } from './QueueVisualization'
 export { StackPanels } from './StackPanels'
