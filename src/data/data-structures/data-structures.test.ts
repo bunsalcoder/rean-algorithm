@@ -79,9 +79,10 @@ describe('data structures catalog', () => {
         'linked-lists',
         'queues',
         'stacks',
+        'trees',
       ].sort(),
     )
-    expect(comingSoon.length).toBe(3)
+    expect(comingSoon.length).toBe(2)
 
     for (const structure of available) {
       expect(structure.href).toBeDefined()
@@ -121,8 +122,12 @@ describe('data structures catalog', () => {
       '/learn/circular-queue',
     )
     expect(getDataStructureById('deques')?.href).toBe('/learn/deque')
+    expect(getDataStructureById('trees')?.href).toBe(
+      '/learn/binary-search-tree',
+    )
     expect(getLesson('frequency-counting')).toBeDefined()
     expect(getLesson('hash-table')).toBeDefined()
+    expect(getLesson('binary-search-tree')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
     expect(getLesson('doubly-linked-list')).toBeDefined()

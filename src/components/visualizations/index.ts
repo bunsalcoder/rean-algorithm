@@ -37,6 +37,11 @@ export { DequePanels } from './DequePanels'
 export { DequeVisualization } from './DequeVisualization'
 export { HashTablePanels } from './HashTablePanels'
 export { HashTableVisualization } from './HashTableVisualization'
+export {
+  BinarySearchTreePanels,
+  BinarySearchTreeStaticView,
+} from './BinarySearchTreePanels'
+export { BinarySearchTreeVisualization } from './BinarySearchTreeVisualization'
 export { QueuePanels } from './QueuePanels'
 export { QueueVisualization } from './QueueVisualization'
 export { StackPanels } from './StackPanels'

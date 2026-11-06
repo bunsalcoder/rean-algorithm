@@ -384,8 +384,10 @@ export const dataStructures: DataStructure[] = [
       'Pointer-heavy layouts can hurt cache performance',
     ],
     complexityNote:
-      'Balanced binary search trees typically offer O(log n) search and update. A skewed tree behaves like a linked list at O(n). Always state balance assumptions.',
-    availability: 'coming-soon',
+      'Balanced binary search trees typically offer O(log n) search and update. A skewed tree behaves like a linked list at O(n). Always state balance assumptions. An ordinary BST does not guarantee balance.',
+    availability: 'available',
+    href: '/learn/binary-search-tree',
+    hrefLabel: 'Learn binary search trees',
     accent: 'teal',
   },
   {
@@ -647,9 +649,9 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'trees-heaps',
     title: 'Trees and Heaps',
     description:
-      'Heap fundamentals appear in Heap Sort today; dedicated tree lessons are still on the way.',
+      'Start with Binary Search Tree for hierarchical ordered data; Heap Sort still covers array-backed heap shape.',
     availability: 'available',
-    href: '/learn/heap-sort',
+    href: '/learn/binary-search-tree',
   },
   {
     id: 'graphs',

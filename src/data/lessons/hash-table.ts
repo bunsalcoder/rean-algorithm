@@ -532,8 +532,8 @@ console.log(table.has('missing')) // false`,
   },
 
   nextLesson: {
-    title: 'Frequency Counting',
-    href: '/learn/frequency-counting',
+    title: 'Binary Search Tree',
+    href: '/learn/binary-search-tree',
   },
 
   categoryHref: '/data-structures',

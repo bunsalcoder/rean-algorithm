@@ -23,6 +23,7 @@ import { doublyLinkedList } from './doubly-linked-list'
 import { singlyLinkedList } from './singly-linked-list'
 import { circularQueue } from './circular-queue'
 import { deque } from './deque'
+import { binarySearchTree } from './binary-search-tree'
 import { hashTable } from './hash-table'
 import { queue } from './queue'
 import { stack } from './stack'
@@ -48,6 +49,7 @@ export type {
   LessonSortProperties,
   LessonOptimizationNote,
   LessonAlgorithmConnection,
+  LessonTreeShapeExplorer,
 } from './types'
 
 export const lessons: Lesson[] = [
@@ -80,6 +82,7 @@ export const lessons: Lesson[] = [
   circularQueue,
   deque,
   hashTable,
+  binarySearchTree,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))
@@ -143,6 +146,10 @@ export function getLessonToc(lesson: Lesson): LessonTocItem[] {
   }
 
   items.push({ id: 'complexity', label: 'Complexity' })
+
+  if (lesson.treeShapeExplorer) {
+    items.push({ id: 'tree-shape-explorer', label: 'Tree Shape Explorer' })
+  }
 
   if (lesson.sortProperties) {
     items.push({ id: 'sort-properties', label: 'Properties' })
