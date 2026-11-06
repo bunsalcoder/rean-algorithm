@@ -281,7 +281,7 @@ console.log(groupAnagrams(["a", "A"]));`,
     title: 'Sorted signature vs frequency signature',
     eyebrow: 'COMPARE',
     description:
-      'Both approaches produce a hashable anagram key. They differ in constants and constraints.',
+      'Both approaches produce a hashable anagram key. They differ in constants and constraints. Grouping uses a hash table from signature → list of words — see Hash Table for how maps store those pairs.',
     items: [
       {
         title: 'Sorted characters (this lesson)',
@@ -297,6 +297,11 @@ console.log(groupAnagrams(["a", "A"]));`,
         title: 'Valid Anagram as building block',
         description:
           'Pairwise anagram tests are the brute-force inner loop. Signatures replace repeated pairwise checks.',
+      },
+      {
+        title: 'Hash Table foundation',
+        description:
+          'The signature map is a hash table. Review buckets, collisions, and average O(1) lookup at /learn/hash-table.',
       },
     ],
   },

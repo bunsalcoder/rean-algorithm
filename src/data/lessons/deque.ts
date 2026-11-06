@@ -763,8 +763,8 @@ function isPalindrome(text: string): boolean {
   },
 
   nextLesson: {
-    title: 'Data Structures Hub',
-    href: '/data-structures',
+    title: 'Hash Table',
+    href: '/learn/hash-table',
   },
 
   categoryHref: '/data-structures',

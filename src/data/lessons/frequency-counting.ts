@@ -304,7 +304,7 @@ console.log(findMostFrequent(values));  // 2`,
     title: 'Brute Force vs Frequency Counting',
     eyebrow: 'COMPARE',
     description:
-      'Both approaches can count occurrences. The difference is how much work is repeated.',
+      'Both approaches can count occurrences. The difference is how much work is repeated. The map itself is a hash table — see the Hash Table lesson for buckets, collisions, and load factor.',
     items: [
       {
         title: 'Brute Force',
@@ -315,6 +315,11 @@ console.log(findMostFrequent(values));  // 2`,
         title: 'Frequency Counting',
         description:
           'Scan once and update counts. Then use the stored map for lookups. Extra memory buys faster repeated counting.',
+      },
+      {
+        title: 'Hash Table foundation',
+        description:
+          'A frequency map is a hash table from key → count. Learn hashing, separate chaining, and complexity at /learn/hash-table, then return here for the counting pattern.',
       },
     ],
   },

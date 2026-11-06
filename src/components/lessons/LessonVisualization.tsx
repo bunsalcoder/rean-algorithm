@@ -25,6 +25,7 @@ import { DoublyLinkedListVisualization } from '../visualizations/DoublyLinkedLis
 import { SinglyLinkedListVisualization } from '../visualizations/SinglyLinkedListVisualization'
 import { CircularQueueVisualization } from '../visualizations/CircularQueueVisualization'
 import { DequeVisualization } from '../visualizations/DequeVisualization'
+import { HashTableVisualization } from '../visualizations/HashTableVisualization'
 import { QueueVisualization } from '../visualizations/QueueVisualization'
 import { StackVisualization } from '../visualizations/StackVisualization'
 import { LessonSection, LessonSectionHeading } from './LessonSection'
@@ -215,6 +216,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <DequeVisualization />
   }
 
+  if (visualization.type === 'hash-table') {
+    return <HashTableVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -248,7 +253,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'stack' ||
     visualization.type === 'queue' ||
     visualization.type === 'circular-queue' ||
-    visualization.type === 'deque'
+    visualization.type === 'deque' ||
+    visualization.type === 'hash-table'
 
   return (
     <LessonSection id="visualization">

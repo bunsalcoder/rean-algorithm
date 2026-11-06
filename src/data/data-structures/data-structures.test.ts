@@ -110,7 +110,7 @@ describe('data structures catalog', () => {
     expect(getDataStructureById('arrays')?.name).toBe('Arrays')
     expect(getDataStructureById('tries')?.availability).toBe('coming-soon')
     expect(getDataStructureById('hash-tables')?.href).toBe(
-      '/learn/frequency-counting',
+      '/learn/hash-table',
     )
     expect(getDataStructureById('linked-lists')?.href).toBe(
       '/learn/singly-linked-list',
@@ -122,6 +122,7 @@ describe('data structures catalog', () => {
     )
     expect(getDataStructureById('deques')?.href).toBe('/learn/deque')
     expect(getLesson('frequency-counting')).toBeDefined()
+    expect(getLesson('hash-table')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
     expect(getLesson('doubly-linked-list')).toBeDefined()
