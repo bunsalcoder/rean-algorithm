@@ -128,10 +128,12 @@ describe('data structures catalog', () => {
       '/learn/binary-search-tree',
     )
     expect(getDataStructureById('avl-trees')?.href).toBe('/learn/avl-tree')
+    expect(getDataStructureById('heaps')?.href).toBe('/learn/heap')
     expect(getLesson('frequency-counting')).toBeDefined()
     expect(getLesson('hash-table')).toBeDefined()
     expect(getLesson('binary-search-tree')).toBeDefined()
     expect(getLesson('avl-tree')).toBeDefined()
+    expect(getLesson('heap')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
     expect(getLesson('doubly-linked-list')).toBeDefined()

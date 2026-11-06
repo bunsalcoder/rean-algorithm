@@ -462,10 +462,10 @@ export const dataStructures: DataStructure[] = [
       'Only the root priority is O(1) to read',
     ],
     complexityNote:
-      'Peeking at the root is O(1). Insert and extract-priority are typically O(log n) for a binary heap. Arbitrary search is O(n).',
+      'Peeking at the root is O(1). Insert and extract-priority are typically O(log n) for a binary heap. Arbitrary search is O(n). Build-heap is O(n).',
     availability: 'available',
-    href: '/learn/heap-sort',
-    hrefLabel: 'See heaps in Heap Sort',
+    href: '/learn/heap',
+    hrefLabel: 'Learn heaps',
     accent: 'purple',
   },
   {
@@ -695,7 +695,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'trees-heaps',
     title: 'Trees and Heaps',
     description:
-      'Start with Binary Search Tree, continue to AVL for self-balancing rotations, then see heaps in Heap Sort.',
+      'Start with Binary Search Tree, continue to AVL for self-balancing rotations, then learn the Heap data structure (and optionally Heap Sort).',
     availability: 'available',
     href: '/learn/binary-search-tree',
   },

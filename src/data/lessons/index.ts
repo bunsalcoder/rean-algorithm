@@ -26,6 +26,7 @@ import { deque } from './deque'
 import { avlTree } from './avl-tree'
 import { binarySearchTree } from './binary-search-tree'
 import { hashTable } from './hash-table'
+import { heap } from './heap'
 import { queue } from './queue'
 import { stack } from './stack'
 import { validAnagram } from './valid-anagram'
@@ -85,6 +86,7 @@ export const lessons: Lesson[] = [
   hashTable,
   binarySearchTree,
   avlTree,
+  heap,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))

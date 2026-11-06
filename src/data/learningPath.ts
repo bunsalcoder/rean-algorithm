@@ -75,6 +75,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'hash-table',
   'binary-search-tree',
   'avl-tree',
+  'heap',
 ] as const
 
 /**
@@ -169,6 +170,12 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'binary-search-tree',
     reason:
       'AVL trees extend ordinary BSTs with heights, balance factors, and rotations to keep the tree balanced.',
+  },
+  {
+    lessonSlug: 'heap',
+    prerequisiteSlug: 'avl-tree',
+    reason:
+      'Heaps continue the trees path with a complete binary tree used for priorities rather than ordered search.',
   },
 ] as const
 
@@ -272,7 +279,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'trees',
-    lessonSlugs: ['binary-search-tree', 'avl-tree'],
+    lessonSlugs: ['binary-search-tree', 'avl-tree', 'heap'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

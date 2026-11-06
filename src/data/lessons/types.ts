@@ -42,6 +42,7 @@ export type LessonVisualizationType =
   | 'hash-table'
   | 'binary-search-tree'
   | 'avl-tree'
+  | 'heap'
 
 export type LessonVisualization = {
   title: string
