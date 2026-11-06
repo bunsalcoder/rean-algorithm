@@ -668,5 +668,10 @@ console.log(avl.isBalanced()) // true`,
     href: '/learn/binary-search-tree',
   },
 
+  nextLesson: {
+    title: 'Heap',
+    href: '/learn/heap',
+  },
+
   categoryHref: '/data-structures',
 }

@@ -23,7 +23,7 @@ export const heapSort: Lesson = {
 
   overview: [
     'Heap Sort sorts by first turning the array into a Max Heap, then repeatedly moving the largest remaining value to the end. The pattern is: build a Max Heap so the root holds the maximum, swap that root with the last unsorted element, shrink the heap, heapify the root to restore the Max Heap property, and repeat until everything is sorted.',
-    'A binary heap is commonly represented with an array. For zero-based indexing, the left child of index i is 2·i+1, the right child is 2·i+2, and the parent is ⌊(i−1)/2⌋. A Max Heap satisfies parent ≥ children, so the largest value is always at the root.',
+    'A binary heap is commonly represented with an array. For zero-based indexing, the left child of index i is 2·i+1, the right child is 2·i+2, and the parent is ⌊(i−1)/2⌋. A Max Heap satisfies parent ≥ children, so the largest value is always at the root. For a dedicated walkthrough of Min/Max Heaps as a data structure (insert, peek, extract, build-heap), see /learn/heap — this lesson focuses on using a Max Heap to sort.',
     'Start with [5, 3, 8, 2, 4]. After building a Max Heap you get [8, 4, 5, 2, 3]. Move the maximum: [3, 4, 5, 2 | 8]. Restore the heap: [5, 4, 3, 2 | 8]. Move the next maximum: [2, 4, 3 | 5, 8]. Continue through [4, 2, 3 | 5, 8] and further extractions until the final sorted array [2, 3, 4, 5, 8].',
     'The important idea is that a heap is not a fully sorted array — it only guarantees the parent–child relationship. Heap Sort uses that guarantee to pull out the next maximum efficiently.',
   ],
@@ -197,8 +197,13 @@ export const heapSort: Lesson = {
     title: 'Compare Sorting Strategies',
     eyebrow: 'COMPARE',
     description:
-      'Heap Sort joins the O(n log n) family, but it is organized around a heap rather than Divide & Conquer merges or pivot partitions. None of these algorithms is universally best.',
+      'Heap Sort joins the O(n log n) family, but it is organized around a heap rather than Divide & Conquer merges or pivot partitions. None of these algorithms is universally best. The Heap lesson (/learn/heap) teaches Min/Max Heaps as a data structure — this lesson uses a Max Heap to sort.',
     items: [
+      {
+        title: 'Heap data structure',
+        description:
+          'A reusable priority container: insert, peek, extract, and O(n) build-heap for Min or Max Heaps. Study it at /learn/heap — distinct from this sorting algorithm.',
+      },
       {
         title: 'Bubble Sort',
         description:

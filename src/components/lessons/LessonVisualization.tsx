@@ -4,6 +4,7 @@ import { BinarySearchVisualization } from '../visualizations/BinarySearchVisuali
 import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualization'
 import { ExponentialSearchVisualization } from '../visualizations/ExponentialSearchVisualization'
 import { HeapSortVisualization } from '../visualizations/HeapSortVisualization'
+import { HeapVisualization } from '../visualizations/HeapVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
 import { JumpSearchVisualization } from '../visualizations/JumpSearchVisualization'
@@ -230,6 +231,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <AVLTreeVisualization />
   }
 
+  if (visualization.type === 'heap') {
+    return <HeapVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -266,7 +271,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'deque' ||
     visualization.type === 'hash-table' ||
     visualization.type === 'binary-search-tree' ||
-    visualization.type === 'avl-tree'
+    visualization.type === 'avl-tree' ||
+    visualization.type === 'heap'
 
   return (
     <LessonSection id="visualization">

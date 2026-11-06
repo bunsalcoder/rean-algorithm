@@ -173,7 +173,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('deque')?.slug).toBe('hash-table')
     expect(getNextLessonInOrder('hash-table')?.slug).toBe('binary-search-tree')
     expect(getNextLessonInOrder('binary-search-tree')?.slug).toBe('avl-tree')
-    expect(getNextLessonInOrder('avl-tree')).toBeUndefined()
+    expect(getNextLessonInOrder('avl-tree')?.slug).toBe('heap')
+    expect(getNextLessonInOrder('heap')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -420,19 +421,33 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('binary-search-tree')?.href).toBe(
       '/learn/avl-tree',
     )
+    expect(getNextLessonInOrder('avl-tree')?.href).toBe('/learn/heap')
+
+    const afterAvl = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'avl-tree',
+    })
+    expect(afterAvl.status).toBe('recommend')
+    if (afterAvl.status !== 'recommend') {
+      return
+    }
+    // AVL lists BST as a soft prerequisite, so the recommend tip
+    // prefers a non-blocking review. Lesson order still continues to Heap.
+    expect(afterAvl.kind).toBe('review_prerequisite')
+    expect(afterAvl.href).toBe('/learn/binary-search-tree')
 
     const atEnd = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
-      currentLessonSlug: 'avl-tree',
+      currentLessonSlug: 'heap',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // AVL lists BST as a soft prerequisite, so the end-of-order
+    // Heap lists AVL as a soft prerequisite, so the end-of-order
     // action prefers a non-blocking review tip over the cold-start fallback.
     expect(atEnd.kind).toBe('review_prerequisite')
-    expect(atEnd.href).toBe('/learn/binary-search-tree')
+    expect(atEnd.href).toBe('/learn/avl-tree')
   })
 
   it('treats prerequisites as review guidance when their practice is incomplete', () => {
