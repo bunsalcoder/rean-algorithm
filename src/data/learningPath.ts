@@ -77,6 +77,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'avl-tree',
   'heap',
   'priority-queue',
+  'graph',
   'trie',
 ] as const
 
@@ -184,6 +185,18 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'heap',
     reason:
       'Priority Queue builds on Heap insert/extract mechanics to teach the priority ADT with FIFO ties.',
+  },
+  {
+    lessonSlug: 'graph',
+    prerequisiteSlug: 'binary-search-tree',
+    reason:
+      'Trees introduce hierarchical nodes and edges; graphs generalize relationships beyond a single parent.',
+  },
+  {
+    lessonSlug: 'graph',
+    prerequisiteSlug: 'priority-queue',
+    reason:
+      'Priority queues appear later in weighted graph algorithms; finishing the heap/PQ path first keeps the structures track ordered.',
   },
   {
     lessonSlug: 'trie',
@@ -311,8 +324,9 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'graphs',
-    lessonSlugs: [],
+    lessonSlugs: ['graph'],
     practiceSlugs: [],
+    hubHref: '/data-structures',
   },
   {
     stageId: 'algorithmic-techniques',

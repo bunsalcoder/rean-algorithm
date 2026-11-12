@@ -615,8 +615,8 @@ console.log(trie.getAllWords())
   ],
 
   previousLesson: {
-    title: 'Priority Queue',
-    href: '/learn/priority-queue',
+    title: 'Graph Data Structure',
+    href: '/learn/graph',
   },
 
   nextLesson: {
