@@ -77,6 +77,7 @@ describe('data structures catalog', () => {
         'avl-trees',
         'circular-queues',
         'deques',
+        'graphs',
         'hash-tables',
         'heaps',
         'linked-lists',
@@ -87,7 +88,7 @@ describe('data structures catalog', () => {
         'tries',
       ].sort(),
     )
-    expect(comingSoon.length).toBe(1)
+    expect(comingSoon.length).toBe(0)
 
     for (const structure of available) {
       expect(structure.href).toBeDefined()
@@ -136,12 +137,15 @@ describe('data structures catalog', () => {
     expect(getDataStructureById('priority-queues')?.href).toBe(
       '/learn/priority-queue',
     )
+    expect(getDataStructureById('graphs')?.availability).toBe('available')
+    expect(getDataStructureById('graphs')?.href).toBe('/learn/graph')
     expect(getLesson('frequency-counting')).toBeDefined()
     expect(getLesson('hash-table')).toBeDefined()
     expect(getLesson('binary-search-tree')).toBeDefined()
     expect(getLesson('avl-tree')).toBeDefined()
     expect(getLesson('heap')).toBeDefined()
     expect(getLesson('priority-queue')).toBeDefined()
+    expect(getLesson('graph')).toBeDefined()
     expect(getLesson('trie')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()

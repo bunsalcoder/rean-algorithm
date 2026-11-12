@@ -568,7 +568,7 @@ console.log(pq.dequeue()?.item) // Fix critical bug`,
     'Entries carry item + priority + sequence so ties stay deterministic.',
     'Applications: OS scheduling, ER triage, packet scheduling, simulations, Dijkstra-style frontiers.',
     'Continue from /learn/heap for sift mechanics; this lesson is the priority ADT on top.',
-    'For sorting with a Max Heap, see /learn/heap-sort. Next on the structures path: Tries (/learn/trie).',
+    'For sorting with a Max Heap, see /learn/heap-sort. Next on the structures path: Graphs (/learn/graph), then Tries (/learn/trie).',
   ],
 
   previousLesson: {
@@ -577,8 +577,8 @@ console.log(pq.dequeue()?.item) // Fix critical bug`,
   },
 
   nextLesson: {
-    title: 'Trie (Prefix Tree)',
-    href: '/learn/trie',
+    title: 'Graph Data Structure',
+    href: '/learn/graph',
   },
 
   categoryHref: '/data-structures',

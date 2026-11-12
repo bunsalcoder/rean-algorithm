@@ -155,6 +155,9 @@ describe('learning path content integrity', () => {
     )
     expect(stageHasAvailableContent('searching')).toBe(true)
     expect(getStageStartAction('searching')?.href).toBe('/learn/linear-search')
+
+    expect(stageHasAvailableContent('graphs')).toBe(true)
+    expect(getStageStartAction('graphs')?.href).toBe('/learn/graph')
   })
 
   it('keeps lesson navigation order consistent with the recommended path', () => {
@@ -175,7 +178,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('binary-search-tree')?.slug).toBe('avl-tree')
     expect(getNextLessonInOrder('avl-tree')?.slug).toBe('heap')
     expect(getNextLessonInOrder('heap')?.slug).toBe('priority-queue')
-    expect(getNextLessonInOrder('priority-queue')?.slug).toBe('trie')
+    expect(getNextLessonInOrder('priority-queue')?.slug).toBe('graph')
+    expect(getNextLessonInOrder('graph')?.slug).toBe('trie')
     expect(getNextLessonInOrder('trie')).toBeUndefined()
   })
 
@@ -425,7 +429,8 @@ describe('recommendNextLearningAction', () => {
     )
     expect(getNextLessonInOrder('avl-tree')?.href).toBe('/learn/heap')
     expect(getNextLessonInOrder('heap')?.href).toBe('/learn/priority-queue')
-    expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
+    expect(getNextLessonInOrder('graph')?.href).toBe('/learn/trie')
 
     const afterAvl = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
@@ -462,10 +467,24 @@ describe('recommendNextLearningAction', () => {
       return
     }
     // Priority Queue lists Heap as a soft prerequisite, so the recommend tip
-    // prefers a non-blocking review. Lesson order still continues to Trie.
+    // prefers a non-blocking review. Lesson order still continues to Graph.
     expect(afterPriority.kind).toBe('review_prerequisite')
     expect(afterPriority.href).toBe('/learn/heap')
-    expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
+    expect(getNextLessonInOrder('graph')?.href).toBe('/learn/trie')
+
+    const afterGraph = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'graph',
+    })
+    expect(afterGraph.status).toBe('recommend')
+    if (afterGraph.status !== 'recommend') {
+      return
+    }
+    // Graph lists BST as a soft prerequisite, so the recommend tip
+    // prefers a non-blocking review. Lesson order still continues to Trie.
+    expect(afterGraph.kind).toBe('review_prerequisite')
+    expect(afterGraph.href).toBe('/learn/binary-search-tree')
 
     const atEnd = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),

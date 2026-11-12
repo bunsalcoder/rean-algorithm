@@ -543,7 +543,9 @@ export const dataStructures: DataStructure[] = [
     ],
     complexityNote:
       'Traversal is typically O(V + E) with adjacency lists. Edge queries and space trade off between lists and matrices. State your representation.',
-    availability: 'coming-soon',
+    availability: 'available',
+    href: '/learn/graph',
+    hrefLabel: 'Learn graphs',
     accent: 'teal',
   },
   {
@@ -742,8 +744,9 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'graphs',
     title: 'Graphs',
     description:
-      'Model relationships with vertices and edges, then traverse with BFS and DFS.',
-    availability: 'coming-soon',
+      'Model relationships with vertices and edges, then continue later to BFS and DFS traversals.',
+    availability: 'available',
+    href: '/learn/graph',
   },
   {
     id: 'specialized',
