@@ -32,11 +32,11 @@ export const heap: Lesson = {
     'A binary heap is a complete binary tree that satisfies a parent–child priority rule. In a Min Heap every parent is ≤ its children (root is the minimum). In a Max Heap every parent is ≥ its children (root is the maximum).',
     'A heap is not fully sorted. Sibling order is free as long as the parent–child property holds. That is enough to expose the extreme value at the root in O(1) and to insert or extract it in O(log n).',
     'Heaps are almost always stored as arrays in level order. For index i: parent = Math.floor((i − 1) / 2), left = 2·i + 1, right = 2·i + 2. No explicit pointers are required.',
-    'This lesson teaches the Heap data structure. Heap Sort is a separate sorting algorithm that uses a Max Heap to repeatedly extract the next largest value — see /learn/heap-sort after you understand insert, extract, and build-heap here.',
+    'This lesson teaches the Heap data structure. After insert, extract, and build-heap click, continue to /learn/priority-queue for the priority ADT built on heaps, and optionally /learn/heap-sort for sorting with a Max Heap.',
   ],
 
   whyItMatters: [
-    'Priority queues are usually implemented with heaps: schedulers, event loops, and Dijkstra-style shortest-path queues need fast “get next priority”.',
+    'Priority queues are usually implemented with heaps: schedulers, event loops, and Dijkstra-style shortest-path queues need fast “get next priority” — see /learn/priority-queue.',
     'Bottom-up build-heap in O(n) is a classic complexity result — cheaper than inserting n items one-by-one.',
     'Understanding array indexing for trees transfers to Heap Sort, tournament methods, and other implicit tree layouts.',
     'Knowing that a heap is only partially ordered prevents the common mistake of treating the array as sorted.',
@@ -233,15 +233,20 @@ export const heap: Lesson = {
   },
 
   algorithmConnection: {
-    title: 'Heap vs Heap Sort',
-    eyebrow: 'STRUCTURE VS ALGORITHM',
+    title: 'Heap, Priority Queue, and Heap Sort',
+    eyebrow: 'STRUCTURE VS ADT VS ALGORITHM',
     description:
-      'Same underlying tree idea — different jobs. Learn the structure here, then apply it in sorting.',
+      'Same underlying tree idea — different jobs. Learn the structure here, then the priority ADT, then sorting.',
     items: [
       {
         title: 'Heap (this lesson)',
         description:
           'A reusable priority container: insert, peek, extract, build. Lives as long as you need a min or max frontier.',
+      },
+      {
+        title: 'Priority Queue',
+        description:
+          'The ADT that removes by priority (with FIFO ties). Typically implemented with a heap — continue to /learn/priority-queue.',
       },
       {
         title: 'Heap Sort',
@@ -251,12 +256,12 @@ export const heap: Lesson = {
       {
         title: 'Shared mechanics',
         description:
-          'Both rely on complete-tree array indexing, the heap property, and sift-down (heapify).',
+          'Heap and Heap Sort rely on complete-tree array indexing, the heap property, and sift-down (heapify).',
       },
       {
         title: 'Different goals',
         description:
-          'A heap answers “what is the next priority?”. Heap Sort answers “put every element in order.”',
+          'A heap answers “what is the next priority?”. A priority queue is that ADT with items attached. Heap Sort answers “put every element in order.”',
       },
       {
         title: 'Stability & layout',
@@ -266,7 +271,7 @@ export const heap: Lesson = {
       {
         title: 'Learning order',
         description:
-          'Master insert / extract / build-heap here, then the Heap Sort lesson will feel like composing those ideas.',
+          'Master insert / extract / build-heap here, then /learn/priority-queue for the ADT, then /learn/heap-sort for sorting.',
       },
     ],
   },
@@ -615,7 +620,7 @@ console.log(h.extract()) // 0`,
     'You need fast arbitrary key lookup — use a hash table or balanced BST.',
     'You need a fully sorted sequence at all times — use a balanced tree or sort explicitly.',
     'You only need to sort once — call a sort (or the Heap Sort lesson) instead of maintaining a live heap.',
-    'You need stable ordering of equal priorities with rich satellite data — consider a stable structure or explicit tie-breaks.',
+    'You need stable ordering of equal priorities with rich satellite data — use a priority queue with explicit FIFO ties (/learn/priority-queue) or another stable structure.',
   ],
 
   keyTakeaways: [
@@ -624,7 +629,7 @@ console.log(h.extract()) // 0`,
     'Min Heap: parent ≤ children. Max Heap: parent ≥ children.',
     'Peek is O(1); insert and extract are O(log n); build-heap is O(n).',
     'Bottom-up build is faster than n inserts because most sift distances are short.',
-    'Heap (structure) ≠ Heap Sort (algorithm) — continue to /learn/heap-sort to see sorting with a Max Heap.',
+    'Heap (structure) powers Priority Queues (/learn/priority-queue) and Heap Sort (/learn/heap-sort).',
   ],
 
   previousLesson: {
@@ -633,8 +638,8 @@ console.log(h.extract()) // 0`,
   },
 
   nextLesson: {
-    title: 'Heap Sort',
-    href: '/learn/heap-sort',
+    title: 'Priority Queue',
+    href: '/learn/priority-queue',
   },
 
   categoryHref: '/data-structures',

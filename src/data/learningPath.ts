@@ -76,6 +76,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'binary-search-tree',
   'avl-tree',
   'heap',
+  'priority-queue',
 ] as const
 
 /**
@@ -176,6 +177,12 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'avl-tree',
     reason:
       'Heaps continue the trees path with a complete binary tree used for priorities rather than ordered search.',
+  },
+  {
+    lessonSlug: 'priority-queue',
+    prerequisiteSlug: 'heap',
+    reason:
+      'Priority Queue builds on Heap insert/extract mechanics to teach the priority ADT with FIFO ties.',
   },
 ] as const
 
@@ -279,7 +286,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'trees',
-    lessonSlugs: ['binary-search-tree', 'avl-tree', 'heap'],
+    lessonSlugs: ['binary-search-tree', 'avl-tree', 'heap', 'priority-queue'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

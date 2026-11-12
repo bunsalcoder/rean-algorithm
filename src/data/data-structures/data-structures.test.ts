@@ -46,6 +46,7 @@ describe('data structures catalog', () => {
       'trees',
       'avl-trees',
       'heaps',
+      'priority-queues',
       'graphs',
       'tries',
     ]
@@ -79,6 +80,7 @@ describe('data structures catalog', () => {
         'hash-tables',
         'heaps',
         'linked-lists',
+        'priority-queues',
         'queues',
         'stacks',
         'trees',
@@ -129,11 +131,15 @@ describe('data structures catalog', () => {
     )
     expect(getDataStructureById('avl-trees')?.href).toBe('/learn/avl-tree')
     expect(getDataStructureById('heaps')?.href).toBe('/learn/heap')
+    expect(getDataStructureById('priority-queues')?.href).toBe(
+      '/learn/priority-queue',
+    )
     expect(getLesson('frequency-counting')).toBeDefined()
     expect(getLesson('hash-table')).toBeDefined()
     expect(getLesson('binary-search-tree')).toBeDefined()
     expect(getLesson('avl-tree')).toBeDefined()
     expect(getLesson('heap')).toBeDefined()
+    expect(getLesson('priority-queue')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
     expect(getLesson('doubly-linked-list')).toBeDefined()
@@ -167,7 +173,7 @@ describe('data structures catalog', () => {
   })
 
   it('keeps choosing-guide scenarios aligned with catalog ids', () => {
-    expect(structureScenarios.length).toBe(12)
+    expect(structureScenarios.length).toBe(12) // includes priority-queues scenario
     for (const scenario of structureScenarios) {
       const structure = getDataStructureById(scenario.structureId)
       expect(structure, scenario.id).toBeDefined()

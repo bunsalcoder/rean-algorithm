@@ -5,6 +5,8 @@ export { ExponentialSearchVisualization } from './ExponentialSearchVisualization
 export { HeapSortVisualization } from './HeapSortVisualization'
 export { HeapPanels } from './HeapPanels'
 export { HeapVisualization } from './HeapVisualization'
+export { PriorityQueuePanels } from './PriorityQueuePanels'
+export { PriorityQueueVisualization } from './PriorityQueueVisualization'
 export { InterpolationSearchVisualization } from './InterpolationSearchVisualization'
 export { JumpSearchVisualization } from './JumpSearchVisualization'
 export { HeapTreeView } from './HeapTreeView'

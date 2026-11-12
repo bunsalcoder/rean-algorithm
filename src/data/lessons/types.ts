@@ -43,6 +43,7 @@ export type LessonVisualizationType =
   | 'binary-search-tree'
   | 'avl-tree'
   | 'heap'
+  | 'priority-queue'
 
 export type LessonVisualization = {
   title: string
