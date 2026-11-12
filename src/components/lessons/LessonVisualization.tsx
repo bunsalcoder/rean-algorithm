@@ -7,6 +7,7 @@ import { HeapSortVisualization } from '../visualizations/HeapSortVisualization'
 import { HeapVisualization } from '../visualizations/HeapVisualization'
 import { PriorityQueueVisualization } from '../visualizations/PriorityQueueVisualization'
 import { GraphVisualization } from '../visualizations/GraphVisualization'
+import { GraphTraversalVisualization } from '../visualizations/GraphTraversalVisualization'
 import { TrieVisualization } from '../visualizations/TrieVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
@@ -246,6 +247,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <GraphVisualization />
   }
 
+  if (visualization.type === 'graph-traversal') {
+    return <GraphTraversalVisualization />
+  }
+
   if (visualization.type === 'trie') {
     return <TrieVisualization />
   }
@@ -290,6 +295,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'heap' ||
     visualization.type === 'priority-queue' ||
     visualization.type === 'graph' ||
+    visualization.type === 'graph-traversal' ||
     visualization.type === 'trie'
 
   return (

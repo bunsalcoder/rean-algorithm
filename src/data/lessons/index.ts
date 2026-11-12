@@ -31,6 +31,7 @@ import { priorityQueue } from './priority-queue'
 import { queue } from './queue'
 import { stack } from './stack'
 import { graph } from './graph'
+import { graphTraversal } from './graph-traversal'
 import { trie } from './trie'
 import { validAnagram } from './valid-anagram'
 import type { Lesson, LessonTocItem } from './types'
@@ -92,6 +93,7 @@ export const lessons: Lesson[] = [
   heap,
   priorityQueue,
   graph,
+  graphTraversal,
   trie,
 ]
 

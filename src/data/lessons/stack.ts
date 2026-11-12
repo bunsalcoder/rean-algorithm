@@ -182,7 +182,7 @@ export const stack: Lesson = {
       {
         title: 'Depth-first search and backtracking',
         description:
-          'DFS (explicit stack or recursion) and backtracking push a choice, explore, then pop to restore the previous state.',
+          'DFS (explicit stack or recursion) and backtracking push a choice, explore, then pop to restore the previous state. Practice graph DFS in /learn/graph-traversal.',
       },
       {
         title: 'Deque connection',

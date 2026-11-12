@@ -179,7 +179,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('avl-tree')?.slug).toBe('heap')
     expect(getNextLessonInOrder('heap')?.slug).toBe('priority-queue')
     expect(getNextLessonInOrder('priority-queue')?.slug).toBe('graph')
-    expect(getNextLessonInOrder('graph')?.slug).toBe('trie')
+    expect(getNextLessonInOrder('graph')?.slug).toBe('graph-traversal')
+    expect(getNextLessonInOrder('graph-traversal')?.slug).toBe('trie')
     expect(getNextLessonInOrder('trie')).toBeUndefined()
   })
 
@@ -430,7 +431,8 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('avl-tree')?.href).toBe('/learn/heap')
     expect(getNextLessonInOrder('heap')?.href).toBe('/learn/priority-queue')
     expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
-    expect(getNextLessonInOrder('graph')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('graph')?.href).toBe('/learn/graph-traversal')
+    expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/trie')
 
     const afterAvl = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
@@ -471,7 +473,8 @@ describe('recommendNextLearningAction', () => {
     expect(afterPriority.kind).toBe('review_prerequisite')
     expect(afterPriority.href).toBe('/learn/heap')
     expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
-    expect(getNextLessonInOrder('graph')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('graph')?.href).toBe('/learn/graph-traversal')
+    expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/trie')
 
     const afterGraph = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
@@ -482,9 +485,21 @@ describe('recommendNextLearningAction', () => {
       return
     }
     // Graph lists BST as a soft prerequisite, so the recommend tip
-    // prefers a non-blocking review. Lesson order still continues to Trie.
+    // prefers a non-blocking review. Lesson order still continues to traversal.
     expect(afterGraph.kind).toBe('review_prerequisite')
     expect(afterGraph.href).toBe('/learn/binary-search-tree')
+
+    const afterTraversal = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'graph-traversal',
+    })
+    expect(afterTraversal.status).toBe('recommend')
+    if (afterTraversal.status !== 'recommend') {
+      return
+    }
+    // Graph Traversal lists Graph as a soft prerequisite.
+    expect(afterTraversal.kind).toBe('review_prerequisite')
+    expect(afterTraversal.href).toBe('/learn/graph')
 
     const atEnd = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),

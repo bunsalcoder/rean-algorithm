@@ -31,14 +31,14 @@ export const graph: Lesson = {
     'A graph models relationships: entities are vertices (nodes), and connections are edges. Unlike trees, graphs may have cycles, multiple parents, and disconnected pieces.',
     'Edges can be one-way (directed) or two-way (undirected), and may carry a weight such as distance, cost, or latency. Many algorithms later — BFS, DFS, shortest paths — operate on this same structure.',
     'How you store the graph matters. An adjacency list is usually compact for sparse graphs; an adjacency matrix makes “is there an edge?” fast but uses O(V²) space. An edge list is a simple list of pairs (and optional weights).',
-    'This lesson’s playground lets you add and remove vertices and edges, switch modes, drag nodes, load sample networks, and watch all three representations stay in sync. Traversal algorithms (BFS/DFS) are upcoming topics — they are referenced here but not implemented yet.',
+    'This lesson’s playground lets you add and remove vertices and edges, switch modes, drag nodes, load sample networks, and watch all three representations stay in sync. When you are ready to walk the graph, continue to Graph Traversal: BFS & DFS (/learn/graph-traversal).',
   ],
 
   whyItMatters: [
     'Almost every networked system — friends, roads, packets, flights, hyperlinks — is naturally a graph.',
     'Choosing list vs matrix storage changes memory use and how fast you can check or scan edges.',
     'Clear vocabulary (degree, path, cycle, directed edge) makes later graph algorithms much easier to learn.',
-    'Interactive editing builds intuition before you write BFS, DFS, or shortest-path code.',
+    'Interactive editing builds intuition before you run BFS/DFS in the Graph Traversal lesson or later shortest-path topics.',
   ],
 
   visualization: {
@@ -117,7 +117,7 @@ export const graph: Lesson = {
     {
       title: 'Real-world Applications',
       description:
-        'Social networks, road maps, computer networks, flight routes, and website link graphs. Later lessons will use BFS/DFS (and eventually shortest paths) on these same structures.',
+        'Social networks, road maps, computer networks, flight routes, and website link graphs. Next, Graph Traversal applies BFS/DFS on these same structures; shortest paths come later.',
     },
   ],
 
@@ -210,9 +210,9 @@ export const graph: Lesson = {
           'A list of pairs (from, to[, weight]). Simple to dump or serialize; awkward for “all neighbors of v” unless you also build an index.',
       },
       {
-        title: 'Upcoming: BFS and DFS',
+        title: 'Next: BFS and DFS',
         description:
-          'Breadth-first and depth-first traversal walk these representations to explore connectivity and paths. They are next on the graphs path — not implemented in this lesson.',
+          'Breadth-first and depth-first traversal walk these representations to explore connectivity and paths. Continue in Graph Traversal: BFS & DFS (/learn/graph-traversal).',
       },
     ],
   },
@@ -693,7 +693,7 @@ console.log(g.getEdges())
     'Adjacency lists use O(V + E) space; matrices use O(V²) with O(1) edge checks.',
     'Undirected edges are symmetric; directed edges are one-way unless both directions exist.',
     'Removing a vertex must remove all incident edges to keep the graph consistent.',
-    'Degree, paths, cycles, and connectivity are the vocabulary for upcoming BFS/DFS lessons.',
+    'Degree, paths, cycles, and connectivity are the vocabulary for BFS/DFS in Graph Traversal.',
     'Real systems: social networks, roads, computer networks, flights, and website links.',
   ],
 
@@ -703,8 +703,8 @@ console.log(g.getEdges())
   },
 
   nextLesson: {
-    title: 'Trie (Prefix Tree)',
-    href: '/learn/trie',
+    title: 'Graph Traversal: BFS & DFS',
+    href: '/learn/graph-traversal',
   },
 
   categoryHref: '/data-structures',

@@ -1,4 +1,5 @@
 import { useMemo, useState, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import {
   GRAPH_SAMPLE_PRESETS,
   GRAPH_SOCIAL_NETWORK,
@@ -242,8 +243,15 @@ export function GraphVisualization() {
       >
         Build and inspect graphs as vertices and edges. Switch directed /
         undirected and weighted / unweighted modes, then watch the adjacency
-        list, matrix, and edge list stay synchronized. BFS and DFS traversal
-        lessons come later — this playground focuses on the structure.
+        list, matrix, and edge list stay synchronized. For walking the graph
+        with a queue or stack, open{' '}
+        <Link
+          to="/learn/graph-traversal"
+          className="font-medium text-sky-800 underline underline-offset-2 dark:text-sky-200"
+        >
+          Graph Traversal (BFS &amp; DFS)
+        </Link>
+        .
       </p>
 
       <div className="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/20">

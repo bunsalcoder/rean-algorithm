@@ -744,7 +744,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'graphs',
     title: 'Graphs',
     description:
-      'Model relationships with vertices and edges, then continue later to BFS and DFS traversals.',
+      'Model relationships with vertices and edges, then continue to BFS and DFS traversals.',
     availability: 'available',
     href: '/learn/graph',
   },

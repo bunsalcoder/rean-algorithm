@@ -615,8 +615,8 @@ console.log(trie.getAllWords())
   ],
 
   previousLesson: {
-    title: 'Graph Data Structure',
-    href: '/learn/graph',
+    title: 'Graph Traversal: BFS & DFS',
+    href: '/learn/graph-traversal',
   },
 
   nextLesson: {

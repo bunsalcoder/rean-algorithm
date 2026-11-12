@@ -45,6 +45,7 @@ export type LessonVisualizationType =
   | 'heap'
   | 'priority-queue'
   | 'graph'
+  | 'graph-traversal'
   | 'trie'
 
 export type LessonVisualization = {
