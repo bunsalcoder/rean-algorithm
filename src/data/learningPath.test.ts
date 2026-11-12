@@ -175,7 +175,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('binary-search-tree')?.slug).toBe('avl-tree')
     expect(getNextLessonInOrder('avl-tree')?.slug).toBe('heap')
     expect(getNextLessonInOrder('heap')?.slug).toBe('priority-queue')
-    expect(getNextLessonInOrder('priority-queue')).toBeUndefined()
+    expect(getNextLessonInOrder('priority-queue')?.slug).toBe('trie')
+    expect(getNextLessonInOrder('trie')).toBeUndefined()
   })
 
   it('exposes comparison pages only where they exist', () => {
@@ -424,6 +425,7 @@ describe('recommendNextLearningAction', () => {
     )
     expect(getNextLessonInOrder('avl-tree')?.href).toBe('/learn/heap')
     expect(getNextLessonInOrder('heap')?.href).toBe('/learn/priority-queue')
+    expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/trie')
 
     const afterAvl = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
@@ -451,18 +453,32 @@ describe('recommendNextLearningAction', () => {
     expect(afterHeapLesson.kind).toBe('review_prerequisite')
     expect(afterHeapLesson.href).toBe('/learn/avl-tree')
 
-    const atEnd = recommendNextLearningAction({
+    const afterPriority = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
       currentLessonSlug: 'priority-queue',
+    })
+    expect(afterPriority.status).toBe('recommend')
+    if (afterPriority.status !== 'recommend') {
+      return
+    }
+    // Priority Queue lists Heap as a soft prerequisite, so the recommend tip
+    // prefers a non-blocking review. Lesson order still continues to Trie.
+    expect(afterPriority.kind).toBe('review_prerequisite')
+    expect(afterPriority.href).toBe('/learn/heap')
+    expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/trie')
+
+    const atEnd = recommendNextLearningAction({
+      completedPracticeSlugs: new Set(),
+      currentLessonSlug: 'trie',
     })
     expect(atEnd.status).toBe('recommend')
     if (atEnd.status !== 'recommend') {
       return
     }
-    // Priority Queue lists Heap as a soft prerequisite, so the end-of-order
+    // Trie lists BST as a soft prerequisite, so the end-of-order
     // action prefers a non-blocking review tip over the cold-start fallback.
     expect(atEnd.kind).toBe('review_prerequisite')
-    expect(atEnd.href).toBe('/learn/heap')
+    expect(atEnd.href).toBe('/learn/binary-search-tree')
   })
 
   it('treats prerequisites as review guidance when their practice is incomplete', () => {

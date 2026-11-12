@@ -6,6 +6,7 @@ import { ExponentialSearchVisualization } from '../visualizations/ExponentialSea
 import { HeapSortVisualization } from '../visualizations/HeapSortVisualization'
 import { HeapVisualization } from '../visualizations/HeapVisualization'
 import { PriorityQueueVisualization } from '../visualizations/PriorityQueueVisualization'
+import { TrieVisualization } from '../visualizations/TrieVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
 import { JumpSearchVisualization } from '../visualizations/JumpSearchVisualization'
@@ -240,6 +241,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <PriorityQueueVisualization />
   }
 
+  if (visualization.type === 'trie') {
+    return <TrieVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -278,7 +283,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'binary-search-tree' ||
     visualization.type === 'avl-tree' ||
     visualization.type === 'heap' ||
-    visualization.type === 'priority-queue'
+    visualization.type === 'priority-queue' ||
+    visualization.type === 'trie'
 
   return (
     <LessonSection id="visualization">

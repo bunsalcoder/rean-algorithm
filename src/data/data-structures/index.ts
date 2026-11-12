@@ -582,8 +582,10 @@ export const dataStructures: DataStructure[] = [
       'Less common as a first teaching structure',
     ],
     complexityNote:
-      'Insert and search are typically O(L) in the length of the string, independent of how many other keys exist—assuming fixed alphabet branching.',
-    availability: 'coming-soon',
+      'Insert and search are typically O(L) in the length of the string, independent of how many other keys exist—assuming Map or fixed-alphabet child lookup. Listing all words costs work proportional to nodes traversed. Child representation and alphabet size affect constants.',
+    availability: 'available',
+    href: '/learn/trie',
+    hrefLabel: 'Learn tries',
     accent: 'blue',
   },
 ]
@@ -747,8 +749,9 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'specialized',
     title: 'Specialized Structures such as Tries',
     description:
-      'Explore prefix trees and other specialized layouts once the core structures click.',
-    availability: 'coming-soon',
+      'Explore prefix trees for autocomplete-style string dictionaries once the core structures click.',
+    availability: 'available',
+    href: '/learn/trie',
   },
 ]
 

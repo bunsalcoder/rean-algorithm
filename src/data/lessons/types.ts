@@ -44,6 +44,7 @@ export type LessonVisualizationType =
   | 'avl-tree'
   | 'heap'
   | 'priority-queue'
+  | 'trie'
 
 export type LessonVisualization = {
   title: string

@@ -159,6 +159,7 @@ console.log(linearSearch(values, 99)); // -1`,
     'Searches happen frequently on the same collection.',
     'The data is already sorted and Binary Search can be used instead.',
     'A more appropriate data structure (such as a hash set or map) can provide faster lookup.',
+    'You need prefix-based string lookup or autocomplete — a Trie (/learn/trie) avoids scanning every string.',
   ],
 
   keyTakeaways: [
