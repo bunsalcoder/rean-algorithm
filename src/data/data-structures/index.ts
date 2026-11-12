@@ -16,6 +16,7 @@ export type DataStructureId =
   | 'trees'
   | 'avl-trees'
   | 'heaps'
+  | 'priority-queues'
   | 'graphs'
   | 'tries'
 
@@ -437,9 +438,9 @@ export const dataStructures: DataStructure[] = [
       'Parent–child priority invariants (min-heap or max-heap) with a compact array layout using index arithmetic.',
     useCase: 'Priority-based retrieval',
     useCases: [
-      'Priority queues and scheduling',
+      'Backing store for priority queues and scheduling',
       'Heap Sort and selection of top-k items',
-      'Dijkstra-style shortest-path queues',
+      'Dijkstra-style shortest-path frontiers',
     ],
     operations: [
       { name: 'Find min / max (root)', complexity: 'O(1)' },
@@ -467,6 +468,42 @@ export const dataStructures: DataStructure[] = [
     href: '/learn/heap',
     hrefLabel: 'Learn heaps',
     accent: 'purple',
+  },
+  {
+    id: 'priority-queues',
+    name: 'Priority Queues',
+    description:
+      'An abstract collection that always exposes the next item by priority — not by insertion order — commonly implemented with a binary heap.',
+    organization:
+      'Logical ADT over a min or max heap of {item, priority} entries. Equal priorities can use FIFO via insertion sequence.',
+    useCase: 'Urgency-based scheduling and event ordering',
+    useCases: [
+      'Operating-system and job schedulers',
+      'Emergency triage and network packet prioritization',
+      'Event-driven simulation and Dijkstra-style graph frontiers',
+    ],
+    operations: [
+      { name: 'Peek next', complexity: 'O(1)' },
+      { name: 'Enqueue (insert)', complexity: 'O(log n)' },
+      { name: 'Dequeue (extract)', complexity: 'O(log n)' },
+      { name: 'Size / isEmpty', complexity: 'O(1)' },
+    ],
+    advantages: [
+      'Removes the current highest- or lowest-priority item efficiently',
+      'Clear ADT separate from the heap implementation details',
+      'Supports deterministic FIFO ties for equal priorities',
+    ],
+    limitations: [
+      'Not a substitute for strict FIFO queues when arrival order must win',
+      'Arbitrary search by item is still typically O(n) on a plain heap',
+      'Specialized heaps may be needed for advanced decrease-key workloads',
+    ],
+    complexityNote:
+      'With a binary heap, peek is O(1) and enqueue/dequeue are O(log n). Space is O(n). Complexity assumes a binary-heap backing store as in the Priority Queue lesson.',
+    availability: 'available',
+    href: '/learn/priority-queue',
+    hrefLabel: 'Learn priority queues',
+    accent: 'violet',
   },
   {
     id: 'graphs',
@@ -627,10 +664,10 @@ export const structureScenarios: StructureScenario[] = [
   {
     id: 'priority',
     need: 'Need priority-based retrieval',
-    structureId: 'heaps',
-    structureName: 'Heap',
+    structureId: 'priority-queues',
+    structureName: 'Priority Queue',
     rationale:
-      'The root always exposes the current min or max priority for a priority queue.',
+      'A priority queue removes the next item by urgency; a heap is the usual O(log n) implementation.',
   },
   {
     id: 'relationships',
@@ -693,9 +730,9 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
   },
   {
     id: 'trees-heaps',
-    title: 'Trees and Heaps',
+    title: 'Trees, Heaps, and Priority Queues',
     description:
-      'Start with Binary Search Tree, continue to AVL for self-balancing rotations, then learn the Heap data structure (and optionally Heap Sort).',
+      'Start with Binary Search Tree, continue to AVL, then Heap mechanics, and finish with the Priority Queue ADT (optionally Heap Sort for sorting).',
     availability: 'available',
     href: '/learn/binary-search-tree',
   },

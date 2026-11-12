@@ -202,7 +202,7 @@ export const heapSort: Lesson = {
       {
         title: 'Heap data structure',
         description:
-          'A reusable priority container: insert, peek, extract, and O(n) build-heap for Min or Max Heaps. Study it at /learn/heap — distinct from this sorting algorithm.',
+          'A reusable priority container: insert, peek, extract, and O(n) build-heap for Min or Max Heaps. Study it at /learn/heap — distinct from this sorting algorithm. For the priority ADT on top of heaps, see /learn/priority-queue.',
       },
       {
         title: 'Bubble Sort',

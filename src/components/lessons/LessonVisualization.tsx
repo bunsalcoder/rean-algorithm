@@ -5,6 +5,7 @@ import { BubbleSortVisualization } from '../visualizations/BubbleSortVisualizati
 import { ExponentialSearchVisualization } from '../visualizations/ExponentialSearchVisualization'
 import { HeapSortVisualization } from '../visualizations/HeapSortVisualization'
 import { HeapVisualization } from '../visualizations/HeapVisualization'
+import { PriorityQueueVisualization } from '../visualizations/PriorityQueueVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
 import { JumpSearchVisualization } from '../visualizations/JumpSearchVisualization'
@@ -235,6 +236,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <HeapVisualization />
   }
 
+  if (visualization.type === 'priority-queue') {
+    return <PriorityQueueVisualization />
+  }
+
   return <PlaceholderVisualization visualization={visualization} />
 }
 
@@ -272,7 +277,8 @@ export function LessonVisualizationPanel({
     visualization.type === 'hash-table' ||
     visualization.type === 'binary-search-tree' ||
     visualization.type === 'avl-tree' ||
-    visualization.type === 'heap'
+    visualization.type === 'heap' ||
+    visualization.type === 'priority-queue'
 
   return (
     <LessonSection id="visualization">
