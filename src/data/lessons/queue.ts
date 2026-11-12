@@ -181,7 +181,7 @@ export const queue: Lesson = {
       {
         title: 'Breadth-first search (BFS)',
         description:
-          'Enqueue the start node, then repeatedly dequeue a node and enqueue its unseen neighbors. The queue visits level by level.',
+          'Enqueue the start node, then repeatedly dequeue a node and enqueue its unseen neighbors. The queue visits level by level. Practice this on graphs in /learn/graph-traversal.',
       },
       {
         title: 'Network packet processing & event handling',

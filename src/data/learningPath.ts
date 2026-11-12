@@ -78,6 +78,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'heap',
   'priority-queue',
   'graph',
+  'graph-traversal',
   'trie',
 ] as const
 
@@ -197,6 +198,24 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     prerequisiteSlug: 'priority-queue',
     reason:
       'Priority queues appear later in weighted graph algorithms; finishing the heap/PQ path first keeps the structures track ordered.',
+  },
+  {
+    lessonSlug: 'graph-traversal',
+    prerequisiteSlug: 'graph',
+    reason:
+      'BFS and DFS walk the same vertex/edge model introduced in the Graph Data Structure lesson.',
+  },
+  {
+    lessonSlug: 'graph-traversal',
+    prerequisiteSlug: 'queue',
+    reason:
+      'BFS explores level by level with a FIFO queue of discovered vertices.',
+  },
+  {
+    lessonSlug: 'graph-traversal',
+    prerequisiteSlug: 'stack',
+    reason:
+      'DFS explores deeply with an explicit stack or the call stack, then backtracks.',
   },
   {
     lessonSlug: 'trie',
@@ -324,7 +343,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'graphs',
-    lessonSlugs: ['graph'],
+    lessonSlugs: ['graph', 'graph-traversal'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },
