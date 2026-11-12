@@ -77,6 +77,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'avl-tree',
   'heap',
   'priority-queue',
+  'trie',
 ] as const
 
 /**
@@ -184,6 +185,18 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
     reason:
       'Priority Queue builds on Heap insert/extract mechanics to teach the priority ADT with FIFO ties.',
   },
+  {
+    lessonSlug: 'trie',
+    prerequisiteSlug: 'binary-search-tree',
+    reason:
+      'Tries are another tree shape; BST parent/child vocabulary helps before character-labeled prefix paths.',
+  },
+  {
+    lessonSlug: 'trie',
+    prerequisiteSlug: 'hash-table',
+    reason:
+      'Hash tables cover exact key lookup; Tries add efficient prefix search for string dictionaries.',
+  },
 ] as const
 
 /**
@@ -286,7 +299,13 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'trees',
-    lessonSlugs: ['binary-search-tree', 'avl-tree', 'heap', 'priority-queue'],
+    lessonSlugs: [
+      'binary-search-tree',
+      'avl-tree',
+      'heap',
+      'priority-queue',
+      'trie',
+    ],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

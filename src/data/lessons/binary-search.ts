@@ -200,6 +200,7 @@ console.log(binarySearch(values, 50)); // -1`,
     'Situations where sorting costs more than a single Linear Search.',
     'Data structures without efficient random access, such as ordinary linked lists.',
     'Situations where a different data structure provides a more appropriate lookup method.',
+    'Prefix-based string dictionaries and autocomplete — prefer a Trie (/learn/trie) over binary-searching raw strings alone.',
   ],
 
   keyTakeaways: [

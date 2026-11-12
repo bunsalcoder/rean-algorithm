@@ -84,9 +84,10 @@ describe('data structures catalog', () => {
         'queues',
         'stacks',
         'trees',
+        'tries',
       ].sort(),
     )
-    expect(comingSoon.length).toBe(2)
+    expect(comingSoon.length).toBe(1)
 
     for (const structure of available) {
       expect(structure.href).toBeDefined()
@@ -113,7 +114,8 @@ describe('data structures catalog', () => {
 
   it('resolves selection helpers used by the Structure Explorer', () => {
     expect(getDataStructureById('arrays')?.name).toBe('Arrays')
-    expect(getDataStructureById('tries')?.availability).toBe('coming-soon')
+    expect(getDataStructureById('tries')?.availability).toBe('available')
+    expect(getDataStructureById('tries')?.href).toBe('/learn/trie')
     expect(getDataStructureById('hash-tables')?.href).toBe(
       '/learn/hash-table',
     )
@@ -140,6 +142,7 @@ describe('data structures catalog', () => {
     expect(getLesson('avl-tree')).toBeDefined()
     expect(getLesson('heap')).toBeDefined()
     expect(getLesson('priority-queue')).toBeDefined()
+    expect(getLesson('trie')).toBeDefined()
     expect(getLesson('heap-sort')).toBeDefined()
     expect(getLesson('singly-linked-list')).toBeDefined()
     expect(getLesson('doubly-linked-list')).toBeDefined()

@@ -511,6 +511,7 @@ console.log(table.has('missing')) // false`,
 
   whenNotToUse: [
     'You need sorted keys or range queries — consider a balanced tree or sorted array.',
+    'You need efficient prefix search or autocomplete — use a Trie (/learn/trie) instead of scanning every hash key.',
     'You need stable worst-case O(1) without hashing assumptions — hashing’s worst case is O(n).',
     'You only need contiguous integer indices — a plain array is simpler.',
     'You need guaranteed ordering of insertion for iteration (unless you add extra bookkeeping).',

@@ -30,6 +30,7 @@ import { heap } from './heap'
 import { priorityQueue } from './priority-queue'
 import { queue } from './queue'
 import { stack } from './stack'
+import { trie } from './trie'
 import { validAnagram } from './valid-anagram'
 import type { Lesson, LessonTocItem } from './types'
 
@@ -89,6 +90,7 @@ export const lessons: Lesson[] = [
   avlTree,
   heap,
   priorityQueue,
+  trie,
 ]
 
 const lessonsBySlug = new Map(lessons.map((lesson) => [lesson.slug, lesson]))
