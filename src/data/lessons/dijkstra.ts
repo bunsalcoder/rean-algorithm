@@ -31,7 +31,7 @@ export const dijkstra: Lesson = {
     'A shortest path is the minimum total weight from a source vertex to a destination — not necessarily the path with the fewest edges. On an unweighted graph every edge costs the same, so breadth-first search already finds it. When edges have different non-negative costs, Dijkstra’s Algorithm is the classic tool.',
     'The central idea is small: keep a best-known distance for every vertex, repeatedly select the unvisited vertex with the smallest distance, and relax its outgoing edges. Relaxing an edge asks whether going through the current vertex is cheaper than the distance already recorded.',
     'This lesson uses the adjacency-list Graph from /learn/graph and the min priority queue from /learn/priority-queue. The queue has no decrease-key, so a better distance is enqueued again and older entries are ignored when they come out (a stale-entry check). The playground steps forward and backward through immutable snapshots of the distance table.',
-    'Dijkstra requires every edge weight to be zero or positive. It is not a correct algorithm for negative weights. Algorithms such as Bellman-Ford handle negative weights, as long as the graph has no negative cycle.',
+    'Dijkstra requires every edge weight to be zero or positive. It is not a correct algorithm for negative weights. Bellman-Ford (/learn/bellman-ford) handles negative weights and reports a reachable negative cycle instead of a finite distance.',
   ],
 
   whyItMatters: [
@@ -67,7 +67,7 @@ export const dijkstra: Lesson = {
     {
       title: "What is Dijkstra's Algorithm?",
       description:
-        'Dijkstra’s Algorithm computes the shortest distance from one source to every vertex that source can reach, on a graph with non-negative edge weights. It repeatedly selects the unvisited vertex with the smallest known distance and relaxes that vertex’s outgoing edges. After a vertex is selected, its distance is final — no cheaper path can appear later, because every remaining edge adds zero or more. That guarantee is exactly why negative weights are out of scope. Bellman-Ford does not rely on this “final when selected” rule, so it can handle negative weights.',
+        'Dijkstra’s Algorithm computes the shortest distance from one source to every vertex that source can reach, on a graph with non-negative edge weights. It repeatedly selects the unvisited vertex with the smallest known distance and relaxes that vertex’s outgoing edges. After a vertex is selected, its distance is final — no cheaper path can appear later, because every remaining edge adds zero or more. That guarantee is exactly why negative weights are out of scope. Bellman-Ford (/learn/bellman-ford) does not freeze a vertex when it is selected. It relaxes every edge up to |V| - 1 times, so a negative edge can still improve a distance, and a later pass can detect a reachable negative cycle.',
     },
     {
       title: 'Source and Destination Vertices',
@@ -112,7 +112,7 @@ export const dijkstra: Lesson = {
     {
       title: 'Real-world Applications',
       description:
-        'GPS navigation sums travel time or distance on road segments and asks for the cheapest route between two intersections. Road-network routing is the same model with one-way streets as directed edges. Network packet routing concepts use link cost as the weight (the real internet uses more policy than plain Dijkstra, but the shortest-path idea is the same). Flight planning adds hours or price on each directed leg — a one-stop itinerary can beat a long direct flight. Game pathfinding on a weighted grid uses terrain cost the same way; if every tile costs 1, BFS or a grid variant is enough, and if costs differ and stay non-negative, Dijkstra (or A* built on the same relaxation idea) applies. None of these examples are valid if a weight can be negative.',
+        'GPS navigation sums travel time or distance on road segments and asks for the cheapest route between two intersections. Road-network routing is the same model with one-way streets as directed edges. Network packet routing concepts use link cost as the weight (the real internet uses more policy than plain Dijkstra, but the shortest-path idea is the same). Flight planning adds hours or price on each directed leg — a one-stop itinerary can beat a long direct flight. Game pathfinding on a weighted grid uses terrain cost the same way; if every tile costs 1, BFS or a grid variant is enough, and if costs differ and stay non-negative, Dijkstra (or A* built on the same relaxation idea) applies. None of these examples are valid if a weight can be negative. That case, including a reachable negative cycle, is Bellman-Ford (/learn/bellman-ford).',
     },
   ],
 
@@ -201,7 +201,7 @@ export const dijkstra: Lesson = {
       {
         title: 'Not for negative weights',
         description:
-          'Neither BFS nor Dijkstra is correct if an edge weight can be negative. Bellman-Ford handles negative weights and can report a reachable negative cycle. This course does not implement it here; do not treat Dijkstra as a substitute.',
+          'Neither BFS nor Dijkstra is correct if an edge weight can be negative. Bellman-Ford (/learn/bellman-ford) relaxes every edge up to |V| - 1 times, allows a negative edge, and reports a reachable negative cycle instead of a finite distance. Use that lesson when a weight can be negative. Do not treat Dijkstra as a substitute.',
       },
     ],
   },
@@ -448,7 +448,7 @@ export function dijkstra(
   ],
 
   whenNotToUse: [
-    'Any edge weight is negative. Use Bellman-Ford (not implemented in this step) instead of forcing Dijkstra.',
+    'Any edge weight is negative, or you must detect a reachable negative cycle. Use Bellman-Ford (/learn/bellman-ford). Dijkstra treats a selected distance as final, which is false when a later edge can subtract cost.',
     'Every edge has the same positive cost. BFS on /learn/graph-traversal answers fewest-hops more simply.',
     'You need a path that is allowed to revisit vertices to exploit a negative cycle — that problem is unbounded, and Dijkstra will not detect it.',
     'You only need to know whether any path exists. DFS or BFS is enough and does not need weights.',
@@ -458,10 +458,10 @@ export function dijkstra(
     'Dijkstra repeatedly selects the unvisited vertex with the smallest known distance and relaxes its outgoing edges.',
     'The distance table stores the best cost; previous pointers store the route; ∞ means unreachable.',
     'A min priority queue supplies that next vertex. Stale duplicates must be ignored when the heap cannot decrease-key.',
-    'Edge weights must be non-negative. Zero is allowed. Negative weights are a different algorithm (Bellman-Ford).',
+    'Edge weights must be non-negative. Zero is allowed. Negative weights, and reachable negative cycles, belong to Bellman-Ford (/learn/bellman-ford).',
     'BFS is the unweighted special case. Unequal non-negative weights need Dijkstra.',
     'With an adjacency list and a binary heap, time is O((V + E) log V) and space is O(V + E), including the graph. Quote the representation with the bound.',
-    'Continue from the Graph (/learn/graph), Graph Traversal (/learn/graph-traversal), and Priority Queue (/learn/priority-queue) lessons. This page does not add later graph algorithms.',
+    'Use Dijkstra when every weight is ≥ 0. Use Bellman-Ford (/learn/bellman-ford) when a weight may be negative or a reachable negative cycle must be reported. Bellman-Ford is O(V × E) and does not use a priority queue.',
   ],
 
   previousLesson: {
@@ -470,8 +470,8 @@ export function dijkstra(
   },
 
   nextLesson: {
-    title: 'Trie (Prefix Tree)',
-    href: '/learn/trie',
+    title: 'Bellman-Ford Algorithm',
+    href: '/learn/bellman-ford',
   },
 
   categoryHref: '/data-structures',

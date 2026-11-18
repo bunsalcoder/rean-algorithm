@@ -31,7 +31,7 @@ export const graph: Lesson = {
     'A graph models relationships: entities are vertices (nodes), and connections are edges. Unlike trees, graphs may have cycles, multiple parents, and disconnected pieces.',
     'Edges can be one-way (directed) or two-way (undirected), and may carry a weight such as distance, cost, or latency. Many algorithms later — BFS, DFS, shortest paths — operate on this same structure.',
     'How you store the graph matters. An adjacency list is usually compact for sparse graphs; an adjacency matrix makes “is there an edge?” fast but uses O(V²) space. An edge list is a simple list of pairs (and optional weights).',
-    'This lesson’s playground lets you add and remove vertices and edges, switch modes, drag nodes, load sample networks, and watch all three representations stay in sync. When you are ready to walk the graph, continue to Graph Traversal: BFS & DFS (/learn/graph-traversal). Weighted shortest paths with non-negative costs continue in Dijkstra’s Algorithm (/learn/dijkstra).',
+    'This lesson’s playground lets you add and remove vertices and edges, switch modes, drag nodes, load sample networks, and watch all three representations stay in sync. When you are ready to walk the graph, continue to Graph Traversal: BFS & DFS (/learn/graph-traversal). Weighted shortest paths with non-negative costs continue in Dijkstra’s Algorithm (/learn/dijkstra). Negative weights and reachable negative cycles continue in Bellman-Ford (/learn/bellman-ford).',
   ],
 
   whyItMatters: [

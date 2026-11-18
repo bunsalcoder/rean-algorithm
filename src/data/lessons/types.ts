@@ -47,6 +47,7 @@ export type LessonVisualizationType =
   | 'graph'
   | 'graph-traversal'
   | 'dijkstra'
+  | 'bellman-ford'
   | 'trie'
 
 export type LessonVisualization = {

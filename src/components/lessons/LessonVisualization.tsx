@@ -9,6 +9,7 @@ import { PriorityQueueVisualization } from '../visualizations/PriorityQueueVisua
 import { GraphVisualization } from '../visualizations/GraphVisualization'
 import { GraphTraversalVisualization } from '../visualizations/GraphTraversalVisualization'
 import { DijkstraVisualization } from '../visualizations/DijkstraVisualization'
+import { BellmanFordVisualization } from '../visualizations/BellmanFordVisualization'
 import { TrieVisualization } from '../visualizations/TrieVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
@@ -256,6 +257,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <DijkstraVisualization />
   }
 
+  if (visualization.type === 'bellman-ford') {
+    return <BellmanFordVisualization />
+  }
+
   if (visualization.type === 'trie') {
     return <TrieVisualization />
   }
@@ -302,6 +307,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'graph' ||
     visualization.type === 'graph-traversal' ||
     visualization.type === 'dijkstra' ||
+    visualization.type === 'bellman-ford' ||
     visualization.type === 'trie'
 
   return (

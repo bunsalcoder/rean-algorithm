@@ -13,7 +13,10 @@ import type {
   VisualizationStep,
   VisualizerInputOptions,
 } from './types'
-import { useVisualizerPlayback } from './useVisualizerPlayback'
+import {
+  useVisualizerPlayback,
+  type VisualizerPlayback,
+} from './useVisualizerPlayback'
 import {
   DEFAULT_ARRAY_MAX_SIZE,
   DEFAULT_ARRAY_MIN_SIZE,
@@ -58,6 +61,11 @@ type AlgorithmVisualizerProps = {
    * (e.g. a compact heap tree for Heap Sort).
    */
   canvasAddon?: (step: VisualizationStep | undefined) => ReactNode
+  /**
+   * Optional controls rendered with the playback bar.
+   * Use this for algorithm-specific jumps, such as a full iteration.
+   */
+  controlsAddon?: (playback: VisualizerPlayback) => ReactNode
   /**
    * When false, the status panel omits the raw step metadata line.
    * Use this when a canvas addon already renders that state.
@@ -210,6 +218,7 @@ export function AlgorithmVisualizer({
   hideArray = false,
   inputSlot,
   canvasAddon,
+  controlsAddon,
   showStepMeta = true,
 }: AlgorithmVisualizerProps) {
   const resetKey = useMemo(
@@ -277,6 +286,8 @@ export function AlgorithmVisualizer({
           <VisualizationLegend className="mt-4" states={legendStates} />
         ) : null}
       </VisualizationCanvas>
+
+      {controlsAddon ? controlsAddon(playback) : null}
 
       <VisualizerControls playback={playback} />
 

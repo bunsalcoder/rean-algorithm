@@ -77,7 +77,8 @@ export const algorithmCategoryMeta: AlgorithmCategoryMeta[] = [
   {
     id: 'tree-graph',
     title: 'Tree & Graph',
-    description: 'Traverse trees and graphs, including shortest paths on non-negative weights.',
+    description:
+      'Traverse trees and graphs, including shortest paths with non-negative weights and Bellman-Ford for negative weights.',
     href: '/algorithms/tree-graph',
     icon: 'tree-graph',
     accent: 'teal',
@@ -425,6 +426,17 @@ export const algorithms: AlgorithmItem[] = [
       'Find shortest paths on a graph whose edge weights are all non-negative, using a min priority queue.',
     href: '/learn/dijkstra',
     lessonSlug: 'dijkstra',
+    categoryId: 'tree-graph',
+    difficulty: 'Intermediate',
+    status: 'available',
+  },
+  {
+    id: 'bellman-ford',
+    title: 'Bellman-Ford Algorithm',
+    description:
+      'Find shortest paths when edge weights may be negative, and detect a reachable negative cycle.',
+    href: '/learn/bellman-ford',
+    lessonSlug: 'bellman-ford',
     categoryId: 'tree-graph',
     difficulty: 'Intermediate',
     status: 'available',

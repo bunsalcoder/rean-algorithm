@@ -181,7 +181,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('priority-queue')?.slug).toBe('graph')
     expect(getNextLessonInOrder('graph')?.slug).toBe('graph-traversal')
     expect(getNextLessonInOrder('graph-traversal')?.slug).toBe('dijkstra')
-    expect(getNextLessonInOrder('dijkstra')?.slug).toBe('trie')
+    expect(getNextLessonInOrder('dijkstra')?.slug).toBe('bellman-ford')
+    expect(getNextLessonInOrder('bellman-ford')?.slug).toBe('trie')
     expect(getNextLessonInOrder('trie')).toBeUndefined()
   })
 
@@ -434,7 +435,8 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
     expect(getNextLessonInOrder('graph')?.href).toBe('/learn/graph-traversal')
     expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/dijkstra')
-    expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/bellman-ford')
+    expect(getNextLessonInOrder('bellman-ford')?.href).toBe('/learn/trie')
 
     const afterAvl = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
@@ -477,7 +479,8 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
     expect(getNextLessonInOrder('graph')?.href).toBe('/learn/graph-traversal')
     expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/dijkstra')
-    expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/bellman-ford')
+    expect(getNextLessonInOrder('bellman-ford')?.href).toBe('/learn/trie')
 
     const afterGraph = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),

@@ -198,6 +198,7 @@ export const roadmapStages: RoadmapStage[] = [
       'DFS',
       'Connected Components',
       'Shortest Path',
+      'Bellman-Ford',
       'Topological Sort',
       'Minimum Spanning Tree',
     ],
