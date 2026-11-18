@@ -82,7 +82,7 @@ function App() {
             />
             <Route
               path="/algorithms/tree-graph"
-              element={<CategoryPlaceholder title="Tree & Graph" />}
+              element={<AlgorithmCategoryPage categoryId="tree-graph" />}
             />
             <Route
               path="/algorithms/dynamic-programming"

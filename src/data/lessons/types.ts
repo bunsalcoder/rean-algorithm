@@ -46,6 +46,7 @@ export type LessonVisualizationType =
   | 'priority-queue'
   | 'graph'
   | 'graph-traversal'
+  | 'dijkstra'
   | 'trie'
 
 export type LessonVisualization = {

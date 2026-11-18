@@ -180,7 +180,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('heap')?.slug).toBe('priority-queue')
     expect(getNextLessonInOrder('priority-queue')?.slug).toBe('graph')
     expect(getNextLessonInOrder('graph')?.slug).toBe('graph-traversal')
-    expect(getNextLessonInOrder('graph-traversal')?.slug).toBe('trie')
+    expect(getNextLessonInOrder('graph-traversal')?.slug).toBe('dijkstra')
+    expect(getNextLessonInOrder('dijkstra')?.slug).toBe('trie')
     expect(getNextLessonInOrder('trie')).toBeUndefined()
   })
 
@@ -432,7 +433,8 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('heap')?.href).toBe('/learn/priority-queue')
     expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
     expect(getNextLessonInOrder('graph')?.href).toBe('/learn/graph-traversal')
-    expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/dijkstra')
+    expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/trie')
 
     const afterAvl = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
@@ -474,7 +476,8 @@ describe('recommendNextLearningAction', () => {
     expect(afterPriority.href).toBe('/learn/heap')
     expect(getNextLessonInOrder('priority-queue')?.href).toBe('/learn/graph')
     expect(getNextLessonInOrder('graph')?.href).toBe('/learn/graph-traversal')
-    expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/dijkstra')
+    expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/trie')
 
     const afterGraph = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),

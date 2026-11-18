@@ -615,8 +615,8 @@ console.log(trie.getAllWords())
   ],
 
   previousLesson: {
-    title: 'Graph Traversal: BFS & DFS',
-    href: '/learn/graph-traversal',
+    title: "Dijkstra's Algorithm",
+    href: '/learn/dijkstra',
   },
 
   nextLesson: {

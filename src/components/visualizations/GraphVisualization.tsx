@@ -251,6 +251,13 @@ export function GraphVisualization() {
         >
           Graph Traversal (BFS &amp; DFS)
         </Link>
+        . For non-negative weighted shortest paths, open{' '}
+        <Link
+          to="/learn/dijkstra"
+          className="font-medium text-sky-800 underline underline-offset-2 dark:text-sky-200"
+        >
+          Dijkstra&apos;s Algorithm
+        </Link>
         .
       </p>
 

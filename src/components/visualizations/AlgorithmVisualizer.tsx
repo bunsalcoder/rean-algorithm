@@ -58,6 +58,11 @@ type AlgorithmVisualizerProps = {
    * (e.g. a compact heap tree for Heap Sort).
    */
   canvasAddon?: (step: VisualizationStep | undefined) => ReactNode
+  /**
+   * When false, the status panel omits the raw step metadata line.
+   * Use this when a canvas addon already renders that state.
+   */
+  showStepMeta?: boolean
 }
 
 type ArrayInputPanelProps = {
@@ -205,6 +210,7 @@ export function AlgorithmVisualizer({
   hideArray = false,
   inputSlot,
   canvasAddon,
+  showStepMeta = true,
 }: AlgorithmVisualizerProps) {
   const resetKey = useMemo(
     () => `${array.join(',')}:${steps.map((step) => step.id).join('|')}`,
@@ -278,6 +284,7 @@ export function AlgorithmVisualizer({
         step={step}
         stepIndex={playback.stepIndex}
         stepCount={playback.stepCount}
+        showMeta={showStepMeta}
       />
     </div>
   )
