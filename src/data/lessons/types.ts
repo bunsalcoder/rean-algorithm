@@ -49,6 +49,7 @@ export type LessonVisualizationType =
   | 'dijkstra'
   | 'bellman-ford'
   | 'floyd-warshall'
+  | 'topological-sort'
   | 'trie'
 
 export type LessonVisualization = {

@@ -258,6 +258,13 @@ export function GraphVisualization() {
         >
           Dijkstra&apos;s Algorithm
         </Link>
+        . For a dependency order on a directed acyclic graph, open{' '}
+        <Link
+          to="/learn/topological-sort"
+          className="font-medium text-sky-800 underline underline-offset-2 dark:text-sky-200"
+        >
+          Topological Sorting
+        </Link>
         .
       </p>
 

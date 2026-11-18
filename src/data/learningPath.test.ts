@@ -183,7 +183,8 @@ describe('learning path content integrity', () => {
     expect(getNextLessonInOrder('graph-traversal')?.slug).toBe('dijkstra')
     expect(getNextLessonInOrder('dijkstra')?.slug).toBe('bellman-ford')
     expect(getNextLessonInOrder('bellman-ford')?.slug).toBe('floyd-warshall')
-    expect(getNextLessonInOrder('floyd-warshall')?.slug).toBe('trie')
+    expect(getNextLessonInOrder('floyd-warshall')?.slug).toBe('topological-sort')
+    expect(getNextLessonInOrder('topological-sort')?.slug).toBe('trie')
     expect(getNextLessonInOrder('trie')).toBeUndefined()
   })
 
@@ -438,7 +439,10 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/dijkstra')
     expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/bellman-ford')
     expect(getNextLessonInOrder('bellman-ford')?.href).toBe('/learn/floyd-warshall')
-    expect(getNextLessonInOrder('floyd-warshall')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('floyd-warshall')?.href).toBe(
+      '/learn/topological-sort',
+    )
+    expect(getNextLessonInOrder('topological-sort')?.href).toBe('/learn/trie')
 
     const afterAvl = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),
@@ -483,7 +487,10 @@ describe('recommendNextLearningAction', () => {
     expect(getNextLessonInOrder('graph-traversal')?.href).toBe('/learn/dijkstra')
     expect(getNextLessonInOrder('dijkstra')?.href).toBe('/learn/bellman-ford')
     expect(getNextLessonInOrder('bellman-ford')?.href).toBe('/learn/floyd-warshall')
-    expect(getNextLessonInOrder('floyd-warshall')?.href).toBe('/learn/trie')
+    expect(getNextLessonInOrder('floyd-warshall')?.href).toBe(
+      '/learn/topological-sort',
+    )
+    expect(getNextLessonInOrder('topological-sort')?.href).toBe('/learn/trie')
 
     const afterGraph = recommendNextLearningAction({
       completedPracticeSlugs: new Set(),

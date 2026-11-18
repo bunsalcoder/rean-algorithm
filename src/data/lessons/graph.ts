@@ -31,7 +31,7 @@ export const graph: Lesson = {
     'A graph models relationships: entities are vertices (nodes), and connections are edges. Unlike trees, graphs may have cycles, multiple parents, and disconnected pieces.',
     'Edges can be one-way (directed) or two-way (undirected), and may carry a weight such as distance, cost, or latency. Many algorithms later — BFS, DFS, shortest paths — operate on this same structure.',
     'How you store the graph matters. An adjacency list is usually compact for sparse graphs; an adjacency matrix makes “is there an edge?” fast but uses O(V²) space. An edge list is a simple list of pairs (and optional weights).',
-    'This lesson’s playground lets you add and remove vertices and edges, switch modes, drag nodes, load sample networks, and watch all three representations stay in sync. When you are ready to walk the graph, continue to Graph Traversal: BFS & DFS (/learn/graph-traversal). Weighted shortest paths with non-negative costs continue in Dijkstra’s Algorithm (/learn/dijkstra). Negative weights and reachable negative cycles continue in Bellman-Ford (/learn/bellman-ford). All-pairs distances continue in Floyd-Warshall (/learn/floyd-warshall).',
+    'This lesson’s playground lets you add and remove vertices and edges, switch modes, drag nodes, load sample networks, and watch all three representations stay in sync. When you are ready to walk the graph, continue to Graph Traversal: BFS & DFS (/learn/graph-traversal). Weighted shortest paths with non-negative costs continue in Dijkstra’s Algorithm (/learn/dijkstra). Negative weights and reachable negative cycles continue in Bellman-Ford (/learn/bellman-ford). All-pairs distances continue in Floyd-Warshall (/learn/floyd-warshall). A directed acyclic graph can also be ordered so every arrow points forward — that is Topological Sorting (/learn/topological-sort), used for course prerequisites, builds, and task schedules.',
   ],
 
   whyItMatters: [
@@ -117,7 +117,7 @@ export const graph: Lesson = {
     {
       title: 'Real-world Applications',
       description:
-        'Social networks, road maps, computer networks, flight routes, and website link graphs. Next, Graph Traversal applies BFS/DFS on these same structures. When edge weights are non-negative and unequal, continue to Dijkstra’s Algorithm (/learn/dijkstra). BFS is enough when every edge has the same cost.',
+        'Social networks, road maps, computer networks, flight routes, and website link graphs. Next, Graph Traversal applies BFS/DFS on these same structures. When edge weights are non-negative and unequal, continue to Dijkstra’s Algorithm (/learn/dijkstra). BFS is enough when every edge has the same cost. When a directed edge means “must come before”, continue to Topological Sorting (/learn/topological-sort). That order exists only for a directed acyclic graph.',
     },
   ],
 
@@ -212,7 +212,7 @@ export const graph: Lesson = {
       {
         title: 'Next: BFS and DFS',
         description:
-          'Breadth-first and depth-first traversal walk these representations to explore connectivity and paths. Continue in Graph Traversal: BFS & DFS (/learn/graph-traversal). For non-negative weighted shortest paths, continue to Dijkstra’s Algorithm (/learn/dijkstra), which uses the priority queue from /learn/priority-queue.',
+          'Breadth-first and depth-first traversal walk these representations to explore connectivity and paths. Continue in Graph Traversal: BFS & DFS (/learn/graph-traversal). For non-negative weighted shortest paths, continue to Dijkstra’s Algorithm (/learn/dijkstra), which uses the priority queue from /learn/priority-queue. For a dependency order on a directed acyclic graph, continue to Topological Sorting (/learn/topological-sort): an edge A → B means A comes before B.',
       },
     ],
   },
@@ -694,7 +694,7 @@ console.log(g.getEdges())
     'Undirected edges are symmetric; directed edges are one-way unless both directions exist.',
     'Removing a vertex must remove all incident edges to keep the graph consistent.',
     'Degree, paths, cycles, and connectivity are the vocabulary for BFS/DFS in Graph Traversal.',
-    'Equal edge costs use BFS for shortest paths. Non-negative unequal weights use Dijkstra (/learn/dijkstra).',
+    'Equal edge costs use BFS for shortest paths. Non-negative unequal weights use Dijkstra (/learn/dijkstra). A directed acyclic graph of prerequisites uses topological sorting (/learn/topological-sort).',
     'Real systems: social networks, roads, computer networks, flights, and website links.',
   ],
 

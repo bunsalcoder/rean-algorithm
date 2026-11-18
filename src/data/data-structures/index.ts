@@ -545,6 +545,11 @@ export const dataStructures: DataStructure[] = [
         complexity: 'O(V³)',
         note: 'All-pairs shortest paths. Space O(V²). Practical for a small or dense graph. A negative diagonal marks a cycle; only pairs that can pass through it lose a finite distance.',
       },
+      {
+        name: 'Topological sort (Kahn or DFS)',
+        complexity: 'O(V + E)',
+        note: 'Directed acyclic graphs only. An edge A → B means A comes before B. Auxiliary space O(V). A directed cycle has no order.',
+      },
     ],
     advantages: [
       'Expresses arbitrary relationships cleanly',
@@ -759,7 +764,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'graphs',
     title: 'Graphs',
     description:
-      'Model relationships with vertices and edges, then continue to BFS, DFS, Dijkstra, Bellman-Ford, and Floyd-Warshall.',
+      'Model relationships with vertices and edges, then continue to BFS, DFS, Dijkstra, Bellman-Ford, Floyd-Warshall, and topological sorting.',
     availability: 'available',
     href: '/learn/graph',
   },

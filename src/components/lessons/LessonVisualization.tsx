@@ -11,6 +11,7 @@ import { GraphTraversalVisualization } from '../visualizations/GraphTraversalVis
 import { DijkstraVisualization } from '../visualizations/DijkstraVisualization'
 import { BellmanFordVisualization } from '../visualizations/BellmanFordVisualization'
 import { FloydWarshallVisualization } from '../visualizations/FloydWarshallVisualization'
+import { TopologicalSortVisualization } from '../visualizations/TopologicalSortVisualization'
 import { TrieVisualization } from '../visualizations/TrieVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
@@ -266,6 +267,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <FloydWarshallVisualization />
   }
 
+  if (visualization.type === 'topological-sort') {
+    return <TopologicalSortVisualization />
+  }
+
   if (visualization.type === 'trie') {
     return <TrieVisualization />
   }
@@ -314,6 +319,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'dijkstra' ||
     visualization.type === 'bellman-ford' ||
     visualization.type === 'floyd-warshall' ||
+    visualization.type === 'topological-sort' ||
     visualization.type === 'trie'
 
   return (

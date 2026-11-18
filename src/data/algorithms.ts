@@ -78,7 +78,7 @@ export const algorithmCategoryMeta: AlgorithmCategoryMeta[] = [
     id: 'tree-graph',
     title: 'Tree & Graph',
     description:
-      'Traverse trees and graphs, including Dijkstra, Bellman-Ford, and Floyd-Warshall shortest paths.',
+      'Traverse trees and graphs, including shortest paths and topological sorting on directed acyclic graphs.',
     href: '/algorithms/tree-graph',
     icon: 'tree-graph',
     accent: 'teal',
@@ -448,6 +448,17 @@ export const algorithms: AlgorithmItem[] = [
       'Compute all-pairs shortest paths with dynamic programming, including negative edges and negative-cycle pairs.',
     href: '/learn/floyd-warshall',
     lessonSlug: 'floyd-warshall',
+    categoryId: 'tree-graph',
+    difficulty: 'Intermediate',
+    status: 'available',
+  },
+  {
+    id: 'topological-sort',
+    title: 'Topological Sorting',
+    description:
+      'Order a directed acyclic graph so every edge points forward, using Kahn’s queue or a reversed DFS finishing list.',
+    href: '/learn/topological-sort',
+    lessonSlug: 'topological-sort',
     categoryId: 'tree-graph',
     difficulty: 'Intermediate',
     status: 'available',

@@ -383,8 +383,8 @@ export function floydWarshall(vertices: readonly string[], edges: readonly Edge[
   },
 
   nextLesson: {
-    title: 'Trie (Prefix Tree)',
-    href: '/learn/trie',
+    title: 'Topological Sorting',
+    href: '/learn/topological-sort',
   },
 
   categoryHref: '/data-structures',
