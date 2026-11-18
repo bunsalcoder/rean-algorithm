@@ -10,6 +10,7 @@ import { GraphVisualization } from '../visualizations/GraphVisualization'
 import { GraphTraversalVisualization } from '../visualizations/GraphTraversalVisualization'
 import { DijkstraVisualization } from '../visualizations/DijkstraVisualization'
 import { BellmanFordVisualization } from '../visualizations/BellmanFordVisualization'
+import { FloydWarshallVisualization } from '../visualizations/FloydWarshallVisualization'
 import { TrieVisualization } from '../visualizations/TrieVisualization'
 import { InsertionSortVisualization } from '../visualizations/InsertionSortVisualization'
 import { InterpolationSearchVisualization } from '../visualizations/InterpolationSearchVisualization'
@@ -261,6 +262,10 @@ function VisualizationBody({ visualization }: LessonVisualizationProps) {
     return <BellmanFordVisualization />
   }
 
+  if (visualization.type === 'floyd-warshall') {
+    return <FloydWarshallVisualization />
+  }
+
   if (visualization.type === 'trie') {
     return <TrieVisualization />
   }
@@ -308,6 +313,7 @@ export function LessonVisualizationPanel({
     visualization.type === 'graph-traversal' ||
     visualization.type === 'dijkstra' ||
     visualization.type === 'bellman-ford' ||
+    visualization.type === 'floyd-warshall' ||
     visualization.type === 'trie'
 
   return (

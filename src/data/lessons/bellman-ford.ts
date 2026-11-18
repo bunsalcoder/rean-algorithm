@@ -108,7 +108,7 @@ export const bellmanFord: Lesson = {
     {
       title: 'Dijkstra vs. Bellman-Ford',
       description:
-        'Use Dijkstra (/learn/dijkstra) when every weight is zero or positive and you want the faster heap-based search, O((V + E) log V) with a binary heap. Dijkstra is wrong as soon as any weight is negative, because a selected vertex is treated as finished. Use Bellman-Ford when a weight may be negative, or when you must detect a reachable negative cycle. Bellman-Ford is O(V × E), which is slower on the same non-negative graph, and it does not need a priority queue. Use BFS (/learn/graph-traversal) when every edge has the same positive cost: hop count is then the distance. If the graph is undirected and any edge has a negative weight, Bellman-Ford reports a negative cycle, because that edge can be crossed in both directions.',
+        'Use Dijkstra (/learn/dijkstra) when every weight is zero or positive and you want the faster heap-based search, O((V + E) log V) with a binary heap. Dijkstra is wrong as soon as any weight is negative, because a selected vertex is treated as finished. Use Bellman-Ford when a weight may be negative, or when you must detect a reachable negative cycle from one source. Bellman-Ford is O(V × E), which is slower on the same non-negative graph, and it does not need a priority queue. Use Floyd-Warshall (/learn/floyd-warshall) when you need every pair at once: it is O(V³), allows negative weights, and marks only the pairs a negative cycle can affect. Use BFS (/learn/graph-traversal) when every edge has the same positive cost: hop count is then the distance. If the graph is undirected and any edge has a negative weight, Bellman-Ford reports a negative cycle, because that edge can be crossed in both directions.',
     },
     {
       title: 'Practical Applications',
@@ -389,6 +389,7 @@ export function bellmanFord(
     'Every edge has the same positive cost. BFS on /learn/graph-traversal answers fewest hops with less machinery.',
     'You need a finite “shortest” walk that is allowed to loop a negative cycle. That cost is unbounded. Report the cycle instead of inventing a number.',
     'You only need to know whether any path exists. BFS or DFS is enough and ignores weights.',
+    'You need every pair of vertices, not one source. Floyd-Warshall (/learn/floyd-warshall) fills that matrix in O(V³).',
   ],
 
   keyTakeaways: [
@@ -399,7 +400,7 @@ export function bellmanFord(
     'An unreachable negative cycle leaves source distances unchanged. Do not confuse it with a negative edge.',
     'On an undirected graph each edge is relaxed both ways, so one negative undirected edge is a negative cycle.',
     'Affected vertices are reported as −∞ with an empty path. Other vertices keep finite distances or ∞.',
-    'Time is O(V × E). Auxiliary space is O(V). Continue from Dijkstra (/learn/dijkstra) when every weight is non-negative.',
+    'Time is O(V × E). Auxiliary space is O(V). Continue from Dijkstra (/learn/dijkstra) when every weight is non-negative. Continue to Floyd-Warshall (/learn/floyd-warshall) when every pair is required.',
   ],
 
   previousLesson: {
@@ -408,8 +409,8 @@ export function bellmanFord(
   },
 
   nextLesson: {
-    title: 'Trie (Prefix Tree)',
-    href: '/learn/trie',
+    title: 'Floyd-Warshall Algorithm',
+    href: '/learn/floyd-warshall',
   },
 
   categoryHref: '/data-structures',

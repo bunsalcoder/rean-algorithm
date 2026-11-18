@@ -81,6 +81,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'graph-traversal',
   'dijkstra',
   'bellman-ford',
+  'floyd-warshall',
   'trie',
 ] as const
 
@@ -250,6 +251,24 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
       'Bellman-Ford reads the same weighted adjacency lists introduced in the Graph lesson.',
   },
   {
+    lessonSlug: 'floyd-warshall',
+    prerequisiteSlug: 'bellman-ford',
+    reason:
+      'Bellman-Ford finds one-source distances when weights may be negative. Floyd-Warshall fills every pair with the same negative-cycle caution.',
+  },
+  {
+    lessonSlug: 'floyd-warshall',
+    prerequisiteSlug: 'dijkstra',
+    reason:
+      'Dijkstra is the non-negative single-source case. Floyd-Warshall answers every pair and allows a negative edge.',
+  },
+  {
+    lessonSlug: 'floyd-warshall',
+    prerequisiteSlug: 'graph',
+    reason:
+      'The distance matrix is built from the weighted edges introduced in the Graph lesson.',
+  },
+  {
     lessonSlug: 'trie',
     prerequisiteSlug: 'binary-search-tree',
     reason:
@@ -375,7 +394,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'graphs',
-    lessonSlugs: ['graph', 'graph-traversal', 'dijkstra', 'bellman-ford'],
+    lessonSlugs: ['graph', 'graph-traversal', 'dijkstra', 'bellman-ford', 'floyd-warshall'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

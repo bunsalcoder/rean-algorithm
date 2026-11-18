@@ -311,7 +311,14 @@ export function DijkstraVisualization() {
           Graph Traversal
         </Link>
         . Use Previous, Next, Play, Pause, and Reset to move through immutable
-        snapshots.
+        snapshots. All-pairs distances are{' '}
+        <Link
+          to="/learn/floyd-warshall"
+          className="font-medium underline underline-offset-2"
+        >
+          Floyd-Warshall
+        </Link>
+        .
       </p>
 
       {negative ? (
