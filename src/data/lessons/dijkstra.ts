@@ -201,7 +201,7 @@ export const dijkstra: Lesson = {
       {
         title: 'Not for negative weights',
         description:
-          'Neither BFS nor Dijkstra is correct if an edge weight can be negative. Bellman-Ford (/learn/bellman-ford) relaxes every edge up to |V| - 1 times, allows a negative edge, and reports a reachable negative cycle instead of a finite distance. Use that lesson when a weight can be negative. Do not treat Dijkstra as a substitute.',
+          'Neither BFS nor Dijkstra is correct if an edge weight can be negative. Bellman-Ford (/learn/bellman-ford) relaxes every edge up to |V| - 1 times, allows a negative edge, and reports a reachable negative cycle instead of a finite distance. When you need every pair of vertices at once, Floyd-Warshall (/learn/floyd-warshall) fills a distance matrix in O(V³). Use Bellman-Ford for one source with a negative weight. Use Floyd-Warshall for all pairs on a small or dense graph. Do not treat Dijkstra as a substitute for either.',
       },
     ],
   },
@@ -452,6 +452,7 @@ export function dijkstra(
     'Every edge has the same positive cost. BFS on /learn/graph-traversal answers fewest-hops more simply.',
     'You need a path that is allowed to revisit vertices to exploit a negative cycle — that problem is unbounded, and Dijkstra will not detect it.',
     'You only need to know whether any path exists. DFS or BFS is enough and does not need weights.',
+    'You need the shortest distance between every pair, not just from one source. Floyd-Warshall (/learn/floyd-warshall) fills that matrix in O(V³) and is a better fit when the graph is small or dense.',
   ],
 
   keyTakeaways: [
@@ -461,7 +462,7 @@ export function dijkstra(
     'Edge weights must be non-negative. Zero is allowed. Negative weights, and reachable negative cycles, belong to Bellman-Ford (/learn/bellman-ford).',
     'BFS is the unweighted special case. Unequal non-negative weights need Dijkstra.',
     'With an adjacency list and a binary heap, time is O((V + E) log V) and space is O(V + E), including the graph. Quote the representation with the bound.',
-    'Use Dijkstra when every weight is ≥ 0. Use Bellman-Ford (/learn/bellman-ford) when a weight may be negative or a reachable negative cycle must be reported. Bellman-Ford is O(V × E) and does not use a priority queue.',
+    'Use Dijkstra when every weight is ≥ 0. Use Bellman-Ford (/learn/bellman-ford) when a weight may be negative or a reachable negative cycle must be reported. Bellman-Ford is O(V × E) and does not use a priority queue. Use Floyd-Warshall (/learn/floyd-warshall) when every pair is required.',
   ],
 
   previousLesson: {

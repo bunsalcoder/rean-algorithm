@@ -403,7 +403,7 @@ function depthFirstSearch(
   ],
 
   whenNotToUse: [
-    'You need weighted shortest paths — BFS counts hops, not unequal edge weights. Use Dijkstra’s Algorithm (/learn/dijkstra) when every weight is non-negative. Negative weights and reachable negative cycles are Bellman-Ford (/learn/bellman-ford).',
+    'You need weighted shortest paths — BFS counts hops, not unequal edge weights. Use Dijkstra’s Algorithm (/learn/dijkstra) when every weight is non-negative. Negative weights and reachable negative cycles are Bellman-Ford (/learn/bellman-ford). Every pair at once is Floyd-Warshall (/learn/floyd-warshall).',
     'You only need local neighbor checks — traversal of the whole component may be unnecessary.',
     'The data is a strict tree and you already have a tree-specific walk (inorder, etc.) that fits better.',
   ],

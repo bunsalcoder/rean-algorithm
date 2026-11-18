@@ -368,6 +368,13 @@ export function BellmanFordVisualization() {
         >
           Dijkstra&apos;s Algorithm
         </Link>
+        . Every pair at once is{' '}
+        <Link
+          to="/learn/floyd-warshall"
+          className="font-medium underline underline-offset-2"
+        >
+          Floyd-Warshall
+        </Link>
         . Use Previous, Next, Play, Pause, and Reset for one edge at a time, or
         the iteration buttons for a full pass.
       </p>

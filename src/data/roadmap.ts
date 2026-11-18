@@ -199,6 +199,7 @@ export const roadmapStages: RoadmapStage[] = [
       'Connected Components',
       'Shortest Path',
       'Bellman-Ford',
+      'Floyd-Warshall',
       'Topological Sort',
       'Minimum Spanning Tree',
     ],

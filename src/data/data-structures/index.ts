@@ -540,6 +540,11 @@ export const dataStructures: DataStructure[] = [
         complexity: 'O(V × E)',
         note: 'Negative weights allowed. Detects a reachable negative cycle. Auxiliary space O(V).',
       },
+      {
+        name: 'Floyd-Warshall',
+        complexity: 'O(V³)',
+        note: 'All-pairs shortest paths. Space O(V²). Practical for a small or dense graph. A negative diagonal marks a cycle; only pairs that can pass through it lose a finite distance.',
+      },
     ],
     advantages: [
       'Expresses arbitrary relationships cleanly',
@@ -754,7 +759,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'graphs',
     title: 'Graphs',
     description:
-      'Model relationships with vertices and edges, then continue to BFS, DFS, and Dijkstra shortest paths.',
+      'Model relationships with vertices and edges, then continue to BFS, DFS, Dijkstra, Bellman-Ford, and Floyd-Warshall.',
     availability: 'available',
     href: '/learn/graph',
   },

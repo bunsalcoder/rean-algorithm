@@ -78,7 +78,7 @@ export const algorithmCategoryMeta: AlgorithmCategoryMeta[] = [
     id: 'tree-graph',
     title: 'Tree & Graph',
     description:
-      'Traverse trees and graphs, including shortest paths with non-negative weights and Bellman-Ford for negative weights.',
+      'Traverse trees and graphs, including Dijkstra, Bellman-Ford, and Floyd-Warshall shortest paths.',
     href: '/algorithms/tree-graph',
     icon: 'tree-graph',
     accent: 'teal',
@@ -437,6 +437,17 @@ export const algorithms: AlgorithmItem[] = [
       'Find shortest paths when edge weights may be negative, and detect a reachable negative cycle.',
     href: '/learn/bellman-ford',
     lessonSlug: 'bellman-ford',
+    categoryId: 'tree-graph',
+    difficulty: 'Intermediate',
+    status: 'available',
+  },
+  {
+    id: 'floyd-warshall',
+    title: 'Floyd-Warshall Algorithm',
+    description:
+      'Compute all-pairs shortest paths with dynamic programming, including negative edges and negative-cycle pairs.',
+    href: '/learn/floyd-warshall',
+    lessonSlug: 'floyd-warshall',
     categoryId: 'tree-graph',
     difficulty: 'Intermediate',
     status: 'available',

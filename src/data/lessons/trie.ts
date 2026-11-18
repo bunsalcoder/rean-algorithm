@@ -615,8 +615,8 @@ console.log(trie.getAllWords())
   ],
 
   previousLesson: {
-    title: 'Bellman-Ford Algorithm',
-    href: '/learn/bellman-ford',
+    title: 'Floyd-Warshall Algorithm',
+    href: '/learn/floyd-warshall',
   },
 
   nextLesson: {
