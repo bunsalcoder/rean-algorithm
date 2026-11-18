@@ -77,7 +77,7 @@ export const algorithmCategoryMeta: AlgorithmCategoryMeta[] = [
   {
     id: 'tree-graph',
     title: 'Tree & Graph',
-    description: 'Traverse and search hierarchical and networked data.',
+    description: 'Traverse trees and graphs, including shortest paths on non-negative weights.',
     href: '/algorithms/tree-graph',
     icon: 'tree-graph',
     accent: 'teal',
@@ -416,6 +416,17 @@ export const algorithms: AlgorithmItem[] = [
     lessonSlug: 'deque',
     categoryId: 'stack-queue',
     difficulty: 'Beginner',
+    status: 'available',
+  },
+  {
+    id: 'dijkstra',
+    title: "Dijkstra's Algorithm",
+    description:
+      'Find shortest paths on a graph whose edge weights are all non-negative, using a min priority queue.',
+    href: '/learn/dijkstra',
+    lessonSlug: 'dijkstra',
+    categoryId: 'tree-graph',
+    difficulty: 'Intermediate',
     status: 'available',
   },
 ]

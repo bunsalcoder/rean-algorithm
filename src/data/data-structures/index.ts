@@ -530,6 +530,11 @@ export const dataStructures: DataStructure[] = [
         note: 'Uses O(V²) space',
       },
       { name: 'Traverse (BFS / DFS)', complexity: 'O(V + E)' },
+      {
+        name: 'Dijkstra (adjacency list, binary heap)',
+        complexity: 'O((V + E) log V)',
+        note: 'Non-negative weights only. Space O(V + E) including the graph.',
+      },
     ],
     advantages: [
       'Expresses arbitrary relationships cleanly',
@@ -744,7 +749,7 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
     id: 'graphs',
     title: 'Graphs',
     description:
-      'Model relationships with vertices and edges, then continue to BFS and DFS traversals.',
+      'Model relationships with vertices and edges, then continue to BFS, DFS, and Dijkstra shortest paths.',
     availability: 'available',
     href: '/learn/graph',
   },
@@ -761,7 +766,6 @@ export const dataStructureLearningPath: DataStructureLearningStep[] = [
 /** Routes that are placeholders without real learning content—never treat as available. */
 export const PLACEHOLDER_DATA_STRUCTURE_ROUTES = [
   '/data-structures/linked-list',
-  '/algorithms/tree-graph',
 ] as const
 
 export function getDataStructureById(

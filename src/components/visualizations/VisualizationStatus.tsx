@@ -7,6 +7,8 @@ type VisualizationStatusProps = {
   stepIndex: number
   stepCount: number
   className?: string
+  /** When false, hide the raw metadata line (graph lessons render that state themselves). */
+  showMeta?: boolean
 }
 
 export function VisualizationStatus({
@@ -14,6 +16,7 @@ export function VisualizationStatus({
   stepIndex,
   stepCount,
   className,
+  showMeta = true,
 }: VisualizationStatusProps) {
   const displayStep = stepCount === 0 ? 0 : stepIndex + 1
   const operationLabel = getOperationLabel(step?.operation)
@@ -37,7 +40,7 @@ export function VisualizationStatus({
             </span>
           ) : null}
         </div>
-        {step?.meta && Object.keys(step.meta).length > 0 ? (
+        {showMeta && step?.meta && Object.keys(step.meta).length > 0 ? (
           <p className="font-mono text-[0.7rem] text-muted-foreground">
             {Object.entries(step.meta)
               .map(([key, value]) => `${key}: ${String(value)}`)

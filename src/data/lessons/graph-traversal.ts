@@ -31,7 +31,7 @@ export const graphTraversal: Lesson = {
 
   overview: [
     'Graph traversal systematically visits vertices by following edges. The two classic strategies are Breadth-First Search (BFS) and Depth-First Search (DFS).',
-    'BFS expands neighbors level by level using a FIFO queue — great intuition for “closeness” in an unweighted graph. DFS plunges down one path as far as possible, then backtracks — natural for mazes, dependency walks, and recursive exploration.',
+    'BFS expands neighbors level by level using a FIFO queue — great intuition for “closeness” in an unweighted graph, and enough for shortest paths when every edge has the same cost. DFS plunges down one path as far as possible, then backtracks — natural for mazes, dependency walks, and recursive exploration. Unequal non-negative weights need Dijkstra’s Algorithm (/learn/dijkstra) instead of BFS.',
     'Both algorithms need a visited set (or equivalent) so cycles do not loop forever. Neighbor order is deterministic in this lesson: adjacency lists are sorted by neighbor id, so the same graph and start always produce the same traversal order.',
     'The playground below lets you run BFS, DFS, or a side-by-side comparison on the same graph and starting vertex. Switch graphs, change the start, and step forward/backward through queue and stack states.',
   ],
@@ -104,7 +104,7 @@ export const graphTraversal: Lesson = {
     {
       title: 'Practical Applications',
       description:
-        'BFS ideas: shortest path in unweighted graphs, social “degrees of connection”, level-order walks, web-crawling frontiers. DFS ideas: maze exploration, connected components, dependency walks, path existence. Full shortest-path and cycle-detection lessons come later.',
+        'BFS ideas: shortest path in unweighted graphs (every edge costs the same), social “degrees of connection”, level-order walks, web-crawling frontiers. When weights differ and stay non-negative, BFS hop counts are no longer distances — use Dijkstra’s Algorithm (/learn/dijkstra), which picks the smallest known distance with a priority queue (/learn/priority-queue). DFS ideas: maze exploration, connected components, dependency walks, path existence. Negative edge weights need a different algorithm, such as Bellman-Ford, which is not part of this lesson.',
     },
   ],
 
@@ -403,7 +403,7 @@ function depthFirstSearch(
   ],
 
   whenNotToUse: [
-    'You need weighted shortest paths — use a dedicated shortest-path algorithm later, not bare BFS layers.',
+    'You need weighted shortest paths — BFS counts hops, not unequal edge weights. Use Dijkstra’s Algorithm (/learn/dijkstra) when every weight is non-negative. Negative weights need a different algorithm, such as Bellman-Ford.',
     'You only need local neighbor checks — traversal of the whole component may be unnecessary.',
     'The data is a strict tree and you already have a tree-specific walk (inorder, etc.) that fits better.',
   ],
@@ -414,7 +414,7 @@ function depthFirstSearch(
     'Traversal order is deterministic only when neighbor order is fixed — this lesson sorts by id.',
     'Reachable mode vs all-components mode controls disconnected graphs explicitly.',
     'Both BFS and DFS are O(V + E) time and O(V) space on adjacency lists.',
-    'Applications differ: BFS for unweighted closeness/levels; DFS for mazes, dependencies, and path existence concepts.',
+    'Applications differ: BFS for unweighted closeness/levels; Dijkstra (/learn/dijkstra) when non-negative weights differ; DFS for mazes, dependencies, and path existence concepts.',
   ],
 
   previousLesson: {
@@ -423,8 +423,8 @@ function depthFirstSearch(
   },
 
   nextLesson: {
-    title: 'Trie (Prefix Tree)',
-    href: '/learn/trie',
+    title: "Dijkstra's Algorithm",
+    href: '/learn/dijkstra',
   },
 
   categoryHref: '/data-structures',

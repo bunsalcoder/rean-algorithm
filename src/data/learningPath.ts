@@ -79,6 +79,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'priority-queue',
   'graph',
   'graph-traversal',
+  'dijkstra',
   'trie',
 ] as const
 
@@ -218,6 +219,24 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
       'DFS explores deeply with an explicit stack or the call stack, then backtracks.',
   },
   {
+    lessonSlug: 'dijkstra',
+    prerequisiteSlug: 'graph-traversal',
+    reason:
+      'BFS finds fewest-edge paths when every weight is equal. Dijkstra generalizes that idea to non-negative edge weights.',
+  },
+  {
+    lessonSlug: 'dijkstra',
+    prerequisiteSlug: 'priority-queue',
+    reason:
+      'Dijkstra repeatedly selects the smallest known distance with a min priority queue.',
+  },
+  {
+    lessonSlug: 'dijkstra',
+    prerequisiteSlug: 'graph',
+    reason:
+      'Weighted edges and adjacency lists from the Graph lesson are the input Dijkstra reads.',
+  },
+  {
     lessonSlug: 'trie',
     prerequisiteSlug: 'binary-search-tree',
     reason:
@@ -343,7 +362,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'graphs',
-    lessonSlugs: ['graph', 'graph-traversal'],
+    lessonSlugs: ['graph', 'graph-traversal', 'dijkstra'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },
