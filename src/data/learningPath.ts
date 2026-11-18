@@ -82,6 +82,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'dijkstra',
   'bellman-ford',
   'floyd-warshall',
+  'topological-sort',
   'trie',
 ] as const
 
@@ -269,6 +270,24 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
       'The distance matrix is built from the weighted edges introduced in the Graph lesson.',
   },
   {
+    lessonSlug: 'topological-sort',
+    prerequisiteSlug: 'graph',
+    reason:
+      'Topological sorting reads a directed graph. An edge A → B means A must come before B.',
+  },
+  {
+    lessonSlug: 'topological-sort',
+    prerequisiteSlug: 'graph-traversal',
+    reason:
+      'Kahn’s algorithm uses a FIFO queue of ready vertices. DFS-based sorting records a vertex when the recursive search finishes and backtracks.',
+  },
+  {
+    lessonSlug: 'topological-sort',
+    prerequisiteSlug: 'queue',
+    reason:
+      'Kahn’s algorithm keeps zero-indegree vertices in a FIFO queue.',
+  },
+  {
     lessonSlug: 'trie',
     prerequisiteSlug: 'binary-search-tree',
     reason:
@@ -394,7 +413,14 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'graphs',
-    lessonSlugs: ['graph', 'graph-traversal', 'dijkstra', 'bellman-ford', 'floyd-warshall'],
+    lessonSlugs: [
+      'graph',
+      'graph-traversal',
+      'dijkstra',
+      'bellman-ford',
+      'floyd-warshall',
+      'topological-sort',
+    ],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

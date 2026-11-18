@@ -615,8 +615,8 @@ console.log(trie.getAllWords())
   ],
 
   previousLesson: {
-    title: 'Floyd-Warshall Algorithm',
-    href: '/learn/floyd-warshall',
+    title: 'Topological Sorting',
+    href: '/learn/topological-sort',
   },
 
   nextLesson: {

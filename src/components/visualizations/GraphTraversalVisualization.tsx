@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   GRAPH_SAMPLE_PRESETS,
   GRAPH_SOCIAL_NETWORK,
@@ -370,7 +371,15 @@ export function GraphTraversalVisualization() {
           ? 'BFS uses a FIFO queue: dequeue the front, enqueue undiscovered neighbors at the rear, and expand level by level.'
           : 'DFS uses a stack (or recursion): push to go deeper, pop to backtrack when a vertex has no unvisited neighbors left.'}{' '}
         Use step controls to move forward and backward. Switching BFS ↔ DFS ↔
-        Compare keeps this graph and start vertex.
+        Compare keeps this graph and start vertex. Ordering prerequisites on a
+        directed acyclic graph uses this queue and this backtracking in{' '}
+        <Link
+          to="/learn/topological-sort"
+          className="font-medium underline underline-offset-2"
+        >
+          topological sorting
+        </Link>
+        .
       </p>
 
       <AlgorithmVisualizer
