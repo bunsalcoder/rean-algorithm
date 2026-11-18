@@ -80,6 +80,7 @@ export const recommendedLessonOrder: readonly string[] = [
   'graph',
   'graph-traversal',
   'dijkstra',
+  'bellman-ford',
   'trie',
 ] as const
 
@@ -237,6 +238,18 @@ export const lessonPrerequisites: readonly LessonPrerequisite[] = [
       'Weighted edges and adjacency lists from the Graph lesson are the input Dijkstra reads.',
   },
   {
+    lessonSlug: 'bellman-ford',
+    prerequisiteSlug: 'dijkstra',
+    reason:
+      'Dijkstra settles non-negative shortest paths by selecting the smallest distance. Bellman-Ford relaxes every edge repeatedly so negative weights are allowed, and it detects reachable negative cycles.',
+  },
+  {
+    lessonSlug: 'bellman-ford',
+    prerequisiteSlug: 'graph',
+    reason:
+      'Bellman-Ford reads the same weighted adjacency lists introduced in the Graph lesson.',
+  },
+  {
     lessonSlug: 'trie',
     prerequisiteSlug: 'binary-search-tree',
     reason:
@@ -362,7 +375,7 @@ export const stageLearningContent: readonly LearningPathStageContent[] = [
   },
   {
     stageId: 'graphs',
-    lessonSlugs: ['graph', 'graph-traversal', 'dijkstra'],
+    lessonSlugs: ['graph', 'graph-traversal', 'dijkstra', 'bellman-ford'],
     practiceSlugs: [],
     hubHref: '/data-structures',
   },

@@ -535,6 +535,11 @@ export const dataStructures: DataStructure[] = [
         complexity: 'O((V + E) log V)',
         note: 'Non-negative weights only. Space O(V + E) including the graph.',
       },
+      {
+        name: 'Bellman-Ford',
+        complexity: 'O(V × E)',
+        note: 'Negative weights allowed. Detects a reachable negative cycle. Auxiliary space O(V).',
+      },
     ],
     advantages: [
       'Expresses arbitrary relationships cleanly',

@@ -104,7 +104,7 @@ export const graphTraversal: Lesson = {
     {
       title: 'Practical Applications',
       description:
-        'BFS ideas: shortest path in unweighted graphs (every edge costs the same), social “degrees of connection”, level-order walks, web-crawling frontiers. When weights differ and stay non-negative, BFS hop counts are no longer distances — use Dijkstra’s Algorithm (/learn/dijkstra), which picks the smallest known distance with a priority queue (/learn/priority-queue). DFS ideas: maze exploration, connected components, dependency walks, path existence. Negative edge weights need a different algorithm, such as Bellman-Ford, which is not part of this lesson.',
+        'BFS ideas: shortest path in unweighted graphs (every edge costs the same), social “degrees of connection”, level-order walks, web-crawling frontiers. When weights differ and stay non-negative, BFS hop counts are no longer distances — use Dijkstra’s Algorithm (/learn/dijkstra), which picks the smallest known distance with a priority queue (/learn/priority-queue). DFS ideas: maze exploration, connected components, dependency walks, path existence. Negative edge weights, and reachable negative cycles, are Bellman-Ford (/learn/bellman-ford).',
     },
   ],
 
@@ -403,7 +403,7 @@ function depthFirstSearch(
   ],
 
   whenNotToUse: [
-    'You need weighted shortest paths — BFS counts hops, not unequal edge weights. Use Dijkstra’s Algorithm (/learn/dijkstra) when every weight is non-negative. Negative weights need a different algorithm, such as Bellman-Ford.',
+    'You need weighted shortest paths — BFS counts hops, not unequal edge weights. Use Dijkstra’s Algorithm (/learn/dijkstra) when every weight is non-negative. Negative weights and reachable negative cycles are Bellman-Ford (/learn/bellman-ford).',
     'You only need local neighbor checks — traversal of the whole component may be unnecessary.',
     'The data is a strict tree and you already have a tree-specific walk (inorder, etc.) that fits better.',
   ],

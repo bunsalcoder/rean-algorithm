@@ -320,8 +320,14 @@ export function DijkstraVisualization() {
           role="alert"
         >
           Edge {negative.from} → {negative.to} has weight {negative.weight}.
-          Dijkstra cannot run. Change the weight to 0 or greater. Negative
-          weights need a different algorithm, such as Bellman-Ford.
+          Dijkstra cannot run. Change the weight to 0 or greater, or open{' '}
+          <Link
+            to="/learn/bellman-ford"
+            className="font-medium underline underline-offset-2"
+          >
+            Bellman-Ford
+          </Link>{' '}
+          for negative weights and negative-cycle detection.
         </p>
       ) : null}
 

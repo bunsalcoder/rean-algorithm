@@ -33,6 +33,7 @@ import { stack } from './stack'
 import { graph } from './graph'
 import { graphTraversal } from './graph-traversal'
 import { dijkstra } from './dijkstra'
+import { bellmanFord } from './bellman-ford'
 import { trie } from './trie'
 import { validAnagram } from './valid-anagram'
 import type { Lesson, LessonTocItem } from './types'
@@ -96,6 +97,7 @@ export const lessons: Lesson[] = [
   graph,
   graphTraversal,
   dijkstra,
+  bellmanFord,
   trie,
 ]
 
